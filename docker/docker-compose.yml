@@ -1,0 +1,37 @@
+
+#
+# dev: docker compose -f docker-compose.yml up
+# PLATFORM=arm APP_PORT=3000:3000 RUN_AS=7777:7777 docker compose -f docker-compose.yml up
+# PLATFORM=amd APP_PORT=3000:3000 RUN_AS=7777:7777 docker compose -f docker-compose.yml up -d
+#
+version: '3.8'
+
+name: rails7app
+
+services:
+  # port: 5432
+  #
+  # docker compose -f docker-compose.yml up psql
+  psql:
+    image: postgres:15.1-bullseye
+    user: ${RUN_AS:-root}
+    # restart: always
+    environment:
+      POSTGRES_PASSWORD: qwerty
+      PGDATA: /var/lib/postgresql/data/pgdata
+    volumes:
+      - ../db/PGSQL:/var/lib/postgresql/data/pgdata
+      - ../shared:/shared
+
+  # port 3000
+  rails:
+    tty: true
+    stdin_open: true
+    image: iamteacher/rails7:2023.${PLATFORM:-arm}64
+    volumes:
+      - ../:/home/lucky/app
+      - ../shared:/shared
+    ports:
+      - ${APP_PORT:-3000:3000}
+    depends_on:
+      - psql
