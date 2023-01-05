@@ -7,6 +7,12 @@
 - `docker compose -f docker-compose.yml up psql`
 - Stop after `database system is ready to accept connections`
 - restore `.keep` file in `db/PGSQL`
+- `docker compose -f docker-compose.yml up psql rails`
+- `docker exec -ti --user=root rails7app-rails-1 bash`
+- `cd /home/lucky/app`
+- `bundle`
+- `su lucky`
+- `rake db:create`
 
 ### Other Sections
 
