@@ -1,0 +1,4 @@
+# Settings.app.env.name
+app:
+  env:
+    name: development

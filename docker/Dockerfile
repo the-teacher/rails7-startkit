@@ -35,6 +35,14 @@ RUN adduser lucky \
 RUN usermod -G lucky root
 RUN usermod -G lucky lucky
 
+# TODO: Assign to lucky
+# usr/local/ruby
+# usr/local/bundle
+
+# install vim
+# export EDITOR="vim"
+# rails credentials:edit
+
 # =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 # NODE.JS
 # =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=

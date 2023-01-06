@@ -1,0 +1,4 @@
+# Settings.app.rails.version
+app:
+  rails:
+    version: 7.0.4
