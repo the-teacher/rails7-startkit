@@ -1,0 +1,18 @@
+Defaults: &defaults
+  mysql41: 36307
+  address: sphinx
+
+  min_infix_len: 3
+  morphology: 'stem_en, stem_ru'
+
+  indices_location:   /opt/sphinx/index
+  configuration_file: <%= Rails.root.to_s %>/config/_SPHINX/sphinx.conf
+
+  log:         /shared/searchd.log
+  query_log:   /shared/searchd.query.log
+
+  binlog_path: /shared
+  pid_file:    /shared/searchd.pid
+
+development: *defaults
+production: *defaults

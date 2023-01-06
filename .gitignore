@@ -6,9 +6,8 @@
 
 db/PGSQL
 db/REDIS
+db/SPHINX
 shared
-
-
 
 # Ignore bundler config.
 /.bundle
