@@ -1,16 +1,7 @@
 ---
 :verbose: true
-:logfile: ./log/sidekiq.log
-:pidfile: ./tmp/pids/sidekiq.pid
 
-:concurrency: 3
-
-development:
-  :logfile: ./log/sidekiq.log
-  :pidfile: ./tmp/pids/sidekiq.pid
-
-staging:
-  :concurrency: 2
+:concurrency: 1
 
 production:
   :concurrency: 2

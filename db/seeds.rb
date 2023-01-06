@@ -5,3 +5,12 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
+
+# bundle exec rake db:seed
+100.times do |index|
+  Article.create(
+    title: "Article with Index: #{index.next}",
+    content: "Some Content of the Article with an Index: #{index.next}"
+  )
+  puts "Article with Index: #{index.next} is created"
+end
