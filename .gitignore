@@ -8,6 +8,8 @@ db/PGSQL
 db/REDIS
 shared
 
+
+
 # Ignore bundler config.
 /.bundle
 
@@ -22,9 +24,9 @@ shared
 !/tmp/.keep
 
 # Ignore pidfiles, but keep the directory.
-/tmp/pids/*
-!/tmp/pids/
-!/tmp/pids/.keep
+tmp/pids
+tmp/cache
+tmp/storage
 
 # Ignore uploaded files in development.
 /storage/*

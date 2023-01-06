@@ -22,6 +22,9 @@ gem "puma", "5.6.5"
 # Use Redis for Caching and Sidekiq
 gem "redis", "5.0.5"
 
+# Async and Delayed Jobs
+gem "sidekiq", "7.0.2"
+
 # Use JavaScript with ESM import maps [https://github.com/rails/importmap-rails]
 gem "importmap-rails", "1.1.5"
 
