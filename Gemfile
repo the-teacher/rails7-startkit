@@ -19,6 +19,9 @@ gem 'pg', '1.4.5'
 # Use the Puma web server [https://github.com/puma/puma]
 gem "puma", "5.6.5"
 
+# Use Redis for Caching and Sidekiq
+gem "redis", "5.0.5"
+
 # Use JavaScript with ESM import maps [https://github.com/rails/importmap-rails]
 gem "importmap-rails", "1.1.5"
 

@@ -23,6 +23,15 @@ services:
       - ../db/PGSQL:/var/lib/postgresql/data/pgdata
       - ../shared:/shared
 
+  # port: 6379
+  # command: redis-server --save 60 1 --loglevel warning
+  redis:
+    image: redis:7.0.5-alpine
+    user: ${RUN_AS:-root}
+    volumes:
+      - ../db/REDIS:/data
+      - ../shared:/shared
+
   # port 3000
   rails:
     tty: true

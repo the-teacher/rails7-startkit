@@ -5,6 +5,8 @@
 #   git config --global core.excludesfile '~/.gitignore_global'
 
 db/PGSQL
+db/REDIS
+shared
 
 # Ignore bundler config.
 /.bundle

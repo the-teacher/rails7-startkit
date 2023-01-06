@@ -2,3 +2,7 @@
 app:
   rails:
     version: 7.0.4
+
+redis:
+  host: redis
+  port: 6379
