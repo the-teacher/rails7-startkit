@@ -134,7 +134,7 @@ docker compose -f docker/docker-compose.yml down
   ⠿ Container rails7app-rails-1   Removed
 ```
 
-### Conventions And Agreements
+### Conventions and Agreements
 
 For demonstration, education and maintainance purposes I use the following approach:
 
@@ -174,6 +174,17 @@ For demonstration, education and maintainance purposes I use the following appro
 ├── _SIDEKIQ.rb
 └── _SPHINX.rb
 ```
+
+**Rails user**
+
+As a user to own files and run Rails inside a container I use
+
+`user:group` => `lucky:lucky` => `7777:7777`
+
+If you would like to run the project on a linux environment then:
+
+- create group `lucky (7777)` and user `lucky (7777)`
+- run the project with `RUN_AS=7777:7777` option
 
 ### TODO
 

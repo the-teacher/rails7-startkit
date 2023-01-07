@@ -75,6 +75,10 @@ RUN touch ~/.bashrc
 ENV NVM_DIR="/opt/.nvm"
 RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.2/install.sh | bash
 
+# =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+# Install Gems
+# =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
 COPY Gemfile Gemfile
-COPY Gemfile.lock Gemfile.lock
+COPY --chown=lucky:lucky Gemfile.lock Gemfile.lock
 RUN bundle
