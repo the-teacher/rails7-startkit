@@ -35,14 +35,6 @@ RUN adduser lucky \
 RUN usermod -G lucky root
 RUN usermod -G lucky lucky
 
-# TODO: Assign to lucky
-# usr/local/ruby
-# usr/local/bundle
-
-# install vim
-# export EDITOR="vim"
-# rails credentials:edit
-
 # =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 # NODE.JS
 # =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
@@ -68,3 +60,27 @@ SHELL ["/bin/bash", "--login", "-c"]
 RUN touch ~/.bashrc
 ENV NVM_DIR="/opt/.nvm"
 RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.2/install.sh | bash
+
+# =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+# Do Some Improvements
+# =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+USER root
+
+RUN chown -R lucky:lucky /usr/local/bin/ruby
+RUN chown -R lucky:lucky /usr/local/bundle
+
+# rails credentials:edit
+RUN apt-get update && apt-get install vim --yes
+ENV EDITOR="vim"
+
+USER lucky
+SHELL ["/bin/bash", "--login", "-c"]
+
+# =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+# Loging as Lucky user
+# =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+USER lucky
+WORKDIR /home/lucky/app
+SHELL ["/bin/bash", "--login", "-c"]

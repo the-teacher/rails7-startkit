@@ -1,0 +1,24 @@
+#!/usr/bin/env ruby
+require "fileutils"
+
+# path to your application root.
+APP_ROOT = File.expand_path("..", __dir__)
+
+def system!(*args)
+  system(*args) || abort("\n== Command #{args} failed ==")
+end
+
+
+FileUtils.chdir APP_ROOT do
+  FileUtils.rm_rf('db/PGSQL/', verbose: true)
+  FileUtils.rm_rf('db/REDIS/', verbose: true)
+  FileUtils.rm_rf('db/SPHINX/', verbose: true)
+
+  FileUtils.mkdir_p('db/PGSQL/', verbose: true)
+  FileUtils.mkdir_p('db/REDIS/', verbose: true)
+  FileUtils.mkdir_p('db/SPHINX/', verbose: true)
+
+  FileUtils.touch('db/PGSQL/.keep', verbose: true)
+  FileUtils.touch('db/REDIS/.keep', verbose: true)
+  FileUtils.touch('db/SPHINX/.keep', verbose: true)
+end

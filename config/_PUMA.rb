@@ -1,11 +1,14 @@
 workers 1
 threads 2, 4
-daemonize ENV.fetch("DAEMON") { true }
 
-port ENV.fetch("PORT") { 3000 }
-environment ENV.fetch("RAILS_ENV") { "development" }
+env_name = ENV.fetch("RAILS_ENV") { "development" }
+environment env_name
 
-bind "unix:///home/lucky/app/tmp/sockets/puma.sock"
+if env_name == "development"
+  bind "tcp://0.0.0.0:#{ ENV.fetch("PORT") { 3000 } }"
+else
+  bind "unix:///home/lucky/app/tmp/sockets/puma.sock"
+end
 
 pidfile    "/home/lucky/app/tmp/pids/puma.pid"
 state_path "/home/lucky/app/tmp/pids/puma.state"

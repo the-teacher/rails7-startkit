@@ -15,9 +15,9 @@ services:
   # docker compose -f docker-compose.yml up psql
   #
   psql:
+    # restart: always
     image: postgres:15.1-bullseye
     user: ${RUN_AS:-root}
-    # restart: always
     environment:
       POSTGRES_PASSWORD: qwerty
       PGDATA: /var/lib/postgresql/data/pgdata
@@ -45,6 +45,7 @@ services:
 
   # port: 6379
   #
+  # run with dumping db every 60 secs:
   # command: redis-server --save 60 1 --loglevel warning
   #
   redis:
@@ -63,6 +64,7 @@ services:
     volumes:
       - ../:/home/lucky/app
       - ../shared:/shared
+      - ../db/SPHINX:/opt/sphinx/index
     ports:
       - ${APP_PORT:-3000:3000}
     depends_on:

@@ -1,0 +1,83 @@
+# rails7-docker
+upstream rails7-docker.com {
+  server unix:/home/lucky/rails7-docker.com/tmp/sockets/puma.sock fail_timeout=15;
+}
+
+# REDIRECT: Any subdomain to main domain
+server {
+  listen 80;
+  listen 443 ssl;
+  server_name *.rails7-docker.com;
+
+  ssl_certificate /etc/letsencrypt/live/rails7-docker.com/fullchain.pem;
+  ssl_certificate_key /etc/letsencrypt/live/rails7-docker.com/privkey.pem;
+  include /etc/letsencrypt/options-ssl-nginx.conf;
+  ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem;
+
+  ssl_stapling on;
+  ssl_stapling_verify on;
+  add_header Strict-Transport-Security max-age=15768000;
+
+  access_log /home/lucky/rails7-docker.com/log/nginx.log;
+  error_log  /home/lucky/rails7-docker.com/log/nginx.errors.log;
+
+  rewrite ^ http://rails7-docker.com$uri permanent;
+}
+
+server{
+  listen 80;
+  server_name rails7-docker.com;
+
+  if ($ssl_protocol = "") {
+    rewrite ^ https://rails7-docker.com$uri permanent;
+  }
+
+  listen 443 ssl;
+  ssl_certificate /etc/letsencrypt/live/rails7-docker.com/fullchain.pem;
+  ssl_certificate_key /etc/letsencrypt/live/rails7-docker.com/privkey.pem;
+
+  include /etc/letsencrypt/options-ssl-nginx.conf;
+  ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem;
+
+  ssl_stapling on;
+  ssl_stapling_verify on;
+  add_header Strict-Transport-Security max-age=15768000;
+
+  # Logs
+  access_log /home/lucky/rails7-docker.com/log/nginx.log;
+  error_log  /home/lucky/rails7-docker.com/log/nginx.errors.log;
+
+  # etag off;
+  charset utf-8;
+  proxy_intercept_errors on;
+
+  root /home/lucky/rails7-docker.com/public;
+  client_max_body_size 256m;
+
+  error_page 502 503 504 /maintenance.html;
+
+  location ~ ^/(assets|uploads|images)/ {
+    expires max;
+    gzip_static on;
+    add_header Cache-Control public;
+  }
+
+  location / {
+    try_files $uri @web_site;
+  }
+
+  location @web_site {
+    proxy_pass http://rails7-docker.com;
+
+    proxy_redirect off;
+    proxy_set_header Host $host;
+    proxy_set_header X-Real-IP $remote_addr;
+    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+
+    proxy_read_timeout 300;
+    proxy_buffer_size 16k;
+    proxy_buffers 32 16k;
+
+    proxy_set_header X-Forwarded-Proto $scheme;
+  }
+}
