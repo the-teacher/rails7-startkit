@@ -49,6 +49,20 @@ On your host you have:
 
 In some minutes you can visit `localhost:3000`
 
+### To See Running Containers
+
+```
+docker ps --format 'table {{.ID}}\t{{.Image}}\t{{.Names}}\t{{.Ports}}'
+```
+
+```
+CONTAINER ID   IMAGE                       NAMES                PORTS
+76ae606f60ac   macbre/sphinxsearch:3.4.1   rails7app-sphinx-1   36307/tcp
+e94f122f99f8   redis:7.0.5-alpine          rails7app-redis-1    6379/tcp
+4b56862e0591   ba9d73cff408                rails7app-rails-1    0.0.0.0:3000->3000/tcp
+7b7854d26e87   postgres:15.1-bullseye      rails7app-psql-1     5432/tcp
+```
+
 ### License
 
 MIT
