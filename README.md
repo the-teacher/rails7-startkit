@@ -58,7 +58,8 @@ On your host you have:
 6. Generate Sphinx Config
 7. Launching Sphinx Container
 8. Indexing Article Model
-9. Run Rails App on the port 3000
+9. Launching Rails App on the port 3000
+10. Visit: http://localhost:3000
 ```
 
 ### To Run All Containers

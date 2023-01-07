@@ -66,7 +66,7 @@ FileUtils.chdir APP_ROOT do
   system('docker exec rails7app-sphinx-1 indexer --all --config /opt/sphinx/conf/sphinx.conf')
   sleep(DELAY)
 
-  puts "9. Run Rails App on the port 3000"
+  puts "9. Launching Rails App on the port 3000"
   rails_container_exec("bundle exec puma -C config/_PUMA.rb &")
 
   puts "10. Visit: http://localhost:3000"
