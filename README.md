@@ -175,6 +175,15 @@ For demonstration, education and maintainance purposes I use the following appro
 └── _SPHINX.rb
 ```
 
+### TODO
+
+- ElasticSearch. [Chewy](https://github.com/toptal/chewy)
+- Memcached [Link](https://devcenter.heroku.com/articles/building-a-rails-3-application-with-memcache)
+- Puma on systemd [Link](https://github.com/puma/puma/blob/master/docs/systemd.md)
+- Sidekiq on systemd [Link](https://github.com/mperham/sidekiq/blob/main/examples/systemd/sidekiq.service)
+- Action Cable [Link](https://guides.rubyonrails.org/action_cable_overview.html)
+- Nginx
+
 ### License
 
 MIT
