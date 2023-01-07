@@ -123,6 +123,47 @@ docker compose -f docker/docker-compose.yml down
   ⠿ Container rails7app-rails-1   Removed
 ```
 
+### Conventions And Agreements
+
+For demonstration, education and maintainance purposes I use the following approach:
+
+**Data**
+
+- All data related folders for services are placed in `./db`
+- All service related folders are `UPPERCASED`
+
+```
+./db
+├── PGSQL
+├── REDIS
+└── SPHINX
+```
+
+**Configuration Files**
+
+- All services' configurations are placed in `./config`
+- All service related configs are `_UNDERSCORED` and `UPPERCASED`
+
+```
+./config
+├── _SPHINX (<< folder)
+├── _PUMA.rb
+├── _SIDEKIQ.yml
+└── _THINKING_SPHINX.yml
+```
+
+**Initialazers**
+
+- All services' initializers are placed in `./config/initializers`
+- All services' initializers are `_UNDERSCORED` and `UPPERCASED`
+
+```
+./config/initializers/
+├── _REDIS.rb
+├── _SIDEKIQ.rb
+└── _SPHINX.rb
+```
+
 ### License
 
 MIT
