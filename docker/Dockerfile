@@ -8,7 +8,7 @@
 # docker run -ti iamteacher/rails7:2023.amd64
 #
 # 386:
-# (crashed on M1) qemu: uncaught target signal 6 (Aborted) - core dumped
+# (crashed on M1 with) `qemu: uncaught target signal 6 (Aborted) - core dumped`
 # docker build -t iamteacher/rails7:2023.386 -f Dockerfile --build-arg BUILDPLATFORM="linux/386" ../
 # docker run -ti iamteacher/rails7:2023.386
 

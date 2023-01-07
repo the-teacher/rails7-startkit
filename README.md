@@ -51,9 +51,25 @@ On your host you have:
 
 In some minutes you can visit `localhost:3000`
 
+### To Run All Containers
+
+From the root of the project
+
+```sh
+docker compose -f docker/docker-compose.yml up -d
+```
+
+```sh
+[+] Running 4/4
+  ⠿ Container rails7app-redis-1   Running
+  ⠿ Container rails7app-psql-1    Running
+  ⠿ Container rails7app-sphinx-1  Running
+  ⠿ Container rails7app-rails-1   Running
+```
+
 ### To See Running Containers
 
-```
+```sh
 docker ps --format 'table {{.ID}}\t{{.Image}}\t{{.Names}}\t{{.Ports}}'
 ```
 
@@ -63,6 +79,48 @@ CONTAINER ID   IMAGE                       NAMES                PORTS
 e94f122f99f8   redis:7.0.5-alpine          rails7app-redis-1    6379/tcp
 4b56862e0591   ba9d73cff408                rails7app-rails-1    0.0.0.0:3000->3000/tcp
 7b7854d26e87   postgres:15.1-bullseye      rails7app-psql-1     5432/tcp
+```
+
+### To Get In a Container
+
+**Rails**
+
+```sh
+docker exec -ti rails7app-rails-1 bash
+```
+
+**PgSQL**
+
+```sh
+docker exec -ti rails7app-psql-1 bash
+```
+
+**Redis**
+
+```sh
+docker exec -ti rails7app-psql-1 ash
+```
+
+**Sphinx**
+
+```sh
+docker exec -ti rails7app-sphinx-1 ash
+```
+
+### To Stop All Containers
+
+From the root of the project
+
+```sh
+docker compose -f docker/docker-compose.yml down
+```
+
+```sh
+[+] Running 4/4
+  ⠿ Container rails7app-redis-1   Removed
+  ⠿ Container rails7app-psql-1    Removed
+  ⠿ Container rails7app-sphinx-1  Removed
+  ⠿ Container rails7app-rails-1   Removed
 ```
 
 ### License
