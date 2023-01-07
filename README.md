@@ -1,40 +1,37 @@
 # README
 
-### How to Start
+This project is Playground for `Rails 7` + `Docker`
 
-- `cd docker`
-- remove `.keep` file form `db/PGSQL`
-- `docker compose -f docker-compose.yml up psql`
-- Stop after `database system is ready to accept connections`
-- restore `.keep` file in `db/PGSQL`
-- `docker compose -f docker-compose.yml up psql rails`
-- `docker exec -ti --user=root rails7app-rails-1 bash`
-- `cd /home/lucky/app`
-- `bundle`
-- `su lucky`
-- `rake db:create`
+## Why?
 
-### Other Sections
+Clone. Run in Minutes. Start Learning or New Project Development.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+### What is under the hood?
 
-Things you may want to cover:
+- Ruby 3.2
+- Rails 7
+- PgSQL (Database)
+- Redis (Cache)
+- Sidekiq (Async and Delayed Jobs)
+- Sphinx (Full text search)
+- Puma
 
-* Ruby version
+### Prerequisites
 
-* System dependencies
+On your host you have:
 
-* Configuration
+- Ruby 2+
+- Docker
+- Git
 
-* Database creation
+### How to start?
 
-* Database initialization
+- `git clone git@github.com:the-teacher/rails7-docker.git`
+- `cd rails7-docker`
+- `bin/setup`
 
-* How to run the test suite
+In some minutes you can visit `localhost:3000`
 
-* Services (job queues, cache servers, search engines, etc.)
+### License
 
-* Deployment instructions
-
-* ...
+MIT
