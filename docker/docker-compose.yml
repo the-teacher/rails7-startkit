@@ -60,7 +60,7 @@ services:
   rails:
     tty: true
     stdin_open: true
-    image: iamteacher/rails7:2023.${PLATFORM:-arm}64
+    image: iamteacher/rails7:2023.${PLATFORM:-arm64}
     volumes:
       - ../:/home/lucky/app
       - ../shared:/shared

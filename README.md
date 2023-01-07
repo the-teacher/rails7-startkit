@@ -4,7 +4,9 @@ This project is Playground for `Rails 7` + `Docker`
 
 ## Why?
 
-Clone. Run in Minutes. Start Learning or New Project Development.
+Usually It is difficult and time consuming to setup a typical rails environment from scratch.
+
+**With this project you can start development in minutes.**
 
 ### What is under the hood?
 
@@ -15,6 +17,21 @@ Clone. Run in Minutes. Start Learning or New Project Development.
 - Sidekiq (Async and Delayed Jobs)
 - Sphinx (Full text search)
 - Puma
+
+<table bgcolor="white">
+  <tr>
+    <td><img width="400" src="docs/docker.png" /></td></td>
+    <td><img width="400" src="docs/ruby.png" /></td>
+    <td><img width="400" src="docs/rails7.png" /></td>
+    <td><img width="400" src="docs/puma.png" /></td></td>
+  </tr>
+  <tr>
+    <td><img width="400" src="docs/pgsql.png" /></td>
+    <td><img width="400" src="docs/redis.png" /></td>
+    <td><img width="400" src="docs/sidekiq.png" /></td>
+    <td><img width="400" src="docs/sphinx.png" /></td>
+  </tr>
+</table>
 
 ### Prerequisites
 

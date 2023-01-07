@@ -6,6 +6,11 @@
 # AMD:
 # docker build -t iamteacher/rails7:2023.amd64 -f Dockerfile --build-arg BUILDPLATFORM="linux/amd64" ../
 # docker run -ti iamteacher/rails7:2023.amd64
+#
+# 386:
+# (crashed on M1) qemu: uncaught target signal 6 (Aborted) - core dumped
+# docker build -t iamteacher/rails7:2023.386 -f Dockerfile --build-arg BUILDPLATFORM="linux/386" ../
+# docker run -ti iamteacher/rails7:2023.386
 
 # Debian GNU/Linux 11 (bullseye)
 FROM --platform=$BUILDPLATFORM ruby:3.2
@@ -35,6 +40,13 @@ RUN adduser lucky \
 RUN usermod -G lucky root
 RUN usermod -G lucky lucky
 
+RUN chown -R lucky:lucky /usr/local/bin/ruby
+RUN chown -R lucky:lucky /usr/local/bundle
+
+# rails credentials:edit
+RUN apt-get update && apt-get install vim --yes
+ENV EDITOR="vim"
+
 # =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 # NODE.JS
 # =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
@@ -51,6 +63,8 @@ RUN chown -R lucky:lucky /opt/.nvm
 # =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 
 USER lucky
+ENV EDITOR="vim"
+WORKDIR /home/lucky/app
 SHELL ["/bin/bash", "--login", "-c"]
 
 # =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
@@ -60,27 +74,3 @@ SHELL ["/bin/bash", "--login", "-c"]
 RUN touch ~/.bashrc
 ENV NVM_DIR="/opt/.nvm"
 RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.2/install.sh | bash
-
-# =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-# Do Some Improvements
-# =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-
-USER root
-
-RUN chown -R lucky:lucky /usr/local/bin/ruby
-RUN chown -R lucky:lucky /usr/local/bundle
-
-# rails credentials:edit
-RUN apt-get update && apt-get install vim --yes
-ENV EDITOR="vim"
-
-USER lucky
-SHELL ["/bin/bash", "--login", "-c"]
-
-# =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-# Loging as Lucky user
-# =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-
-USER lucky
-WORKDIR /home/lucky/app
-SHELL ["/bin/bash", "--login", "-c"]
