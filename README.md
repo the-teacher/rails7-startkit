@@ -1,12 +1,12 @@
 # README
 
-This project is Playground for `Rails 7` + `Docker`
+This project is Playground for `Rails 7` with using `Docker`.
 
 ## Why?
 
 Usually It is difficult and time consuming to setup a typical rails environment from scratch.
 
-**With this project you can start development in minutes.**
+**With this project you can start development process in minutes.**
 
 ### What is under the hood?
 
@@ -16,7 +16,7 @@ Usually It is difficult and time consuming to setup a typical rails environment 
 - Redis (Cache)
 - Sidekiq (Async and Delayed Jobs)
 - Sphinx (Full text search)
-- Puma
+- Puma (Web Server)
 
 <table bgcolor="white">
   <tr>
@@ -32,6 +32,8 @@ Usually It is difficult and time consuming to setup a typical rails environment 
     <td><img width="400" src="docs/sphinx.png" /></td>
   </tr>
 </table>
+
+*All trademarks, logos and brand names are the property of their respective owners.*
 
 ### Prerequisites
 
