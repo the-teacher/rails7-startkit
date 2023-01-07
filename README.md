@@ -49,7 +49,17 @@ On your host you have:
 - `cd rails7-docker`
 - `bin/setup`
 
-In some minutes you can visit `localhost:3000`
+```
+1. Launching PgSQL container
+2. Launching Rails container
+3. Installing Gems. Please Wait
+4. Create DB. Migrate DB. Create Seeds
+5. Launching Redis Container
+6. Generate Sphinx Config
+7. Launching Sphinx Container
+8. Indexing Article Model
+9. Run Rails App on the port 3000
+```
 
 ### To Run All Containers
 
