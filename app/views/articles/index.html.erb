@@ -1,0 +1,9 @@
+<h1>Articles#index</h1>
+<% @articles.each do |article| %>
+  <% cache article do %>
+    <article>
+      <h3><%= article.title %></h3>
+      <p><%= DateTime.now.to_s(:db) %></p>
+    </article>
+  <% end %>
+<% end %>
