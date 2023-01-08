@@ -97,25 +97,25 @@ rails7app-psql-1     60bf07fc70fe   postgres:15.1-bullseye         5432/tcp
 **Rails**
 
 ```sh
-docker exec -ti rails7app-rails-1 bash
+bin/open rails
 ```
 
 **PgSQL**
 
 ```sh
-docker exec -ti rails7app-psql-1 bash
+bin/open psql
 ```
 
 **Redis**
 
 ```sh
-docker exec -ti rails7app-psql-1 ash
+bin/open redis
 ```
 
 **Sphinx**
 
 ```sh
-docker exec -ti rails7app-sphinx-1 ash
+bin/open sphinx
 ```
 
 ### To Stop All Containers

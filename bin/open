@@ -1,0 +1,20 @@
+#!/usr/bin/env ruby
+require_relative "./helpers.rb"
+
+container_name = (ARGV[0] || 'rails').strip.to_sym
+
+CONTAINER_SHELL_MAP = {
+  rails: :bash,
+  psql: :bash,
+  redis: :ash,
+  sphinx: :ash
+}
+
+unless CONTAINER_SHELL_MAP.key?(container_name)
+  puts "Shell for #{container_name} is not found"
+  exit 1
+end
+
+shell = CONTAINER_SHELL_MAP[container_name]
+
+container_exec(container_name, shell)
