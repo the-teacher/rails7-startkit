@@ -45,9 +45,25 @@ On your host you have:
 
 ### How to start?
 
-- `git clone git@github.com:the-teacher/rails7-docker.git`
-- `cd rails7-docker`
-- `bin/setup`
+**ONE!**
+
+```
+git clone git@github.com:the-teacher/rails7-docker.git
+```
+
+**TWO!**
+
+```
+cd rails7-docker
+```
+
+**THREE!**
+
+```
+bin/setup
+```
+
+You will see something like that:
 
 ```
 1. Launching PgSQL container
@@ -58,8 +74,9 @@ On your host you have:
 6. Generate Sphinx Config
 7. Launching Sphinx Container
 8. Indexing Article Model
-9. Launching Rails App on the port 3000
-10. Visit: http://localhost:3000
+9. Launching Rails App with Puma
+10. Launching Sidekiq
+11. Visit: http://localhost:3000
 ```
 
 ### To Run All Containers
@@ -81,15 +98,24 @@ bin/start
 ### To See Running Containers
 
 ```sh
-docker ps --format 'table {{.Names}}\t{{.ID}}\t{{.Image}}\t{{.Ports}}'
+bin/status
 ```
 
-```
-NAMES                CONTAINER ID   IMAGE                          PORTS
-rails7app-sphinx-1   7379414a8127   macbre/sphinxsearch:3.4.1      36307/tcp
-rails7app-redis-1    df3cc69795bb   redis:7.0.5-alpine             6379/tcp
-rails7app-rails-1    2042c1346ef1   iamteacher/rails7:2023.arm64   0.0.0.0:3000->3000/tcp
-rails7app-psql-1     60bf07fc70fe   postgres:15.1-bullseye         5432/tcp
+```js
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+NAMES                IMAGE                          PORTS                    CONTAINER ID
+rails7app-rails-1    iamteacher/rails7:2023.arm64   0.0.0.0:3000->3000/tcp   1ed64ee7ca1c
+rails7app-sphinx-1   macbre/sphinxsearch:3.4.1      36307/tcp                498ca21f4be3
+rails7app-redis-1    redis:7.0.5-alpine             6379/tcp                 5bb16abc7ff8
+rails7app-psql-1     postgres:15.1-bullseye         5432/tcp                 63669cc683c7
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+docker compose -f docker/docker-compose.yml exec  rails /bin/bash -c 'ps a | grep puma'
+   16 pts/1    Ssl+   0:01 puma 5.6.5 (tcp://0.0.0.0:3000) [app]
+   33 pts/1    Sl+    0:01 puma: cluster worker 0: 16 [app]
+
+docker compose -f docker/docker-compose.yml exec  rails /bin/bash -c 'ps a | grep sidekiq'
+   23 pts/2    Ssl+   0:05 sidekiq 7.0.2 app [0 of 1 busy]
 ```
 
 ### To Get In a Container

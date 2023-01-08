@@ -50,7 +50,7 @@ FileUtils.chdir APP_ROOT do
   puts "10. Launching Sidekiq"
   container_bash_exec('rails', 'bundle exec sidekiq -C config/_SIDEKIQ.yml', detached = true)
 
-  puts "12. Visit: http://localhost:3000"
+  puts "11. Visit: http://localhost:3000"
 
   containers_information
 end
