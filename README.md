@@ -87,6 +87,9 @@ From the root of the project
 bin/start
 ```
 
+<details>
+  <summary>Output</summary>
+
 ```sh
 [+] Running 4/4
   ⠿ Container rails7app-redis-1   Running
@@ -94,12 +97,18 @@ bin/start
   ⠿ Container rails7app-sphinx-1  Running
   ⠿ Container rails7app-rails-1   Running
 ```
+</details>
 
 ### To See Running Containers
+
+From the root of the project
 
 ```sh
 bin/status
 ```
+
+<details>
+  <summary>Output</summary>
 
 ```js
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -117,6 +126,7 @@ docker compose -f docker/docker-compose.yml exec  rails /bin/bash -c 'ps a | gre
 docker compose -f docker/docker-compose.yml exec  rails /bin/bash -c 'ps a | grep sidekiq'
    23 pts/2    Ssl+   0:05 sidekiq 7.0.2 app [0 of 1 busy]
 ```
+</details>
 
 ### To Get In a Container
 
@@ -152,6 +162,9 @@ From the root of the project
 bin/stop
 ```
 
+<details>
+  <summary>Output</summary>
+
 ```sh
 [+] Running 4/4
   ⠿ Container rails7app-redis-1   Removed
@@ -159,6 +172,7 @@ bin/stop
   ⠿ Container rails7app-sphinx-1  Removed
   ⠿ Container rails7app-rails-1   Removed
 ```
+</details>
 
 ### Conventions and Agreements
 
@@ -166,8 +180,8 @@ For demonstration, education and maintainance purposes I use the following appro
 
 **Data**
 
-- All data related folders for services are placed in `./db`
-- All service related folders are `UPPERCASED`
+- All services' data related folders are placed in `./db`
+- All folders are `UPPERCASED`
 
 ```
 ./db
@@ -179,11 +193,12 @@ For demonstration, education and maintainance purposes I use the following appro
 **Configuration Files**
 
 - All services' configurations are placed in `./config`
-- All service related configs are `_UNDERSCORED` and `UPPERCASED`
+- All configs are `_UNDERSCORED` and `UPPERCASED`
 
 ```
 ./config
 ├── _SPHINX (<< folder)
+├── _CONFIG.yml
 ├── _PUMA.rb
 ├── _SIDEKIQ.yml
 └── _THINKING_SPHINX.yml
@@ -192,16 +207,17 @@ For demonstration, education and maintainance purposes I use the following appro
 **Initialazers**
 
 - All services' initializers are placed in `./config/initializers`
-- All services' initializers are `_UNDERSCORED` and `UPPERCASED`
+- All files are `_UNDERSCORED` and `UPPERCASED`
 
 ```
 ./config/initializers/
+├── _CONFIG.rb
 ├── _REDIS.rb
 ├── _SIDEKIQ.rb
 └── _SPHINX.rb
 ```
 
-**Rails user**
+### Rails user
 
 As a user to own files and run Rails inside a container I use
 
