@@ -67,7 +67,7 @@ On your host you have:
 From the root of the project
 
 ```sh
-docker compose -f docker/docker-compose.yml up -d
+bin/start
 ```
 
 ```sh
@@ -123,7 +123,7 @@ bin/open sphinx
 From the root of the project
 
 ```sh
-docker compose -f docker/docker-compose.yml down
+bin/stop
 ```
 
 ```sh
