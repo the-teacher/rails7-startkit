@@ -1,33 +1,12 @@
 #!/usr/bin/env ruby
 require "fileutils"
+require_relative "./helpers.rb"
 
 # path to your application root.
 APP_ROOT = File.expand_path("..", __dir__)
 
-def system!(*args)
-  system(*args) || abort("\n== Command #{args} failed ==")
-end
-
-def rails_container_exec(cmd)
-  system("docker exec -w /home/lucky/app rails7app-rails-1 /bin/bash -c '#{cmd}'")
-end
-
-def check_docker
-  unless system('docker -v')
-    puts "Docker not found"
-    exit 1
-  end
-end
-
-def wait(details)
-  puts "Waiting #{DELAY} seconds #{details}"
-  sleep(DELAY)
-end
-
-DELAY = 3
-
 FileUtils.chdir APP_ROOT do
-  check_docker
+  check_docker!
 
   FileUtils.rm('db/PGSQL/.keep', force: true)
 
@@ -44,10 +23,10 @@ FileUtils.chdir APP_ROOT do
   wait('to launch Rails Container')
 
   puts "3. Installing Gems. Please Wait"
-  rails_container_exec("bundle install")
+  container_bash_exec('rails', 'bundle install')
 
   puts "4. Create DB. Migrate DB. Create Seeds"
-  rails_container_exec("rake db:prepare")
+  container_bash_exec('rails', 'rake db:prepare')
 
   puts "5. Launching Redis Container"
   system('docker compose -f docker/docker-compose.yml up redis -d')
@@ -55,7 +34,7 @@ FileUtils.chdir APP_ROOT do
   wait('to launch Redis Container')
 
   puts "6. Generate Sphinx Config"
-  rails_container_exec("rake ts:configure")
+  container_bash_exec('rails', 'rake ts:configure')
 
   puts "7. Launching Sphinx Container"
   system('docker compose -f docker/docker-compose.yml up sphinx -d')
@@ -63,10 +42,12 @@ FileUtils.chdir APP_ROOT do
   wait('to launch Sphinx Container')
 
   puts "8. Indexing Article Model"
-  system('docker exec rails7app-sphinx-1 indexer --all --config /opt/sphinx/conf/sphinx.conf')
+  container_exec('sphinx', 'indexer --all --config /opt/sphinx/conf/sphinx.conf --rotate')
 
   puts "9. Launching Rails App on the port 3000"
-  rails_container_exec("bundle exec puma -C config/_PUMA.rb &")
+  container_bash_exec('rails', 'bundle exec puma -C config/_PUMA.rb &')
 
   puts "10. Visit: http://localhost:3000"
+
+  system("docker ps --format 'table {{.Names}}\t{{.ID}}\t{{.Image}}\t{{.Ports}}'")
 end

@@ -1,22 +1,9 @@
 #!/usr/bin/env ruby
 require "fileutils"
+require_relative "./helpers.rb"
 
 # path to your application root.
 APP_ROOT = File.expand_path("..", __dir__)
-
-def system!(*args)
-  system(*args) || abort("\n== Command #{args} failed ==")
-end
-
-def prompt!(message = "Are you sure to continue? [y/Y]")
-  puts message
-  prompt = STDIN.gets.chomp
-
-  unless prompt.downcase == 'y'
-    puts "Buy! See you next time!"
-    exit 1
-  end
-end
 
 puts "This command clean up ALL THE DATA for the project!"
 prompt!

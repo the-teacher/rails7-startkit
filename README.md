@@ -81,15 +81,15 @@ docker compose -f docker/docker-compose.yml up -d
 ### To See Running Containers
 
 ```sh
-docker ps --format 'table {{.ID}}\t{{.Image}}\t{{.Names}}\t{{.Ports}}'
+docker ps --format 'table {{.Names}}\t{{.ID}}\t{{.Image}}\t{{.Ports}}'
 ```
 
 ```
-CONTAINER ID   IMAGE                       NAMES                PORTS
-76ae606f60ac   macbre/sphinxsearch:3.4.1   rails7app-sphinx-1   36307/tcp
-e94f122f99f8   redis:7.0.5-alpine          rails7app-redis-1    6379/tcp
-4b56862e0591   ba9d73cff408                rails7app-rails-1    0.0.0.0:3000->3000/tcp
-7b7854d26e87   postgres:15.1-bullseye      rails7app-psql-1     5432/tcp
+NAMES                CONTAINER ID   IMAGE                          PORTS
+rails7app-sphinx-1   7379414a8127   macbre/sphinxsearch:3.4.1      36307/tcp
+rails7app-redis-1    df3cc69795bb   redis:7.0.5-alpine             6379/tcp
+rails7app-rails-1    2042c1346ef1   iamteacher/rails7:2023.arm64   0.0.0.0:3000->3000/tcp
+rails7app-psql-1     60bf07fc70fe   postgres:15.1-bullseye         5432/tcp
 ```
 
 ### To Get In a Container
