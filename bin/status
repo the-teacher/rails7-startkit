@@ -1,3 +1,6 @@
 #!/usr/bin/env ruby
 require_relative "./helpers.rb"
 containers_information
+
+container_bash_exec('rails', 'ps a | grep puma')
+container_bash_exec('rails', 'ps a | grep sidekiq')
