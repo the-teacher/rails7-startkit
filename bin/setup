@@ -19,6 +19,11 @@ def check_docker
   end
 end
 
+def wait(details)
+  puts "Waiting #{DELAY} seconds #{details}"
+  sleep(DELAY)
+end
+
 DELAY = 3
 
 FileUtils.chdir APP_ROOT do
@@ -29,15 +34,14 @@ FileUtils.chdir APP_ROOT do
   puts "1. Launching PgSQL container"
   system('docker compose -f docker/docker-compose.yml up psql -d')
 
-  puts "Waiting #{DELAY} seconds to initialize PgSQL database"
-  sleep(DELAY)
+  wait('to initialize PgSQL database')
 
   FileUtils.touch('db/PGSQL/.keep', verbose: true)
 
   puts "2. Launching Rails container"
-  puts "Waiting #{DELAY} seconds to run Rails Container"
   system('docker compose -f docker/docker-compose.yml up rails -d')
-  sleep(DELAY)
+
+  wait('to launch Rails Container')
 
   puts "3. Installing Gems. Please Wait"
   rails_container_exec("bundle install")
@@ -46,25 +50,20 @@ FileUtils.chdir APP_ROOT do
   rails_container_exec("rake db:prepare")
 
   puts "5. Launching Redis Container"
-  puts "Waiting #{DELAY} seconds to run Redis Container"
   system('docker compose -f docker/docker-compose.yml up redis -d')
-  sleep(DELAY)
 
-  puts "Waiting #{DELAY} seconds to run Redis Container"
-  system('docker compose -f docker/docker-compose.yml up redis -d')
-  sleep(DELAY)
+  wait('to launch Redis Container')
 
   puts "6. Generate Sphinx Config"
   rails_container_exec("rake ts:configure")
 
   puts "7. Launching Sphinx Container"
-  puts "Waiting #{DELAY} seconds to run Sphinx Container"
   system('docker compose -f docker/docker-compose.yml up sphinx -d')
-  sleep(DELAY)
+
+  wait('to launch Sphinx Container')
 
   puts "8. Indexing Article Model"
   system('docker exec rails7app-sphinx-1 indexer --all --config /opt/sphinx/conf/sphinx.conf')
-  sleep(DELAY)
 
   puts "9. Launching Rails App on the port 3000"
   rails_container_exec("bundle exec puma -C config/_PUMA.rb &")

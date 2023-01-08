@@ -8,6 +8,18 @@ def system!(*args)
   system(*args) || abort("\n== Command #{args} failed ==")
 end
 
+def prompt!(message = "Are you sure to continue? [y/Y]")
+  puts message
+  prompt = STDIN.gets.chomp
+
+  unless prompt.downcase == 'y'
+    puts "Buy! See you next time!"
+    exit 1
+  end
+end
+
+puts "This command clean up ALL THE DATA for the project!"
+prompt!
 
 FileUtils.chdir APP_ROOT do
   FileUtils.rm_rf('db/PGSQL/', verbose: true)
