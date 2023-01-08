@@ -189,7 +189,7 @@ If you would like to run the project on a linux environment then:
 ### TODO
 
 - ElasticSearch. [Chewy](https://github.com/toptal/chewy)
-- Memcached [Link](https://devcenter.heroku.com/articles/building-a-rails-3-application-with-memcache)
+- <s>Memcached [Link](https://devcenter.heroku.com/articles/building-a-rails-3-application-with-memcache)</s> [Rejected](https://stackoverflow.com/questions/10558465/memcached-vs-redis)
 - Puma on systemd [Link](https://github.com/puma/puma/blob/master/docs/systemd.md)
 - Sidekiq on systemd [Link](https://github.com/mperham/sidekiq/blob/main/examples/systemd/sidekiq.service)
 - Action Cable [Link](https://guides.rubyonrails.org/action_cable_overview.html)
