@@ -5,11 +5,16 @@ def system!(*args)
 end
 
 def container_exec(container_name = 'rails', cmd = 'ls')
-  system("docker compose -f docker/docker-compose.yml exec #{container_name} #{cmd}")
+  to_exec = "docker compose -f docker/docker-compose.yml exec #{container_name} #{cmd}"
+  puts to_exec
+  system(to_exec)
 end
 
-def container_bash_exec(container_name = 'rails', cmd = 'ls')
-  system("docker compose -f docker/docker-compose.yml exec #{container_name} /bin/bash -c '#{cmd}'")
+def container_bash_exec(container_name = 'rails', cmd = 'ls', detached = false)
+  detached = detached ? '-d' : ''
+  to_exec = "docker compose -f docker/docker-compose.yml exec #{detached} #{container_name} /bin/bash -c '#{cmd}'"
+  puts to_exec
+  system(to_exec)
 end
 
 def check_docker!
@@ -32,4 +37,10 @@ end
 def wait(details)
   puts "Waiting #{DELAY} seconds #{details}"
   sleep(DELAY)
+end
+
+def containers_information
+  puts "\n" + ("~" * 50) + "\n"
+  system("docker ps --format 'table {{.Names}}\t{{.Image}}\t{{.Ports}}\t{{.ID}}'")
+  puts ("~" * 50) + "\n"
 end

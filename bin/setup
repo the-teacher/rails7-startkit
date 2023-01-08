@@ -44,10 +44,13 @@ FileUtils.chdir APP_ROOT do
   puts "8. Indexing Article Model"
   container_exec('sphinx', 'indexer --all --config /opt/sphinx/conf/sphinx.conf --rotate')
 
-  puts "9. Launching Rails App on the port 3000"
-  container_bash_exec('rails', 'bundle exec puma -C config/_PUMA.rb &')
+  puts "9. Launching Rails App with Puma"
+  container_bash_exec('rails', 'bundle exec puma -C config/_PUMA.rb', detached = true)
 
-  puts "10. Visit: http://localhost:3000"
+  puts "10. Launching Sidekiq"
+  container_bash_exec('rails', 'bundle exec sidekiq -C config/_SIDEKIQ.yml', detached = true)
 
-  system("docker ps --format 'table {{.Names}}\t{{.ID}}\t{{.Image}}\t{{.Ports}}'")
+  puts "12. Visit: http://localhost:3000"
+
+  containers_information
 end
