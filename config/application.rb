@@ -10,8 +10,9 @@ module App
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
 
-    # Running this initializer early.
+    # Running this initializer early
     # To make settings be abailable on WebServer start
+    # To make configs available in `config/environments/%{environment}.rb`
     require_relative "initializers/_CONFIG"
 
     config.load_defaults 7.0

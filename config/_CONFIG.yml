@@ -1,3 +1,10 @@
+# This file is created as a demonstration example
+# Normally you should use config/settings.yml
+# or files config/settings/%{environment}.yml
+
+# Also this file is being loaded in `config/application.rb`
+# To make configs available in `config/environments/%{environment}.rb`
+
 # Settings.app.rails.version
 app:
   rails:

@@ -209,6 +209,7 @@ For demonstration, education and maintainance purposes I use the following appro
 
 ```
 ./db
+├── ELASTIC
 ├── PGSQL
 ├── REDIS
 └── SPHINX
@@ -235,6 +236,7 @@ For demonstration, education and maintainance purposes I use the following appro
 
 ```
 ./config/initializers/
+├── _CHEWY.rb
 ├── _CONFIG.rb
 ├── _REDIS.rb
 ├── _SIDEKIQ.rb
