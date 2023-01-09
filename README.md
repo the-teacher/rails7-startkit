@@ -272,10 +272,20 @@ Now you are in the Rails container and you can do everything as usual
 ### Questions and Answers
 
 <details>
+  <summary>What is an idea of this project?</summary>
+  <br>
+  <p>For many years Rails gives you freedom to choose development tools. Different databases, different paginators, different search engines, different delayed job solutions.</p>
+  <p>It is great. But all the time you need to choose something and install it from scratch.</p>
+  <p>I think I did my choice about many solutions and tools.</p>
+  <p>I want to install my minimal pack of tools now and reuse my StartKit every time when I start a new project.</p>
+  <p>With Docker I can roll out my minimal application with all required preinstalled tools in minutes, not in hours or in days.</p>
+</details>
+
+<details>
   <summary>Why did you create this project?</summary>
   <br>
   <p>
-  I didn't work with Rails last 4 or 5 years. I wanted to learn new approaches and tecniques. I found that there is still no a simple way to setup a blank app with most popular tools.
+    I didn't work with Rails last 4 or 5 years. I wanted to learn new approaches and techniques. I found that there is still no a simple way to setup a blank app with most popular tools.
   </p>
   <p>So. Why not to make my own playground?</p>
 </details>
