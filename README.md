@@ -9,6 +9,15 @@ Since now if you have Ruby and Docker then you have working Rails environment in
 ## What is under the hood?
 
 <table>
+  <thead>
+    <tr>
+      <td>Technology Logo</td>
+      <td>Description</td>
+      <td>Technology Logo</td>
+      <td>Description</td>
+    </tr>
+  </thead>
+  <tbody>
   <tr>
     <td><img width="150px" alt="docker" src="docs/docker.png"></td>
     <td><b>Docker</b><br>Containerization for Services</td>
@@ -45,6 +54,7 @@ Since now if you have Ruby and Docker then you have working Rails environment in
     <td>New Things</td>
     <td>...Coming Soon</td>
   </tr>
+  </tbody>
 </table>
 
 *All trademarks, logos and brand names are the property of their respective owners.*
