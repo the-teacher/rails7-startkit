@@ -13,15 +13,15 @@ Usually It is difficult and time consuming to setup a typical rails environment 
 <table bgcolor="white">
   <tr>
     <td><img width="150" src="docs/docker.png" /></td>
-    <td>Containerization for Services</td>
+    <td><b>Docker</b><br />Containerization for Services</td>
     <td><img width="150" src="docs/pgsql.png" /></td>
-    <td>Database</td>
+    <td><b>PostgresSQL</b><br />Database</td>
   </tr>
   <tr>
     <td><img width="150" src="docs/ruby.png" /></td>
-    <td>Ruby 3.2</td>
+    <td><b>Ruby 3.2</b></td>
     <td><img width="150" src="docs/rails7.png" /></td>
-    <td>Rails 7</td>
+    <td><b>Rails 7</b></td>
   </tr>
   <tr>
     <td><img width="150" src="docs/sphinx.png" /></td>
