@@ -236,7 +236,7 @@ From the root of the project
   bin/open rails
 ```
 
-Now you are in the Rails container and you can you everything as usual
+Now you are in the Rails container and you can do everything as usual
 
 ```sh
   RAILS_ENV=test rake db:create
