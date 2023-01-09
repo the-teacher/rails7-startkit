@@ -22,29 +22,40 @@ Usually It is difficult and time consuming to setup a typical rails environment 
   <tr>
     <td><img width="150" src="docs/docker.png" /></td>
     <td>Containerization for Services</td>
+    <td><img width="150" src="docs/pgsql.png" /></td>
+    <td>Database</td>
   </tr>
   <tr>
     <td><img width="150" src="docs/ruby.png" /></td>
     <td>Ruby 3.2</td>
-  </tr>
-  <tr>
     <td><img width="150" src="docs/rails7.png" /></td>
     <td>Rails 7</td>
   </tr>
   <tr>
+    <td><img width="150" src="docs/sphinx.png" /></td>
+    <td>Sphinx. Full Text Search Engine</td>
+    <td><img width="150" src="docs/thinking-sphinx.png" /></td>
+    <td>Thinking Shinx. Ruby Connector to Sphinx</td>
+  </tr>
+
+  <tr>
+    <td><img width="150" src="docs/elastic.png" /></td>
+    <td>Elasticsearch. The world’s leading Search engine</td>
+    <td><img width="150" src="docs/chewy.png" /></td>
+    <td>Chewy. Ruby Connector to Elasticsearch</td>
+  </tr>
+
+  <tr>
+    <td><img width="150" src="docs/redis.png" /></td>
+    <td>Redis. In-memory data store for Caching</td>
+    <td><img width="150" src="docs/sidekiq.png" /></td>
+    <td>Sidekiq. Job Scheduler and Async Tasks Executor</td>
+  </tr>
+
+  <tr>
     <td><img width="150" src="docs/puma.png" /></td>
     <td>Puma. Application Web Server</td>
   </tr>
-    <!-- <td></td>
-    <td><img width="400" src="docs/rails7.png" /></td>
-    <td><img width="400" src="docs/puma.png" /></td></td> -->
-  </tr>
-  <!-- <tr>
-    <td><img width="400" src="docs/pgsql.png" /></td>
-    <td><img width="400" src="docs/redis.png" /></td>
-    <td><img width="400" src="docs/sidekiq.png" /></td>
-    <td><img width="400" src="docs/sphinx.png" /></td>
-  </tr> -->
 </table>
 
 *All trademarks, logos and brand names are the property of their respective owners.*
