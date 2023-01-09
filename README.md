@@ -3,10 +3,9 @@
 Rails 7 App with Preinstalled Tools is Ready in Minutes!
 ## Why?
 
-Usually It is difficult and time consuming to setup a typical rails environment from scratch.
+Usually It is difficult and time consuming to setup a typical Rails environment from scratch.
 
 Since now if you have Ruby and Docker then you have working Rails environment in about 5 minutes without any manual efforts.
-
 ## What is under the hood?
 
 <table bgcolor="white">
