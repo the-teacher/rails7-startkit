@@ -287,6 +287,13 @@ Now you are in the Rails container and you can do everything as usual
   <p>I use tools that I think are the most popular ones.</p>
 </details>
 
+<details>
+  <summary>It looks good for development. What about production?</summary>
+  <br>
+  <p>I'm not a DevOps, but I have a vision how to deploy this code to production.</p>
+  <p>Right not it is not described somehow. It is in my plans.</p>
+</details>
+
 ### TODO
 
 - <s>ElasticSearch. [Chewy](https://github.com/toptal/chewy)</s>
