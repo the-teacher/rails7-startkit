@@ -1,6 +1,6 @@
 # Rails 7. Start Kit
 
-Rails 7 App with Preinstalled Tools in Ready in Minutes!
+Rails 7 App with Preinstalled Tools is Ready in Minutes!
 ## Why?
 
 Usually It is difficult and time consuming to setup a typical rails environment from scratch.
