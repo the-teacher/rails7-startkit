@@ -273,10 +273,11 @@ Now you are in the Rails container and you can do everything as usual
 
 <details>
   <summary>Why did you create this project?</summary>
-
+  <p>
   I didn't work with Rails last 4 or 5 years. I wanted to learn new approaches and tecniques. I found that there is still no a simple way to setup a blank app with most popular tools.
+  </p>
 
-  So. Why not to make my own playground?
+  <p>So. Why not to make my own playground?</p>
 </details>
 
 ### TODO
