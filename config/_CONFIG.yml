@@ -6,3 +6,7 @@ app:
 redis:
   host: redis
   port: 6379
+
+elastic:
+  host: elastic
+  port: 9200

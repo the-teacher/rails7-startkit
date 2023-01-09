@@ -42,6 +42,8 @@ services:
       - ../db/SPHINX:/opt/sphinx/index
       - ../shared:/shared
     mem_limit: 512m
+    depends_on:
+      - psql
 
   # port: 6379
   #
@@ -54,6 +56,19 @@ services:
     volumes:
       - ../db/REDIS:/data
       - ../shared:/shared
+
+  # port 9200
+  # port 9300
+  #
+  # https://www.elastic.co/guide/en/elasticsearch/reference/current/docker.html
+  #
+  elastic:
+    image: elasticsearch:7.17.8
+    environment:
+     - discovery.type=single-node
+    ports:
+      - 9200:9200
+      - 9300:9300
 
   # port 3000
   #
