@@ -5,9 +5,9 @@ Rails 7 App with Preinstalled Tools is Ready in Minutes!
 
 Usually It is difficult and time consuming to setup a typical rails environment from scratch.
 
-**With this project you can start development process in minutes.**
+Since now if you have Ruby and Docker then you have working Rails environment in about 5 minutes without any manual efforts.
 
-### What is under the hood?
+## What is under the hood?
 
 <table bgcolor="white">
   <tr>
@@ -46,6 +46,8 @@ Usually It is difficult and time consuming to setup a typical rails environment 
   <tr>
     <td><img width="150" src="docs/puma.png" /></td>
     <td><b>Puma</b><br />Application Web Server</td>
+    <td>New Things</td>
+    <td>...Coming Soon</td>
   </tr>
 </table>
 
