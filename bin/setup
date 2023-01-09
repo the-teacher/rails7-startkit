@@ -17,34 +17,34 @@ FileUtils.chdir APP_ROOT do
 
   FileUtils.touch('db/PGSQL/.keep', verbose: true)
 
-  puts "2. Launching Rails container"
+  puts "2. Launching ElasticSearch Container"
+  system('docker compose -f docker/docker-compose.yml up elastic -d')
+
+  wait('to launch ElasticSearch Container', 10)
+
+  puts "3. Launching Rails container"
   system('docker compose -f docker/docker-compose.yml up rails -d')
 
   wait('to launch Rails Container')
 
-  puts "3. Installing Gems. Please Wait"
+  puts "4. Installing Gems. Please Wait"
   rails_install_gems
 
-  puts "4. Create DB. Migrate DB. Create Seeds"
+  puts "5. Create DB. Migrate DB. Create Seeds"
   container_bash_exec('rails', 'rake db:prepare')
 
-  puts "5. Launching Redis Container"
+  puts "6. Launching Redis Container"
   system('docker compose -f docker/docker-compose.yml up redis -d')
 
   wait('to launch Redis Container')
 
-  puts "6. Generate Sphinx Config"
+  puts "7. Generate Sphinx Config"
   container_bash_exec('rails', 'rake ts:configure')
 
-  puts "7. Launching Sphinx Container"
+  puts "8. Launching Sphinx Container"
   system('docker compose -f docker/docker-compose.yml up sphinx -d')
 
   wait('to launch Sphinx Container')
-
-  puts "8. Launching ElasticSearch Container"
-  system('docker compose -f docker/docker-compose.yml up elastic -d')
-
-  wait('to launch ElasticSearch Container', 10)
 
   puts "9. Indexing Article Model"
   sphinx_index

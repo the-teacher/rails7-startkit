@@ -8,9 +8,11 @@
 
 # bundle exec rake db:seed
 100.times do |index|
-  Article.create(
-    title: "Article with Index: #{index.next}",
-    content: "Some Content of the Article with an Index: #{index.next}"
-  )
-  puts "Article with Index: #{index.next} is created"
+  Chewy.strategy(:atomic) do
+    Article.create(
+      title: "Article with Index: #{index.next}",
+      content: "Some Content of the Article with an Index: #{index.next}"
+    )
+    puts "Article with Index: #{index.next} is created"
+  end
 end
