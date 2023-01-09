@@ -1,9 +1,35 @@
 <h1>Articles#index</h1>
+
+<h2>Articles. Sphinx search results</h2>
+
+<% @sphinx_articles.each do |article| %>
+  <article>
+    <h3><%= article.title %></h3>
+    <p><%= DateTime.now.to_s(:db) %></p>
+  </article>
+<% end %>
+
+<h2>Articles. 2 minutes caching</h2>
+
+<ol>
+  <li>touch tmp/caching-dev.txt</li>
+  <li>web server restart</li>
+</ol>
+
 <% @articles.each do |article| %>
-  <% cache(article, expires_in: 1.minute) do %>
+  <% cache(article, expires_in: 2.minute) do %>
     <article>
       <h3><%= article.title %></h3>
       <p><%= DateTime.now.to_s(:db) %></p>
     </article>
   <% end %>
+<% end %>
+
+<h2>Articles. Without caching</h2>
+
+<% @articles.each do |article| %>
+  <article>
+    <h3><%= article.title %></h3>
+    <p><%= DateTime.now.to_s(:db) %></p>
+  </article>
 <% end %>
