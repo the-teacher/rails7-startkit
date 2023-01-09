@@ -14,5 +14,6 @@ Defaults: &defaults
   binlog_path: /shared
   pid_file:    /shared/searchd.pid
 
+test: *defaults
 development: *defaults
 production: *defaults

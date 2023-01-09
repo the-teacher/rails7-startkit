@@ -228,6 +228,21 @@ If you would like to run the project on a linux environment then:
 - create group `lucky (7777)` and user `lucky (7777)`
 - run the project with `RUN_AS=7777:7777` option
 
+### How to Run Tests
+
+From the root of the project
+
+```sh
+  bin/open rails
+```
+
+Now you are in the Rails container and you can you everything as usual
+
+```sh
+  RAILS_ENV=test rake db:create
+  rake db:test
+```
+
 ### TODO
 
 - <s>ElasticSearch. [Chewy](https://github.com/toptal/chewy)</s>

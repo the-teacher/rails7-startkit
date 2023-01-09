@@ -20,7 +20,7 @@
   <% cache(article, expires_in: 2.minute) do %>
     <article>
       <h3><%= article.title %></h3>
-      <p><%= DateTime.now.to_s(:db) %></p>
+      <p><%= DateTime.now.strftime('%d.%m.%Y %H.%M.%S') %></p>
     </article>
   <% end %>
 <% end %>
@@ -30,6 +30,6 @@
 <% @articles.each do |article| %>
   <article>
     <h3><%= article.title %></h3>
-    <p><%= DateTime.now.to_s(:db) %></p>
+    <p><%= DateTime.now.strftime('%d.%m.%Y %H.%M.%S') %></p>
   </article>
 <% end %>
