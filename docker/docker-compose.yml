@@ -65,10 +65,11 @@ services:
   elastic:
     image: elasticsearch:7.17.8
     environment:
-     - discovery.type=single-node
-    ports:
-      - 9200:9200
-      - 9300:9300
+      - discovery.type=single-node
+    volumes:
+      - ../db/ELASTIC:/usr/share/elasticsearch/data
+      - ../log/ELASTIC:/usr/share/elasticsearch/logs
+      - ../shared:/shared
 
   # port 3000
   #

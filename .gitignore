@@ -4,10 +4,20 @@
 # or operating system, you probably want to add a global ignore instead:
 #   git config --global core.excludesfile '~/.gitignore_global'
 
-db/PGSQL
-db/REDIS
-db/SPHINX
-shared
+/db/PGSQL
+!/db/PGSQL/.keep
+
+/db/REDIS
+!/db/REDIS/.keep
+
+/db/SPHINX
+!/db/SPHINX/.keep
+
+/db/ELASTIC
+!/db/ELASTIC/.keep
+
+/shared
+!/shared/.keep
 
 # Ignore bundler config.
 /.bundle
@@ -23,9 +33,9 @@ shared
 !/tmp/.keep
 
 # Ignore pidfiles, but keep the directory.
-tmp/pids
-tmp/cache
-tmp/storage
+/tmp/pids
+/tmp/cache
+/tmp/storage
 
 # Ignore uploaded files in development.
 /storage/*
