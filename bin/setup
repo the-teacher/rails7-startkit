@@ -23,7 +23,7 @@ FileUtils.chdir APP_ROOT do
   wait('to launch Rails Container')
 
   puts "3. Installing Gems. Please Wait"
-  container_bash_exec('rails', 'bundle install')
+  rails_install_gems
 
   puts "4. Create DB. Migrate DB. Create Seeds"
   container_bash_exec('rails', 'rake db:prepare')
@@ -41,16 +41,22 @@ FileUtils.chdir APP_ROOT do
 
   wait('to launch Sphinx Container')
 
-  puts "8. Indexing Article Model"
-  container_exec('sphinx', 'indexer --all --config /opt/sphinx/conf/sphinx.conf --rotate')
+  puts "8. Launching ElasticSearch Container"
+  system('docker compose -f docker/docker-compose.yml up elastic -d')
 
-  puts "9. Launching Rails App with Puma"
-  container_bash_exec('rails', 'bundle exec puma -C config/_PUMA.rb', detached = true)
+  wait('to launch ElasticSearch Container', 10)
 
-  puts "10. Launching Sidekiq"
-  container_bash_exec('rails', 'bundle exec sidekiq -C config/_SIDEKIQ.yml', detached = true)
+  puts "9. Indexing Article Model"
+  sphinx_index
+  chewy_index
 
-  puts "11. Visit: http://localhost:3000"
+  puts "10. Launching Rails App with Puma"
+  puma_start
+
+  puts "11. Launching Sidekiq"
+  sidekiq_start
+
+  puts "12. Visit: http://localhost:3000"
 
   containers_information
 end

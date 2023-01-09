@@ -1,5 +1,10 @@
 DELAY = 3
 
+def wait(details, delay = DELAY)
+  puts "Waiting #{delay} seconds #{details}"
+  sleep(delay)
+end
+
 def system!(*args)
   system(*args) || abort("\n== Command #{args} failed ==")
 end
@@ -29,18 +34,57 @@ def prompt!(message = "Are you sure to continue? [y/Y]")
   prompt = STDIN.gets.chomp
 
   unless prompt.downcase == 'y'
-    puts "Buy! See you next time!"
+    puts "Bye! See you next time!"
     exit 1
   end
-end
-
-def wait(details)
-  puts "Waiting #{DELAY} seconds #{details}"
-  sleep(DELAY)
 end
 
 def containers_information
   puts "\n" + ("~" * 50) + "\n"
   system("docker ps --format 'table {{.Names}}\t{{.Image}}\t{{.Ports}}\t{{.ID}}'")
   puts ("~" * 50) + "\n"
+end
+
+def start_all_containers
+  system('docker compose -f docker/docker-compose.yml up -d')
+end
+
+def stop_all_containers
+  system('docker compose -f docker/docker-compose.yml down')
+end
+
+def rails_install_gems
+  puts "Install Gems"
+  container_bash_exec('rails', 'bundle install')
+end
+
+def rails_db_migrate
+  puts "DB Migrate"
+  container_bash_exec('rails', 'rake db:migrate')
+end
+
+def sphinx_index
+  puts "Indexing with SPHINX"
+  container_exec('sphinx', 'indexer --all --config /opt/sphinx/conf/sphinx.conf --rotate')
+end
+
+def chewy_index
+  puts "Indexing with CHEWY"
+  container_exec('rails', 'rake chewy:update')
+end
+
+def chewy_index
+  puts "Indexing with CHEWY"
+  container_exec('rails', 'rake chewy:reset')
+  container_exec('rails', 'rake chewy:update')
+end
+
+def puma_start
+  puts "Launching PUMA"
+  container_bash_exec('rails', 'bundle exec puma -C config/_PUMA.rb', detached = true)
+end
+
+def sidekiq_start
+  puts "Launching SIDEKIQ"
+  container_bash_exec('rails', 'bundle exec sidekiq -C config/_SIDEKIQ.yml', detached = true)
 end
