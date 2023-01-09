@@ -1,7 +1,6 @@
-# README
+# Rails 7. Start Kit
 
-This project is Playground for `Rails 7` with using `Docker`.
-
+Rails 7 App with Preinstalled Tools in Ready in Minutes!
 ## Why?
 
 Usually It is difficult and time consuming to setup a typical rails environment from scratch.
