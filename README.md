@@ -269,6 +269,16 @@ Now you are in the Rails container and you can do everything as usual
   rake db:test
 ```
 
+### Questions and Answers
+
+<details>
+  <summary>Why did you create this project?</summary>
+
+  I didn't work with Rails last 4 or 5 years. I wanted to learn new approaches and tecniques. I found that there is still no a simple way to setup a blank app with most popular tools.
+
+  So. Why not to make my own playground?
+</details>
+
 ### TODO
 
 - <s>ElasticSearch. [Chewy](https://github.com/toptal/chewy)</s>
