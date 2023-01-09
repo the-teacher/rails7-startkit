@@ -10,14 +10,6 @@ Usually It is difficult and time consuming to setup a typical rails environment 
 
 ### What is under the hood?
 
-- Ruby 3.2
-- Rails 7
-- PgSQL (Database)
-- Redis (Cache)
-- Sidekiq (Async and Delayed Jobs)
-- Sphinx (Full text search)
-- Puma (Web Server)
-
 <table bgcolor="white">
   <tr>
     <td><img width="150" src="docs/docker.png" /></td>
