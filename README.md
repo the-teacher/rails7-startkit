@@ -294,6 +294,16 @@ Now you are in the Rails container and you can do everything as usual
   <p>Right not it is not described somehow. It is in my plans.</p>
 </details>
 
+<details>
+  <summary>Why did you use 2 Search engines in this project?</summary>
+  <br>
+  <p>
+    Sphinx is a tool what I know. ElasticSearch I'm going to learn.
+    If you do not need one of them it is not a problem.
+  </p>
+  <p>It is always easier to cut off than install and set up.</p>
+</details>
+
 ### TODO
 
 - <s>ElasticSearch. [Chewy](https://github.com/toptal/chewy)</s>
