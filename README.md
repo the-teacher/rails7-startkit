@@ -34,7 +34,7 @@ Since now if you have Ruby and Docker then you have working Rails environment in
     <td><img width="150px" alt="sphinx" src="docs/sphinx.png"></td>
     <td><b>Sphinx</b><br>Full Text Search Engine</td>
     <td><img width="150px" alt="ts" src="docs/thinking-sphinx.png"></td>
-    <td><b>Thinking Shinx</b><br>Ruby Connector to Sphinx</td>
+    <td><b>Thinking Sphinx</b><br>Ruby Connector to Sphinx</td>
   </tr>
   <tr>
     <td><img width="150px" alt="elastic" src="docs/elastic.png"></td>
