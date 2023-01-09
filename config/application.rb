@@ -9,6 +9,11 @@ Bundler.require(*Rails.groups)
 module App
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
+
+    # Running this initializer early.
+    # To make settings be abailable on WebServer start
+    require_relative "initializers/_CONFIG"
+
     config.load_defaults 7.0
 
     config.active_job.queue_adapter = :sidekiq

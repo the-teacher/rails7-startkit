@@ -23,7 +23,18 @@ Rails.application.configure do
     config.action_controller.perform_caching = true
     config.action_controller.enable_fragment_cache_logging = true
 
-    config.cache_store = :memory_store
+    puts redis_port = Settings.redis.port
+    redis_host = Settings.redis.host
+    redis_url = "redis://#{redis_host}:#{redis_port}"
+
+    puts "Caching uses Redis: #{redis_url}"
+    config.cache_store = :redis_cache_store, {
+      url: redis_url
+    }
+
+    # Rails 7. Original setting
+    # config.cache_store = :memory_store
+
     config.public_file_server.headers = {
       "Cache-Control" => "public, max-age=#{2.days.to_i}"
     }
