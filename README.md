@@ -280,6 +280,13 @@ Now you are in the Rails container and you can do everything as usual
   <p>So. Why not to make my own playground?</p>
 </details>
 
+<details>
+  <summary>How do you choose technologies for the StartKit?</summary>
+  <br>
+  <p>I use tools that I like or want to learn.</p>
+  <p>I use tools that I think are the most popular ones.</p>
+</details>
+
 ### TODO
 
 - <s>ElasticSearch. [Chewy](https://github.com/toptal/chewy)</s>
