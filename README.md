@@ -103,6 +103,11 @@ You will see something like that:
 11. Visit: http://localhost:3000
 ```
 
+<details>
+  <summary>Index Page of the Project</summary>
+  <img width="150px" alt="rails7-startkit" src="docs/index.png">
+</details>
+
 ### To Run All Containers
 
 From the root of the project
