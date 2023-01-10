@@ -10,12 +10,12 @@ Since now if you have Ruby and Docker then you have working Rails environment in
 
 <table>
   <thead>
-    <th>
-      <td>Technology Logo</td>
-      <td>Description</td>
-      <td>Technology Logo</td>
-      <td>Description</td>
-    </th>
+    <tr>
+      <th>Technology Logo</th>
+      <tdh>Description</th>
+      <th>Technology Logo</th>
+      <th>Description</th>
+    </tr>
   </thead>
   <tbody>
   <tr>
@@ -164,10 +164,10 @@ From the root of the project
 
 <table>
   <thead>
-    <th>
-      <td>Command</td>
-      <td>Description</td>
-    </th>
+    <tr>
+      <th>Command</th>
+      <th>Description</th>
+    </tr>
   </thead>
   <tbody>
     <tr>
