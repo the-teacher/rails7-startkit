@@ -88,7 +88,17 @@ def puma_start
   container_bash_exec('rails', 'bundle exec puma -C config/_PUMA.rb', detached = true)
 end
 
+def puma_stop
+  puts "Stopping PUMA"
+  container_bash_exec('rails', 'pkill -f puma')
+end
+
 def sidekiq_start
   puts "Launching SIDEKIQ"
   container_bash_exec('rails', 'bundle exec sidekiq -C config/_SIDEKIQ.yml', detached = true)
+end
+
+def sidekiq_stop
+  puts "Stopping SIDEKIQ"
+  container_bash_exec('rails', 'pkill -f sidekiq')
 end

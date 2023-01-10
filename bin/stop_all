@@ -1,7 +1,3 @@
 #!/usr/bin/env ruby
 require_relative "./helpers.rb"
-
-puma_stop
-sidekiq_stop
-
-containers_information
+stop_all_containers
