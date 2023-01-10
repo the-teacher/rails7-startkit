@@ -11,6 +11,14 @@
   </head>
 
   <body>
-    <%= yield %>
+    <div class="articles-wrapper">
+      <header>
+        <h1 class="articles-header">Rails 7. StartKit</h1>
+      </header>
+      <main><%= yield %></main>
+      <footer>
+        Made with &hearts; by <a href="https://github.com/the-teacher">the-teacher</a>
+      </footer>
+    </div>
   </body>
 </html>

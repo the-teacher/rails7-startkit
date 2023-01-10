@@ -1,0 +1,38 @@
+.articles-wrapper {
+  margin: auto;
+  display: grid;
+  grid-template-rows:  auto 1fr auto;
+  width: 800px;
+}
+
+header, footer {
+  background: #e0ead1;
+  padding: 20px;
+}
+
+header {
+  height: 100px;
+  display: flex;
+  align-items: center;
+}
+
+main {
+  background-color: aliceblue;
+  padding: 20px;
+}
+
+article {
+  margin-bottom: 30px;
+}
+
+h1, h2 {
+  margin-bottom: 25px;
+}
+
+h3 {
+  margin-bottom: 10px;
+}
+
+.articles-header {
+  margin: 0;
+}
