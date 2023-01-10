@@ -72,7 +72,7 @@ On your host you have:
 **ONE!**
 
 ```
-https://github.com/the-teacher/rails7-startkit.git
+git clone https://github.com/the-teacher/rails7-startkit.git
 ```
 
 **TWO!**
