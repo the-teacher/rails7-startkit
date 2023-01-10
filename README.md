@@ -105,7 +105,7 @@ You will see something like that:
 
 <details>
   <summary>Index Page of the Project</summary>
-  <img width="150px" alt="rails7-startkit" src="docs/index.png">
+  <img alt="rails7-startkit" src="docs/index.png">
 </details>
 
 ### To Run All Containers
@@ -120,11 +120,12 @@ bin/start
   <summary>Output</summary>
 
 ```sh
-[+] Running 4/4
-  ⠿ Container rails7app-redis-1   Running
-  ⠿ Container rails7app-psql-1    Running
-  ⠿ Container rails7app-sphinx-1  Running
-  ⠿ Container rails7app-rails-1   Running
+[+] Running 5/0
+ ⠿ Container rails7app-elastic-1  Running
+ ⠿ Container rails7app-psql-1     Running
+ ⠿ Container rails7app-redis-1    Running
+ ⠿ Container rails7app-rails-1    Running
+ ⠿ Container rails7app-sphinx-1   Running
 ```
 </details>
 
@@ -141,47 +142,60 @@ bin/status
 
 ```js
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-NAMES                IMAGE                          PORTS                    CONTAINER ID
-rails7app-rails-1    iamteacher/rails7:2023.arm64   0.0.0.0:3000->3000/tcp   1ed64ee7ca1c
-rails7app-sphinx-1   macbre/sphinxsearch:3.4.1      36307/tcp                498ca21f4be3
-rails7app-redis-1    redis:7.0.5-alpine             6379/tcp                 5bb16abc7ff8
-rails7app-psql-1     postgres:15.1-bullseye         5432/tcp                 63669cc683c7
+NAMES                 IMAGE                          PORTS                    CONTAINER ID
+rails7app-sphinx-1    macbre/sphinxsearch:3.4.1      36307/tcp                9237b6f8e04f
+rails7app-rails-1     iamteacher/rails7:2023.arm64   0.0.0.0:3000->3000/tcp   0aa98d37c693
+rails7app-redis-1     redis:7.0.5-alpine             6379/tcp                 13856e1fb215
+rails7app-elastic-1   elasticsearch:7.17.8           9200/tcp, 9300/tcp       67d3787aa970
+rails7app-psql-1      postgres:15.1-bullseye         5432/tcp                 cd496a558c1f
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
 docker compose -f docker/docker-compose.yml exec  rails /bin/bash -c 'ps a | grep puma'
-   16 pts/1    Ssl+   0:01 puma 5.6.5 (tcp://0.0.0.0:3000) [app]
-   33 pts/1    Sl+    0:01 puma: cluster worker 0: 16 [app]
+  548 pts/1    Ssl+   0:08 puma 5.6.5 (tcp://0.0.0.0:3000) [app]
+  628 pts/1    Sl+    0:05 puma: cluster worker 0: 548 [app]
 
 docker compose -f docker/docker-compose.yml exec  rails /bin/bash -c 'ps a | grep sidekiq'
-   23 pts/2    Ssl+   0:05 sidekiq 7.0.2 app [0 of 1 busy]
+  554 pts/2    Ssl+   0:23 sidekiq 7.0.2 app [0 of 1 busy]
 ```
 </details>
 
 ### To Get In a Container
 
-**Rails**
+From the root of the project
 
-```sh
-bin/open rails
-```
-
-**PgSQL**
-
-```sh
-bin/open psql
-```
-
-**Redis**
-
-```sh
-bin/open redis
-```
-
-**Sphinx**
-
-```sh
-bin/open sphinx
-```
+<table>
+  <thead>
+    <tr>
+      <td>Command</td>
+      <td>Description</td>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>bin/open</td>
+      <td>Get in `Rails` Container (`rails` by default)</td>
+    </tr>
+    <tr>
+      <td>bin/open rails</td>
+      <td>Get in `Rails` Container</td>
+    </tr>
+    <tr>
+      <td>bin/open psql</td>
+      <td>Get in `PgSQL` Container</td>
+    </tr>
+    <tr>
+      <td>bin/open sphinx</td>
+      <td>Get in `Sphinx` Container</td>
+    </tr>
+    <tr>
+      <td>bin/open redis</td>
+      <td>Get in `Redis` Container</td>
+    </tr>
+    <tr>
+      <td>bin/open elastic</td>
+      <td>Get in `ElasticSearch` Container</td>
+    </tr>
+  </tbody>
+</table>
 
 ### To Stop All Containers
 
@@ -195,11 +209,12 @@ bin/stop
   <summary>Output</summary>
 
 ```sh
-[+] Running 4/4
-  ⠿ Container rails7app-redis-1   Removed
-  ⠿ Container rails7app-psql-1    Removed
-  ⠿ Container rails7app-sphinx-1  Removed
-  ⠿ Container rails7app-rails-1   Removed
+[+] Running 5/5
+ ⠿ Container rails7app-sphinx-1   Removed
+ ⠿ Container rails7app-elastic-1  Removed
+ ⠿ Container rails7app-rails-1    Removed
+ ⠿ Container rails7app-redis-1    Removed
+ ⠿ Container rails7app-psql-1     Removed
 ```
 </details>
 
