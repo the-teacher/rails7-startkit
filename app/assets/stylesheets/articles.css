@@ -1,12 +1,10 @@
 .articles-wrapper {
   margin: auto;
-  display: grid;
-  grid-template-rows:  auto 1fr auto;
-  width: 800px;
+  padding: 10px;
 }
 
 header, footer {
-  padding: 20px 20px 0 20px;
+  padding: 20px 0 0 0;
 }
 
 header {
@@ -17,8 +15,22 @@ footer {
   border-top: 7px solid lightblue;
 }
 
-main {
-  padding: 20px;
+.articles-block {
+  padding-top: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+section {
+  width: 30%;
+  flex-grow: 1;
+}
+
+.articles-block > section:first-child {
+  border: 3px solid red !important;
+  width: 100%;
+  /* grid-column: 1 / span 3; */
 }
 
 article {
@@ -64,7 +76,7 @@ section {
 
 .section-function {
   padding: 10px;
-  border: 5px solid #aaa;
+  border: 3px solid lightblue;
 }
 
 .section-description {

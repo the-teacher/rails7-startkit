@@ -1,0 +1,16 @@
+<section class="section-function">
+  <h2 class="header-section">Articles. Sphinx search results</h2>
+  <p class="section-description">
+    This section checks that <b>Sphinx</b> & <b>Thinking Sphinx</b> work.
+    <br>
+    You should see here some results. Section should not be blank.
+  </p>
+
+  <% @sphinx_articles.each do |article| %>
+    <article class="article">
+      <h3 class="article-header"><%= article.title %></h3>
+      <p class="article-content"><%= article.content %></p>
+      <p class="article-date"><b>Rendered at:</b> <%= DateTime.now.strftime('%d.%m.%Y %H.%M.%S') %></p>
+    </article>
+  <% end %>
+</section>
