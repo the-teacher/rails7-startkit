@@ -6,18 +6,18 @@
 }
 
 header, footer {
-  background: #e0ead1;
-  padding: 20px;
+  padding: 20px 20px 0 20px;
 }
 
 header {
-  height: 100px;
-  display: flex;
-  align-items: center;
+  border-bottom: 7px solid lightblue;
+}
+
+footer {
+  border-top: 7px solid lightblue;
 }
 
 main {
-  background-color: aliceblue;
   padding: 20px;
 }
 
@@ -25,14 +25,63 @@ article {
   margin-bottom: 30px;
 }
 
+.article {
+  border: 1px solid rgb(180, 185, 209);
+  padding: 10px;
+}
+
+.article-header {
+  background-color: rgb(220, 241, 250);
+  padding: 10px;
+}
+
+.article-content {
+  background-color: rgb(237, 244, 246);
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.article-date {
+  background-color: rgb(237, 244, 246);
+  padding: 10px;
+}
+
 h1, h2 {
-  margin-bottom: 25px;
+  margin-bottom: 15px;
 }
 
 h3 {
   margin-bottom: 10px;
 }
 
-.articles-header {
-  margin: 0;
+.page-header {
+  margin: 0 0 20px 0;
+}
+
+section {
+  margin-bottom: 20px;
+}
+
+.section-function {
+  padding: 10px;
+  border: 5px solid #aaa;
+}
+
+.section-description {
+  padding: 10px;
+  border: 1px solid rgb(249, 124, 51);
+  background-color: rgb(255, 248, 157);
+  margin-bottom: 20px;
+}
+
+.header-warning {
+  background-color: antiquewhite;
+  border: 1px solid rgb(242, 189, 120);
+  padding: 10px;
+}
+
+.header-section {
+  background-color: rgb(232, 250, 215);
+  border: 1px solid rgb(187, 210, 165);
+  padding: 10px;
 }

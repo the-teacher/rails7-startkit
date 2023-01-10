@@ -1,35 +1,68 @@
-<h1>Articles#index</h1>
+<section>
+  <div class="header-warning">
+    We are in: controller &mdash; <b>Articles</b>. Action &mdash; <b>index</b>.
+  </div>
+</section>
 
-<h2>Articles. Sphinx search results</h2>
+<section class="section-function">
+  <h2 class="header-section">Articles. Sphinx search results</h2>
+  <p class="section-description">
+    This section checks that <b>Sphinx</b> & <b>Thinking Sphinx</b> work.
+    <br>
+    You should see here some results. Section should not be blank.
+  </p>
 
-<% @sphinx_articles.each do |article| %>
-  <article>
-    <h3><%= article.title %></h3>
-    <p><%= DateTime.now.to_s(:db) %></p>
-  </article>
-<% end %>
-
-<h2>Articles. 2 minutes caching</h2>
-
-<ol>
-  <li>touch tmp/caching-dev.txt</li>
-  <li>web server restart</li>
-</ol>
-
-<% @articles.each do |article| %>
-  <% cache(article, expires_in: 2.minute) do %>
-    <article>
-      <h3><%= article.title %></h3>
-      <p><%= DateTime.now.strftime('%d.%m.%Y %H.%M.%S') %></p>
+  <% @sphinx_articles.each do |article| %>
+    <article class="article">
+      <h3 class="article-header"><%= article.title %></h3>
+      <p class="article-content"><%= article.content %></p>
+      <p class="article-date"><b>Rendered at:</b> <%= DateTime.now.strftime('%d.%m.%Y %H.%M.%S') %></p>
     </article>
   <% end %>
-<% end %>
+</section>
 
-<h2>Articles. Without caching</h2>
+<section class="section-function">
+  <h2 class="header-section">Articles. 2 minutes caching</h2>
 
-<% @articles.each do |article| %>
-  <article>
-    <h3><%= article.title %></h3>
-    <p><%= DateTime.now.strftime('%d.%m.%Y %H.%M.%S') %></p>
-  </article>
-<% end %>
+  <div class="section-description">
+    When caching is turned on this section should be rerendered only once per 2 minutes.
+  </div>
+
+  <div class="section-description">
+    Currnetly cache is:
+    <b><%= Rails.application.config.cache_store == :null_store ? "OFF" : "ON" %></b>.
+    <b>Rendered at</b> <%= DateTime.now.strftime('%d.%m.%Y %H.%M.%S') %>
+  </div>
+
+  <div class="section-description">
+    <p>To turn on caching do the following:</p>
+    <p>1. Run in console: <b>touch tmp/caching-dev.txt</b></p>
+    <p>2. Restart web server</p>
+  </div>
+
+  <% @articles.each do |article| %>
+    <% cache(article, expires_in: 2.minute) do %>
+      <article class="article">
+        <h3 class="article-header"><%= article.title %></h3>
+        <p class="article-content"><%= article.content %></p>
+        <p class="article-date"><b>Rendered at:</b> <%= DateTime.now.strftime('%d.%m.%Y %H.%M.%S') %></p>
+      </article>
+    <% end %>
+  <% end %>
+</section>
+
+<section class="section-function">
+  <h2 class="header-section">Articles. Without caching</h2>
+
+  <div class="section-description">
+    Just a regular section with regular articles.
+  </div>
+
+  <% @articles.each do |article| %>
+    <article class="article">
+      <h3 class="article-header"><%= article.title %></h3>
+      <p class="article-content"><%= article.content %></p>
+      <p class="article-date"><b>Rendered at:</b> <%= DateTime.now.strftime('%d.%m.%Y %H.%M.%S') %></p>
+    </article>
+  <% end %>
+</section>
