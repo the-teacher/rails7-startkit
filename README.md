@@ -108,56 +108,6 @@ You will see something like that:
   <img alt="rails7-startkit" src="docs/index.png">
 </details>
 
-### To Run All Containers
-
-From the root of the project
-
-```sh
-bin/start
-```
-
-<details>
-  <summary>Output</summary>
-
-```sh
-[+] Running 5/0
- ⠿ Container rails7app-elastic-1  Running
- ⠿ Container rails7app-psql-1     Running
- ⠿ Container rails7app-redis-1    Running
- ⠿ Container rails7app-rails-1    Running
- ⠿ Container rails7app-sphinx-1   Running
-```
-</details>
-
-### To See Running Containers
-
-From the root of the project
-
-```sh
-bin/status
-```
-
-<details>
-  <summary>Output</summary>
-
-```js
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-NAMES                 IMAGE                          PORTS                    CONTAINER ID
-rails7app-sphinx-1    macbre/sphinxsearch:3.4.1      36307/tcp                9237b6f8e04f
-rails7app-rails-1     iamteacher/rails7:2023.arm64   0.0.0.0:3000->3000/tcp   0aa98d37c693
-rails7app-redis-1     redis:7.0.5-alpine             6379/tcp                 13856e1fb215
-rails7app-elastic-1   elasticsearch:7.17.8           9200/tcp, 9300/tcp       67d3787aa970
-rails7app-psql-1      postgres:15.1-bullseye         5432/tcp                 cd496a558c1f
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-docker compose -f docker/docker-compose.yml exec  rails /bin/bash -c 'ps a | grep puma'
-  548 pts/1    Ssl+   0:08 puma 5.6.5 (tcp://0.0.0.0:3000) [app]
-  628 pts/1    Sl+    0:05 puma: cluster worker 0: 548 [app]
-
-docker compose -f docker/docker-compose.yml exec  rails /bin/bash -c 'ps a | grep sidekiq'
-  554 pts/2    Ssl+   0:23 sidekiq 7.0.2 app [0 of 1 busy]
-```
-</details>
-
 ### `bin/` commands
 
 From the root of the project
@@ -200,28 +150,60 @@ From the root of the project
     </tr>
     <tr>
       <td>bin/status</td>
-      <td>To see running containers and launched services</td>
+      <td>
+        <p>To see running containers and launched services</p>
+        <details>
+          <summary>Output</summary>
+          ```js
+          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+          NAMES                 IMAGE                          PORTS                    CONTAINER ID
+          rails7app-sphinx-1    macbre/sphinxsearch:3.4.1      36307/tcp                9237b6f8e04f
+          rails7app-rails-1     iamteacher/rails7:2023.arm64   0.0.0.0:3000->3000/tcp   0aa98d37c693
+          rails7app-redis-1     redis:7.0.5-alpine             6379/tcp                 13856e1fb215
+          rails7app-elastic-1   elasticsearch:7.17.8           9200/tcp, 9300/tcp       67d3787aa970
+          rails7app-psql-1      postgres:15.1-bullseye         5432/tcp                 cd496a558c1f
+          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+          docker compose -f docker/docker-compose.yml exec  rails /bin/bash -c 'ps a | grep puma'
+            548 pts/1    Ssl+   0:08 puma 5.6.5 (tcp://0.0.0.0:3000) [app]
+            628 pts/1    Sl+    0:05 puma: cluster worker 0: 548 [app]
+          docker compose -f docker/docker-compose.yml exec  rails /bin/bash -c 'ps a | grep sidekiq'
+            554 pts/2    Ssl+   0:23 sidekiq 7.0.2 app [0 of 1 busy]
+          ```
+        </details>
+      </td>
     </tr>
     <tr>
       <td>bin/start</td>
-      <td>Start everything if it is stopped</td>
+      <td>
+        <p>Start everything if it is stopped</p>
+        <details>
+          <summary>Output</summary>
+          ```sh
+          [+] Running 5/0
+          ⠿ Container rails7app-elastic-1  Running
+          ⠿ Container rails7app-psql-1     Running
+          ⠿ Container rails7app-redis-1    Running
+          ⠿ Container rails7app-rails-1    Running
+          ⠿ Container rails7app-sphinx-1   Running
+          ```
+        </details>
+      </td>
     </tr>
     <tr>
       <td>bin/stop</td>
       <td>
         <p>Stop processes in <code>Rails</code> container</p>
-<details>
-  <summary>Output</summary>
-
-```sh
-[+] Running 5/5
- ⠿ Container rails7app-sphinx-1   Removed
- ⠿ Container rails7app-elastic-1  Removed
- ⠿ Container rails7app-rails-1    Removed
- ⠿ Container rails7app-redis-1    Removed
- ⠿ Container rails7app-psql-1     Removed
-```
-</details>
+        <details>
+          <summary>Output</summary>
+          ```sh
+          [+] Running 5/5
+          ⠿ Container rails7app-sphinx-1   Removed
+          ⠿ Container rails7app-elastic-1  Removed
+          ⠿ Container rails7app-rails-1    Removed
+          ⠿ Container rails7app-redis-1    Removed
+          ⠿ Container rails7app-psql-1     Removed
+          ```
+        </details>
       </td>
     </tr>
     <tr>
