@@ -176,7 +176,7 @@ From the root of the project
     </tr>
     <tr>
       <td>bin/open rails</td>
-      <td>Get in `Rails` Container</td>
+      <td>Get in <code>Rails</code> Container</td>
     </tr>
     <tr>
       <td>bin/open psql</td>
