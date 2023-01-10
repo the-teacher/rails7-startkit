@@ -72,13 +72,13 @@ On your host you have:
 **ONE!**
 
 ```
-git clone git@github.com:the-teacher/rails7-startkit.git
+https://github.com/the-teacher/rails7-startkit.git
 ```
 
 **TWO!**
 
 ```
-cd rails7-docker
+cd rails7-startkit
 ```
 
 **THREE!**
