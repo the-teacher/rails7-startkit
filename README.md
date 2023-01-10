@@ -12,7 +12,7 @@ Since now if you have Ruby and Docker then you have working Rails environment in
   <thead>
     <tr>
       <th>Technology Logo</th>
-      <tdh>Description</th>
+      <th>Description</th>
       <th>Technology Logo</th>
       <th>Description</th>
     </tr>
