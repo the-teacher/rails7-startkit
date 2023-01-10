@@ -10,12 +10,12 @@ Since now if you have Ruby and Docker then you have working Rails environment in
 
 <table>
   <thead>
-    <tr>
+    <th>
       <td>Technology Logo</td>
       <td>Description</td>
       <td>Technology Logo</td>
       <td>Description</td>
-    </tr>
+    </th>
   </thead>
   <tbody>
   <tr>
@@ -158,16 +158,16 @@ docker compose -f docker/docker-compose.yml exec  rails /bin/bash -c 'ps a | gre
 ```
 </details>
 
-### To Get In a Container
+### `bin/` commands
 
 From the root of the project
 
 <table>
   <thead>
-    <tr>
+    <th>
       <td>Command</td>
       <td>Description</td>
-    </tr>
+    </th>
   </thead>
   <tbody>
     <tr>
