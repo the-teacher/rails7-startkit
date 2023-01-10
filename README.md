@@ -208,7 +208,21 @@ From the root of the project
     </tr>
     <tr>
       <td>bin/stop</td>
-      <td>Stop processes in <code>Rails</code> container</td>
+      <td>
+        <p>Stop processes in <code>Rails</code> container</p>
+<details>
+  <summary>Output</summary>
+
+```sh
+[+] Running 5/5
+ ⠿ Container rails7app-sphinx-1   Removed
+ ⠿ Container rails7app-elastic-1  Removed
+ ⠿ Container rails7app-rails-1    Removed
+ ⠿ Container rails7app-redis-1    Removed
+ ⠿ Container rails7app-psql-1     Removed
+```
+</details>
+      </td>
     </tr>
     <tr>
       <td>bin/stop_all</td>
@@ -224,27 +238,6 @@ From the root of the project
     </tr>
   </tbody>
 </table>
-
-### To Stop All Containers
-
-From the root of the project
-
-```sh
-bin/stop
-```
-
-<details>
-  <summary>Output</summary>
-
-```sh
-[+] Running 5/5
- ⠿ Container rails7app-sphinx-1   Removed
- ⠿ Container rails7app-elastic-1  Removed
- ⠿ Container rails7app-rails-1    Removed
- ⠿ Container rails7app-redis-1    Removed
- ⠿ Container rails7app-psql-1     Removed
-```
-</details>
 
 ### Conventions and Agreements
 
