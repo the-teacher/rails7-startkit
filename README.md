@@ -172,7 +172,7 @@ From the root of the project
   <tbody>
     <tr>
       <td>bin/open</td>
-      <td>Get in `Rails` Container (`rails` by default)</td>
+      <td>Get in <code>Rails</code> Container (`rails` by default)</td>
     </tr>
     <tr>
       <td>bin/open rails</td>
@@ -180,19 +180,19 @@ From the root of the project
     </tr>
     <tr>
       <td>bin/open psql</td>
-      <td>Get in `PgSQL` Container</td>
+      <td>Get in <code>PgSQL</code> Container</td>
     </tr>
     <tr>
       <td>bin/open sphinx</td>
-      <td>Get in `Sphinx` Container</td>
+      <td>Get in <code>Sphinx</code> Container</td>
     </tr>
     <tr>
       <td>bin/open redis</td>
-      <td>Get in `Redis` Container</td>
+      <td>Get in <code>Redis</code> Container</td>
     </tr>
     <tr>
       <td>bin/open elastic</td>
-      <td>Get in `ElasticSearch` Container</td>
+      <td>Get in <code>ElasticSearch</code> Container</td>
     </tr>
   </tbody>
 </table>
