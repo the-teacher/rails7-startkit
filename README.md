@@ -266,7 +266,7 @@ Now you are in the Rails container and you can do everything as usual
 
 ```sh
   RAILS_ENV=test rake db:create
-  rake db:test
+  rake test
 ```
 
 ### Questions and Answers
