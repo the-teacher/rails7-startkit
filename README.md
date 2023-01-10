@@ -171,6 +171,10 @@ From the root of the project
   </thead>
   <tbody>
     <tr>
+      <td>bin/setup</td>
+      <td>Download images, run containers, initialize data, launch all processes.</td>
+    </tr>
+    <tr>
       <td>bin/open</td>
       <td>Get in <code>Rails</code> Container (`rails` by default)</td>
     </tr>
@@ -193,6 +197,30 @@ From the root of the project
     <tr>
       <td>bin/open elastic</td>
       <td>Get in <code>ElasticSearch</code> Container</td>
+    </tr>
+    <tr>
+      <td>bin/status</td>
+      <td>To see running containers and launched services</td>
+    </tr>
+    <tr>
+      <td>bin/start</td>
+      <td>Start everything if it is stopped</td>
+    </tr>
+    <tr>
+      <td>bin/stop</td>
+      <td>Stop processes in <code>Rails</code> container</td>
+    </tr>
+    <tr>
+      <td>bin/stop_all</td>
+      <td>Stop everything if it is running</td>
+    </tr>
+    <tr>
+      <td>bin/index</td>
+      <td>Run Search engines indexation</td>
+    </tr>
+    <tr>
+      <td>bin/reset</td>
+      <td>Reset data od services in <code>./db</code> folder</td>
     </tr>
   </tbody>
 </table>
