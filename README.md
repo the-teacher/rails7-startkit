@@ -74,8 +74,8 @@ Since now if you have Ruby and Docker then you have working Rails environment in
   </tr>
   <tr>
     <td>TODO:</td>
-    <td>~~~~~~~~~~~~~~~~~~~~~</td>
-    <td>~~~~~~~~~~~~~~~~~~~~~</td>
+    <td>~~~~~~~~~~~~</td>
+    <td>~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</td>
   </tr>
   <tr>
     <td><img width="100px" alt="devise" src="docs/devise.png"></td>
