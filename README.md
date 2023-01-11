@@ -24,7 +24,7 @@ Since now if you have Ruby and Docker then you have working Rails environment in
   </tr>
   <tr>
     <td><img width="100px" alt="pgsql" src="docs/pgsql.png"></td>
-    <td><b>PostgresSQL</b></td>
+    <td><b><a href="https://www.ruby-toolbox.com/categories/SQL_Database_Adapters">PostgresSQL</a></b></td>
     <td>Most popular relation database</td>
   </tr>
   <tr>
@@ -39,22 +39,22 @@ Since now if you have Ruby and Docker then you have working Rails environment in
   </tr>
   <tr>
     <td><img width="100px" alt="gem config" src="docs/config.png"></td>
-    <td><b>gem "config"</b></td>
+    <td><b><a href="https://www.ruby-toolbox.com/projects/config">gem "config"</a></b></td>
     <td>Configuration management tool</td>
   </tr>
   <tr>
     <td><img width="100px" alt="elastic" src="docs/elastic.png"></td>
-    <td><b>Elasticsearch</b><br></td>
+    <td><b><a href="https://www.elastic.co">Elasticsearch</a>></b></td>
     <td>The world’s leading Search engine</td>
   </tr>
   <tr>
     <td><img width="100px" alt="chewy" src="docs/chewy.png"></td>
-    <td><b>Chewy</b><br></td>
+    <td><b><a href="https://www.ruby-toolbox.com/projects/chewy">Chewy</a></b></td>
     <td>Ruby Connector to Elasticsearch</td>
   </tr>
   <tr>
     <td><img width="100px" alt="redis" src="docs/redis.png"></td>
-    <td><b>Redis</b></td>
+    <td><b><a href="https://redis.io">Redis</a></b></td>
     <td>In-memory data store. For caching and as a dependency of Sidekiq</td>
   </tr>
   <tr>
@@ -124,7 +124,7 @@ What I'm going to add...
   <tr>
     <td><img width="100px" alt="rspec" src="docs/rubocop.png"></td>
     <td><b>Rubocop</b></td>
-    <td>Ruby static b analyzer (a.k.a. linter) and b formatter.</td>
+    <td>Ruby static code analyzer (a.k.a. linter) and formatter.</td>
   </tr>
   </tbody>
 </table>
@@ -340,7 +340,7 @@ Now you are in the Rails container and you can do everything as usual
 <details>
   <summary>It looks good for development. What about production?</summary>
   <br>
-  <p>I'm not a DevOps, but I have a vision how to deploy this b to production.</p>
+  <p>I'm not a DevOps, but I have a vision how to deploy this code to production.</p>
   <p>Right now it is not described somehow. It is in my plans.</p>
 </details>
 
