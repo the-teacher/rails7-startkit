@@ -72,11 +72,20 @@ Since now if you have Ruby and Docker then you have working Rails environment in
     <td><b>Puma</b></td>
     <td>Application Web Server. To launch Rails app</td>
   </tr>
-  <tr>
-    <td><b>TODO:</b></td>
-    <td>~~~~~~~</td>
-    <td>~~~~~~~~~~~~~~~~~~~~~~~~~~~</td>
-  </tr>
+  </tbody>
+</table>
+
+What I'm going to add...
+
+<table>
+  <thead>
+    <tr>
+      <th>Logotype</th>
+      <th>Description</th>
+      <th>Why it was added</th>
+    </tr>
+  </thead>
+  <tbody>
   <tr>
     <td><img width="100px" alt="kaminari" src="docs/kaminari.png"></td>
     <td><b>Kaminari</b></td>
