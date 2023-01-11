@@ -267,8 +267,7 @@ For demonstration, education and maintainance purposes I use the following appro
 ./config
 ├── _CONFIG.yml
 ├── _PUMA.rb
-├── _SIDEKIQ.yml
-└── _THINKING_SPHINX.yml
+└── _SIDEKIQ.yml
 ```
 
 **Initialazers**
