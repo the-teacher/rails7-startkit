@@ -78,6 +78,11 @@ Since now if you have Ruby and Docker then you have working Rails environment in
     <td>~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</td>
   </tr>
   <tr>
+    <td><b>Kaminari</b></td>
+    <td><b>Kaminari</b></td>
+    <td>Pagination solution</td>
+  </tr>
+  <tr>
     <td><img width="100px" alt="devise" src="docs/devise.png"></td>
     <td><b>Devise</b></td>
     <td>Authentication solution for Rails</td>
