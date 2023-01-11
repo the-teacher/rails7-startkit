@@ -191,7 +191,7 @@ From the root of the project
   </thead>
   <tbody>
     <tr>
-      <td>bin/setup</td>
+      <td><code>bin/setup</code></td>
       <td>Download images, run containers, initialize data, launch all processes.</td>
     </tr>
     <tr>
