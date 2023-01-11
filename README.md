@@ -38,6 +38,11 @@ Since now if you have Ruby and Docker then you have working Rails environment in
     <td>Most recent version of Rails</td>
   </tr>
   <tr>
+    <td><img width="100px" alt="gem config" src="docs/config.png"></td>
+    <td><b>gem "config"</b></td>
+    <td>Configuration management tool</td>
+  </tr>
+  <tr>
     <td><img width="100px" alt="elastic" src="docs/elastic.png"></td>
     <td><b>Elasticsearch</b><br></td>
     <td>The world’s leading Search engine</td>
@@ -58,7 +63,7 @@ Since now if you have Ruby and Docker then you have working Rails environment in
     <td>Job Scheduler and Async Tasks Executor. Can be used as a stand alone tool or as ActiveJob backend</td>
   </tr>
   <tr>
-    <td><img width="100px" alt="puma" src="docs/import-maps.png"></td>
+    <td><img width="100px" alt="import-maps" src="docs/import-maps.png"></td>
     <td><b>Import Maps</b></td>
     <td>Rails' recommended way to process JavaScript</td>
   </tr>
@@ -66,6 +71,31 @@ Since now if you have Ruby and Docker then you have working Rails environment in
     <td><img width="100px" alt="puma" src="docs/puma.png"></td>
     <td><b>Puma</b></td>
     <td>Application Web Server. To launch Rails app</td>
+  </tr>
+  <tr>
+    <td>TODO:</td>
+    <td><b>Tool name</b></td>
+    <td>to add</td>
+  </tr>
+  <tr>
+    <td><img width="100px" alt="devise" src="docs/devise.png"></td>
+    <td><b>Devise</b></td>
+    <td>Authentication solution for Rails</td>
+  </tr>
+  <tr>
+    <td><img width="100px" alt="devise" src="docs/devise.png"></td>
+    <td><b>Devise</b></td>
+    <td>Login with Facebook and Google</td>
+  </tr>
+  <tr>
+    <td><img width="100px" alt="devise" src="docs/devise.png"></td>
+    <td><b>Devise and Action Mailer</b></td>
+    <td>Sending emails for account confirmations</td>
+  </tr>
+  <tr>
+    <td><img width="100px" alt="devise" src="docs/whenever.png"></td>
+    <td><b>Whenever.png</b></td>
+    <td>Cron based periodical tasks</td>
   </tr>
   <tr>
     <td>Logo</td>
