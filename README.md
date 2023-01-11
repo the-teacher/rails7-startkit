@@ -195,27 +195,27 @@ From the root of the project
       <td>Download images, run containers, initialize data, launch all processes.</td>
     </tr>
     <tr>
-      <td>bin/open</td>
+      <td><code>bin/open</code></td>
       <td>Get in <code>Rails</code> Container (`rails` by default)</td>
     </tr>
     <tr>
-      <td>bin/open rails</td>
+      <td><code>bin/open rails</code></td>
       <td>Get in <code>Rails</code> Container</td>
     </tr>
     <tr>
-      <td>bin/open psql</td>
+      <td><code>bin/open psql</code></td>
       <td>Get in <code>PgSQL</code> Container</td>
     </tr>
     <tr>
-      <td>bin/open redis</td>
+      <td><code>bin/open redis</code></td>
       <td>Get in <code>Redis</code> Container</td>
     </tr>
     <tr>
-      <td>bin/open elastic</td>
+      <td><code>bin/open elastic</code></td>
       <td>Get in <code>ElasticSearch</code> Container</td>
     </tr>
     <tr>
-      <td>bin/status</td>
+      <td><code>bin/status</code></td>
       <td>To see running containers and launched services</td>
     </tr>
     <tr>
