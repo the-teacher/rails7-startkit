@@ -73,12 +73,12 @@ Since now if you have Ruby and Docker then you have working Rails environment in
     <td>Application Web Server. To launch Rails app</td>
   </tr>
   <tr>
-    <td>TODO:</td>
-    <td>~~~~~~~~~~~~</td>
-    <td>~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</td>
+    <td><b>TODO:</b></td>
+    <td>~~~~~~~</td>
+    <td>~~~~~~~~~~~~~~~~~~~~~~~~~~~</td>
   </tr>
   <tr>
-    <td><b>Kaminari</b></td>
+    <td><img width="100px" alt="kaminari" src="docs/kaminari.png"></td>
     <td><b>Kaminari</b></td>
     <td>Pagination solution</td>
   </tr>
@@ -94,18 +94,28 @@ Since now if you have Ruby and Docker then you have working Rails environment in
   </tr>
   <tr>
     <td><img width="100px" alt="devise" src="docs/devise.png"></td>
-    <td><b>Devise and Action Mailer</b></td>
+    <td><b>Devise and Action&nbsp;Mailer</b></td>
     <td>Sending emails for account confirmations</td>
   </tr>
   <tr>
-    <td><img width="100px" alt="devise" src="docs/whenever.png"></td>
-    <td><b>Whenever.png</b></td>
-    <td>Cron based periodical tasks</td>
+    <td><img width="100px" alt="letter_opener" src="docs/letter_opener.png"></td>
+    <td><b>Letter Opener</b></td>
+    <td>Email previwer for development</td>
   </tr>
   <tr>
-    <td>Logo</td>
-    <td>New Thing</td>
-    <td>...Coming Soon</td>
+    <td><img width="100px" alt="whenever" src="docs/whenever.png"></td>
+    <td><b>whenever</b></td>
+    <td>Linux Cron based periodical tasks</td>
+  </tr>
+  <tr>
+    <td><img width="100px" alt="rspec" src="docs/rspec.png"></td>
+    <td><b>RSpec</b></td>
+    <td>Testing Framework for Rails</td>
+  </tr>
+  <tr>
+    <td><img width="100px" alt="rspec" src="docs/rubocop.png"></td>
+    <td><b>Rubocop</b></td>
+    <td>Ruby static code analyzer (a.k.a. linter) and code formatter.</td>
   </tr>
   </tbody>
 </table>
