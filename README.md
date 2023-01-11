@@ -199,19 +199,19 @@ From the root of the project
       <td>Get in <b>Rails</b> Container (`rails` by default)</td>
     </tr>
     <tr>
-      <td><b>bin/open rails</b></td>
+      <td><b>bin/open&nbsp;rails</b></td>
       <td>Get in <b>Rails</b> Container</td>
     </tr>
     <tr>
-      <td><b>bin/open psql</b></td>
+      <td><b>bin/open&nbsp;psql</b></td>
       <td>Get in <b>PgSQL</b> Container</td>
     </tr>
     <tr>
-      <td><b>bin/open redis</b></td>
+      <td><b>bin/open&nbsp;redis</b></td>
       <td>Get in <b>Redis</b> Container</td>
     </tr>
     <tr>
-      <td><b>bin/open elastic</b></td>
+      <td><b>bin/open&nbsp;elastic</b></td>
       <td>Get in <b>ElasticSearch</b> Container</td>
     </tr>
     <tr>
