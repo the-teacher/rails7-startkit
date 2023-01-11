@@ -10,46 +10,47 @@ FileUtils.chdir APP_ROOT do
 
   FileUtils.rm('db/PGSQL/.keep', force: true)
 
-  puts "1. Launching PgSQL container"
+  step_info "Launching PgSQL container"
   system('docker compose -f docker/docker-compose.yml up psql -d')
 
   wait('to initialize PgSQL database')
 
   FileUtils.touch('db/PGSQL/.keep', verbose: true)
 
-  puts "2. Launching ElasticSearch Container"
+  step_info "Launching ElasticSearch Container"
   system('docker compose -f docker/docker-compose.yml up elastic -d')
 
   wait('to launch ElasticSearch Container', 10)
 
-  puts "3. Launching Rails container"
+  step_info "Launching Rails container"
   system('docker compose -f docker/docker-compose.yml up rails -d')
 
   wait('to launch Rails Container')
 
-  puts "4. Installing Gems. Please Wait"
+  step_info "Installing Gems. Please Wait"
   rails_install_gems
 
-  puts "5. Create DB. Migrate DB. Create Seeds"
+  step_info "Create DB. Migrate DB. Create Seeds"
   container_bash_exec('rails', 'rake db:prepare')
 
-  puts "6. Launching Redis Container"
+  step_info "Launching Redis Container"
   system('docker compose -f docker/docker-compose.yml up redis -d')
 
   wait('to launch Redis Container')
 
-
-  puts "9. Indexing Article Model"
-  sphinx_index
+  step_info "Indexing Article Model"
   chewy_index
 
-  puts "10. Launching Rails App with Puma"
+  step_info "Launching Rails App with Puma"
   puma_start
 
-  puts "11. Launching Sidekiq"
+  step_info "Launching Sidekiq"
   sidekiq_start
 
-  puts "12. Visit: http://localhost:3000"
+  step_info "Visit: http://localhost:3000"
 
   containers_information
+
+  puts "What was done. Welcome to RAILS 7!"
+  puts $steps_messages.join("\n")
 end

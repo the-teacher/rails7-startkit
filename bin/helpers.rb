@@ -1,8 +1,18 @@
 DELAY = 3
 
+$steps_counter = 1
+$steps_messages = []
+
 def wait(details, delay = DELAY)
   puts "Waiting #{delay} seconds #{details}"
   sleep(delay)
+end
+
+def step_info(message)
+  info_message = "#{$steps_counter}. #{message}"
+  puts info_message
+  $steps_counter = $steps_counter.next
+  $steps_messages << info_message
 end
 
 def system!(*args)
@@ -44,6 +54,8 @@ def containers_information
   system("docker ps --format 'table {{.Names}}\t{{.Image}}\t{{.Ports}}\t{{.ID}}'")
   puts ("~" * 50) + "\n"
 end
+
+# todo: update with --remove-orphans
 
 def start_all_containers
   system('docker compose -f docker/docker-compose.yml up -d')

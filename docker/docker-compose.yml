@@ -60,7 +60,6 @@ services:
     volumes:
       - ../:/home/lucky/app
       - ../shared:/shared
-      - ../db/SPHINX:/opt/sphinx/index
     ports:
       - ${APP_PORT:-3000:3000}
     depends_on:

@@ -163,14 +163,15 @@ You will see something like that:
 
 ```
 1. Launching PgSQL container
-2. Launching Rails container
-3. Installing Gems. Please Wait
-4. Create DB. Migrate DB. Create Seeds
-5. Launching Redis Container
-8. Indexing Article Model
-9. Launching Rails App with Puma
-10. Launching Sidekiq
-11. Visit: http://localhost:3000
+2. Launching ElasticSearch Container
+3. Launching Rails container
+4. Installing Gems. Please Wait
+5. Create DB. Migrate DB. Create Seeds
+6. Launching Redis Container
+7. Indexing Article Model
+8. Launching Rails App with Puma
+9. Launching Sidekiq
+10. Visit: http://localhost:3000
 ```
 
 <details>
