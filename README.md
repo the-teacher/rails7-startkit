@@ -124,7 +124,7 @@ What I'm going to add...
   <tr>
     <td><img width="100px" alt="rspec" src="docs/rubocop.png"></td>
     <td><b>Rubocop</b></td>
-    <td>Ruby static code analyzer (a.k.a. linter) and code formatter.</td>
+    <td>Ruby static b analyzer (a.k.a. linter) and b formatter.</td>
   </tr>
   </tbody>
 </table>
@@ -191,52 +191,52 @@ From the root of the project
   </thead>
   <tbody>
     <tr>
-      <td><code>bin/setup</code></td>
+      <td><b>bin/setup</b></td>
       <td>Download images, run containers, initialize data, launch all processes.</td>
     </tr>
     <tr>
-      <td><code>bin/open</code></td>
-      <td>Get in <code>Rails</code> Container (`rails` by default)</td>
+      <td><b>bin/open</b></td>
+      <td>Get in <b>Rails</b> Container (`rails` by default)</td>
     </tr>
     <tr>
-      <td><code>bin/open rails</code></td>
-      <td>Get in <code>Rails</code> Container</td>
+      <td><b>bin/open rails</b></td>
+      <td>Get in <b>Rails</b> Container</td>
     </tr>
     <tr>
-      <td><code>bin/open psql</code></td>
-      <td>Get in <code>PgSQL</code> Container</td>
+      <td><b>bin/open psql</b></td>
+      <td>Get in <b>PgSQL</b> Container</td>
     </tr>
     <tr>
-      <td><code>bin/open redis</code></td>
-      <td>Get in <code>Redis</code> Container</td>
+      <td><b>bin/open redis</b></td>
+      <td>Get in <b>Redis</b> Container</td>
     </tr>
     <tr>
-      <td><code>bin/open elastic</code></td>
-      <td>Get in <code>ElasticSearch</code> Container</td>
+      <td><b>bin/open elastic</b></td>
+      <td>Get in <b>ElasticSearch</b> Container</td>
     </tr>
     <tr>
-      <td><code>bin/status</code></td>
+      <td><b>bin/status</b></td>
       <td>To see running containers and launched services</td>
     </tr>
     <tr>
-      <td><code>bin/start</code></td>
+      <td><b>bin/start</b></td>
       <td>Start everything if it is stopped</td>
     </tr>
     <tr>
-      <td><code>bin/stop</code></td>
-      <td>Stop processes in <code>Rails</code> container</td>
+      <td><b>bin/stop</b></td>
+      <td>Stop processes in <b>Rails</b> container</td>
     </tr>
     <tr>
-      <td><code>bin/stop_all</code></td>
+      <td><b>bin/stop_all</b></td>
       <td>Stop everything if it is running</td>
     </tr>
     <tr>
-      <td><code>bin/index</code></td>
+      <td><b>bin/index</b></td>
       <td>Run Search engines indexation</td>
     </tr>
     <tr>
-      <td><code>bin/reset</code></td>
-      <td>Reset data od services in <code>./db</code> folder</td>
+      <td><b>bin/reset</b></td>
+      <td>Reset data od services in <b>./db</b> folder</td>
     </tr>
   </tbody>
 </table>
@@ -340,7 +340,7 @@ Now you are in the Rails container and you can do everything as usual
 <details>
   <summary>It looks good for development. What about production?</summary>
   <br>
-  <p>I'm not a DevOps, but I have a vision how to deploy this code to production.</p>
+  <p>I'm not a DevOps, but I have a vision how to deploy this b to production.</p>
   <p>Right now it is not described somehow. It is in my plans.</p>
 </details>
 
