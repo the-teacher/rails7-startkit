@@ -219,23 +219,23 @@ From the root of the project
       <td>To see running containers and launched services</td>
     </tr>
     <tr>
-      <td>bin/start</td>
+      <td><code>bin/start</code></td>
       <td>Start everything if it is stopped</td>
     </tr>
     <tr>
-      <td>bin/stop</td>
+      <td><code>bin/stop</code></td>
       <td>Stop processes in <code>Rails</code> container</td>
     </tr>
     <tr>
-      <td>bin/stop_all</td>
+      <td><code>bin/stop_all</code></td>
       <td>Stop everything if it is running</td>
     </tr>
     <tr>
-      <td>bin/index</td>
+      <td><code>bin/index</code></td>
       <td>Run Search engines indexation</td>
     </tr>
     <tr>
-      <td>bin/reset</td>
+      <td><code>bin/reset</code></td>
       <td>Reset data od services in <code>./db</code> folder</td>
     </tr>
   </tbody>
