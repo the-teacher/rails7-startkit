@@ -25,26 +25,6 @@ services:
       - ../db/PGSQL:/var/lib/postgresql/data/pgdata
       - ../shared:/shared
 
-  # port: 36307
-  #
-  # docker exec -ti rails7app-sphinx-1 ash
-  #
-  # docker exec rails7app-sphinx-1 indexer --all --config /opt/sphinx/conf/sphinx.conf
-  # docker exec rails7app-sphinx-1 indexer --all --config /opt/sphinx/conf/sphinx.conf --rotate
-  #
-  sphinx:
-    image: macbre/sphinxsearch:3.4.1
-    user: ${RUN_AS:-root}
-    environment:
-      - SPHINX_CONFIG_FILE=/opt/sphinx/conf/sphinx.conf
-    volumes:
-      - ../config/_SPHINX:/opt/sphinx/conf
-      - ../db/SPHINX:/opt/sphinx/index
-      - ../shared:/shared
-    mem_limit: 512m
-    depends_on:
-      - psql
-
   # port: 6379
   #
   # run with dumping db every 60 secs:

@@ -7,4 +7,3 @@ rails_install_gems
 rails_db_migrate
 
 chewy_index
-sphinx_index

@@ -63,11 +63,6 @@ def rails_db_migrate
   container_bash_exec('rails', 'rake db:migrate')
 end
 
-def sphinx_index
-  puts "Indexing with SPHINX"
-  container_exec('sphinx', 'indexer --all --config /opt/sphinx/conf/sphinx.conf --rotate')
-end
-
 def chewy_index
   puts "Indexing with CHEWY"
   container_exec('rails', 'rake chewy:update')

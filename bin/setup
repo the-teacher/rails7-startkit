@@ -38,13 +38,6 @@ FileUtils.chdir APP_ROOT do
 
   wait('to launch Redis Container')
 
-  puts "7. Generate Sphinx Config"
-  container_bash_exec('rails', 'rake ts:configure')
-
-  puts "8. Launching Sphinx Container"
-  system('docker compose -f docker/docker-compose.yml up sphinx -d')
-
-  wait('to launch Sphinx Container')
 
   puts "9. Indexing Article Model"
   sphinx_index

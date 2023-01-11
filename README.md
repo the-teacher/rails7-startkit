@@ -68,16 +68,6 @@ Since now if you have Ruby and Docker then you have working Rails environment in
     <td>Application Web Server. To launch Rails app</td>
   </tr>
   <tr>
-    <td><img width="100px" alt="sphinx" src="docs/sphinx.png"></td>
-    <td><b>Sphinx</b></td>
-    <td>Full Text Search Engine</td>
-  </tr>
-  <tr>
-    <td><img width="100px" alt="ts" src="docs/thinking-sphinx.png"></td>
-    <td><b>Thinking Sphinx</b></td>
-    <td>Ruby Connector to Sphinx</td>
-  </tr>
-  <tr>
     <td>Logo</td>
     <td>New Thing</td>
     <td>...Coming Soon</td>
@@ -123,8 +113,6 @@ You will see something like that:
 3. Installing Gems. Please Wait
 4. Create DB. Migrate DB. Create Seeds
 5. Launching Redis Container
-6. Generate Sphinx Config
-7. Launching Sphinx Container
 8. Indexing Article Model
 9. Launching Rails App with Puma
 10. Launching Sidekiq
@@ -163,10 +151,6 @@ From the root of the project
     <tr>
       <td>bin/open psql</td>
       <td>Get in <code>PgSQL</code> Container</td>
-    </tr>
-    <tr>
-      <td>bin/open sphinx</td>
-      <td>Get in <code>Sphinx</code> Container</td>
     </tr>
     <tr>
       <td>bin/open redis</td>
@@ -216,8 +200,7 @@ For demonstration, education and maintainance purposes I use the following appro
 ./db
 ├── ELASTIC
 ├── PGSQL
-├── REDIS
-└── SPHINX
+└── REDIS
 ```
 
 **Configuration Files**
@@ -227,7 +210,6 @@ For demonstration, education and maintainance purposes I use the following appro
 
 ```
 ./config
-├── _SPHINX (<< folder)
 ├── _CONFIG.yml
 ├── _PUMA.rb
 ├── _SIDEKIQ.yml
@@ -244,8 +226,7 @@ For demonstration, education and maintainance purposes I use the following appro
 ├── _CHEWY.rb
 ├── _CONFIG.rb
 ├── _REDIS.rb
-├── _SIDEKIQ.rb
-└── _SPHINX.rb
+└── _SIDEKIQ.rb
 ```
 
 ### Rails user
@@ -307,16 +288,6 @@ Now you are in the Rails container and you can do everything as usual
   <br>
   <p>I'm not a DevOps, but I have a vision how to deploy this code to production.</p>
   <p>Right now it is not described somehow. It is in my plans.</p>
-</details>
-
-<details>
-  <summary>Why did you use 2 Search engines in this project?</summary>
-  <br>
-  <p>
-    Sphinx is a tool what I know. ElasticSearch I'm going to learn.
-    If you do not need one of them it is not a problem.
-  </p>
-  <p>It is always easier to cut off than install and set up.</p>
 </details>
 
 ### TODO

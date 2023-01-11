@@ -11,16 +11,13 @@ prompt!
 FileUtils.chdir APP_ROOT do
   FileUtils.rm_rf('db/PGSQL/', verbose: true)
   FileUtils.rm_rf('db/REDIS/', verbose: true)
-  FileUtils.rm_rf('db/SPHINX/', verbose: true)
   FileUtils.rm_rf('db/ELASTIC/', verbose: true)
 
   FileUtils.mkdir_p('db/PGSQL/', verbose: true)
   FileUtils.mkdir_p('db/REDIS/', verbose: true)
-  FileUtils.mkdir_p('db/SPHINX/', verbose: true)
   FileUtils.mkdir_p('db/ELASTIC/', verbose: true)
 
   FileUtils.touch('db/PGSQL/.keep', verbose: true)
   FileUtils.touch('db/REDIS/.keep', verbose: true)
-  FileUtils.touch('db/SPHINX/.keep', verbose: true)
   FileUtils.touch('db/ELASTIC/.keep', verbose: true)
 end

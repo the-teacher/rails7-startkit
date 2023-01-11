@@ -34,10 +34,6 @@ gem "sidekiq", "7.0.2"
 # Full-text ElasticSearch + Chewy
 gem 'chewy', "7.2.7"
 
-# Full-text Search
-gem 'mysql2', '0.5.4'
-gem 'thinking-sphinx', '5.5.1'
-
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # </Rails7 on Docker. Start Kit>
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

@@ -11,9 +11,6 @@
 /db/REDIS
 !/db/REDIS/.keep
 
-/db/SPHINX
-!/db/SPHINX/.keep
-
 /db/ELASTIC
 !/db/ELASTIC/.keep
 

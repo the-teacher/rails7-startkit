@@ -9,6 +9,5 @@ puma_start
 sidekiq_start
 
 chewy_index
-sphinx_index
 
 containers_information
