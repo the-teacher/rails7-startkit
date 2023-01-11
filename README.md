@@ -19,7 +19,7 @@ Since now if you have Ruby and Docker then you have working Rails environment in
   <tbody>
   <tr>
     <td><img width="100px" alt="docker" src="docs/docker.png"></td>
-    <td><b>Docker</b><br>Containerization for Services</td>
+    <td><b>Docker</b></td>
     <td>Helps to keep all required services in containers. To have fast and predictable installation process in minutes</td>
   </tr>
   <tr>
