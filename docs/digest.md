@@ -2,17 +2,19 @@
 
 ### Week 1. Part 4
 
-One person asked me why I have an app with so many preiinstalled tools. Like, if you need something you will install it later your self.
+One person asked me why I have an app with so many preinstalled tools. Like, if you need something you will install it later yourself.
 
 Yes, it is possible. But, again. All the time you need to choose a solution. You need to set it up and configure. You need to a lot of boring work.
 
-I have my own short list of must have tools. This list is stable for years. Why I should not have a ready-to-go project?
+I have my own short list of must have tools. This list is stable for years. Why I should not have a ready-to-go playground?
 
-How can I start a new project without Sidekiq? Wihtout Caching and Redis, wihtout pagination and cron tasks? I'm sure my app will use Devise and Mailers. Why should I waste time on it every single time?
+How can I start a new project without Sidekiq? Without Caching and Redis, without pagination and cron tasks? I'm sure my app will use Devise and Mailers. There must be a login with Google and Facebook.
 
-Even if some people do not accept the idea to have an MVP app with many preinstalled must have tools - I see a lot of benifits from it.
+Why should I waste time on it every single time?
 
-Going to continue.
+Even if some people do not accept the idea to have an MVP app with many preinstalled and must have tools - I see a lot of benifits from it.
+
+Going to continue anyway.
 
 ### Week 1. Part 3
 
