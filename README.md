@@ -44,7 +44,7 @@ Since now if you have Ruby and Docker then you have working Rails environment in
   </tr>
   <tr>
     <td><img width="100px" alt="elastic" src="docs/elastic.png"></td>
-    <td><b><a href="https://www.elastic.co">Elasticsearch</a>></b></td>
+    <td><b><a href="https://www.elastic.co">Elasticsearch</a></b></td>
     <td>The world’s leading Search engine</td>
   </tr>
   <tr>
@@ -59,17 +59,17 @@ Since now if you have Ruby and Docker then you have working Rails environment in
   </tr>
   <tr>
     <td><img width="100px" alt="sidekiq" src="docs/sidekiq.png"></td>
-    <td><b>Sidekiq</b></td>
+    <td><b><a href="https://www.ruby-toolbox.com/categories/Background_Jobs">Sidekiq</a></b></td>
     <td>Job Scheduler and Async Tasks Executor. Can be used as a stand alone tool or as ActiveJob backend</td>
   </tr>
   <tr>
     <td><img width="100px" alt="import-maps" src="docs/import-maps.png"></td>
-    <td><b>Import Maps</b></td>
+    <td><b><a href="https://github.com/rails/importmap-rails">Import Maps</a></b></td>
     <td>Rails' recommended way to process JavaScript</td>
   </tr>
   <tr>
     <td><img width="100px" alt="puma" src="docs/puma.png"></td>
-    <td><b>Puma</b></td>
+    <td><b><a href="https://www.ruby-toolbox.com/categories/web_servers">Puma</a></b></td>
     <td>Application Web Server. To launch Rails app</td>
   </tr>
   </tbody>
@@ -88,17 +88,17 @@ What I'm going to add...
   <tbody>
   <tr>
     <td><img width="100px" alt="kaminari" src="docs/kaminari.png"></td>
-    <td><b>Kaminari</b></td>
+    <td><b><a href="https://www.ruby-toolbox.com/categories/pagination">Kaminari</a></b></td>
     <td>Pagination solution</td>
   </tr>
   <tr>
     <td><img width="100px" alt="devise" src="docs/devise.png"></td>
-    <td><b>Devise</b></td>
+    <td><b><a href="https://www.ruby-toolbox.com/categories/rails_authentication">Devise</b></a></td>
     <td>Authentication solution for Rails</td>
   </tr>
   <tr>
     <td><img width="100px" alt="devise" src="docs/devise.png"></td>
-    <td><b>Devise</b></td>
+    <td><b><a href="https://www.ruby-toolbox.com/categories/rails_authentication">Devise</b></a></td>
     <td>Login with Facebook and Google</td>
   </tr>
   <tr>
@@ -108,22 +108,22 @@ What I'm going to add...
   </tr>
   <tr>
     <td><img width="100px" alt="letter_opener" src="docs/letter_opener.png"></td>
-    <td><b>Letter Opener</b></td>
+    <td><b><a href="https://www.ruby-toolbox.com/categories/EMail_Fake_Servers">Letter Opener</a></b></td>
     <td>Email previwer for development</td>
   </tr>
   <tr>
     <td><img width="100px" alt="whenever" src="docs/whenever.png"></td>
-    <td><b>whenever</b></td>
+    <td><b><a href="https://www.ruby-toolbox.com/categories/scheduling">whenever</a></b></td>
     <td>Linux Cron based periodical tasks</td>
   </tr>
   <tr>
     <td><img width="100px" alt="rspec" src="docs/rspec.png"></td>
-    <td><b>RSpec</b></td>
+    <td><b><a href="https://www.ruby-toolbox.com/categories/testing_frameworks">RSpec</a></b></td>
     <td>Testing Framework for Rails</td>
   </tr>
   <tr>
     <td><img width="100px" alt="rspec" src="docs/rubocop.png"></td>
-    <td><b>Rubocop</b></td>
+    <td><b><a href="https://www.ruby-toolbox.com/categories/code_metrics">Rubocop</a></b></td>
     <td>Ruby static code analyzer (a.k.a. linter) and formatter.</td>
   </tr>
   </tbody>
