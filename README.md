@@ -11,47 +11,75 @@ Since now if you have Ruby and Docker then you have working Rails environment in
 <table>
   <thead>
     <tr>
-      <th>Technology Logo</th>
+      <th>Logotype</th>
       <th>Description</th>
-      <th>Technology Logo</th>
-      <th>Description</th>
+      <th>Why it was added</th>
     </tr>
   </thead>
   <tbody>
   <tr>
-    <td><img width="150px" alt="docker" src="docs/docker.png"></td>
+    <td><img width="100px" alt="docker" src="docs/docker.png"></td>
     <td><b>Docker</b><br>Containerization for Services</td>
-    <td><img width="150px" alt="pgsql" src="docs/pgsql.png"></td>
+    <td>Helps to keep all required services in containers. To have fast and predictable installation process in minutes</td>
+  </tr>
+  <tr>
+    <td><img width="100px" alt="pgsql" src="docs/pgsql.png"></td>
     <td><b>PostgresSQL</b><br>Database</td>
+    <td>Most popular relation database</td>
   </tr>
   <tr>
-    <td><img width="150px" alt="ruby" src="docs/ruby.png"></td>
+    <td><img width="100px" alt="ruby" src="docs/ruby.png"></td>
     <td><b>Ruby 3.2</b></td>
-    <td><img width="150px" alt="rails7" src="docs/rails7.png"></td>
+    <td>Most recent version of Ruby</td>
+  </tr>
+  <tr>
+    <td><img width="100px" alt="rails7" src="docs/rails7.png"></td>
     <td><b>Rails 7</b></td>
+    <td>Most recent version of Rails</td>
   </tr>
   <tr>
-    <td><img width="150px" alt="sphinx" src="docs/sphinx.png"></td>
-    <td><b>Sphinx</b><br>Full Text Search Engine</td>
-    <td><img width="150px" alt="ts" src="docs/thinking-sphinx.png"></td>
-    <td><b>Thinking Sphinx</b><br>Ruby Connector to Sphinx</td>
+    <td><img width="100px" alt="elastic" src="docs/elastic.png"></td>
+    <td><b>Elasticsearch</b><br></td>
+    <td>The world’s leading Search engine</td>
   </tr>
   <tr>
-    <td><img width="150px" alt="elastic" src="docs/elastic.png"></td>
-    <td><b>Elasticsearch</b><br>The world’s leading Search engine</td>
-    <td><img width="150px" alt="chewy" src="docs/chewy.png"></td>
-    <td><b>Chewy</b><br>Ruby Connector to Elasticsearch</td>
+    <td><img width="100px" alt="chewy" src="docs/chewy.png"></td>
+    <td><b>Chewy</b><br></td>
+    <td>Ruby Connector to Elasticsearch</td>
   </tr>
   <tr>
-    <td><img width="150px" alt="redis" src="docs/redis.png"></td>
-    <td><b>Redis</b><br>In-memory data store for Caching</td>
-    <td><img width="150px" alt="sidekiq" src="docs/sidekiq.png"></td>
-    <td><b>Sidekiq</b><br>Job Scheduler and Async Tasks Executor</td>
+    <td><img width="100px" alt="redis" src="docs/redis.png"></td>
+    <td><b>Redis</b></td>
+    <td>In-memory data store. For caching and as a dependency of Sidekiq</td>
   </tr>
   <tr>
-    <td><img width="150px" alt="puma" src="docs/puma.png"></td>
-    <td><b>Puma</b><br>Application Web Server</td>
-    <td>New Things</td>
+    <td><img width="100px" alt="sidekiq" src="docs/sidekiq.png"></td>
+    <td><b>Sidekiq</b></td>
+    <td>Job Scheduler and Async Tasks Executor. Can be used as a stand alone tool or as ActiveJob backend</td>
+  </tr>
+  <tr>
+    <td><img width="100px" alt="puma" src="docs/import-maps.png"></td>
+    <td><b>Import Maps</b></td>
+    <td>Rails' recommended way to process JavaScript</td>
+  </tr>
+  <tr>
+    <td><img width="100px" alt="puma" src="docs/puma.png"></td>
+    <td><b>Puma</b></td>
+    <td>Application Web Server. To launch Rails app</td>
+  </tr>
+  <tr>
+    <td><img width="100px" alt="sphinx" src="docs/sphinx.png"></td>
+    <td><b>Sphinx</b></td>
+    <td>Full Text Search Engine</td>
+  </tr>
+  <tr>
+    <td><img width="100px" alt="ts" src="docs/thinking-sphinx.png"></td>
+    <td><b>Thinking Sphinx</b></td>
+    <td>Ruby Connector to Sphinx</td>
+  </tr>
+  <tr>
+    <td>Logo</td>
+    <td>New Thing</td>
     <td>...Coming Soon</td>
   </tr>
   </tbody>
