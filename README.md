@@ -63,6 +63,11 @@ Since now if you have Ruby and Docker then you have working Rails environment in
     <td>Job Scheduler and Async Tasks Executor. Can be used as a stand alone tool or as ActiveJob backend</td>
   </tr>
   <tr>
+    <td><img width="100px" alt="puma" src="docs/puma.png"></td>
+    <td><b><a href="https://www.ruby-toolbox.com/categories/web_servers">Puma</a></b></td>
+    <td>Application Web Server. To launch Rails app</td>
+  </tr>
+  <tr>
     <td><img width="100px" alt="import-maps" src="docs/import-maps.png"></td>
     <td><b><a href="https://github.com/rails/importmap-rails">Import Maps</a></b></td>
     <td>Rails' recommended way to process JavaScript</td>
@@ -73,9 +78,9 @@ Since now if you have Ruby and Docker then you have working Rails environment in
     <td>Fake data for development and testing</td>
   </tr>
   <tr>
-    <td><img width="100px" alt="puma" src="docs/puma.png"></td>
-    <td><b><a href="https://www.ruby-toolbox.com/categories/web_servers">Puma</a></b></td>
-    <td>Application Web Server. To launch Rails app</td>
+    <td><img width="100px" alt="sanitize" src="docs/sanitize.png"></td>
+    <td><b><a href="https://www.ruby-toolbox.com/projects/sanitize">Sanitize</a></b></td>
+    <td>Sanitization of a dangerous users' input</td>
   </tr>
   </tbody>
 </table>

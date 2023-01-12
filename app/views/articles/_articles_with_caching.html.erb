@@ -10,10 +10,7 @@
     </div>
 
     <% @articles.each do |article| %>
-      <article class="article">
-        <h3 class="article-header"><%= article.title %></h3>
-        <p class="article-content"><%= article.content %></p>
-      </article>
+      <%= render partial: 'article', locals: { article: article } %>
     <% end %>
   <% end %>
 </section>

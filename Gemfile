@@ -34,6 +34,9 @@ gem "sidekiq", "7.0.2"
 # Full-text ElasticSearch + Chewy
 gem 'chewy', "7.2.7"
 
+# User's input sanitization
+gem "sanitize", "6.0.0"
+
 group :development, :test do
   # fake data for development and testing
   gem "faker", "3.1.0"
