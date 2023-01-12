@@ -68,6 +68,11 @@ Since now if you have Ruby and Docker then you have working Rails environment in
     <td>Rails' recommended way to process JavaScript</td>
   </tr>
   <tr>
+    <td><img width="100px" alt="faker" src="docs/faker.png"></td>
+    <td><b><a href="https://github.com/rails/importmap-rails">Faker</a></b></td>
+    <td>Fake data for development and testing</td>
+  </tr>
+  <tr>
     <td><img width="100px" alt="puma" src="docs/puma.png"></td>
     <td><b><a href="https://www.ruby-toolbox.com/categories/web_servers">Puma</a></b></td>
     <td>Application Web Server. To launch Rails app</td>

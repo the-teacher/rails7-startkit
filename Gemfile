@@ -34,6 +34,11 @@ gem "sidekiq", "7.0.2"
 # Full-text ElasticSearch + Chewy
 gem 'chewy', "7.2.7"
 
+group :development, :test do
+  # fake data for development and testing
+  gem "faker", "3.1.0"
+end
+
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # </Rails7 on Docker. Start Kit>
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

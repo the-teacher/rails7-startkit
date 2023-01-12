@@ -51,6 +51,7 @@ FileUtils.chdir APP_ROOT do
 
   containers_information
 
-  puts "What was done. Welcome to RAILS 7!"
-  puts $steps_messages.join("\n")
+  puts "What was done:"
+  puts $steps_messages.join("\n\n")
+  puts "Welcome to RAILS 7!"
 end
