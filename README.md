@@ -38,19 +38,14 @@ Since now if you have Ruby and Docker then you have working Rails environment in
     <td>Most recent version of Rails</td>
   </tr>
   <tr>
+    <td><img width="100px" alt="puma" src="docs/puma.png"></td>
+    <td><b><a href="https://www.ruby-toolbox.com/categories/web_servers">Puma</a></b></td>
+    <td>Application Web Server. To launch Rails app</td>
+  </tr>
+  <tr>
     <td><img width="100px" alt="gem config" src="docs/config.png"></td>
     <td><b><a href="https://www.ruby-toolbox.com/projects/config">gem&nbsp;"config"</a></b></td>
     <td>Configuration management tool</td>
-  </tr>
-  <tr>
-    <td><img width="100px" alt="elastic" src="docs/elastic.png"></td>
-    <td><b><a href="https://www.elastic.co">Elasticsearch</a></b></td>
-    <td>The world’s leading Search engine</td>
-  </tr>
-  <tr>
-    <td><img width="100px" alt="chewy" src="docs/chewy.png"></td>
-    <td><b><a href="https://www.ruby-toolbox.com/projects/chewy">Chewy</a></b></td>
-    <td>Ruby Connector to Elasticsearch</td>
   </tr>
   <tr>
     <td><img width="100px" alt="redis" src="docs/redis.png"></td>
@@ -63,9 +58,14 @@ Since now if you have Ruby and Docker then you have working Rails environment in
     <td>Job Scheduler and Async Tasks Executor. Can be used as a stand alone tool or as ActiveJob backend</td>
   </tr>
   <tr>
-    <td><img width="100px" alt="puma" src="docs/puma.png"></td>
-    <td><b><a href="https://www.ruby-toolbox.com/categories/web_servers">Puma</a></b></td>
-    <td>Application Web Server. To launch Rails app</td>
+    <td><img width="100px" alt="elastic" src="docs/elastic.png"></td>
+    <td><b><a href="https://www.elastic.co">Elasticsearch</a></b></td>
+    <td>The world’s leading Search engine</td>
+  </tr>
+  <tr>
+    <td><img width="100px" alt="chewy" src="docs/chewy.png"></td>
+    <td><b><a href="https://www.ruby-toolbox.com/projects/chewy">Chewy</a></b></td>
+    <td>Ruby Connector to Elasticsearch</td>
   </tr>
   <tr>
     <td><img width="100px" alt="import-maps" src="docs/import-maps.png"></td>
