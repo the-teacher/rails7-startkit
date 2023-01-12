@@ -117,8 +117,8 @@ What I'm going to add...
     <td>Sending emails for account confirmations</td>
   </tr>
   <tr>
-    <td><img width="100px" alt="letter_opener" src="docs/letter_opener.png"></td>
-    <td><b><a href="https://www.ruby-toolbox.com/categories/EMail_Fake_Servers">Letter Opener</a></b></td>
+    <td><img width="100px" alt="letter_opener" src="docs/mailcatcher.png"></td>
+    <td><b><a href="https://www.ruby-toolbox.com/categories/EMail_Fake_Servers">mailcatcher</a></b></td>
     <td>Email previwer for development</td>
   </tr>
   <tr>
