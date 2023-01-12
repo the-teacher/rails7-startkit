@@ -1,0 +1,11 @@
+<section class="section-function">
+  <h2 class="header-section">ElasticSearch results</h2>
+
+  <div class="section-description">
+    <p>Term/Displayed/Found: "<%= term %>"/<%= articles.size %>/<%= articles.count %></p>
+  </div>
+
+  <% articles.each do |article| %>
+    <%= render partial: 'article', locals: { article: article } %>
+  <% end %>
+</section>
