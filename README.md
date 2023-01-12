@@ -69,7 +69,7 @@ Since now if you have Ruby and Docker then you have working Rails environment in
   </tr>
   <tr>
     <td><img width="100px" alt="faker" src="docs/faker.png"></td>
-    <td><b><a href="https://github.com/rails/importmap-rails">Faker</a></b></td>
+    <td><b><a href="https://www.ruby-toolbox.com/categories/random_data_generation">Faker</a></b></td>
     <td>Fake data for development and testing</td>
   </tr>
   <tr>
