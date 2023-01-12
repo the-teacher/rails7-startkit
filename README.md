@@ -232,6 +232,10 @@ From the root of the project
       <td>Stop everything if it is running</td>
     </tr>
     <tr>
+      <td><b>bin/cache</b></td>
+      <td>Toggle caching in development and restart web server</td>
+    </tr>
+    <tr>
       <td><b>bin/index</b></td>
       <td>Run Search engines indexation</td>
     </tr>

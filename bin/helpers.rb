@@ -3,6 +3,9 @@ DELAY = 3
 $steps_counter = 1
 $steps_messages = []
 
+@puma_start_command = 'bundle exec puma -C config/_PUMA.rb'
+@puma_stop_command  = 'pkill -f puma'
+
 def wait(details, delay = DELAY)
   puts "Waiting #{delay} seconds #{details}"
   sleep(delay)
@@ -36,6 +39,16 @@ def check_docker!
   unless system('docker -v')
     puts "Docker not found"
     exit 1
+  end
+end
+
+def inside_rails_conainer?
+  if system('docker -v')
+    puts "Docker is found. Looks like you are on the HOST machine"
+    return false
+  else
+    puts "Docker is not found. Looks like you are in the container"
+    return true
   end
 end
 
@@ -92,12 +105,17 @@ end
 
 def puma_start
   puts "Launching PUMA"
-  container_bash_exec('rails', 'bundle exec puma -C config/_PUMA.rb', detached = true)
+  container_bash_exec('rails', @puma_start_command, detached = true)
 end
 
 def puma_stop
   puts "Stopping PUMA"
-  container_bash_exec('rails', 'pkill -f puma')
+  container_bash_exec('rails', @puma_stop_command)
+end
+
+def puma_restart
+  puma_stop
+  puma_start
 end
 
 def sidekiq_start
