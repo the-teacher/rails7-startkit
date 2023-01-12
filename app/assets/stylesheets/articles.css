@@ -39,11 +39,12 @@ article {
 
 .article {
   border: 1px solid rgb(180, 185, 209);
-  padding: 10px;
+  border-width: 0px 0px 0px 10px;
+  padding: 0 10px;
 }
 
 .article-header {
-  background-color: rgb(220, 241, 250);
+  background-color: rgb(231, 248, 255);
   padding: 10px;
 }
 
@@ -82,7 +83,7 @@ section {
 .section-description {
   padding: 10px;
   border: 1px solid rgb(249, 124, 51);
-  background-color: rgb(255, 248, 157);
+  background-color: rgb(255, 251, 195);
   margin-bottom: 20px;
 }
 
@@ -93,7 +94,7 @@ section {
 }
 
 .header-section {
-  background-color: rgb(232, 250, 215);
+  background-color: rgb(242, 255, 230);
   border: 1px solid rgb(187, 210, 165);
   padding: 10px;
 }
