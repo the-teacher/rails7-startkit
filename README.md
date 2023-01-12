@@ -39,7 +39,7 @@ Since now if you have Ruby and Docker then you have working Rails environment in
   </tr>
   <tr>
     <td><img width="100px" alt="gem config" src="docs/config.png"></td>
-    <td><b><a href="https://www.ruby-toolbox.com/projects/config">gem "config"</a></b></td>
+    <td><b><a href="https://www.ruby-toolbox.com/projects/config">gem&nbsp;"config"</a></b></td>
     <td>Configuration management tool</td>
   </tr>
   <tr>

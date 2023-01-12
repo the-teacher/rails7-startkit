@@ -1,10 +1,12 @@
 #
 # ARM:
 # docker build -t iamteacher/rails7:2023.arm64 -f Dockerfile --build-arg BUILDPLATFORM="linux/arm64" ../
+# docker push iamteacher/rails7:2023.arm64
 # docker run -ti iamteacher/rails7:2023.arm64
 #
 # AMD:
 # docker build -t iamteacher/rails7:2023.amd64 -f Dockerfile --build-arg BUILDPLATFORM="linux/amd64" ../
+# docker push iamteacher/rails7:2023.arm64
 # docker run -ti iamteacher/rails7:2023.amd64
 #
 # 386:
