@@ -8,14 +8,6 @@ class ArticlesController < ApplicationController
           query: @search_query,
           fields: [:title, :content]
       })
-      .highlight({
-        pre_tags: ['<b>'],
-        post_tags: ['</b>'],
-        fields: {
-          title: {},
-          content: {}
-        }
-      })
       .limit(3)
 
     @articles = Article.first(3)

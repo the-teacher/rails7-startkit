@@ -25,7 +25,7 @@ Since now if you have Ruby and Docker then you have working Rails environment in
   <tr>
     <td><img width="100px" alt="pgsql" src="docs/pgsql.png"></td>
     <td><b><a href="https://www.ruby-toolbox.com/categories/SQL_Database_Adapters">PostgresSQL</a></b></td>
-    <td>Most popular relation database</td>
+    <td>Most popular relational database</td>
   </tr>
   <tr>
     <td><img width="100px" alt="ruby" src="docs/ruby.png"></td>
