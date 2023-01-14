@@ -102,3 +102,25 @@ section {
 em.tsh {
   background-color: yellow;
 }
+
+.section-pagination .pagination {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.section-pagination .pagination .page,
+.section-pagination .pagination .prev,
+.section-pagination .pagination .next,
+.section-pagination .pagination .first,
+.section-pagination .pagination .last {
+  padding: 3px;
+  background-color: rgb(237, 244, 246);
+}
+
+.section-pagination .pagination a {
+  color: #3168d7;
+}
+.section-pagination .pagination a:hover {
+  color: #031741;
+}

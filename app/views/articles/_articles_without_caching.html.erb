@@ -6,7 +6,11 @@
     <p><b>Rendered at:</b> <%= DateTime.now.strftime('%d.%m.%Y %H.%M.%S') %></p>
   </div>
 
-  <% @articles.each do |article| %>
+  <% articles.each do |article| %>
     <%= render partial: 'article', locals: { article: article } %>
   <% end %>
+
+  <div class="section-pagination">
+    <%= paginate articles %>
+  </div>
 </section>
