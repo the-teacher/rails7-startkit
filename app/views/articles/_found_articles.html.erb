@@ -5,7 +5,16 @@
     <p>Term/Displayed/Found: "<%= term %>"/<%= articles.size %>/<%= articles.count %></p>
   </div>
 
+  <% if articles.size.zero? %>
+    <div class="section-description">
+      <p>Sorry. No Search Results</p>
+    </div>
+  <% end %>
+
   <% articles.each do |article| %>
-    <%= render partial: 'article', locals: { article: article } %>
+    <article class="article the-search-highlight" data-search-words="<%= [term].to_json %>">
+      <h3 class="article-header"><%= article.title %></h3>
+      <p class="article-content"><%= raw article.content %></p>
+    </article>
   <% end %>
 </section>
