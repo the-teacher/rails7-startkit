@@ -10,6 +10,9 @@ class Article < ApplicationRecord
   # ElasticSearch / Chewy
   update_index('articles') { self }
 
+  # Kaminari. Pagination
+  paginates_per 3
+
   # Take a raw content from a user and save it in `content_raw`.
   # But never render `content_raw` on a page. It is dangerous!
   # Process a content once `on save` and cut off dangerous tags.

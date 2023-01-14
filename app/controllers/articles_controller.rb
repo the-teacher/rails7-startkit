@@ -8,8 +8,9 @@ class ArticlesController < ApplicationController
           query: @search_query,
           fields: [:title, :content]
       })
-      .limit(3)
+      .per(3)
+      .page params[:page]
 
-    @articles = Article.first(3)
+    @articles = Article.order(:title).page params[:page]
   end
 end
