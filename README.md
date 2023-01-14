@@ -360,10 +360,6 @@ Now you are in the Rails container and you can do everything as usual
 
 ### TODO
 
-- <s>ElasticSearch. [Chewy](https://github.com/toptal/chewy)</s>
-- <s>Memcached [Link](https://devcenter.heroku.com/articles/building-a-rails-3-application-with-memcache)</s> [Rejected](https://stackoverflow.com/questions/10558465/memcached-vs-redis)
-- <s>Puma on systemd [Link](https://github.com/puma/puma/blob/master/docs/systemd.md)</s> [Rejected](https://developers.redhat.com/blog/2019/04/24/how-to-run-systemd-in-a-container)
-- <s>Sidekiq on systemd [Link](https://github.com/mperham/sidekiq/blob/main/examples/systemd/sidekiq.service)</s> [Rejected](https://developers.redhat.com/blog/2019/04/24/how-to-run-systemd-in-a-container)
 - Action Cable [Link](https://guides.rubyonrails.org/action_cable_overview.html)
 - Nginx
 
