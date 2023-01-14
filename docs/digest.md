@@ -1,5 +1,19 @@
 ## Rails 7. Startkit
 
+### Week 1. Part 6
+
+I'm going to create `release 1.0`
+
+### Week 1. Part 5
+
+So. 1 Week left. I had really great time and my short vacation finished with really nice  results.
+
+First part of my project is done. I have a working MVP rails 7 project. After many years without rails I touched it again and learned some new things.
+
+Not sure if I will have enough time later to continue, but already I really satisfied with my current results. Good feedback from people abound inspered me and probaby will help me to find some time to develop this project later.
+
+It was really great adventure! See you soon!
+
 ### Week 1. Part 4
 
 One person asked me why I have an app with so many preinstalled tools. Like, if you need something you will install it later yourself.
