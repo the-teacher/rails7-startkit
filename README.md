@@ -82,6 +82,11 @@ Since now if you have Ruby and Docker then you have working Rails environment in
     <td><b><a href="https://www.ruby-toolbox.com/projects/sanitize">Sanitize</a></b></td>
     <td>Sanitization of a dangerous users' input</td>
   </tr>
+  <tr>
+    <td><img width="100px" alt="kaminari" src="docs/kaminari.png"></td>
+    <td><b><a href="https://www.ruby-toolbox.com/categories/pagination">Kaminari</a></b></td>
+    <td>Pagination solution</td>
+  </tr>
   </tbody>
 </table>
 
@@ -96,11 +101,6 @@ What I'm going to add...
     </tr>
   </thead>
   <tbody>
-  <tr>
-    <td><img width="100px" alt="kaminari" src="docs/kaminari.png"></td>
-    <td><b><a href="https://www.ruby-toolbox.com/categories/pagination">Kaminari</a></b></td>
-    <td>Pagination solution</td>
-  </tr>
   <tr>
     <td><img width="100px" alt="devise" src="docs/devise.png"></td>
     <td><b><a href="https://www.ruby-toolbox.com/categories/rails_authentication">Devise</b></a></td>
