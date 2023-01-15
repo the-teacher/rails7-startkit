@@ -4,3 +4,6 @@ require_relative "./helpers/helpers.rb"
 puma_stop
 cron_stop
 sidekiq_stop
+tailwind_stop
+
+containers_information

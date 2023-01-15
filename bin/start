@@ -5,6 +5,10 @@ rails_install_gems
 rails_db_migrate
 
 cron_start
+puma_start
+sidekiq_start
+tailwind_start
+
 chewy_index
 
 sidekiq_start
