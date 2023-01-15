@@ -258,7 +258,7 @@ From the root of the project
 
 ### Conventions and Agreements
 
-For demonstration, education and maintainance purposes I use the following approach:
+For demonstration, education and maintenance purposes I use the following approach:
 
 **Data**
 
