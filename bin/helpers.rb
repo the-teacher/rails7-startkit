@@ -1,4 +1,5 @@
 DELAY = 3
+ENV_NAME = ENV.fetch("RAILS_ENV") { 'development' }
 
 $steps_counter = 1
 $steps_messages = []
@@ -23,7 +24,7 @@ def system!(*args)
 end
 
 def container_exec(container_name = 'rails', cmd = 'ls')
-  to_exec = "docker compose -f docker/docker-compose.yml exec #{container_name} #{cmd}"
+  to_exec = "docker compose -f docker/docker-compose.yml exec -e='RAILS_ENV=#{ENV_NAME}' #{container_name} #{cmd}"
   puts to_exec
   system(to_exec)
 end
@@ -126,4 +127,24 @@ end
 def sidekiq_stop
   puts "Stopping SIDEKIQ"
   container_bash_exec('rails', 'pkill -f sidekiq')
+end
+
+def cron_start
+  container_exec('--user root rails', '/etc/init.d/cron start')
+end
+
+def cron_stop
+  container_exec('--user root rails', '/etc/init.d/cron stop')
+end
+
+def whenever_start
+  container_exec('rails', "bundle exec whenever --update-crontab --load-file config/_SCHEDULE.rb -i lucky")
+end
+
+def whenever_show
+  container_exec('rails', 'crontab -l')
+end
+
+def whenever_stop
+  container_exec('rails', 'crontab -r')
 end

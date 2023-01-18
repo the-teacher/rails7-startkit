@@ -1,0 +1,5 @@
+#!/usr/bin/env ruby
+require_relative "./helpers.rb"
+
+to_exec = (ARGV[0] || 'containers_information').strip
+eval to_exec

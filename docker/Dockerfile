@@ -21,6 +21,10 @@ FROM --platform=$BUILDPLATFORM ruby:3.2
 ARG BUILDPLATFORM
 RUN echo "$BUILDPLATFORM" > /BUILDPLATFORM
 
+RUN apt-get update && apt-get install --yes \
+    cron \
+    vim
+
 SHELL ["/bin/bash", "--login", "-c"]
 
 RUN gem update --system 3.4.2
@@ -48,7 +52,6 @@ RUN chown -R lucky:lucky /usr/local/bin/ruby
 RUN chown -R lucky:lucky /usr/local/bundle
 
 # rails credentials:edit
-RUN apt-get update && apt-get install vim --yes
 ENV EDITOR="vim"
 
 # =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=

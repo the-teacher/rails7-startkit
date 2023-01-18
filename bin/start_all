@@ -1,4 +1,6 @@
 #!/usr/bin/env ruby
 require_relative "./helpers.rb"
-stop_all_containers
+
+start_all_containers
+system('bin/start')
 containers_information

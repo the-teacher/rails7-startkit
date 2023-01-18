@@ -87,6 +87,11 @@ Since now if you have Ruby and Docker then you have working Rails environment in
     <td><b><a href="https://www.ruby-toolbox.com/categories/pagination">Kaminari</a></b></td>
     <td>Pagination solution</td>
   </tr>
+  <tr>
+    <td><img width="100px" alt="whenever" src="docs/whenever.png"></td>
+    <td><b><a href="https://www.ruby-toolbox.com/categories/scheduling">whenever</a></b></td>
+    <td>Linux Cron based periodical tasks</td>
+  </tr>
   </tbody>
 </table>
 
@@ -102,6 +107,11 @@ What I'm going to add...
   </thead>
   <tbody>
   <tr>
+    <td><img width="100px" alt="letter_opener" src="docs/mailcatcher.png"></td>
+    <td><b><a href="https://www.ruby-toolbox.com/categories/EMail_Fake_Servers">mailcatcher</a></b></td>
+    <td>Email previwer for development</td>
+  </tr>
+  <tr>
     <td><img width="100px" alt="devise" src="docs/devise.png"></td>
     <td><b><a href="https://www.ruby-toolbox.com/categories/rails_authentication">Devise</b></a></td>
     <td>Authentication solution for Rails</td>
@@ -115,16 +125,6 @@ What I'm going to add...
     <td><img width="100px" alt="devise" src="docs/devise.png"></td>
     <td><b>Devise and Action&nbsp;Mailer</b></td>
     <td>Sending emails for account confirmations</td>
-  </tr>
-  <tr>
-    <td><img width="100px" alt="letter_opener" src="docs/mailcatcher.png"></td>
-    <td><b><a href="https://www.ruby-toolbox.com/categories/EMail_Fake_Servers">mailcatcher</a></b></td>
-    <td>Email previwer for development</td>
-  </tr>
-  <tr>
-    <td><img width="100px" alt="whenever" src="docs/whenever.png"></td>
-    <td><b><a href="https://www.ruby-toolbox.com/categories/scheduling">whenever</a></b></td>
-    <td>Linux Cron based periodical tasks</td>
   </tr>
   <tr>
     <td><img width="100px" alt="rspec" src="docs/rspec.png"></td>

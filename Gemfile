@@ -40,6 +40,9 @@ gem "sanitize", "6.0.0"
 # Pagination
 gem "kaminari", "1.2.2"
 
+# Cron based periodical jobs
+gem "whenever", "1.0.0", require: false
+
 group :development, :test do
   # fake data for development and testing
   gem "faker", "3.1.0"
