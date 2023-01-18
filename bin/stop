@@ -2,6 +2,5 @@
 require_relative "./helpers.rb"
 
 puma_stop
+cron_stop
 sidekiq_stop
-
-containers_information

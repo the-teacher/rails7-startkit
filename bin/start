@@ -1,13 +1,11 @@
 #!/usr/bin/env ruby
 require_relative "./helpers.rb"
 
-start_all_containers
 rails_install_gems
 rails_db_migrate
 
-puma_start
-sidekiq_start
-
+cron_start
 chewy_index
 
-containers_information
+sidekiq_start
+puma_start
