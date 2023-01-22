@@ -1,5 +1,7 @@
 # Rails 7. Start Kit
 
+<img  alt="docker" src="docs/Rails7.StartKit.jpg">
+
 Rails 7 App with Preinstalled Tools is Ready in Minutes!
 ## Why?
 
