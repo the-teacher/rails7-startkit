@@ -25,11 +25,6 @@ Since now if you have Ruby and Docker then you have working Rails environment in
     <td>Helps to keep all required services in containers. To have fast and predictable installation process in minutes</td>
   </tr>
   <tr>
-    <td><img width="100px" alt="pgsql" src="docs/pgsql.png"></td>
-    <td><b><a href="https://www.ruby-toolbox.com/categories/SQL_Database_Adapters">PostgresSQL</a></b></td>
-    <td>Most popular relational database</td>
-  </tr>
-  <tr>
     <td><img width="100px" alt="ruby" src="docs/ruby.png"></td>
     <td><b>Ruby 3.2</b></td>
     <td>Most recent version of Ruby</td>
@@ -40,9 +35,9 @@ Since now if you have Ruby and Docker then you have working Rails environment in
     <td>Most recent version of Rails</td>
   </tr>
   <tr>
-    <td><img width="100px" alt="puma" src="docs/puma.png"></td>
-    <td><b><a href="https://www.ruby-toolbox.com/categories/web_servers">Puma</a></b></td>
-    <td>Application Web Server. To launch Rails app</td>
+    <td><img width="100px" alt="pgsql" src="docs/pgsql.png"></td>
+    <td><b><a href="https://www.ruby-toolbox.com/categories/SQL_Database_Adapters">PostgresSQL</a></b></td>
+    <td>Most popular relational database</td>
   </tr>
   <tr>
     <td><img width="100px" alt="gem config" src="docs/config.png"></td>
@@ -58,6 +53,11 @@ Since now if you have Ruby and Docker then you have working Rails environment in
     <td><img width="100px" alt="sidekiq" src="docs/sidekiq.png"></td>
     <td><b><a href="https://www.ruby-toolbox.com/categories/Background_Jobs">Sidekiq</a></b></td>
     <td>Job Scheduler and Async Tasks Executor. Can be used as a stand alone tool or as ActiveJob backend</td>
+  </tr>
+  <tr>
+    <td><img width="100px" alt="puma" src="docs/puma.png"></td>
+    <td><b><a href="https://www.ruby-toolbox.com/categories/web_servers">Puma</a></b></td>
+    <td>Application Web Server. To launch Rails app</td>
   </tr>
   <tr>
     <td><img width="100px" alt="elastic" src="docs/elastic.png"></td>
