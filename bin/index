@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
-require_relative "./helpers.rb"
+require_relative "./helpers/helpers.rb"
 
 start_all_containers
 

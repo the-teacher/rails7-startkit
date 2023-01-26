@@ -1,4 +1,4 @@
 #!/usr/bin/env ruby
-require_relative "./helpers.rb"
+require_relative "./helpers/helpers.rb"
 stop_all_containers
 containers_information
