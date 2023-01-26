@@ -176,9 +176,9 @@ You will see something like that:
 ```
 1. Pull all required Images
 2. Launching ElasticSearch Container
-3. Launching PgSQL container
+3. Launching PgSQL Container
 4. Launching Redis Container
-5. Launching Rails container
+5. Launching Rails Container
 6. Installing Gems. Please Wait
 7. Create DB. Migrate DB. Create Seeds
 8. Indexing Article Model

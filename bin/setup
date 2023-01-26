@@ -18,7 +18,7 @@ FileUtils.chdir APP_ROOT do
 
   # PgSQL
   FileUtils.rm('db/PGSQL/.keep', force: true)
-  step_info "Launching PgSQL container"
+  step_info "Launching PgSQL Container"
   system('docker compose -f docker/docker-compose.yml up psql -d')
   wait('to initialize PgSQL database')
   FileUtils.touch('db/PGSQL/.keep', verbose: true)
@@ -29,7 +29,7 @@ FileUtils.chdir APP_ROOT do
   wait('to launch Redis Container')
 
   # Rails
-  step_info "Launching Rails container"
+  step_info "Launching Rails Container"
   system('docker compose -f docker/docker-compose.yml up rails -d')
   wait('to launch Rails Container')
 
