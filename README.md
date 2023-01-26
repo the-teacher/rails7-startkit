@@ -174,6 +174,10 @@ bin/setup
 You will see something like that:
 
 ```
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Rails 7. StartKit
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+What was done:
 1. Pull all required Images
 2. Launching ElasticSearch Container
 3. Launching PgSQL Container
@@ -185,6 +189,9 @@ You will see something like that:
 9. Launching Rails App with Puma
 10. Launching Sidekiq
 11. Visit: http://localhost:3000
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Welcome to RAILS 7!
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ```
 
 <details>

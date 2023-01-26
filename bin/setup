@@ -7,6 +7,8 @@ APP_ROOT = File.expand_path("..", __dir__)
 
 FileUtils.chdir APP_ROOT do
   check_docker!
+  check_docker_compose_v2!
+  rails7_startkit_greetings!
 
   step_info "Pull all required Images"
   system('docker compose -f docker/docker-compose.yml pull')
@@ -52,7 +54,5 @@ FileUtils.chdir APP_ROOT do
 
   containers_information
 
-  puts "What was done:"
-  puts $steps_messages.join("\n")
-  puts "Welcome to RAILS 7!"
+  rails7_ready
 end
