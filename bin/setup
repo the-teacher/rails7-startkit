@@ -8,6 +8,9 @@ APP_ROOT = File.expand_path("..", __dir__)
 FileUtils.chdir APP_ROOT do
   check_docker!
 
+  step_info "Pull all required Images"
+  system('docker compose -f docker/docker-compose.yml pull')
+
   FileUtils.rm('db/PGSQL/.keep', force: true)
 
   step_info "Launching PgSQL container"
