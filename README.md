@@ -39,7 +39,7 @@ Rails 7 Application is Ready in Minutes!
     <td>Most popular relational database</td>
   </tr>
   <tr>
-    <td colspan="3"><b>Cache and Delayed J</b>obs</td>
+    <td colspan="3"><b>Cache and Delayed Jobs</b></td>
   </tr>
   <tr>
     <td><img width="100px" alt="redis" src="docs/redis.png"></td>
