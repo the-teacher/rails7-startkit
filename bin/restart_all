@@ -1,0 +1,3 @@
+#!/usr/bin/env ruby
+system('bin/stop_all')
+system('bin/start_all')
