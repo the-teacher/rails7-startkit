@@ -39,11 +39,6 @@ Rails 7 Application is Ready in Minutes!
     <td>Most popular relational database</td>
   </tr>
   <tr>
-    <td><img width="100px" alt="gem config" src="docs/config.png"></td>
-    <td><b><a href="https://www.ruby-toolbox.com/projects/config">gem&nbsp;"config"</a></b></td>
-    <td>Configuration management tool</td>
-  </tr>
-  <tr>
     <td colspan="3">Cache and Delayed Jobs</td>
   </tr>
   <tr>
@@ -57,9 +52,9 @@ Rails 7 Application is Ready in Minutes!
     <td>Job Scheduler and Async Tasks Executor. Can be used as a stand alone tool or as ActiveJob backend</td>
   </tr>
   <tr>
-    <td><img width="100px" alt="puma" src="docs/puma.png"></td>
-    <td><b><a href="https://www.ruby-toolbox.com/categories/web_servers">Puma</a></b></td>
-    <td>Application Web Server. To launch Rails app</td>
+    <td><img width="100px" alt="whenever" src="docs/whenever.png"></td>
+    <td><b><a href="https://www.ruby-toolbox.com/categories/scheduling">whenever</a></b></td>
+    <td>Linux Cron based periodical tasks</td>
   </tr>
   <tr>
     <td colspan="3">Full text search</td>
@@ -75,9 +70,20 @@ Rails 7 Application is Ready in Minutes!
     <td>Ruby Connector to Elasticsearch</td>
   </tr>
   <tr>
+    <td colspan="3">Front-end</td>
+  </tr>
+  <tr>
     <td><img width="100px" alt="import-maps" src="docs/import-maps.png"></td>
     <td><b><a href="https://github.com/rails/importmap-rails">Import Maps</a></b></td>
     <td>Rails' recommended way to process JavaScript</td>
+  </tr>
+  <tr>
+    <td colspan="3">Application Level</td>
+  </tr>
+  <tr>
+    <td><img width="100px" alt="gem config" src="docs/config.png"></td>
+    <td><b><a href="https://www.ruby-toolbox.com/projects/config">gem&nbsp;"config"</a></b></td>
+    <td>Configuration management tool</td>
   </tr>
   <tr>
     <td><img width="100px" alt="faker" src="docs/faker.png"></td>
@@ -95,9 +101,9 @@ Rails 7 Application is Ready in Minutes!
     <td>Pagination solution</td>
   </tr>
   <tr>
-    <td><img width="100px" alt="whenever" src="docs/whenever.png"></td>
-    <td><b><a href="https://www.ruby-toolbox.com/categories/scheduling">whenever</a></b></td>
-    <td>Linux Cron based periodical tasks</td>
+    <td><img width="100px" alt="puma" src="docs/puma.png"></td>
+    <td><b><a href="https://www.ruby-toolbox.com/categories/web_servers">Puma</a></b></td>
+    <td>Application Web Server. To launch Rails app</td>
   </tr>
   </tbody>
 </table>
