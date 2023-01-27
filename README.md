@@ -16,7 +16,7 @@ Rails 7 Application is Ready in Minutes!
   </thead>
   <tbody>
   <tr>
-    <td colspan="3">Main</td>
+    <td colspan="3"><b>Main</b></td>
   </tr>
   <tr>
     <td><img width="100px" alt="docker" src="docs/docker.png"></td>
@@ -39,7 +39,7 @@ Rails 7 Application is Ready in Minutes!
     <td>Most popular relational database</td>
   </tr>
   <tr>
-    <td colspan="3">Cache and Delayed Jobs</td>
+    <td colspan="3"><b>Cache and Delayed J</b>obs</td>
   </tr>
   <tr>
     <td><img width="100px" alt="redis" src="docs/redis.png"></td>
@@ -57,7 +57,7 @@ Rails 7 Application is Ready in Minutes!
     <td>Linux Cron based periodical tasks</td>
   </tr>
   <tr>
-    <td colspan="3">Full text search</td>
+    <td colspan="3"><b>Full text search</b></td>
   </tr>
   <tr>
     <td><img width="100px" alt="elastic" src="docs/elastic.png"></td>
@@ -70,7 +70,7 @@ Rails 7 Application is Ready in Minutes!
     <td>Ruby Connector to Elasticsearch</td>
   </tr>
   <tr>
-    <td colspan="3">Front-end</td>
+    <td colspan="3"><b>Front-end</b></td>
   </tr>
   <tr>
     <td><img width="100px" alt="import-maps" src="docs/import-maps.png"></td>
@@ -78,7 +78,7 @@ Rails 7 Application is Ready in Minutes!
     <td>Rails' recommended way to process JavaScript</td>
   </tr>
   <tr>
-    <td colspan="3">Application Level</td>
+    <td colspan="3"><b>Application Level</b></td>
   </tr>
   <tr>
     <td><img width="100px" alt="gem config" src="docs/config.png"></td>
