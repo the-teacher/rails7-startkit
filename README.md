@@ -185,24 +185,26 @@ bin/setup
 You will see something like that:
 
 ```
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Rails 7. StartKit
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 What was done:
 1. Pull all required Images
 2. Launching ElasticSearch Container
-3. Launching PgSQL Container
-4. Launching Redis Container
-5. Launching Rails Container
-6. Installing Gems. Please Wait
-7. Create DB. Migrate DB. Create Seeds
-8. Indexing Article Model
-9. Launching Rails App with Puma
-10. Launching Sidekiq
-11. Visit: http://localhost:3000
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+3. Launching Mailcatcher Container
+4. Launching PgSQL Container
+5. Launching Redis Container
+6. Launching Rails Container
+7. Installing Gems. Please Wait
+8. Create DB. Migrate DB. Create Seeds
+9. Indexing Article Model
+10. Launching Rails App with Puma
+11. Launching Sidekiq
+12. Visit Rails App: http://localhost:3000
+13. Visit Mail Service: http://localhost:1080
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Welcome to RAILS 7!
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ```
 
 <details>

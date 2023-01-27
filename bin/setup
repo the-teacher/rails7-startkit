@@ -16,7 +16,12 @@ FileUtils.chdir APP_ROOT do
   # ElasticSearch
   step_info "Launching ElasticSearch Container"
   system('docker compose -f docker/docker-compose.yml up elastic -d')
-  wait('to launch ElasticSearch Container', 5)
+  wait('to launch ElasticSearch Container')
+
+  # Mailcatcher
+  step_info "Launching Mailcatcher Container"
+  system('docker compose -f docker/docker-compose.yml up mailcatcher -d')
+  wait('to launch Mailcatcher Container')
 
   # PgSQL
   FileUtils.rm('db/PGSQL/.keep', force: true)
@@ -50,7 +55,8 @@ FileUtils.chdir APP_ROOT do
   step_info "Launching Sidekiq"
   sidekiq_start
 
-  step_info "Visit: http://localhost:3000"
+  step_info "Visit Rails App: http://localhost:3000"
+  step_info "Visit Mail Service: http://localhost:1080"
 
   containers_information
 

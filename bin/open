@@ -7,7 +7,8 @@ CONTAINER_SHELL_MAP = {
   rails: :bash,
   psql: :bash,
   redis: :ash,
-  elastic: :bash
+  elastic: :bash,
+  mailcatcher: :ash
 }
 
 unless CONTAINER_SHELL_MAP.key?(container_name)
