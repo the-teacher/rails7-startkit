@@ -1,13 +1,9 @@
-<img  alt="docker" src="docs/Rails7.StartKit.jpg">
-
 # Rails 7. Start Kit
 
-Rails 7 App with Preinstalled Tools is Ready in Minutes!
-## Why?
+<img  alt="docker" src="docs/Rails7.StartKit/Rails7.StartKit.jpg">
 
-Usually It is difficult and time consuming to setup a typical Rails environment from scratch.
+Rails 7 Application is Ready in Minutes!
 
-Since now if you have Ruby and Docker then you have working Rails environment in about 5 minutes without any manual efforts.
 ## What is under the hood?
 
 <table>
@@ -19,6 +15,9 @@ Since now if you have Ruby and Docker then you have working Rails environment in
     </tr>
   </thead>
   <tbody>
+  <tr>
+    <td colspan="3">Main</td>
+  </tr>
   <tr>
     <td><img width="100px" alt="docker" src="docs/docker.png"></td>
     <td><b>Docker</b></td>
@@ -45,6 +44,9 @@ Since now if you have Ruby and Docker then you have working Rails environment in
     <td>Configuration management tool</td>
   </tr>
   <tr>
+    <td colspan="3">Cache and Delayed Jobs</td>
+  </tr>
+  <tr>
     <td><img width="100px" alt="redis" src="docs/redis.png"></td>
     <td><b><a href="https://redis.io">Redis</a></b></td>
     <td>In-memory data store. For caching and as a dependency of Sidekiq</td>
@@ -58,6 +60,9 @@ Since now if you have Ruby and Docker then you have working Rails environment in
     <td><img width="100px" alt="puma" src="docs/puma.png"></td>
     <td><b><a href="https://www.ruby-toolbox.com/categories/web_servers">Puma</a></b></td>
     <td>Application Web Server. To launch Rails app</td>
+  </tr>
+  <tr>
+    <td colspan="3">Full text search</td>
   </tr>
   <tr>
     <td><img width="100px" alt="elastic" src="docs/elastic.png"></td>
