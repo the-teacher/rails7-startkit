@@ -27,7 +27,7 @@ RUN apt-get update && apt-get install --yes \
 
 SHELL ["/bin/bash", "--login", "-c"]
 
-RUN gem update --system 3.4.2
+RUN gem update --system 3.4.5
 
 # =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 # My Lucky User
