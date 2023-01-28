@@ -37,6 +37,13 @@ article {
   margin-bottom: 30px;
 }
 
+code {
+  border: 1px solid gray;
+  background-color: lightgray;
+  border-radius: 3px;
+  padding: 0 3px;
+}
+
 .article {
   border: 1px solid rgb(180, 185, 209);
   border-width: 0px 0px 0px 10px;
