@@ -12,5 +12,6 @@
  *
  *= require_self
  *= require "main"
+ *= require "demo"
  *= require "articles"
  */

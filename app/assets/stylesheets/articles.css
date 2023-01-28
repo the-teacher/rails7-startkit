@@ -3,28 +3,11 @@
   padding: 10px;
 }
 
-header, footer {
-  padding: 20px 0 0 0;
-}
-
-header {
-  border-bottom: 7px solid lightblue;
-}
-
-footer {
-  border-top: 7px solid lightblue;
-}
-
 .articles-block {
   padding-top: 10px;
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
-}
-
-section {
-  width: 30%;
-  flex-grow: 1;
 }
 
 .articles-block > section:first-child {
@@ -35,13 +18,6 @@ section {
 
 article {
   margin-bottom: 30px;
-}
-
-code {
-  border: 1px solid gray;
-  background-color: lightgray;
-  border-radius: 3px;
-  padding: 0 3px;
 }
 
 .article {
@@ -64,70 +40,4 @@ code {
 .article-date {
   background-color: rgb(237, 244, 246);
   padding: 10px;
-}
-
-h1, h2 {
-  margin-bottom: 15px;
-}
-
-h3 {
-  margin-bottom: 10px;
-}
-
-.page-header {
-  margin: 0 0 20px 0;
-}
-
-section {
-  margin-bottom: 20px;
-}
-
-.section-function {
-  padding: 10px;
-  border: 3px solid lightblue;
-}
-
-.section-description {
-  padding: 10px;
-  border: 1px solid rgb(249, 124, 51);
-  background-color: rgb(255, 251, 195);
-  margin-bottom: 20px;
-}
-
-.header-warning {
-  background-color: antiquewhite;
-  border: 1px solid rgb(242, 189, 120);
-  padding: 10px;
-}
-
-.header-section {
-  background-color: rgb(242, 255, 230);
-  border: 1px solid rgb(187, 210, 165);
-  padding: 10px;
-}
-
-em.tsh {
-  background-color: yellow;
-}
-
-.section-pagination .pagination {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
-}
-
-.section-pagination .pagination .page,
-.section-pagination .pagination .prev,
-.section-pagination .pagination .next,
-.section-pagination .pagination .first,
-.section-pagination .pagination .last {
-  padding: 3px;
-  background-color: rgb(237, 244, 246);
-}
-
-.section-pagination .pagination a {
-  color: #3168d7;
-}
-.section-pagination .pagination a:hover {
-  color: #031741;
 }
