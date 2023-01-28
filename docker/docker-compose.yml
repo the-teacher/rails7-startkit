@@ -51,6 +51,14 @@ services:
       - ../log/ELASTIC:/usr/share/elasticsearch/logs
       - ../shared:/shared
 
+  # port 1080
+  #
+  # mailcatcher does not start with ruby 3.2
+  mailcatcher:
+    image: schickling/mailcatcher
+    ports:
+      - 1080:1080
+
   # port 3000
   #
   rails:
