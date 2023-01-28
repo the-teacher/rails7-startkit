@@ -225,7 +225,7 @@ From the root of the project
   </thead>
   <tbody>
     <tr>
-      <td colspan="2"><b>Most important</b></td>
+      <td colspan="2">Most important</td>
     </tr>
     <tr>
       <td><b>bin/setup</b></td>
@@ -236,14 +236,14 @@ From the root of the project
       <td>Get in <b>Rails</b> Container</td>
     </tr>
     <tr>
-      <td colspan="2"><b>Get in a container</b></td>
+      <td colspan="2">Get in a container</td>
     </tr>
     <tr>
       <td><b>bin/open&nbsp;[NAME]</b></td>
       <td>Get in a Container. <code>[NAME]</code> can be <code>rails</code>, <code>psql</code>, <code>redis</code>, <code>elastic</code>, <code>mailcatcher</code></td>
     </tr>
     <tr>
-      <td colspan="2"><b>Start/Stop</b></td>
+      <td colspan="2">Start/Stop</td>
     </tr>
     <tr>
       <td><b>bin/start</b></td>
@@ -270,7 +270,7 @@ From the root of the project
       <td><code>bin/stop_all</code> + <code>bin/start_all</code></td>
     </tr>
     <tr>
-      <td colspan="2"><b>Helpers</b></td>
+      <td colspan="2">Helpers</td>
     </tr>
     <tr>
       <td><b>bin/status</b></td>
