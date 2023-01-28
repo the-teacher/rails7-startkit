@@ -225,44 +225,56 @@ From the root of the project
   </thead>
   <tbody>
     <tr>
+      <td colspan="2"><b>Most important</b></td>
+    </tr>
+    <tr>
       <td><b>bin/setup</b></td>
       <td>Download images, run containers, initialize data, launch all processes.</td>
     </tr>
     <tr>
       <td><b>bin/open</b></td>
-      <td>Get in <b>Rails</b> Container (`rails` by default)</td>
-    </tr>
-    <tr>
-      <td><b>bin/open&nbsp;rails</b></td>
       <td>Get in <b>Rails</b> Container</td>
     </tr>
     <tr>
-      <td><b>bin/open&nbsp;psql</b></td>
-      <td>Get in <b>PgSQL</b> Container</td>
+      <td colspan="2"><b>Get in a container</b></td>
     </tr>
     <tr>
-      <td><b>bin/open&nbsp;redis</b></td>
-      <td>Get in <b>Redis</b> Container</td>
+      <td><b>bin/open&nbsp;[NAME]</b></td>
+      <td>Get in a Container. <code>[NAME]</code> can be <code>rails</code>, <code>psql</code>, <code>redis</code>, <code>elastic</code>, <code>mailcatcher</code></td>
     </tr>
     <tr>
-      <td><b>bin/open&nbsp;elastic</b></td>
-      <td>Get in <b>ElasticSearch</b> Container</td>
+      <td colspan="2"><b>Start/Stop</b></td>
+    </tr>
+    <tr>
+      <td><b>bin/start</b></td>
+      <td>Start processes in <b>rails</b> container</td>
+    </tr>
+    <tr>
+      <td><b>bin/stop</b></td>
+      <td>Stop processes in <b>rails</b> container</td>
+    </tr>
+    <tr>
+      <td><b>bin/restart</b></td>
+      <td><code>bin/stop</code> + <code>bin/start</code></td>
+    </tr>
+    <tr>
+      <td><b>bin/start_all</b></td>
+      <td>Start processes and containers</td>
+    </tr>
+    <tr>
+      <td><b>bin/stop_all</b></td>
+      <td>Stop processes and containers</td>
+    </tr>
+    <tr>
+      <td><b>bin/restart_all</b></td>
+      <td><code>bin/stop_all</code> + <code>bin/start_all</code></td>
+    </tr>
+    <tr>
+      <td colspan="2"><b>Helpers</b></td>
     </tr>
     <tr>
       <td><b>bin/status</b></td>
       <td>To see running containers and launched services</td>
-    </tr>
-    <tr>
-      <td><b>bin/start</b></td>
-      <td>Start everything if it is stopped</td>
-    </tr>
-    <tr>
-      <td><b>bin/stop</b></td>
-      <td>Stop processes in <b>Rails</b> container</td>
-    </tr>
-    <tr>
-      <td><b>bin/stop_all</b></td>
-      <td>Stop everything if it is running</td>
     </tr>
     <tr>
       <td><b>bin/cache</b></td>
@@ -274,7 +286,11 @@ From the root of the project
     </tr>
     <tr>
       <td><b>bin/reset</b></td>
-      <td>Reset data od services in <b>./db</b> folder</td>
+      <td>Reset data of services in <b>./db</b> folder</td>
+    </tr>
+    <tr>
+      <td><b>bin/exec [COMMAND]</b></td>
+      <td>execute a command from <code>bin/helpers/helpers.rb</code>. Usually for debugging</td>
     </tr>
   </tbody>
 </table>
