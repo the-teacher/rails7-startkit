@@ -101,6 +101,11 @@ Rails 7 Application is Ready in Minutes!
     <td>Pagination solution</td>
   </tr>
   <tr>
+    <td><img width="100px" alt="letter_opener" src="docs/mailcatcher.png"></td>
+    <td><b><a href="https://www.ruby-toolbox.com/categories/EMail_Fake_Servers">mailcatcher</a></b></td>
+    <td>Email previwer for development</td>
+  </tr>
+  <tr>
     <td><img width="100px" alt="puma" src="docs/puma.png"></td>
     <td><b><a href="https://www.ruby-toolbox.com/categories/web_servers">Puma</a></b></td>
     <td>Application Web Server. To launch Rails app</td>
@@ -119,11 +124,6 @@ What I'm going to add...
     </tr>
   </thead>
   <tbody>
-  <tr>
-    <td><img width="100px" alt="letter_opener" src="docs/mailcatcher.png"></td>
-    <td><b><a href="https://www.ruby-toolbox.com/categories/EMail_Fake_Servers">mailcatcher</a></b></td>
-    <td>Email previwer for development</td>
-  </tr>
   <tr>
     <td><img width="100px" alt="devise" src="docs/devise.png"></td>
     <td><b><a href="https://www.ruby-toolbox.com/categories/rails_authentication">Devise</b></a></td>
@@ -185,9 +185,9 @@ bin/setup
 You will see something like that:
 
 ```
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Rails 7. StartKit
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 What was done:
 1. Pull all required Images
 2. Launching ElasticSearch Container
@@ -202,9 +202,9 @@ What was done:
 11. Launching Sidekiq
 12. Visit Rails App: http://localhost:3000
 13. Visit Mail Service: http://localhost:1080
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Welcome to RAILS 7!
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ```
 
 <details>
