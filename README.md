@@ -273,12 +273,12 @@ From the root of the project
       <td colspan="2">Helpers</td>
     </tr>
     <tr>
-      <td><b>bin/status</b></td>
-      <td>To see running containers and launched services</td>
-    </tr>
-    <tr>
       <td><b>bin/cache</b></td>
       <td>Toggle caching in development and restart web server</td>
+    </tr>
+    <tr>
+      <td><b>bin/status</b></td>
+      <td>To see running containers and launched services</td>
     </tr>
     <tr>
       <td><b>bin/index</b></td>
@@ -290,7 +290,7 @@ From the root of the project
     </tr>
     <tr>
       <td><b>bin/exec [COMMAND]</b></td>
-      <td>execute a command from <code>bin/helpers/helpers.rb</code>. Usually for debugging</td>
+      <td>Execute a command from <code>bin/helpers/helpers.rb</code>. Usually for debugging</td>
     </tr>
   </tbody>
 </table>
