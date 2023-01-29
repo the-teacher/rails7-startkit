@@ -89,5 +89,3 @@ RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.2/install.sh | b
 COPY Gemfile Gemfile
 COPY --chown=lucky:lucky Gemfile.lock Gemfile.lock
 RUN bundle
-
-RUN gem install rubocop-rails -v 2.17.4

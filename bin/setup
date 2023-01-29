@@ -40,7 +40,7 @@ FileUtils.chdir APP_ROOT do
   system('docker compose -f docker/docker-compose.yml up rails -d')
   wait('to launch Rails Container')
 
-  step_info "Installing Gems. Please Wait"
+  step_info "Installing Gems"
   rails_install_gems
 
   step_info "Create DB. Migrate DB. Create Seeds"
@@ -54,6 +54,9 @@ FileUtils.chdir APP_ROOT do
 
   step_info "Launching Sidekiq"
   sidekiq_start
+
+  step_info "Rubocop is Checking"
+  rubocop
 
   step_info "Visit Rails App: http://localhost:3000"
   step_info "Visit Mail Service: http://localhost:1080"
