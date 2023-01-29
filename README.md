@@ -4,6 +4,11 @@
 
 Rails 7 Application is Ready in Minutes!
 
+<details>
+  <summary>SHOW ANIMATED INTRO</summary>
+  <img width="500px" alt="rails7-startkit" src="docs/rails7intro.gif">
+</details>
+
 ## What is under the hood?
 
 <table>
