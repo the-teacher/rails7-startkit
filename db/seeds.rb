@@ -16,20 +16,20 @@ def b_tag(text)
   "<b>#{text}</b>"
 end
 
-STATUSES = [:draft, :published, :deleted]
+STATUSES = %i[draft published deleted].freeze
 
 100.times do |index|
   content_raw = "Article ##{index.next}: " +
-    p_tag(Faker::ChuckNorris.fact) +
-    p_tag(Faker::Books::Lovecraft.paragraph) +
-    p_tag(b_tag(Faker::TvShows::BigBangTheory.quote)) +
-    p_tag(Faker::TvShows::FinalSpace.quote)
+                p_tag(Faker::ChuckNorris.fact) +
+                p_tag(Faker::Books::Lovecraft.paragraph) +
+                p_tag(b_tag(Faker::TvShows::BigBangTheory.quote)) +
+                p_tag(Faker::TvShows::FinalSpace.quote)
 
   Chewy.strategy(:atomic) do
     Article.create(
       title: b_tag("Article with Index: #{index.next}"),
-      content_raw: content_raw,
-      status: STATUSES.shuffle.first
+      content_raw:,
+      status: STATUSES.sample
     )
     puts "Article ##{index.next} is created"
   end

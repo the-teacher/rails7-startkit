@@ -6,7 +6,7 @@ class DemoMailer < ApplicationMailer
 
   def welcome_email
     mail(
-      to: "test@test.com",
+      to: 'test@test.com',
       subject: 'Welcome to Rails 7. StartKit'
     )
   end
