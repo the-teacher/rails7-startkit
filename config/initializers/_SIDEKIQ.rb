@@ -6,7 +6,9 @@ redis_host = Settings.redis.host
 redis_url = "redis://#{redis_host}:#{redis_port}"
 puts "Sidekiq service address: #{redis_url}"
 
-SQ_ERR_LOGGER = Logger.new("#{Rails.root}/log/sidekiq.errors.log")
+SQ_ERR_LOGGER = Logger.new(
+  Rails.root.join('/log/sidekiq.errors.log')
+)
 
 Sidekiq.configure_client do |config|
   config.redis = {

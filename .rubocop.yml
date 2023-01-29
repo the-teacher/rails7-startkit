@@ -46,3 +46,25 @@ Rails/Output:
     - config/initializers/_CONFIG.rb
     - config/initializers/_REDIS.rb
     - config/initializers/_SIDEKIQ.rb
+Metrics/MethodLength:
+  Exclude:
+    - bin/helpers/docker.rb
+    - app/controllers/demo_controller.rb
+Style/OptionalBooleanParameter:
+  Exclude:
+    - bin/helpers/docker.rb
+Style/OptionalBooleanParameter:
+  Exclude:
+    - bin/helpers/common.rb
+Lint/UselessAssignment:
+  Exclude:
+    - bin/helpers/puma.rb
+    - bin/helpers/sidekiq.rb
+Style/GlobalVars:
+  Exclude:
+    - bin/helpers/common.rb
+    - bin/helpers/helpers.rb
+    - config/initializers/_REDIS.rb
+Metrics/BlockLength:
+  Exclude:
+    - config/environments/development.rb
