@@ -110,6 +110,14 @@ Rails 7 Application is Ready in Minutes!
     <td><b><a href="https://www.ruby-toolbox.com/categories/web_servers">Puma</a></b></td>
     <td>Application Web Server. To launch Rails app</td>
   </tr>
+  <tr>
+    <td colspan="3"><b>Code Quality</b></td>
+  </tr>
+  <tr>
+    <td><img width="100px" alt="rspec" src="docs/rubocop.png"></td>
+    <td><b><a href="https://www.ruby-toolbox.com/categories/code_metrics">Rubocop</a></b></td>
+    <td>Ruby static code analyzer (a.k.a. linter) and formatter.</td>
+  </tr>
   </tbody>
 </table>
 
@@ -143,11 +151,6 @@ What I'm going to add...
     <td><img width="100px" alt="rspec" src="docs/rspec.png"></td>
     <td><b><a href="https://www.ruby-toolbox.com/categories/testing_frameworks">RSpec</a></b></td>
     <td>Testing Framework for Rails</td>
-  </tr>
-  <tr>
-    <td><img width="100px" alt="rspec" src="docs/rubocop.png"></td>
-    <td><b><a href="https://www.ruby-toolbox.com/categories/code_metrics">Rubocop</a></b></td>
-    <td>Ruby static code analyzer (a.k.a. linter) and formatter.</td>
   </tr>
   </tbody>
 </table>
@@ -195,13 +198,14 @@ What was done:
 4. Launching PgSQL Container
 5. Launching Redis Container
 6. Launching Rails Container
-7. Installing Gems. Please Wait
+7. Installing Gems
 8. Create DB. Migrate DB. Create Seeds
 9. Indexing Article Model
 10. Launching Rails App with Puma
 11. Launching Sidekiq
-12. Visit Rails App: http://localhost:3000
-13. Visit Mail Service: http://localhost:1080
+12. Rubocop is Checking
+13. Visit Rails App: http://localhost:3000
+14. Visit Mail Service: http://localhost:1080
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Welcome to RAILS 7!
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

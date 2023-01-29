@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # @articles = ArticlesIndex.query(
 #   query_string: {
 #     query: 'Article',

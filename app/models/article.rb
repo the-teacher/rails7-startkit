@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # rails g model Article
 #  title:string
 #  content_raw:text
