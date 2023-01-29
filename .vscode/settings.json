@@ -1,0 +1,15 @@
+{
+  "tailwindCSS.includeLanguages": {
+    "javascript": "javascript",
+    "html": "html",
+    "erb": "html"
+ },
+  "tailwindCSS.emmetCompletions": true,
+  "files.associations": {
+    "*.html.erb": "erb"
+  },
+  "emmet.includeLanguages": {
+    "html.erb": "html",
+    "erb": "html"
+  }
+}
