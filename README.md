@@ -123,6 +123,11 @@ Rails 7 Application is Ready in Minutes!
     <td><b><a href="https://www.ruby-toolbox.com/categories/code_metrics">Rubocop</a></b></td>
     <td>Ruby static code analyzer (a.k.a. linter) and formatter.</td>
   </tr>
+  <tr>
+    <td><img width="100px" alt="rspec" src="docs/rspec.png"></td>
+    <td><b><a href="https://www.ruby-toolbox.com/categories/testing_frameworks">RSpec</a></b></td>
+    <td>Testing Framework for Rails</td>
+  </tr>
   </tbody>
 </table>
 
@@ -151,11 +156,6 @@ What I'm going to add...
     <td><img width="100px" alt="devise" src="docs/devise.png"></td>
     <td><b>Devise and Action&nbsp;Mailer</b></td>
     <td>Sending emails for account confirmations</td>
-  </tr>
-  <tr>
-    <td><img width="100px" alt="rspec" src="docs/rspec.png"></td>
-    <td><b><a href="https://www.ruby-toolbox.com/categories/testing_frameworks">RSpec</a></b></td>
-    <td>Testing Framework for Rails</td>
   </tr>
   </tbody>
 </table>
@@ -209,8 +209,9 @@ What was done:
 10. Launching Rails App with Puma
 11. Launching Sidekiq
 12. Rubocop is Checking
-13. Visit Rails App: http://localhost:3000
-14. Visit Mail Service: http://localhost:1080
+13. RSpec is Checking
+14. Visit Rails App: http://localhost:3000
+15. Visit Mail Service: http://localhost:1080
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Welcome to RAILS 7!
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

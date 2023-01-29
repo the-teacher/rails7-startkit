@@ -12,6 +12,9 @@ class Article < ApplicationRecord
   # ElasticSearch / Chewy
   update_index('articles') { self }
 
+  # Validations
+  validates :title, presence: true, length: { minimum: 3 }
+
   # Kaminari. Pagination
   paginates_per 3
 
