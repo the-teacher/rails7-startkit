@@ -6,6 +6,7 @@ require_relative './cron'
 require_relative './whenever'
 require_relative './rails'
 require_relative './puma'
+require_relative './rubocop'
 
 DELAY = 3
 ENV_NAME = ENV.fetch('RAILS_ENV') { 'development' }
