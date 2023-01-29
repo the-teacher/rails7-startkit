@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 def chewy_index
   puts 'Indexing with CHEWY'
   container_exec('rails', 'rake chewy:update')

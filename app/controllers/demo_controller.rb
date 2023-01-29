@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class DemoController < ApplicationController
   def index
     # Example of ElasticSearch/Chewy search

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 elastic_host = Settings.elastic.host
 elastic_port = Settings.elastic.port
 

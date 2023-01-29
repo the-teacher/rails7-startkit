@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 workers 1
 threads 2, 4
 
-env_name = ENV.fetch('RAILS_ENV') { 'development' }
+env_name = ENV.fetch('RAILS_ENV', 'development')
 environment env_name
 
 if env_name == 'development'

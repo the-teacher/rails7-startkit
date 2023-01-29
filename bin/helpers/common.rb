@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 def prompt!(message = 'Are you sure to continue? [y/Y]')
   puts message
   prompt = $stdin.gets.chomp

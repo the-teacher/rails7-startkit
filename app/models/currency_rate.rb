@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # rails g model currency_rate
 #   from:string
 #   to:string
@@ -8,7 +10,7 @@
 # rails runner "CurrencyRate.get('USD', 'EUR')"
 
 class CurrencyRate < ApplicationRecord
-  API = 'https://api.exchangerate.host/latest'.freeze
+  API = 'https://api.exchangerate.host/latest'
 
   def self.get(from = 'USD', to = 'EUR')
     uri = URI(CurrencyRate::API + "?base=#{from}&symbols=#{to}")

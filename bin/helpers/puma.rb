@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 def puma_start
   puts 'Launching PUMA'
   container_bash_exec('rails', @puma_start_command, detached = true)

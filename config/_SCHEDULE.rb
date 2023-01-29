@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Learn more: http://github.com/javan/whenever
 #
 # How to initialize whenever
@@ -13,7 +15,7 @@
 # crontab -l
 
 env :GEM_HOME, ENV['GEM_HOME']
-set :environment, ENV.fetch('RAILS_ENV') { 'development' }
+set :environment, ENV.fetch('RAILS_ENV', 'development')
 
 set :output, {
   standard: '/home/lucky/app/log/cron.log',

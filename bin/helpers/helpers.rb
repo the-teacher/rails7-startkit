@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative './common'
 require_relative './docker'
 require_relative './chewy'
@@ -9,7 +11,7 @@ require_relative './puma'
 require_relative './rubocop'
 
 DELAY = 3
-ENV_NAME = ENV.fetch('RAILS_ENV') { 'development' }
+ENV_NAME = ENV.fetch('RAILS_ENV', 'development')
 
 $steps_counter = 1
 $steps_messages = []

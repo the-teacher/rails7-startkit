@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # rails generate mailer demo
 #
 # DemoMailer.welcome_email.deliver!

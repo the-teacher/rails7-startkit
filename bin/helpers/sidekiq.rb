@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 def sidekiq_start
   puts 'Launching SIDEKIQ'
   container_bash_exec('rails', 'bundle exec sidekiq -C config/_SIDEKIQ.yml', detached = true)

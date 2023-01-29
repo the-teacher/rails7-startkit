@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 app = Rails.application
 
 settings_file = "#{app.config.root}/config/_CONFIG.yml"

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # bundle exec sidekiq -C config/sidekiq.yml
 
 redis_port = Settings.redis.port

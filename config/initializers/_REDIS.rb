@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 redis_port = Settings.redis.port
 redis_host = Settings.redis.host
 
