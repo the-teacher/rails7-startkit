@@ -2,8 +2,8 @@
 #
 # docker compose -f docker-compose.yml up
 #
-# PLATFORM=arm APP_PORT=3000:3000 RUN_AS=7777:7777 docker compose -f docker-compose.yml up
-# PLATFORM=amd APP_PORT=3000:3000 RUN_AS=7777:7777 docker compose -f docker-compose.yml up -d
+# PLATFORM=arm64 APP_PORT=3000:3000 RUN_AS=7777:7777 docker compose -f docker-compose.yml up
+# PLATFORM=amd64 APP_PORT=3000:3000 RUN_AS=7777:7777 docker compose -f docker-compose.yml up -d
 #
 version: '3.8'
 

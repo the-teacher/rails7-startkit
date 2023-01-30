@@ -1,6 +1,0 @@
-#!/usr/bin/env ruby
-require_relative "./helpers/helpers.rb"
-
-puma_stop
-cron_stop
-sidekiq_stop
