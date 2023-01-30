@@ -244,6 +244,17 @@ From the root of the project
       <td><b>bin/open</b></td>
       <td>Get in <b>Rails</b> Container</td>
     </tr>
+  </tbody>
+</table>
+
+<table>
+  <thead>
+    <tr>
+      <th>Command</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
     <tr>
       <td colspan="2">Get in a container</td>
     </tr>
@@ -252,54 +263,54 @@ From the root of the project
       <td>Get in a Container. <code>[NAME]</code> can be <code>rails</code>, <code>psql</code>, <code>redis</code>, <code>elastic</code>, <code>mailcatcher</code></td>
     </tr>
     <tr>
-      <td colspan="2">Start/Stop</td>
+      <td colspan="2">bin/exec</td>
     </tr>
     <tr>
-      <td><b>bin/start</b></td>
+      <td><b>bin/exec [COMMAND]</b></td>
+      <td>Execute a command from Rails7StartKit module</td>
+    </tr>
+    <tr>
+      <td><b>bin/exec start</b></td>
       <td>Start processes in <b>rails</b> container</td>
     </tr>
     <tr>
-      <td><b>bin/stop</b></td>
+      <td><b>bin/exec stop</b></td>
       <td>Stop processes in <b>rails</b> container</td>
     </tr>
     <tr>
-      <td><b>bin/restart</b></td>
+      <td><b>bin/exec restart</b></td>
       <td><code>bin/stop</code> + <code>bin/start</code></td>
     </tr>
     <tr>
-      <td><b>bin/start_all</b></td>
+      <td><b>bin/exec start_all</b></td>
       <td>Start processes and containers</td>
     </tr>
     <tr>
-      <td><b>bin/stop_all</b></td>
+      <td><b>bin/exec stop_all</b></td>
       <td>Stop processes and containers</td>
     </tr>
     <tr>
-      <td><b>bin/restart_all</b></td>
+      <td><b>bin/exec restart_all</b></td>
       <td><code>bin/stop_all</code> + <code>bin/start_all</code></td>
     </tr>
     <tr>
       <td colspan="2">Helpers</td>
     </tr>
     <tr>
-      <td><b>bin/cache</b></td>
+      <td><b>bin/exec cache</b></td>
       <td>Toggle caching in development and restart web server</td>
     </tr>
     <tr>
-      <td><b>bin/status</b></td>
+      <td><b>bin/exec status</b></td>
       <td>To see running containers and launched services</td>
     </tr>
     <tr>
-      <td><b>bin/index</b></td>
+      <td><b>bin/exec index</b></td>
       <td>Run Search engines indexation</td>
     </tr>
     <tr>
-      <td><b>bin/reset</b></td>
+      <td><b>bin/exec reset</b></td>
       <td>Reset data of services in <b>./db</b> folder</td>
-    </tr>
-    <tr>
-      <td><b>bin/exec [COMMAND]</b></td>
-      <td>Execute a command from <code>bin/helpers/helpers.rb</code>. Usually for debugging</td>
     </tr>
   </tbody>
 </table>
