@@ -264,8 +264,13 @@ From the root of the project
     </tr>
     <tr>
       <td><b>bin/open&nbsp;[NAME]</b></td>
-      <td>Get in a Container. <code>[NAME]</code> can be <code>rails</code>, <code>psql</code>, <code>redis</code>, <code>elastic</code>, <code>mailcatcher</code></td>
+      <td>
+        Get in a Container. <code>[NAME]</code> can be <code>rails</code>,
+        <code>psql</code>, <code>redis</code>, <code>elastic</code>, <code>mailcatcher</code>
+      </td>
     </tr>
+  </tbody>
+</table>
 
 <table>
   <thead>
@@ -280,7 +285,7 @@ From the root of the project
     </tr>
     <tr>
       <td><b>bin/exec&nbsp;[COMMAND]</b></td>
-      <td>Execute a command from Rails7StartKit module</td>
+      <td>Execute a command from <code>Rails7StartKit</code> module</td>
     </tr>
     <tr>
       <td colspan="2">Start/Stop/Restart</td>
@@ -295,19 +300,19 @@ From the root of the project
     </tr>
     <tr>
       <td><b>bin/exec restart</b></td>
-      <td><code>bin/stop</code> + <code>bin/start</code></td>
+      <td><code>bin/exec&nbsp;stop</code> + <code>bin/exec&nbsp;start</code></td>
     </tr>
     <tr>
-      <td><b>bin/exec start_all</b></td>
+      <td><b>bin/exec&nbsp;start_all</b></td>
       <td>Start processes and containers</td>
     </tr>
     <tr>
-      <td><b>bin/exec stop_all</b></td>
+      <td><b>bin/exec&nbsp;stop_all</b></td>
       <td>Stop processes and containers</td>
     </tr>
     <tr>
       <td><b>bin/exec restart_all</b></td>
-      <td><code>bin/exec stop_all</code> + <code>bin/exec start_all</code></td>
+      <td><code>bin/exec&nbsp;stop_all</code> + <code>bin/exec&nbsp;start_all</code></td>
     </tr>
     <tr>
       <td colspan="2">Helpers</td>
