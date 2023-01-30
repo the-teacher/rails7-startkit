@@ -244,6 +244,10 @@ From the root of the project
       <td><b>bin/open</b></td>
       <td>Get in <b>Rails</b> Container</td>
     </tr>
+    <tr>
+      <td><b>bin/exec&nbsp;[COMMAND]</b></td>
+      <td>Execute a command from <code>Rails7StartKit</code> module</td>
+    </tr>
   </tbody>
 </table>
 
@@ -262,12 +266,24 @@ From the root of the project
       <td><b>bin/open&nbsp;[NAME]</b></td>
       <td>Get in a Container. <code>[NAME]</code> can be <code>rails</code>, <code>psql</code>, <code>redis</code>, <code>elastic</code>, <code>mailcatcher</code></td>
     </tr>
+
+<table>
+  <thead>
+    <tr>
+      <th>Command</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
     <tr>
       <td colspan="2">bin/exec</td>
     </tr>
     <tr>
-      <td><b>bin/exec [COMMAND]</b></td>
+      <td><b>bin/exec&nbsp;[COMMAND]</b></td>
       <td>Execute a command from Rails7StartKit module</td>
+    </tr>
+    <tr>
+      <td colspan="2">Start/Stop/Restart</td>
     </tr>
     <tr>
       <td><b>bin/exec start</b></td>
@@ -291,18 +307,18 @@ From the root of the project
     </tr>
     <tr>
       <td><b>bin/exec restart_all</b></td>
-      <td><code>bin/stop_all</code> + <code>bin/start_all</code></td>
+      <td><code>bin/exec stop_all</code> + <code>bin/exec start_all</code></td>
     </tr>
     <tr>
       <td colspan="2">Helpers</td>
     </tr>
     <tr>
-      <td><b>bin/exec cache</b></td>
-      <td>Toggle caching in development and restart web server</td>
-    </tr>
-    <tr>
       <td><b>bin/exec status</b></td>
       <td>To see running containers and launched services</td>
+    </tr>
+    <tr>
+      <td><b>bin/exec cache</b></td>
+      <td>Toggle caching in development and restart web server</td>
     </tr>
     <tr>
       <td><b>bin/exec index</b></td>
