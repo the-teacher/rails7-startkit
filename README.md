@@ -216,11 +216,6 @@ Welcome to RAILS 7!
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ```
 
-<details>
-  <summary>Index Page of the Project</summary>
-  <img alt="rails7-startkit" src="docs/index.png">
-</details>
-
 ### `bin/` commands
 
 From the root of the project
