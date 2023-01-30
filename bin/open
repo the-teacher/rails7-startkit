@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
-require_relative "./helpers/helpers.rb"
+require_relative './rails7startkit/rails7startkit'
 
 container_name = (ARGV[0] || 'rails').strip.to_sym
 
@@ -18,4 +18,4 @@ end
 
 shell = CONTAINER_SHELL_MAP[container_name]
 
-container_exec(container_name, shell)
+Rails7StartKit.container_exec(container_name, shell)

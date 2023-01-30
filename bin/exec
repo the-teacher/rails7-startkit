@@ -1,5 +1,7 @@
 #!/usr/bin/env ruby
-require_relative "./helpers/helpers.rb"
+require_relative './rails7startkit/rails7startkit'
 
-to_exec = (ARGV[0] || 'containers_information').strip
-eval to_exec
+method = (ARGV[0] || 'start' ).strip
+params = (ARGV)[1..].map { |param| "'#{param}'" }.join(', ')
+
+Rails7StartKit.module_eval("#{method}(#{params})")

@@ -1,67 +1,76 @@
 #!/usr/bin/env ruby
-require "fileutils"
-require_relative "./helpers/helpers.rb"
+require 'fileutils'
+require_relative './rails7startkit/rails7startkit'
 
 # path to your application root.
-APP_ROOT = File.expand_path("..", __dir__)
+APP_ROOT = File.expand_path('..', __dir__)
 
-FileUtils.chdir APP_ROOT do
-  check_docker!
-  check_docker_compose_v2!
-  rails7_startkit_greetings!
+module Rails7StartKit
+  class << self
+    def setup!
+      FileUtils.chdir APP_ROOT do
+        ms_warning
+        check_docker!
+        check_docker_compose_v2!
+        rails7_startkit_greetings!
 
-  step_info "Pull all required Images"
-  system('docker compose -f docker/docker-compose.yml pull')
+        step_info 'Pull all required Images'
+        docker_compose("pull")
 
-  # ElasticSearch
-  step_info "Launching ElasticSearch Container"
-  system('docker compose -f docker/docker-compose.yml up elastic -d')
-  wait('to launch ElasticSearch Container')
+        # ElasticSearch
+        step_info 'Launching ElasticSearch Container'
+        docker_compose("up elastic -d")
+        wait('to launch ElasticSearch Container')
 
-  # Mailcatcher
-  step_info "Launching Mailcatcher Container"
-  system('docker compose -f docker/docker-compose.yml up mailcatcher -d')
-  wait('to launch Mailcatcher Container')
+        # Mailcatcher
+        step_info 'Launching Mailcatcher Container'
+        docker_compose("up mailcatcher -d")
+        wait('to launch Mailcatcher Container')
 
-  # PgSQL
-  FileUtils.rm('db/PGSQL/.keep', force: true)
-  step_info "Launching PgSQL Container"
-  system('docker compose -f docker/docker-compose.yml up psql -d')
-  wait('to initialize PgSQL database')
-  FileUtils.touch('db/PGSQL/.keep', verbose: true)
+        # PgSQL
+        FileUtils.rm('db/PGSQL/.keep', force: true)
+        step_info 'Launching PgSQL Container'
+        docker_compose("up psql -d")
+        wait('to initialize PgSQL database')
+        FileUtils.touch('db/PGSQL/.keep', verbose: true)
 
-  # Redis
-  step_info "Launching Redis Container"
-  system('docker compose -f docker/docker-compose.yml up redis -d')
-  wait('to launch Redis Container')
+        # Redis
+        step_info 'Launching Redis Container'
+        docker_compose("up redis -d")
+        wait('to launch Redis Container')
 
-  # Rails
-  step_info "Launching Rails Container"
-  system('docker compose -f docker/docker-compose.yml up rails -d')
-  wait('to launch Rails Container')
+        # Rails
+        step_info 'Launching Rails Container'
+        docker_compose("up rails -d")
+        wait('to launch Rails Container')
 
-  step_info "Installing Gems"
-  rails_install_gems
+        step_info 'Installing Gems'
+        rails_install_gems
 
-  step_info "Create DB. Migrate DB. Create Seeds"
-  container_bash_exec('rails', 'rake db:prepare')
+        step_info 'Create DB. Migrate DB. Create Seeds'
+        container_bash_exec('rails', 'rake db:prepare')
 
-  step_info "Indexing Article Model"
-  chewy_index
+        step_info 'Indexing Article Model'
+        chewy_index
 
-  step_info "Launching Rails App with Puma"
-  puma_start
+        step_info 'Launching Rails App with Puma'
+        puma_start
 
-  step_info "Launching Sidekiq"
-  sidekiq_start
+        step_info 'Launching Sidekiq'
+        sidekiq_start
 
-  step_info "Rubocop is Checking"
-  rubocop
+        step_info 'Rubocop is Checking'
+        rubocop
 
-  step_info "Visit Rails App: http://localhost:3000"
-  step_info "Visit Mail Service: http://localhost:1080"
+        step_info 'Visit Rails App: http://localhost:3000'
+        step_info 'Visit Mail Service: http://localhost:1080'
 
-  containers_information
+        containers_information
 
-  rails7_ready
+        rails7_ready
+      end
+    end
+  end
 end
+
+Rails7StartKit.setup!
