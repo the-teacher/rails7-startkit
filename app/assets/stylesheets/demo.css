@@ -60,6 +60,7 @@ section {
   background-color: antiquewhite;
   border: 1px solid rgb(242, 189, 120);
   padding: 10px;
+  margin: 20px 0;
 }
 
 .header-section {
@@ -70,6 +71,14 @@ section {
 
 em.tsh {
   background-color: yellow;
+}
+
+.page-alert {
+  background-color: rgb(255, 193, 127);
+  border: 1px solid #b43c00;
+  padding: 20px;
+  margin: 20px 0;
+  font-size: 16px;
 }
 
 .section-pagination .pagination {

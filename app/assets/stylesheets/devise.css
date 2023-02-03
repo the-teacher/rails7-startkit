@@ -1,0 +1,24 @@
+.devise {
+  background-color: aliceblue;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.devise input[type=email],
+.devise input[type=password],
+.devise input[type=submit] {
+  font-size: 16px;
+  padding: 10px;
+}
+
+.devise .field,
+.devise .actions {
+  margin-bottom: 20px;
+}
+
+.devise #error_explanation {
+  padding: 10px;
+  background: antiquewhite;
+  border: 1px solid rgb(242, 189, 120);
+  list-style: circle;
+}
