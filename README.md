@@ -225,7 +225,7 @@ Welcome to RAILS 7!
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ```
 
-### `bin/` commands
+## `bin/` commands
 
 From the root of the project
 
@@ -255,6 +255,8 @@ From the root of the project
   </tbody>
 </table>
 
+## `bin/open` command
+
 <table>
   <thead>
     <tr>
@@ -270,11 +272,13 @@ From the root of the project
       <td><b>bin/open&nbsp;[NAME]</b></td>
       <td>
         Get in a Container. <code>[NAME]</code> can be <code>rails</code>,
-        <code>psql</code>, <code>redis</code>, <code>elastic</code>, <code>mailcatcher</code>
+        <code>psql</code>, <code>redis</code>, <code>elastic</code>, <code>mailcatcher</code>. Default value is <code>rails</code>.
       </td>
     </tr>
   </tbody>
 </table>
+
+## `bin/exec` command
 
 <table>
   <thead>
