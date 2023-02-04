@@ -395,6 +395,9 @@ For demonstration, education and maintainance purposes I use the following appro
 
 ### Rails user
 
+<details>
+  <summary>Show Details</summary>
+
 As a user to own files and run Rails inside a container I use
 
 `user:group` => `lucky:lucky` => `7777:7777`
@@ -403,21 +406,7 @@ If you would like to run the project on a linux environment then:
 
 - create group `lucky (7777)` and user `lucky (7777)`
 - run the project with `RUN_AS=7777:7777` option
-
-### How to Run Tests
-
-From the root of the project
-
-```sh
-  bin/open rails
-```
-
-Now you are in the Rails container and you can do everything as usual
-
-```sh
-  RAILS_ENV=test rake db:create
-  rake test
-```
+</details>
 
 ### Questions and Answers
 
