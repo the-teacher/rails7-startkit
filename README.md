@@ -2,14 +2,29 @@
 
 <img  alt="docker" src="docs/Rails7.StartKit/Rails7.StartKit.jpg">
 
-Rails 7 Application is Ready in Minutes!
+### What Is That?
+
+Rails App in a Docker container with some popular preinstalled tools.
+
+### Why Do I Need It?
+
+Save hours, days or weeks on setting up a typical Rails app.
+
+### What Cases for Using It?
+
+- You learn Rails and related technologies
+- You start new Rails project
+- You are going to write a new article about Rails
+- You need a playground for experiments
+
+### Show Me How It Works
 
 <details>
-  <summary>SHOW ANIMATED INTRO</summary>
+  <summary>Show animated video</summary>
   <img width="500px" alt="rails7-startkit" src="docs/rails7intro.gif">
 </details>
 
-## What is under the hood?
+## What Is Under the Hood?
 
 <table>
   <thead>
@@ -162,15 +177,7 @@ What I'm going to add...
 
 *All trademarks, logos and brand names are the property of their respective owners.*
 
-### Prerequisites
-
-On your host you have:
-
-- Ruby 2+
-- Docker
-- Git
-
-### How to start?
+## How to start?
 
 **ONE!**
 
@@ -332,6 +339,14 @@ From the root of the project
     </tr>
   </tbody>
 </table>
+
+### Prerequisites
+
+On your host you have:
+
+- Ruby 2+
+- Docker
+- Git
 
 ### Conventions and Agreements
 
