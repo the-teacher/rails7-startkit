@@ -12,6 +12,7 @@ require_relative './whenever'
 require_relative './rails'
 require_relative './puma'
 require_relative './rubocop'
+require_relative './elastic'
 
 # path to your application root
 APP_ROOT = File.expand_path('../..', __dir__)

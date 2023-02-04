@@ -47,6 +47,9 @@ module Rails7StartKit
         step_info 'Installing Gems'
         rails_install_gems
 
+        step_info 'Turn off some ElasticSearch settings'
+        turn_off_elastic_settings
+
         step_info 'Create DB. Migrate DB. Create Seeds'
         container_bash_exec('rails', 'rake db:prepare')
 
