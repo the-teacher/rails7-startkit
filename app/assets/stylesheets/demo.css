@@ -2,8 +2,14 @@ header, footer {
   padding: 20px 0 0 0;
 }
 
-header {
+.header-menu {
+  border-top: 7px solid lightblue;
   border-bottom: 7px solid lightblue;
+  display: flex;
+}
+
+.header-menu .header-item {
+  margin-right: 20px;
 }
 
 footer {
