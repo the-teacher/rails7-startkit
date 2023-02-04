@@ -14,9 +14,9 @@ Save hours, days or weeks on setting up a typical Rails app.
 
 - You learn Rails and related technologies
 - You start new Rails project
-- You are going to write a new article about Rails
 - You need a playground for experiments
-
+- You teach people or record videos about Rails
+- You are going to write a new article about Rails
 ### Show Me How It Works
 
 <details>
