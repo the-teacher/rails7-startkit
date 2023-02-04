@@ -109,6 +109,7 @@ module Rails7StartKit
       end
     end
 
+    # rubocop:disable Metrics/AbcSize
     def cache
       puts 'Toggle App Cache in development mode'
       cache_toggle_file = 'tmp/caching-dev.txt'
@@ -127,6 +128,7 @@ module Rails7StartKit
         end
       end
 
+
       # Not sure if for windows it will work.
       # https://stackoverflow.com/questions/11982057/how-can-i-trigger-a-shell-script-and-run-in-background-async-in-ruby
       #
@@ -138,5 +140,6 @@ module Rails7StartKit
         puma_restart
       end
     end
+    # rubocop:enable Metrics/AbcSize
   end
 end
