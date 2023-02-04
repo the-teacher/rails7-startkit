@@ -212,6 +212,7 @@ What was done:
 13. RSpec is Checking
 14. Visit Rails App: http://localhost:3000
 15. Visit Mail Service: http://localhost:1080
+16. Visit ElasticSearch: http://localhost:9200
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Welcome to RAILS 7!
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

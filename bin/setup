@@ -70,6 +70,7 @@ module Rails7StartKit
 
         step_info 'Visit Rails App: http://localhost:3000'
         step_info 'Visit Mail Service: http://localhost:1080'
+        step_info 'Visit ElasticSearch: http://localhost:9200'
 
         containers_information
 
