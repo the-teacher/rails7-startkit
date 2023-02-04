@@ -12,19 +12,8 @@
 
   <body>
     <div class="articles-wrapper">
-      <header>
-        <div style="text-align:center">
-          <h1 class="page-header">
-            <a href="https://github.com/the-teacher/rails7-startkit#rails-7-start-kit">
-              <img width="300px" src="/Rails7.StartKit.jpg" />
-            </a>
-          </h1>
-          <p>
-            <a href="https://github.com/the-teacher/rails7-startkit#rails-7-start-kit">Rails 7. StartKit.</a> Please tell your friends about this project.
-          </p>
-          <br>
-        </div>
-      </header>
+      <%= render partial: 'demo/header' %>
+      <%= render partial: 'shared/flash_messages' %>
       <%= yield %>
       <footer>
         Made with &hearts; by <a href="https://github.com/the-teacher">the-teacher</a>

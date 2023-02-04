@@ -87,3 +87,11 @@ em.tsh {
 .section-pagination .pagination a:hover {
   color: #031741;
 }
+
+.flash_message {
+  background-color: rgb(255, 193, 127);
+  border: 1px solid #b43c00;
+  padding: 20px;
+  margin: 20px 0;
+  font-size: 16px;
+}
