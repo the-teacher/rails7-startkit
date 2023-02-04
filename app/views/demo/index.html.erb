@@ -1,12 +1,8 @@
-<section>
-  <div class="header-warning">
-    We are in: <code>app/views/demo/index.html.erb</code> controller &mdash; <b>Demo</b>. Action &mdash; <b>index</b>.
-    <br>
-    <b>Rails version:</b> <%= Rails.version %>
-    <b>Ruby version:</b> <%= `ruby -v` %>
-  </div>
-</section>
-
-<%= render partial: 'found_articles', locals: { articles: @found_articles, term: @search_query } %>
-<%= render partial: 'articles_without_caching', locals: { articles: @articles } %>
-<%= render partial: 'articles_with_caching', locals: { articles: @articles } %>
+<main class="articles-block">
+  <section>
+    <%= render partial: 'demo/common_info' %>
+  </section>
+  <%= render partial: 'found_articles', locals: { articles: @found_articles, term: @search_query } %>
+  <%= render partial: 'articles_without_caching', locals: { articles: @articles } %>
+  <%= render partial: 'articles_with_caching', locals: { articles: @articles } %>
+</main>
