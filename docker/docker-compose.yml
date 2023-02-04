@@ -46,6 +46,10 @@ services:
     image: elasticsearch:7.17.8
     environment:
       - discovery.type=single-node
+      - ES_JAVA_OPTS=-Xms512m -Xmx512m
+    ports:
+      - 9200:9200
+      - 9300:9300
     volumes:
       - ../db/ELASTIC:/usr/share/elasticsearch/data
       - ../log/ELASTIC:/usr/share/elasticsearch/logs
