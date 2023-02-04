@@ -1,6 +1,6 @@
 <main class="articles-block">
   <%= render partial: 'demo/common_info', locals: { file: __FILE__ } %>
-  <%= render partial: 'found_articles', locals: { articles: @found_articles, term: @search_query } %>
-  <%= render partial: 'articles_without_caching', locals: { articles: @articles } %>
-  <%= render partial: 'articles_with_caching', locals: { articles: @articles } %>
+  <%= render partial: 'articles/found_articles', locals: { articles: @found_articles, term: @search_query } %>
+  <%= render partial: 'articles/articles_without_caching', locals: { articles: @articles } %>
+  <%= render partial: 'articles/articles_with_caching', locals: { articles: @articles } %>
 </main>

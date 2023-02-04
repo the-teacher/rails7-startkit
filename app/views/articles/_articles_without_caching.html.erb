@@ -7,7 +7,7 @@
   </div>
 
   <% articles.each do |article| %>
-    <%= render partial: 'article', locals: { article: article } %>
+    <%= render partial: 'articles/article', locals: { article: article } %>
   <% end %>
 
   <div class="section-pagination">
