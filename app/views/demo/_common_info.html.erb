@@ -1,6 +1,9 @@
-<div class="header-warning">
-  We are in: <code>app/views/demo/index.html.erb</code> controller &mdash; <b>Demo</b>. Action &mdash; <b>index</b>.
-  <br>
-  <b>Rails version:</b> <%= Rails.version %>
-  <b>Ruby version:</b> <%= `ruby -v` %>
-</div>
+<%= content_for :common_info do %>
+  <div class="header-warning">
+    <b>Ruby version:</b> <%= `ruby -v` %><br>
+    <b>Rails version:</b> <%= Rails.version %><br>
+    We are in: <code><%= file.gsub(Rails.root.to_s, '') %></code>
+    Controller &mdash; <b><%= controller.controller_name %></b>.
+    Action &mdash; <b><%= controller.action_name %></b>.
+  </div>
+<% end %>

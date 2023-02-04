@@ -10,12 +10,6 @@
   gap: 10px;
 }
 
-.articles-block > section:first-child {
-  border: 3px solid red !important;
-  width: 100%;
-  /* grid-column: 1 / span 3; */
-}
-
 article {
   margin-bottom: 30px;
 }

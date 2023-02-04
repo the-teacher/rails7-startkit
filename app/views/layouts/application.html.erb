@@ -11,6 +11,7 @@
   </head>
 
   <body>
+    <%= yield(:common_info) %>
     <div class="articles-wrapper">
       <%= render partial: 'demo/header' %>
       <%= render partial: 'shared/flash_messages' %>
