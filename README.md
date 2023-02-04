@@ -449,8 +449,12 @@ If you would like to run the project on a linux environment then:
 
 ### TODO
 
+<details>
+  <summary>Show details</summary>
 - Action Cable [Link](https://guides.rubyonrails.org/action_cable_overview.html)
 - Nginx
+- Production roll up
+</details>
 
 ### License
 
