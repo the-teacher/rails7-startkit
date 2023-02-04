@@ -451,9 +451,11 @@ If you would like to run the project on a linux environment then:
 
 <details>
   <summary>Show details</summary>
-- Action Cable [Link](https://guides.rubyonrails.org/action_cable_overview.html)
+
+- One command install and run
 - Nginx
 - Production roll up
+- Action Cable [Link](https://guides.rubyonrails.org/action_cable_overview.html)
 </details>
 
 ### License
