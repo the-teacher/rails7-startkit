@@ -354,6 +354,9 @@ On your host you have:
 
 ### Conventions and Agreements
 
+<details>
+  <summary>Show details</summary>
+
 For demonstration, education and maintainance purposes I use the following approach:
 
 **Data**
@@ -392,6 +395,7 @@ For demonstration, education and maintainance purposes I use the following appro
 ├── _REDIS.rb
 └── _SIDEKIQ.rb
 ```
+</details>
 
 ### Rails user
 
