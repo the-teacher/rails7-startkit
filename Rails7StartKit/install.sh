@@ -56,7 +56,7 @@ else
   echo "=> Docker Compose v2 not found"
   echo "To continue please install Docker Compose v2"
   echo "https://docs.docker.com/compose/install"
-  exit
+  return
 fi
 
 if [ -d "./rails7-startkit" ]
