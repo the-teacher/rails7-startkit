@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# rubocop:disable Style/GlobalVars
 module Rails7StartKit
   class << self
     def prompt!(message = 'Are you sure to continue? [y/Y]')
@@ -81,10 +82,12 @@ module Rails7StartKit
       docker_compose("exec -e='RAILS_ENV=#{ENV_NAME}' #{container_name} #{cmd}")
     end
 
+    # rubocop:disable Style/OptionalBooleanParameter
     def container_bash_exec(container_name = 'rails', cmd = 'ls', detached = false)
       detached = detached ? '-d' : ''
       docker_compose("exec #{detached} #{container_name} /bin/bash -c '#{cmd}'")
     end
+    # rubocop:enable Style/OptionalBooleanParameter
 
     def containers_information
       puts
@@ -105,3 +108,4 @@ module Rails7StartKit
     end
   end
 end
+# rubocop:enable Style/GlobalVars

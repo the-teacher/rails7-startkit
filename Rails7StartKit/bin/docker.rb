@@ -11,6 +11,7 @@ module Rails7StartKit
       exit 1
     end
 
+    # rubocop:disable Metrics/MethodLength
     def check_docker_compose_v2!
       output = `docker compose version`
       if output.match(/Docker Compose version v2/)
@@ -24,5 +25,6 @@ module Rails7StartKit
         exit 1
       end
     end
+    # rubocop:enable Metrics/MethodLength
   end
 end

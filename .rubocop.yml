@@ -48,21 +48,9 @@ Rails/Output:
     - config/initializers/_SIDEKIQ.rb
 Metrics/MethodLength:
   Exclude:
-    - Rails7StartKit/bin/docker.rb
-    - Rails7StartKit/bin/rails7startkit.rb
     - app/controllers/demo_controller.rb
-Style/OptionalBooleanParameter:
-  Exclude:
-    - Rails7StartKit/bin/docker.rb
-    - Rails7StartKit/bin/common.rb
-Lint/UselessAssignment:
-  Exclude:
-    - Rails7StartKit/bin/puma.rb
-    - Rails7StartKit/bin/sidekiq.rb
 Style/GlobalVars:
   Exclude:
-    - Rails7StartKit/bin/common.rb
-    - Rails7StartKit/bin/helpers.rb
     - config/initializers/_REDIS.rb
 Metrics/BlockLength:
   IgnoredMethods: ['describe', 'context']

@@ -14,6 +14,7 @@ require_relative './rspec'
 DELAY = 3
 ENV_NAME = ENV.fetch('RAILS_ENV', 'development')
 
+# rubocop:disable Style/GlobalVars
 $steps_counter = 1
 $steps_messages = []
 
@@ -28,3 +29,5 @@ def step_info(message)
   $steps_counter = $steps_counter.next
   $steps_messages << info_message
 end
+
+# rubocop:enable Style/GlobalVars
