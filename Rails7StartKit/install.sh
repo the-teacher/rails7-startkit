@@ -1,5 +1,6 @@
 #!/bin/bash
 # /bin/bash Rails7StartKit/install.sh
+# source <(curl -s http://example.com/foo)
 
 echo "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
 echo "Rails7. Start Kit"
@@ -12,7 +13,7 @@ else
   echo "=> Ruby not found"
   echo "To continue please install Ruby"
   echo "https://www.ruby-lang.org/en/documentation/installation"
-  exit
+  return
 fi
 
 if command -v git &> /dev/null
@@ -22,7 +23,7 @@ else
   echo "=> Git not found"
   echo "To continue please install git"
   echo "https://git-scm.com/downloads"
-  exit
+  return
 fi
 
 if command -v docker &> /dev/null
@@ -32,7 +33,16 @@ else
   echo "=> Docker not found"
   echo "To continue please install Docker"
   echo "https://docs.docker.com/get-docker"
-  exit
+  return
+fi
+
+if [[ $(docker ps) == *"CONTAINER ID"* ]]
+then
+  echo "=> Docker is running"
+else
+  echo "=> Docker not running"
+  echo "To continue please run Docker"
+  return
 fi
 
 if [[ $(docker compose version) == *"v2"* ]]
