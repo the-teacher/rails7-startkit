@@ -1,6 +1,6 @@
 # Rails 7. Start Kit
 
-<img  alt="docker" src="docs/Rails7.StartKit/Rails7.StartKit.jpg">
+<img  alt="docker" src="Rails7StartKit/assets/logos/Rails7.StartKit.jpg">
 
 ### What Is That?
 
@@ -21,7 +21,7 @@ Save hours, days or weeks on setting up a typical Rails app.
 
 <details>
   <summary>Show animated video</summary>
-  <img width="500px" alt="rails7-startkit" src="docs/rails7intro.gif">
+  <img width="500px" alt="rails7-startkit" src="Rails7StartKit/assets/images/rails7intro.gif">
 </details>
 
 ## What Is Under the Hood?
@@ -39,22 +39,22 @@ Save hours, days or weeks on setting up a typical Rails app.
     <td colspan="3"><b>Main</b></td>
   </tr>
   <tr>
-    <td><img width="100px" alt="docker" src="docs/docker.png"></td>
+    <td><img width="100px" alt="docker" src="Rails7StartKit/assets/images/docker.png"></td>
     <td><b>Docker</b></td>
     <td>Helps to keep all required services in containers. To have fast and predictable installation process in minutes</td>
   </tr>
   <tr>
-    <td><img width="100px" alt="ruby" src="docs/ruby.png"></td>
+    <td><img width="100px" alt="ruby" src="Rails7StartKit/assets/images/ruby.png"></td>
     <td><b>Ruby 3.2</b></td>
     <td>Most recent version of Ruby</td>
   </tr>
   <tr>
-    <td><img width="100px" alt="rails7" src="docs/rails7.png"></td>
+    <td><img width="100px" alt="rails7" src="Rails7StartKit/assets/images/rails7.png"></td>
     <td><b>Rails 7</b></td>
     <td>Most recent version of Rails</td>
   </tr>
   <tr>
-    <td><img width="100px" alt="pgsql" src="docs/pgsql.png"></td>
+    <td><img width="100px" alt="pgsql" src="Rails7StartKit/assets/images/pgsql.png"></td>
     <td><b><a href="https://www.ruby-toolbox.com/categories/SQL_Database_Adapters">PostgresSQL</a></b></td>
     <td>Most popular relational database</td>
   </tr>
@@ -62,17 +62,17 @@ Save hours, days or weeks on setting up a typical Rails app.
     <td colspan="3"><b>Cache and Delayed Jobs</b></td>
   </tr>
   <tr>
-    <td><img width="100px" alt="redis" src="docs/redis.png"></td>
+    <td><img width="100px" alt="redis" src="Rails7StartKit/assets/images/redis.png"></td>
     <td><b><a href="https://redis.io">Redis</a></b></td>
     <td>In-memory data store. For caching and as a dependency of Sidekiq</td>
   </tr>
   <tr>
-    <td><img width="100px" alt="sidekiq" src="docs/sidekiq.png"></td>
+    <td><img width="100px" alt="sidekiq" src="Rails7StartKit/assets/images/sidekiq.png"></td>
     <td><b><a href="https://www.ruby-toolbox.com/categories/Background_Jobs">Sidekiq</a></b></td>
     <td>Job Scheduler and Async Tasks Executor. Can be used as a stand alone tool or as ActiveJob backend</td>
   </tr>
   <tr>
-    <td><img width="100px" alt="whenever" src="docs/whenever.png"></td>
+    <td><img width="100px" alt="whenever" src="Rails7StartKit/assets/images/whenever.png"></td>
     <td><b><a href="https://www.ruby-toolbox.com/categories/scheduling">whenever</a></b></td>
     <td>Linux Cron based periodical tasks</td>
   </tr>
@@ -80,12 +80,12 @@ Save hours, days or weeks on setting up a typical Rails app.
     <td colspan="3"><b>Full text search</b></td>
   </tr>
   <tr>
-    <td><img width="100px" alt="elastic" src="docs/elastic.png"></td>
+    <td><img width="100px" alt="elastic" src="Rails7StartKit/assets/images/elastic.png"></td>
     <td><b><a href="https://www.elastic.co">Elasticsearch</a></b></td>
     <td>The world’s leading Search engine</td>
   </tr>
   <tr>
-    <td><img width="100px" alt="chewy" src="docs/chewy.png"></td>
+    <td><img width="100px" alt="chewy" src="Rails7StartKit/assets/images/chewy.png"></td>
     <td><b><a href="https://www.ruby-toolbox.com/projects/chewy">Chewy</a></b></td>
     <td>Ruby Connector to Elasticsearch</td>
   </tr>
@@ -93,7 +93,7 @@ Save hours, days or weeks on setting up a typical Rails app.
     <td colspan="3"><b>Front-end</b></td>
   </tr>
   <tr>
-    <td><img width="100px" alt="import-maps" src="docs/import-maps.png"></td>
+    <td><img width="100px" alt="import-maps" src="Rails7StartKit/assets/images/import-maps.png"></td>
     <td><b><a href="https://github.com/rails/importmap-rails">Import Maps</a></b></td>
     <td>Rails' recommended way to process JavaScript</td>
   </tr>
@@ -101,32 +101,32 @@ Save hours, days or weeks on setting up a typical Rails app.
     <td colspan="3"><b>Application Level</b></td>
   </tr>
   <tr>
-    <td><img width="100px" alt="gem config" src="docs/config.png"></td>
+    <td><img width="100px" alt="gem config" src="Rails7StartKit/assets/images/config.png"></td>
     <td><b><a href="https://www.ruby-toolbox.com/projects/config">gem&nbsp;"config"</a></b></td>
     <td>Configuration management tool</td>
   </tr>
   <tr>
-    <td><img width="100px" alt="faker" src="docs/faker.png"></td>
+    <td><img width="100px" alt="faker" src="Rails7StartKit/assets/images/faker.png"></td>
     <td><b><a href="https://www.ruby-toolbox.com/categories/random_data_generation">Faker</a></b></td>
     <td>Fake data for development and testing</td>
   </tr>
   <tr>
-    <td><img width="100px" alt="sanitize" src="docs/sanitize.png"></td>
+    <td><img width="100px" alt="sanitize" src="Rails7StartKit/assets/images/sanitize.png"></td>
     <td><b><a href="https://www.ruby-toolbox.com/projects/sanitize">Sanitize</a></b></td>
     <td>Sanitization of a dangerous users' input</td>
   </tr>
   <tr>
-    <td><img width="100px" alt="kaminari" src="docs/kaminari.png"></td>
+    <td><img width="100px" alt="kaminari" src="Rails7StartKit/assets/images/kaminari.png"></td>
     <td><b><a href="https://www.ruby-toolbox.com/categories/pagination">Kaminari</a></b></td>
     <td>Pagination solution</td>
   </tr>
   <tr>
-    <td><img width="100px" alt="letter_opener" src="docs/mailcatcher.png"></td>
+    <td><img width="100px" alt="letter_opener" src="Rails7StartKit/assets/images/mailcatcher.png"></td>
     <td><b><a href="https://www.ruby-toolbox.com/categories/EMail_Fake_Servers">mailcatcher</a></b></td>
     <td>Email previwer for development</td>
   </tr>
   <tr>
-    <td><img width="100px" alt="puma" src="docs/puma.png"></td>
+    <td><img width="100px" alt="puma" src="Rails7StartKit/assets/images/puma.png"></td>
     <td><b><a href="https://www.ruby-toolbox.com/categories/web_servers">Puma</a></b></td>
     <td>Application Web Server. To launch Rails app</td>
   </tr>
@@ -134,12 +134,12 @@ Save hours, days or weeks on setting up a typical Rails app.
     <td colspan="3"><b>Code Quality</b></td>
   </tr>
   <tr>
-    <td><img width="100px" alt="rspec" src="docs/rubocop.png"></td>
+    <td><img width="100px" alt="rspec" src="Rails7StartKit/assets/images/rubocop.png"></td>
     <td><b><a href="https://www.ruby-toolbox.com/categories/code_metrics">Rubocop</a></b></td>
     <td>Ruby static code analyzer (a.k.a. linter) and formatter.</td>
   </tr>
   <tr>
-    <td><img width="100px" alt="rspec" src="docs/rspec.png"></td>
+    <td><img width="100px" alt="rspec" src="Rails7StartKit/assets/images/rspec.png"></td>
     <td><b><a href="https://www.ruby-toolbox.com/categories/testing_frameworks">RSpec</a></b></td>
     <td>Testing Framework for Rails</td>
   </tr>
@@ -158,17 +158,17 @@ What I'm going to add...
   </thead>
   <tbody>
   <tr>
-    <td><img width="100px" alt="devise" src="docs/devise.png"></td>
+    <td><img width="100px" alt="devise" src="Rails7StartKit/assets/images/devise.png"></td>
     <td><b><a href="https://www.ruby-toolbox.com/categories/rails_authentication">Devise</b></a></td>
     <td>Authentication solution for Rails</td>
   </tr>
   <tr>
-    <td><img width="100px" alt="devise" src="docs/devise.png"></td>
+    <td><img width="100px" alt="devise" src="Rails7StartKit/assets/images/devise.png"></td>
     <td><b><a href="https://www.ruby-toolbox.com/categories/rails_authentication">Devise</b></a></td>
     <td>Login with Facebook and Google</td>
   </tr>
   <tr>
-    <td><img width="100px" alt="devise" src="docs/devise.png"></td>
+    <td><img width="100px" alt="devise" src="Rails7StartKit/assets/images/devise.png"></td>
     <td><b>Devise and Action&nbsp;Mailer</b></td>
     <td>Sending emails for account confirmations</td>
   </tr>

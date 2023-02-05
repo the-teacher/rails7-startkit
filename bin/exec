@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
-require_relative './rails7startkit/rails7startkit'
+require_relative '../Rails7StartKit/bin/rails7startkit'
 
 method = (ARGV[0] || 'start' ).strip
 params = (ARGV)[1..].map { |param| "'#{param}'" }.join(', ')

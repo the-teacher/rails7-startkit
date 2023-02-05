@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
-require_relative './rails7startkit/rails7startkit'
+require_relative '../Rails7StartKit/bin/rails7startkit'
 
 container_name = (ARGV[0] || 'rails').strip.to_sym
 

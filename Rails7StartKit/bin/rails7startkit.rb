@@ -128,7 +128,6 @@ module Rails7StartKit
         end
       end
 
-
       # Not sure if for windows it will work.
       # https://stackoverflow.com/questions/11982057/how-can-i-trigger-a-shell-script-and-run-in-background-async-in-ruby
       #
