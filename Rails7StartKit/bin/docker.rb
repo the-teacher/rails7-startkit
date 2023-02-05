@@ -26,5 +26,11 @@ module Rails7StartKit
       end
     end
     # rubocop:enable Metrics/MethodLength
+
+    def docker_compose(cmd)
+      to_exec = "#{platform_env} docker compose -f Rails7StartKit/docker/docker-compose.yml #{cmd}"
+      puts to_exec
+      system(to_exec)
+    end
   end
 end

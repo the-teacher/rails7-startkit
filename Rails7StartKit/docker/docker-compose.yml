@@ -22,8 +22,8 @@ services:
       POSTGRES_PASSWORD: qwerty
       PGDATA: /var/lib/postgresql/data/pgdata
     volumes:
-      - ../db/PGSQL:/var/lib/postgresql/data/pgdata
-      - ../shared:/shared
+      - ../../db/PGSQL:/var/lib/postgresql/data/pgdata
+      - ../../shared:/shared
 
   # port: 6379
   #
@@ -34,8 +34,8 @@ services:
     image: redis:7.0.5-alpine
     user: ${RUN_AS:-root}
     volumes:
-      - ../db/REDIS:/data
-      - ../shared:/shared
+      - ../../db/REDIS:/data
+      - ../../shared:/shared
 
   # port 9200
   # port 9300
@@ -51,9 +51,9 @@ services:
       - 9200:9200
       - 9300:9300
     volumes:
-      - ../db/ELASTIC:/usr/share/elasticsearch/data
-      - ../log/ELASTIC:/usr/share/elasticsearch/logs
-      - ../shared:/shared
+      - ../../db/ELASTIC:/usr/share/elasticsearch/data
+      - ../../log/ELASTIC:/usr/share/elasticsearch/logs
+      - ../../shared:/shared
 
   # port 1080
   #
@@ -70,8 +70,8 @@ services:
     stdin_open: true
     image: iamteacher/rails7:2023.${PLATFORM:-arm64}
     volumes:
-      - ../:/home/lucky/app
-      - ../shared:/shared
+      - ../../:/home/lucky/app
+      - ../../shared:/shared
     ports:
       - ${APP_PORT:-3000:3000}
     depends_on:

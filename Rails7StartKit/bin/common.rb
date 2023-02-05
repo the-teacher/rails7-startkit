@@ -72,12 +72,6 @@ module Rails7StartKit
       macos? ? 'PLATFORM=arm64' : 'PLATFORM=amd64'
     end
 
-    def docker_compose(cmd)
-      to_exec = "#{platform_env} docker compose -f docker/docker-compose.yml #{cmd}"
-      puts to_exec
-      system(to_exec)
-    end
-
     def container_exec(container_name = 'rails', cmd = 'ls')
       docker_compose("exec -e='RAILS_ENV=#{ENV_NAME}' #{container_name} #{cmd}")
     end
