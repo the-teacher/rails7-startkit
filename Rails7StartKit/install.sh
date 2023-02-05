@@ -1,6 +1,8 @@
 #!/bin/bash
-# /bin/bash Rails7StartKit/install.sh
-# source <(curl -s http://example.com/foo)
+
+# source /dev/stdin <<< "$(\curl -sSL https://raw.githubusercontent.com/the-teacher/rails7-startkit/master/Rails7StartKit/install.sh)"
+
+export TTY_OFF="-T"
 
 echo "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
 echo "Rails7. Start Kit"
@@ -65,3 +67,4 @@ fi
 
 cd ./rails7-startkit
 bin/setup
+unset TTY_OFF
