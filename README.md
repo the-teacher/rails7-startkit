@@ -185,23 +185,31 @@ What I'm going to add...
 
 ## How to start?
 
-**ONE!**
-
-```
-git clone https://github.com/the-teacher/rails7-startkit.git
+```sh
+eval "$(curl -sSL rails-start.com)"
 ```
 
-**TWO!**
+<details>
+  <summary>3 Steps for Manual Installation</summary>
 
-```
-cd rails7-startkit
-```
+  **ONE!**
 
-**THREE!**
+  ```
+  git clone https://github.com/the-teacher/rails7-startkit.git
+  ```
 
-```
-bin/setup
-```
+  **TWO!**
+
+  ```
+  cd rails7-startkit
+  ```
+
+  **THREE!**
+
+  ```
+  bin/setup
+  ```
+</details>
 
 You will see something like that:
 
