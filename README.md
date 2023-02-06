@@ -123,7 +123,7 @@ Save hours, days or weeks on setting up a typical Rails app.
   <tr>
     <td><img width="100px" alt="letter_opener" src="Rails7StartKit/assets/images/mailcatcher.png"></td>
     <td><b><a href="https://www.ruby-toolbox.com/categories/EMail_Fake_Servers">mailcatcher</a></b></td>
-    <td>Email previwer for development</td>
+    <td>Email previewer for development</td>
   </tr>
   <tr>
     <td><img width="100px" alt="puma" src="Rails7StartKit/assets/images/puma.png"></td>
