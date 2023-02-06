@@ -2,6 +2,12 @@
 
 <img  alt="docker" src="Rails7StartKit/assets/logos/Rails7.StartKit.jpg">
 
+## The Only Command to Install and Run Everything!
+
+```sh
+eval "$(curl -sSL rails-start.com)"
+```
+
 ### What Is That?
 
 Rails App in a Docker container with some popular preinstalled tools.
