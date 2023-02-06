@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # source /dev/stdin <<< "$(\curl -sSL https://raw.githubusercontent.com/the-teacher/rails7-startkit/master/Rails7StartKit/install.sh)"
-# source /dev/stdin <<< "$(curl -sSL rails-start.com)"
+# eval "$(curl -sSL rails-start.com)"
 
 export TTY_OFF="-T"
 
