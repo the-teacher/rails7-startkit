@@ -2,11 +2,13 @@
 
 <img  alt="docker" src="Rails7StartKit/assets/logos/Rails7.StartKit.jpg">
 
-## The Only Command to Install and Run Everything!
+## The Only Command to Install and Run `Ruby on Rails`!
 
 ```sh
 eval "$(curl -sSL rails-start.com)"
 ```
+
+<i>All required services and dependencies will be installed automagically!</i>
 
 ### What Is That?
 
