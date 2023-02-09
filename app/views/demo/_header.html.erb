@@ -26,5 +26,16 @@
       <b>ElasticSearch:</b>
       <%= link_to "localhost:9200", "http://localhost:9200", target: :_blank %>
     </li>
+
+    <li class="header-item">
+      <b>Devise:</b>
+      <% if user_signed_in? %>
+        <%= current_user.email %> |
+        <%= link_to "Sign Out", destroy_user_session_path%>
+      <% else %>
+        <%= link_to "Sign In", new_user_session_path %> |
+        <%= link_to "Sign Up", new_user_registration_path %>
+      <% end %>
+    </li>
   </ul>
 </header>

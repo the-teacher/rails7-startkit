@@ -10,6 +10,15 @@
 
 # bundle exec rake db:seed
 
+puts "Creating an Admin"
+
+admin = User.create(
+  email: "admin@rails-start.com",
+  password: "qwerty123"
+)
+
+admin.confirm
+
 def p_tag(text)
   "<p>#{text}</p>\n"
 end

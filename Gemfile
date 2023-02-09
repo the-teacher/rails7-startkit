@@ -45,6 +45,9 @@ gem "kaminari", "1.2.2"
 # Cron based periodical jobs
 gem "whenever", "1.0.0", require: false
 
+# Authentication solution
+gem "devise", "4.8.1"
+
 group :development, :test do
   # RSpec testing
   gem "rspec-rails", "6.0.1"
