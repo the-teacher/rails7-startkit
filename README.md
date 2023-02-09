@@ -168,17 +168,12 @@ What I'm going to add...
   <tr>
     <td><img width="100px" alt="devise" src="Rails7StartKit/assets/images/devise.png"></td>
     <td><b><a href="https://www.ruby-toolbox.com/categories/rails_authentication">Devise</b></a></td>
-    <td>Authentication solution for Rails</td>
+    <td>Authentication solution for Rails + Emails confirmations</td>
   </tr>
   <tr>
     <td><img width="100px" alt="devise" src="Rails7StartKit/assets/images/devise.png"></td>
     <td><b><a href="https://www.ruby-toolbox.com/categories/rails_authentication">Devise</b></a></td>
     <td>Login with Facebook and Google</td>
-  </tr>
-  <tr>
-    <td><img width="100px" alt="devise" src="Rails7StartKit/assets/images/devise.png"></td>
-    <td><b>Devise and Action&nbsp;Mailer</b></td>
-    <td>Sending emails for account confirmations</td>
   </tr>
   </tbody>
 </table>
