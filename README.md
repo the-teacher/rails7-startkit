@@ -2,13 +2,27 @@
 
 <img  alt="docker" src="Rails7StartKit/assets/logos/Rails7.StartKit.jpg">
 
-## The Only Command to Install and Run `Ruby on Rails`!
+## Install and Run `Ruby on Rails` now!
+
+<i>Copy & Paste it to your terminal</i>
+
+```sh
+git clone https://github.com/the-teacher/rails7-startkit.git && \
+  cd rails7-startkit && \
+  bin/setup
+```
+
+**OR**
+
+<details>
+  <summary>Super short option</summary>
 
 ```sh
 eval "$(curl -sSL rails-start.com)"
 ```
 
-<i>All required services and dependencies will be installed automagically!</i>
+*Executing scripts from the Internet can be dangerous! Check the source before using!*
+</details>
 
 ### What Is That?
 
@@ -180,32 +194,26 @@ What I'm going to add...
 
 *All trademarks, logos and brand names are the property of their respective owners.*
 
-## How to start?
+## Installation and Running
+
+<i>Copy & Paste it to your terminal</i>
+
+```sh
+git clone https://github.com/the-teacher/rails7-startkit.git && \
+  cd rails7-startkit && \
+  bin/setup
+```
+
+**OR**
+
+<details>
+  <summary>Super short option</summary>
 
 ```sh
 eval "$(curl -sSL rails-start.com)"
 ```
 
-<details>
-  <summary>3 Steps for Manual Installation</summary>
-
-  **ONE!**
-
-  ```
-  git clone https://github.com/the-teacher/rails7-startkit.git
-  ```
-
-  **TWO!**
-
-  ```
-  cd rails7-startkit
-  ```
-
-  **THREE!**
-
-  ```
-  bin/setup
-  ```
+*Executing scripts from the Internet can be dangerous! Check the source before using!*
 </details>
 
 You will see something like that:
