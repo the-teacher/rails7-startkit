@@ -13,7 +13,7 @@ git clone https://github.com/the-teacher/rails7-startkit.git && \
 ```
 
 <details>
-  <summary><b>OR</b> Super short online option</summary>
+  <summary><b>OR</b> Super short one line option</summary>
 
 ```sh
 eval "$(curl -sSL rails-start.com)"
