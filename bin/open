@@ -1,4 +1,6 @@
 #!/usr/bin/env ruby
+# frozen_string_literal: true
+
 require_relative '../Rails7StartKit/bin/rails7startkit'
 
 container_name = (ARGV[0] || 'rails').strip.to_sym
@@ -9,7 +11,7 @@ CONTAINER_SHELL_MAP = {
   redis: :ash,
   elastic: :bash,
   mailcatcher: :ash
-}
+}.freeze
 
 unless CONTAINER_SHELL_MAP.key?(container_name)
   puts "Shell for #{container_name} is not found"

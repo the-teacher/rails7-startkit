@@ -1,4 +1,11 @@
 require: rubocop-rails
+AllCops:
+  Exclude:
+    - db/ELASTIC
+    - db/PGSQL
+    - db/REDIS
+    - db/schema.rb
+    - tmp
 Style/FrozenStringLiteralComment:
   Enabled: true
 Style/Documentation:

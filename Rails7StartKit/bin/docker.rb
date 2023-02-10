@@ -3,23 +3,40 @@
 module Rails7StartKit
   class << self
     def check_docker!
-      return if system('docker -v')
+      if system('docker -v')
+        puts '=> Docker found'
+      else
+        rails7_header
+        puts '=> Docker not found'
+        puts 'To continue please install Docker'
+        puts 'More info: https://docs.docker.com/get-docker'
+        puts '~' * 80
+        exit 1
+      end
+    end
 
-      rails7_header
-      puts 'Docker not found'
-      puts '~' * 80
-      exit 1
+    def check_docker_running!
+      output = `docker ps`
+      if output.match(/CONTAINER ID/)
+        puts '=> Docker is running'
+      else
+        rails7_header
+        puts '=> Docker not running'
+        puts 'To continue please run Docker'
+        puts '~' * 80
+        exit 1
+      end
     end
 
     # rubocop:disable Metrics/MethodLength
     def check_docker_compose_v2!
       output = `docker compose version`
       if output.match(/Docker Compose version v2/)
-        puts 'Docker Compose v2 - found!'
+        puts '=> Docker Compose v2 - found!'
       else
         rails7_header
-        puts 'Docker Compose v2 not found'
-        puts 'Please Upgrade to Docker Compose v2'
+        puts '=> Docker Compose v2 not found'
+        puts 'To continue please install or upgrade Docker Compose v2'
         puts 'More info: https://docs.docker.com/compose/compose-v2'
         puts '~' * 80
         exit 1
