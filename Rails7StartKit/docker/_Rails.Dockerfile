@@ -1,34 +1,10 @@
 #
-# https://hub.docker.com/r/iamteacher/rails7/tags
-#
-# From the root of the project
-#
-# ARM:
-# docker build -t iamteacher/rails7:2023.arm64 -f Rails7StartKit/docker/Dockerfile --build-arg BUILDPLATFORM="linux/arm64" .
-# docker push iamteacher/rails7:2023.arm64
-# docker run -ti iamteacher/rails7:2023.arm64
-#
-# AMD:
-# docker build -t iamteacher/rails7:2023.amd64 -f Rails7StartKit/docker/Dockerfile --build-arg BUILDPLATFORM="linux/amd64" .
-# docker push iamteacher/rails7:2023.amd64
-# docker run -ti iamteacher/rails7:2023.amd64
-#
-# 386:
-# (crashed on M1 with) `qemu: uncaught target signal 6 (Aborted) - core dumped`
-# docker build -t iamteacher/rails7:2023.386 -f Rails7StartKit/docker/Dockerfile --build-arg BUILDPLATFORM="linux/386" .
-# docker run -ti iamteacher/rails7:2023.386
-
 # Debian GNU/Linux 11 (bullseye)
-FROM --platform=$BUILDPLATFORM ruby:3.2
-ARG BUILDPLATFORM
-RUN echo "$BUILDPLATFORM" > /BUILDPLATFORM
+FROM --platform=$BUILDPLATFORM iamteacher/rails7.base
 
-RUN apt-get update && apt-get install --yes \
-    cron \
-    vim
+USER root
 
 SHELL ["/bin/bash", "--login", "-c"]
-
 RUN gem update --system 3.4.5
 
 # =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
