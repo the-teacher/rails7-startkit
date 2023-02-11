@@ -4,7 +4,7 @@
 
 ## Install and Run `Ruby on Rails` now!
 
-<i>Copy & Paste it to your terminal</i>
+<i>Copy & Paste it in your terminal</i>
 
 ```sh
 git clone https://github.com/the-teacher/rails7-startkit.git && \
@@ -194,7 +194,7 @@ What I'm going to add...
 
 ## Installation and Running
 
-<i>Copy & Paste it to your terminal</i>
+<i>Copy & Paste it in your terminal</i>
 
 ```sh
 git clone https://github.com/the-teacher/rails7-startkit.git && \
