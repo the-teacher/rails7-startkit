@@ -60,6 +60,6 @@ Style/GlobalVars:
   Exclude:
     - config/initializers/_REDIS.rb
 Metrics/BlockLength:
-  IgnoredMethods: ['describe', 'context']
+  AllowedMethods: ['describe', 'context']
   Exclude:
     - config/environments/development.rb

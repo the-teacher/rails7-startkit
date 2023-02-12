@@ -11,14 +11,13 @@
   </head>
 
   <body>
-    <%= yield(:common_info) %>
-    <div class="articles-wrapper">
+    <div class="body">
       <%= render partial: 'demo/header' %>
       <%= render partial: 'shared/flash_messages' %>
+      <%= yield(:common_info) %>
+      <%= render partial: 'demo/common_links' %>
       <%= yield %>
-      <footer>
-        Made with &hearts; by <a href="https://github.com/the-teacher">the-teacher</a>
-      </footer>
+      <%= render partial: 'demo/footer' %>
     </div>
   </body>
 </html>

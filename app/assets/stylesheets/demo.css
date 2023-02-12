@@ -3,8 +3,8 @@ header, footer {
 }
 
 .header-menu {
-  border-top: 7px solid lightblue;
-  border-bottom: 7px solid lightblue;
+  border-top: 7px solid lightgray;
+  border-bottom: 7px solid lightgray;
   display: flex;
 }
 
@@ -13,12 +13,7 @@ header, footer {
 }
 
 footer {
-  border-top: 7px solid lightblue;
-}
-
-section {
-  width: 30%;
-  flex-grow: 1;
+  border-top: 7px solid lightgray;
 }
 
 code {
@@ -41,12 +36,7 @@ h3 {
 }
 
 section {
-  margin-bottom: 20px;
-}
-
-.section-function {
-  padding: 10px;
-  border: 3px solid lightblue;
+  margin: 20px 0;
 }
 
 .section-description {
@@ -60,7 +50,7 @@ section {
   background-color: antiquewhite;
   border: 1px solid rgb(242, 189, 120);
   padding: 10px;
-  margin: 20px 0;
+  margin-bottom: 20px;
 }
 
 .header-section {
@@ -84,7 +74,12 @@ em.tsh {
 .section-pagination .pagination {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-around;
+  justify-content: center;
+  gap: 10px;
+}
+
+.section-pagination .pagination span {
+  padding: 10px;
 }
 
 .section-pagination .pagination .page,
@@ -92,7 +87,6 @@ em.tsh {
 .section-pagination .pagination .next,
 .section-pagination .pagination .first,
 .section-pagination .pagination .last {
-  padding: 3px;
   background-color: rgb(237, 244, 246);
 }
 
@@ -109,4 +103,21 @@ em.tsh {
   padding: 20px;
   margin: 20px 0;
   font-size: 16px;
+}
+
+.examples {
+  padding: 0;
+  margin: 20px 0;
+
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+
+}
+
+.example-item {
+  border: 1px solid gray;
+  padding: 10px 20px;
+  border-radius: 4px;
+  background-color: rgb(231, 248, 255);
 }

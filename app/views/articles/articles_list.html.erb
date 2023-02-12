@@ -1,4 +1,6 @@
-<section class="section-function">
+<%= render partial: 'demo/common_info', locals: { file: __FILE__ } %>
+
+<section>
   <h2 class="header-section">Articles. Without caching</h2>
 
   <div class="section-description">
@@ -6,11 +8,11 @@
     <p><b>Rendered at:</b> <%= DateTime.now.strftime('%d.%m.%Y %H.%M.%S') %></p>
   </div>
 
-  <% articles.each do |article| %>
+  <% @articles.each do |article| %>
     <%= render partial: 'articles/article', locals: { article: article } %>
   <% end %>
 
   <div class="section-pagination">
-    <%= paginate articles %>
+    <%= paginate @articles %>
   </div>
 </section>

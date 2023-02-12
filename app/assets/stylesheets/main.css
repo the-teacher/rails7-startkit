@@ -52,3 +52,8 @@ a {
 a:hover {
   color: #3168d7;
 }
+
+.body {
+  width: 1000px;
+  margin: auto;
+}

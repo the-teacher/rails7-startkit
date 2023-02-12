@@ -1,0 +1,12 @@
+<%= render partial: 'demo/common_info', locals: { file: __FILE__ } %>
+
+<section>
+  <h2 class="header-section">Articles. 1 minute caching</h2>
+
+  <% cache("articles-1-minute-cache", expires_in: 1.minute) do %>
+    <%= render partial: 'articles/cache_instruction' %>
+    <% @articles.each do |article| %>
+      <%= render partial: 'articles/article', locals: { article: article } %>
+    <% end %>
+  <% end %>
+</section>
