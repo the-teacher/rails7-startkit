@@ -1,0 +1,36 @@
+<%= render partial: 'demo/common_info', locals: { file: __FILE__ } %>
+
+<section>
+  <h2 class="header-section">Active Storage Example. User Avatar</h2>
+
+  <% unless user_signed_in? %>
+    <p>
+      You can not upload an avatar until user is logged in:
+      <%= link_to "Sign In", new_user_session_path %>
+    </p>
+
+    <p>
+      email: <b>admin@rails-start.com</b>
+    </p>
+
+    <p>
+      password: <b>qwerty123</b>
+    </p>
+  <% end %>
+
+  <% if user_signed_in? %>
+    <p>
+      Current user: <%= current_user.email %> |
+      <%= link_to "Sign Out", destroy_user_session_path%>
+    </p>
+
+    <% if current_user.avatar.attached? %>
+      <%= image_tag current_user.avatar, class: :user_avatar %>
+    <% end %>
+
+    <%= form_for current_user, method: :patch do |form| %>
+      <p><%= form.file_field :avatar %></p>
+      <p><%= form.submit "Upload" %></p>
+    <% end %>
+  <% end %>
+</section>

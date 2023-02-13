@@ -10,4 +10,8 @@ Rails.application.routes.draw do
   get '/articles_list', to: 'demo#articles_list'
   get '/articles_cache', to: 'demo#articles_cache'
   get '/articles_search', to: 'demo#articles_search'
+
+  resource :user, only: [:update] do
+    get :profile
+  end
 end

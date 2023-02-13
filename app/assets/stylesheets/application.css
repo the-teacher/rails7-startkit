@@ -15,4 +15,5 @@
  *= require "demo"
  *= require "articles"
  *= require "devise"
+ *= require "users"
  */
