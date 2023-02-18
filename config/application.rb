@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-require_relative "boot"
+require_relative 'boot'
 
-require "rails/all"
+require 'rails/all'
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
@@ -15,7 +15,7 @@ module App
     # Running this initializer early
     # To make settings be abailable on WebServer start
     # To make configs available in `config/environments/%{environment}.rb`
-    require_relative "initializers/_CONFIG"
+    require_relative 'initializers/_CONFIG'
 
     config.load_defaults 7.0
 
@@ -26,7 +26,7 @@ module App
     # These settings can be overridden in specific environments using the files
     # in config/environments, which are processed later.
     #
-    config.time_zone = "Central Time (US & Canada)"
+    config.time_zone = 'Central Time (US & Canada)'
     # config.eager_load_paths << Rails.root.join("extras")
   end
 end
