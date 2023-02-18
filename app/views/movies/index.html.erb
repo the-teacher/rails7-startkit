@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Movies</h1>
+<hr />
+<%=render partial: 'movies/form', locals: {movie: Movie.new} %>
+<hr />
+<%=turbo_stream_from :movies %>
+<div id="movies">
+<%= render @movies %>
+</div>

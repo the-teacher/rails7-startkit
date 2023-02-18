@@ -1,11 +1,12 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  resources :movies
   devise_for :users
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")
-  root 'demo#index'
+  root 'movies#index'
 
   get '/articles_list', to: 'demo#articles_list'
   get '/articles_cache', to: 'demo#articles_cache'

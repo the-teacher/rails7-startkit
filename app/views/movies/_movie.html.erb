@@ -1,0 +1,10 @@
+<%=turbo_frame_tag dom_id(movie) do %>
+  <p>
+    <strong>Title:</strong>
+    <%= movie.title %>
+  </p>
+
+  <p>
+    <%= link_to "Edit", edit_movie_path(movie) %>
+  </p>
+<% end %>

@@ -1,0 +1,25 @@
+<%=turbo_frame_tag dom_id(movie) do %>
+  <%= form_with(model: movie) do |form| %>
+    <% if movie.errors.any? %>
+      <div style="color: red">
+        <h2><%= pluralize(movie.errors.count, "error") %> prohibited this movie from being saved:</h2>
+
+        <ul>
+          <% movie.errors.each do |error| %>
+            <li><%= error.full_message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div>
+      <%= form.label :title, style: "display: block" %>
+      <%= form.text_field :title %>
+    </div>
+
+    <div>
+      <%= form.submit %>
+      <%= link_to "Back to movies", movie_path(movie) unless movie.new_record? %>
+    </div>
+  <% end %>
+<% end %>
