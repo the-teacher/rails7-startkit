@@ -8,6 +8,7 @@ require_relative './docker'
 require_relative './chewy'
 require_relative './sidekiq'
 require_relative './cron'
+require_relative './guard'
 require_relative './whenever'
 require_relative './rails'
 require_relative './puma'
@@ -27,7 +28,6 @@ if File.methods.include?(:exists?) && !File.methods.include?(:exist?)
   end
 end
 
-# rubocop:disable Metrics/MethodLength
 # rubocop:disable Metrics/AbcSize
 module Rails7StartKit
   class << self
@@ -37,6 +37,8 @@ module Rails7StartKit
 
       cron_start
       chewy_index
+
+      guard_start
 
       sidekiq_start
       puma_start
@@ -74,6 +76,7 @@ module Rails7StartKit
 
       container_bash_exec('rails', 'ps a | grep puma')
       container_bash_exec('rails', 'ps a | grep sidekiq')
+      container_bash_exec('rails', 'ps a | grep guard')
     end
 
     def index
@@ -136,4 +139,3 @@ module Rails7StartKit
   end
 end
 # rubocop:enable Metrics/AbcSize
-# rubocop:enable Metrics/MethodLength
