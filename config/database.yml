@@ -1,29 +1,23 @@
-test:
-  host: psql
+default: &default
   pool: 5
   adapter:  postgresql
   encoding: unicode
 
+test:
+  <<: *default
+  host: <%=ENV['DATABASE_HOSTNAME']%>
+  username: <%=ENV['DATABASE_USERNAME']%>
+  password: <%=ENV['DATABASE_PASSWORD']%>
   database: rails7app_test
-  username: postgres
-  password: qwerty
+  
 
 development:
-  host: psql
-  pool: 5
-  adapter:  postgresql
-  encoding: unicode
-
-  database: rails7app
-  username: postgres
-  password: qwerty
+  <<: *default
+  host: <%=ENV['DATABASE_HOSTNAME']%>
+  username: <%=ENV['DATABASE_USERNAME']%>
+  password: <%=ENV['DATABASE_PASSWORD']%>
+  database: rails7app_development
 
 production:
-  host: psql
-  pool: 5
-  adapter:  postgresql
-  encoding: unicode
-
-  database: rails7app
-  username: postgres
-  password: qwerty
+  <<: *default
+  url: <%= ENV['DATABASE_PRODUCTION'] %>
