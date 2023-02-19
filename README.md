@@ -173,6 +173,11 @@ Save hours, days or weeks on setting up a typical Rails app.
     <td><b><a href="https://www.ruby-toolbox.com/categories/testing_frameworks">RSpec</a></b></td>
     <td>Testing Framework for Rails</td>
   </tr>
+  <tr>
+    <td><img width="100px" alt="rspec" src="Rails7StartKit/assets/images/simple-cov.png"></td>
+    <td><b><a href="https://github.com/simplecov-ruby/simplecov">SimpleCov</a></b></td>
+    <td>Code coverage for Ruby (and Rails)</td>
+  </tr>
   </tbody>
 </table>
 
