@@ -168,6 +168,11 @@ Save hours, days or weeks on setting up a typical Rails app.
     <td><b><a href="https://www.ruby-toolbox.com/categories/rails_authentication">Devise</b></a></td>
     <td>Authentication solution for Rails + Emails confirmations</td>
   </tr>
+  <tr>
+    <td><img width="100px" alt="ActiveStorage" src="Rails7StartKit/assets/images/active-storage.png"></td>
+    <td><b><a href="https://github.com/rails/rails/tree/main/activestorage">ActiveStorage</b></a></td>
+    <td>Default Cloud Storage Solution for Rails</td>
+  </tr>
   </tbody>
 </table>
 
