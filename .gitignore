@@ -6,6 +6,8 @@
 .DS_Store
 /.idea
 
+/.idea
+
 /db/PGSQL
 !/db/PGSQL/.keep
 
