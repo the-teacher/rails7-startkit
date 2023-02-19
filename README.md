@@ -146,6 +146,16 @@ Save hours, days or weeks on setting up a typical Rails app.
     <td>Email previewer for development</td>
   </tr>
   <tr>
+    <td><img width="100px" alt="devise" src="Rails7StartKit/assets/images/devise.png"></td>
+    <td><b><a href="https://www.ruby-toolbox.com/categories/rails_authentication">Devise</b></a></td>
+    <td>Authentication solution for Rails + Emails confirmations</td>
+  </tr>
+  <tr>
+    <td><img width="100px" alt="ActiveStorage" src="Rails7StartKit/assets/images/active-storage.png"></td>
+    <td><b><a href="https://github.com/rails/rails/tree/main/activestorage">ActiveStorage</b></a></td>
+    <td>Default Cloud Storage Solution for Rails</td>
+  </tr>
+  <tr>
     <td><img width="100px" alt="puma" src="Rails7StartKit/assets/images/puma.png"></td>
     <td><b><a href="https://www.ruby-toolbox.com/categories/web_servers">Puma</a></b></td>
     <td>Application Web Server. To launch Rails app</td>
@@ -162,16 +172,6 @@ Save hours, days or weeks on setting up a typical Rails app.
     <td><img width="100px" alt="rspec" src="Rails7StartKit/assets/images/rspec.png"></td>
     <td><b><a href="https://www.ruby-toolbox.com/categories/testing_frameworks">RSpec</a></b></td>
     <td>Testing Framework for Rails</td>
-  </tr>
-  <tr>
-    <td><img width="100px" alt="devise" src="Rails7StartKit/assets/images/devise.png"></td>
-    <td><b><a href="https://www.ruby-toolbox.com/categories/rails_authentication">Devise</b></a></td>
-    <td>Authentication solution for Rails + Emails confirmations</td>
-  </tr>
-  <tr>
-    <td><img width="100px" alt="ActiveStorage" src="Rails7StartKit/assets/images/active-storage.png"></td>
-    <td><b><a href="https://github.com/rails/rails/tree/main/activestorage">ActiveStorage</b></a></td>
-    <td>Default Cloud Storage Solution for Rails</td>
   </tr>
   </tbody>
 </table>
