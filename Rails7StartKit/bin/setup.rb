@@ -67,7 +67,7 @@ module Rails7StartKit
         rubocop
 
         step_info 'RSpec is Checking'
-        rspec
+        rspec_with_cov
 
         step_info 'Visit Rails App: http://localhost:3000'
         step_info 'Visit Mail Service: http://localhost:1080'
