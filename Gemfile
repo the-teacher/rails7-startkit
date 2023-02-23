@@ -5,6 +5,10 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby "3.2.1"
 
+# Rails7. Start Kit
+# env variables
+gem "dotenv-rails", "2.8.1", require: "dotenv/rails-now"
+
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "7.0.4.2"
 

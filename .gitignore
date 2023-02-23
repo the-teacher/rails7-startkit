@@ -56,3 +56,9 @@ config/environments/*.local.yml
 
 # gem SimpleCov
 coverage
+
+# Dot Env gem
+/.env.local
+/.env.test.local
+/.env.development.local
+/.env.production.local
