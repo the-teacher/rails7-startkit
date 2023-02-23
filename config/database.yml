@@ -14,7 +14,7 @@ development:
   adapter:  postgresql
   encoding: unicode
 
-  database: rails7app
+  database: rails7app_development
   username: postgres
   password: qwerty
 
@@ -24,6 +24,6 @@ production:
   adapter:  postgresql
   encoding: unicode
 
-  database: rails7app
+  database: rails7app_production
   username: postgres
   password: qwerty

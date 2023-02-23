@@ -2,6 +2,7 @@
   <div class="header-warning">
     <b>Ruby version:</b> <%= `ruby -v` %><br>
     <b>Rails version:</b> <%= Rails.version %><br>
+    <b>Rails environment:</b> <%= Rails.env %><br>
     We are in: <code><%= file.gsub(Rails.root.to_s, '') %></code>
     Controller &mdash; <b><%= controller.controller_name %></b>.
     Action &mdash; <b><%= controller.action_name %></b>.

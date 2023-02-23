@@ -5,10 +5,13 @@
 # Also this file is being loaded in `config/application.rb`
 # To make configs available in `config/environments/%{environment}.rb`
 
-# Settings.app.rails.version
+# Settings.rails.version
+rails:
+  version: <%= ENV['RAILS_VERSION'] %>
+
+# Settings.app.env.name
 app:
-  rails:
-    version: <%= ENV['RAILS_VERSION'] %>
+  host: <%= ENV['APP_HOST'] %>
 
 redis:
   host: <%= ENV['REDIS_HOST'] %>
@@ -17,3 +20,8 @@ redis:
 elastic:
   host: <%= ENV['ELASTIC_HOST'] %>
   port: <%= ENV['ELASTIC_PORT'] %>
+
+seeds:
+  admin:
+    email: <%= ENV['ADMIN_EMAIL'] %>
+    password: <%= ENV['ADMIN_PASSWORD'] %>
