@@ -63,15 +63,22 @@ module Rails7StartKit
         step_info 'Launching Sidekiq'
         sidekiq_start
 
-        step_info 'Rubocop is Checking'
-        rubocop
+        if development?
+          step_info 'Rubocop is Checking'
+          rubocop
 
-        step_info 'RSpec is Checking'
-        rspec_with_cov
+          step_info 'RSpec is Checking'
+          rspec_with_cov
+        end
+
+        if production?
+          step_info 'Precompile Assets'
+          container_bash_exec('rails', 'rake assets:precompile')
+        end
 
         step_info 'Visit Rails App: http://localhost:3000'
-        step_info 'Visit Mail Service: http://localhost:1080'
-        step_info 'Visit ElasticSearch: http://localhost:9200'
+        step_info 'Visit Mail Service: http://localhost:1080'  if development?
+        step_info 'Visit ElasticSearch: http://localhost:9200' if development?
 
         containers_information
 

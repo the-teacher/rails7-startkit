@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require 'fileutils'
+require_relative './environment'
 require_relative './helpers'
 
 require_relative './common'
@@ -13,6 +14,7 @@ require_relative './rails'
 require_relative './puma'
 require_relative './rubocop'
 require_relative './elastic'
+require_relative './start_stop'
 require_relative './setup'
 
 # path to your application root
@@ -31,58 +33,11 @@ end
 # rubocop:disable Metrics/AbcSize
 module Rails7StartKit
   class << self
-    def start
-      rails_install_gems
-      rails_db_migrate
-
-      cron_start
-      chewy_index
-
-      sidekiq_start
-      puma_start
-    end
-
-    def start_all
-      start_all_containers
-      system('bin/exec start')
-      containers_information
-    end
-
-    def stop
-      puma_stop
-      cron_stop
-      sidekiq_stop
-    end
-
-    def stop_all
-      stop_all_containers
-      containers_information
-    end
-
-    def restart
-      system('bin/exec stop')
-      system('bin/exec start')
-    end
-
-    def restart_all
-      system('bin/exec stop_all')
-      system('bin/exec start_all')
-    end
-
     def status
       containers_information
 
       container_bash_exec('rails', 'ps a | grep puma')
       container_bash_exec('rails', 'ps a | grep sidekiq')
-    end
-
-    def index
-      start_all_containers
-
-      rails_install_gems
-      rails_db_migrate
-
-      chewy_index
     end
 
     def reset
@@ -103,6 +58,11 @@ module Rails7StartKit
         FileUtils.touch('db/ELASTIC/.keep', verbose: true)
       end
     end
+
+    # def get_secret_key
+    #   container_bash_exec('rails', 'rake secret > tail')
+    #   container_bash_exec('rails', 'printenv SECRET_KEY_BASE')
+    # end
 
     def cache
       puts 'Toggle App Cache in development mode'

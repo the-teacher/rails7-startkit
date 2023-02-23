@@ -10,4 +10,9 @@
 
 # bundle exec rake db:seed
 
-load(Rails.root.join('db', 'seeds', "#{Rails.env.downcase}.rb"))
+admin = User.create(
+  email: Settings.seeds.admin.email,
+  password: Settings.seeds.admin.password
+)
+
+admin.confirm

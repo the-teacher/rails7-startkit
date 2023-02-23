@@ -9,7 +9,8 @@ environment env_name
 if env_name == 'development'
   bind "tcp://0.0.0.0:#{ENV.fetch('PORT', 3000)}"
 else
-  bind 'unix:///home/lucky/app/tmp/sockets/puma.sock'
+  bind "tcp://0.0.0.0:#{ENV.fetch('PORT', 3000)}"
+  # bind 'unix:///home/lucky/app/tmp/sockets/puma.sock'
 end
 
 pidfile    '/home/lucky/app/tmp/pids/puma.pid'
@@ -29,7 +30,7 @@ on_worker_boot do
   rescue StandardError
     ActiveRecord::ConnectionNotEstablished
   end
-  ActiveRecord::Base.establish_connection(YAML.load_file('/home/lucky/app/config/database.yml')['production'])
+  ActiveRecord::Base.establish_connection(YAML.load_file('/home/lucky/app/config/database.yml')[env_name])
 end
 
 # Allow puma to be restarted by `bin/rails restart` command.

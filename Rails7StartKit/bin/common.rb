@@ -73,13 +73,13 @@ module Rails7StartKit
     end
 
     def container_exec(container_name = 'rails', cmd = 'ls')
-      docker_compose("exec #{ENV['TTY_OFF']} -e='RAILS_ENV=#{ENV_NAME}' #{container_name} #{cmd}")
+      docker_compose("exec #{ENV['TTY_OFF']} -e='RAILS_ENV=#{rails_env_name}' #{container_name} #{cmd}")
     end
 
     # rubocop:disable Style/OptionalBooleanParameter
     def container_bash_exec(container_name = 'rails', cmd = 'ls', detached = false)
       detached = detached ? '-d' : ''
-      docker_compose("exec #{ENV['TTY_OFF']} #{detached} #{container_name} /bin/bash -c '#{cmd}'")
+      docker_compose("exec #{ENV['TTY_OFF']} -e='RAILS_ENV=#{rails_env_name}' #{detached} #{container_name} /bin/bash -c '#{cmd}'")
     end
     # rubocop:enable Style/OptionalBooleanParameter
 

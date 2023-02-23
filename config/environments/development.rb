@@ -51,7 +51,7 @@ Rails.application.configure do
 
   # link_to helper requires this setting
   config.action_mailer.default_url_options = {
-    host: 'localhost:3000'
+    host: Settings.app.host
   }
 
   # Don't care if the mailer can't send.
