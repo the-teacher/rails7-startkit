@@ -118,12 +118,20 @@ Save hours, days or weeks on setting up a typical Rails app.
     <td>Rails' recommended way to process JavaScript</td>
   </tr>
   <tr>
-    <td colspan="3"><b>Application Level</b></td>
+    <td colspan="3"><b>Application Configuration</b></td>
   </tr>
   <tr>
     <td><img width="100px" alt="gem config" src="Rails7StartKit/assets/images/config.png"></td>
     <td><b><a href="https://www.ruby-toolbox.com/projects/config">gem&nbsp;"config"</a></b></td>
     <td>Configuration management tool</td>
+  </tr>
+  <tr>
+    <td><img width="100px" alt="gem dotenv-rails" src="Rails7StartKit/assets/images/dotenv.png"></td>
+    <td><b><a href="https://www.ruby-toolbox.com/projects/dotenv">gem&nbsp;"dotenv-rails"</a></b></td>
+    <td>ENV variables management tool</td>
+  </tr>
+  <tr>
+    <td colspan="3"><b>Application Level</b></td>
   </tr>
   <tr>
     <td><img width="100px" alt="faker" src="Rails7StartKit/assets/images/faker.png"></td>
