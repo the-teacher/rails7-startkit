@@ -8,12 +8,12 @@
 # Settings.app.rails.version
 app:
   rails:
-    version: "7"
+    version: <%= ENV['RAILS_VERSION'] %>
 
 redis:
-  host: redis
-  port: 6379
+  host: <%= ENV['REDIS_HOST'] %>
+  port: <%= ENV['REDIS_PORT'] %>
 
 elastic:
-  host: elastic
-  port: 9200
+  host: <%= ENV['ELASTIC_HOST'] %>
+  port: <%= ENV['ELASTIC_PORT'] %>

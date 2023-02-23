@@ -100,6 +100,10 @@ GEM
       warden (~> 1.2.3)
     diff-lcs (1.5.0)
     docile (1.4.0)
+    dotenv (2.8.1)
+    dotenv-rails (2.8.1)
+      dotenv (= 2.8.1)
+      railties (>= 3.2)
     dry-configurable (1.0.1)
       dry-core (~> 1.0, < 2)
       zeitwerk (~> 2.6)
@@ -362,6 +366,7 @@ DEPENDENCIES
   config (= 4.1.0)!
   debug (= 1.7.1)
   devise (= 4.8.1)
+  dotenv-rails (= 2.8.1)
   faker (= 3.1.0)
   importmap-rails (= 1.1.5)
   jbuilder (= 2.11.5)
