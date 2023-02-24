@@ -7,7 +7,7 @@
 #
 version: '3.8'
 
-name: rails7_startkit
+#name: rails7_startkit
 
 services:
   # port: 5432
