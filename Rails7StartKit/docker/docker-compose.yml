@@ -69,6 +69,7 @@ services:
     tty: true
     stdin_open: true
     image: iamteacher/rails7:latest
+    user: ${RUN_AS:-root}
     volumes:
       - ../../:/home/lucky/app
       - ../../shared:/shared
