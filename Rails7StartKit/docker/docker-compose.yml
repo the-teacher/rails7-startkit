@@ -17,7 +17,7 @@ services:
   psql:
     # restart: always
     image: postgres:15.1-bullseye
-    user: ${RUN_AS:-root}
+    user: 1000:1000
     environment:
       POSTGRES_PASSWORD: qwerty
       PGDATA: /var/lib/postgresql/data/pgdata
