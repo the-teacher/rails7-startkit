@@ -1,29 +1,21 @@
+defaults: &defaults
+  pool: <%= Settings.db.pool %>
+  host: <%= Settings.db.host %>
+  username: <%= Settings.db.user %>
+  database: <%= Settings.db.name %>
+  password: <%= Settings.db.password %>
+
 test:
-  host: psql
-  pool: 5
   adapter:  postgresql
   encoding: unicode
-
-  database: rails7app_test
-  username: postgres
-  password: qwerty
+  <<: *defaults
 
 development:
-  host: psql
-  pool: 5
   adapter:  postgresql
   encoding: unicode
-
-  database: rails7app_development
-  username: postgres
-  password: qwerty
+  <<: *defaults
 
 production:
-  host: psql
-  pool: 5
   adapter:  postgresql
   encoding: unicode
-
-  database: rails7app_production
-  username: postgres
-  password: qwerty
+  <<: *defaults

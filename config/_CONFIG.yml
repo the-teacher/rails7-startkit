@@ -9,6 +9,14 @@
 rails:
   version: <%= ENV['RAILS_VERSION'] %>
 
+# Settings.app.db.name
+db:
+  pool:     <%= ENV.fetch('DATABASE_POOL', 5) %>
+  host:     <%= ENV.fetch('DATABASEDATABASE_HOST_POOL', 'psql') %>
+  user:     <%= ENV.fetch('DATABASE_USER', 'postgres') %>
+  name:     <%= ENV.fetch('DATABASE_NAME') %>
+  password: <%= ENV.fetch('DATABASE_PASSWORD') %>
+
 # Settings.app.env.name
 app:
   host: <%= ENV['APP_HOST'] %>

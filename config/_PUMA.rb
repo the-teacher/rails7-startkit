@@ -6,12 +6,11 @@ threads 2, 4
 env_name = ENV.fetch('RAILS_ENV', 'development')
 environment env_name
 
-if env_name == 'development'
-  bind "tcp://0.0.0.0:#{ENV.fetch('PORT', 3000)}"
-else
-  bind "tcp://0.0.0.0:#{ENV.fetch('PORT', 3000)}"
-  # bind 'unix:///home/lucky/app/tmp/sockets/puma.sock'
-end
+# unless env_name == 'development'
+#   bind 'unix:///home/lucky/app/tmp/sockets/puma.sock'
+# end
+
+bind "tcp://0.0.0.0:#{ENV.fetch('PORT', 3000)}"
 
 pidfile    '/home/lucky/app/tmp/pids/puma.pid'
 state_path '/home/lucky/app/tmp/pids/puma.state'
