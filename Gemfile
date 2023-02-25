@@ -55,6 +55,8 @@ gem "devise", "4.8.1"
 group :development, :test do
   # RSpec testing
   gem "rspec-rails", "6.0.1"
+  # for RSpec and ruby 3.2.1
+  gem "parser", "3.2.1.0"
 
   # Fake data for development and testing
   gem "faker", "3.1.0"
