@@ -2,7 +2,12 @@
   "name": "app",
   "private": "true",
   "scripts": {
+    "start": "yarn build:js & yarn build:css",
     "build:css": "sass ./app/assets/stylesheets/application.bootstrap.scss:./app/assets/builds/application.css --no-source-map --load-path=node_modules",
-    "build": "esbuild app/javascript/*.* --bundle --sourcemap --outdir=app/assets/builds --public-path=assets"
+    "build:js":  "esbuild app/javascript/*.* --bundle --sourcemap --outdir=app/assets/builds --public-path=assets"
+  },
+  "dependencies": {
+    "esbuild": "0.17.10",
+    "sass": "1.58.3"
   }
 }
