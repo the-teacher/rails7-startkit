@@ -12,10 +12,13 @@ require_relative './cron'
 require_relative './whenever'
 require_relative './rails'
 require_relative './puma'
+require_relative './rspec'
 require_relative './rubocop'
 require_relative './elastic'
 require_relative './start_stop'
+require_relative './yarn'
 require_relative './setup'
+require_relative './reset'
 
 # path to your application root
 APP_ROOT = File.expand_path('../..', __dir__)
@@ -38,25 +41,6 @@ module Rails7StartKit
 
       container_bash_exec('rails', 'ps a | grep puma')
       container_bash_exec('rails', 'ps a | grep sidekiq')
-    end
-
-    def reset
-      puts 'This command clean up ALL THE DATA for the project!'
-      prompt!
-
-      FileUtils.chdir APP_ROOT do
-        FileUtils.rm_rf('db/PGSQL/', verbose: true)
-        FileUtils.rm_rf('db/REDIS/', verbose: true)
-        FileUtils.rm_rf('db/ELASTIC/', verbose: true)
-
-        FileUtils.mkdir_p('db/PGSQL/', verbose: true)
-        FileUtils.mkdir_p('db/REDIS/', verbose: true)
-        FileUtils.mkdir_p('db/ELASTIC/', verbose: true)
-
-        FileUtils.touch('db/PGSQL/.keep', verbose: true)
-        FileUtils.touch('db/REDIS/.keep', verbose: true)
-        FileUtils.touch('db/ELASTIC/.keep', verbose: true)
-      end
     end
 
     # def get_secret_key

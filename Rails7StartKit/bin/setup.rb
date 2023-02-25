@@ -24,9 +24,11 @@ module Rails7StartKit
         wait('to launch ElasticSearch Container')
 
         # Mailcatcher
-        step_info 'Launching Mailcatcher Container'
-        docker_compose('up mailcatcher -d')
-        wait('to launch Mailcatcher Container')
+        if development?
+          step_info 'Launching Mailcatcher Container'
+          docker_compose('up mailcatcher -d')
+          wait('to launch Mailcatcher Container')
+        end
 
         # PgSQL
         FileUtils.rm('db/PGSQL/.keep', force: true)
@@ -51,8 +53,7 @@ module Rails7StartKit
         step_info 'Turn off some ElasticSearch settings'
         turn_off_elastic_settings
 
-        step_info 'Create DB. Migrate DB. Create Seeds'
-        container_bash_exec('rails', 'rake db:prepare')
+        rails_db_prepare
 
         step_info 'Indexing Article Model'
         chewy_index
@@ -71,14 +72,17 @@ module Rails7StartKit
           rspec_with_cov
         end
 
-        if production?
-          step_info 'Precompile Assets'
-          container_bash_exec('rails', 'rake assets:precompile')
-        end
+        yarn_install
+        yarn_build
+
+        rails_assets_precompile if production?
 
         step_info 'Visit Rails App: http://localhost:3000'
-        step_info 'Visit Mail Service: http://localhost:1080'  if development?
-        step_info 'Visit ElasticSearch: http://localhost:9200' if development?
+
+        if development?
+          step_info 'Visit Mail Service: http://localhost:1080'
+          step_info 'Visit ElasticSearch: http://localhost:9200'
+        end
 
         containers_information
 

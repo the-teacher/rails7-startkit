@@ -5,9 +5,10 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    <%= javascript_importmap_tags("importmap/application") %>
 
-    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-    <%= javascript_importmap_tags %>
+    <%= stylesheet_link_tag "sprockets/application", "data-turbo-track": "reload" %>
+    <%= javascript_include_tag "sprockets/application", "data-turbo-track": "reload", defer: true %>
   </head>
 
   <body>
@@ -15,7 +16,6 @@
       <%= render partial: 'demo/header' %>
       <%= render partial: 'shared/flash_messages' %>
       <%= yield(:common_info) %>
-      <%= render partial: 'demo/common_links' %>
       <%= yield %>
       <%= render partial: 'demo/footer' %>
     </div>

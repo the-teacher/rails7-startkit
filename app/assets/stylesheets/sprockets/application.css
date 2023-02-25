@@ -11,9 +11,11 @@
  * It is generally better to create a new file per style scope.
  *
  *= require_self
- *= require "main"
- *= require "demo"
- *= require "articles"
- *= require "devise"
- *= require "users"
+ *= require "demo/main"
+ *= require "demo/demo"
+ *= require "demo/articles"
+ *= require "demo/devise"
+ *= require "demo/users"
+
+ *= require "sass/application"
  */

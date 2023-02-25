@@ -6,7 +6,7 @@ module Rails7StartKit
       rails_install_gems
       rails_db_migrate
 
-      container_bash_exec('rails', 'rake assets:precompile') if production?
+      rails_assets_precompile if production?
 
       cron_start
       chewy_index
