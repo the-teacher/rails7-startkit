@@ -41,6 +41,9 @@ RUN mkdir /opt/.nvm
 RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.2/install.sh | bash
 RUN nvm install 18.12.1
 
+# to do: New NPM
+# to do:  New YARN
+
 RUN chown -R lucky:lucky /opt/.nvm
 
 # =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=

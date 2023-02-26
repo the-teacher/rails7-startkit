@@ -3,10 +3,10 @@
 
 import * as bootstrap from "bootstrap"
 
-// import ArticlesIndex from 'articlesIndex'
-// import TheSearchHighlight from 'theSearchHighlight'
+import ArticlesIndex from 'articlesIndex'
+import TheSearchHighlight from 'theSearchHighlight'
 
-// console.log("Hello World! This is `importmap` entry point")
+console.log("Hello World! This is `importmap` entry point")
 
-// ArticlesIndex.init()
-// TheSearchHighlight.init('.the-search-highlight')
+ArticlesIndex.init()
+TheSearchHighlight.init('.the-search-highlight')
