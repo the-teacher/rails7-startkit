@@ -12,7 +12,7 @@ rails:
 # Settings.app.db.name
 db:
   pool:     <%= ENV.fetch('DATABASE_POOL', 5) %>
-  host:     <%= ENV.fetch('DATABASE_HOST', 'psql') %>
+  host:     <%= ENV.fetch('DATABASE_POOL', 'psql') %>
   user:     <%= ENV.fetch('DATABASE_USER', 'postgres') %>
   name:     <%= ENV.fetch('DATABASE_NAME') %>
   password: <%= ENV.fetch('DATABASE_PASSWORD') %>

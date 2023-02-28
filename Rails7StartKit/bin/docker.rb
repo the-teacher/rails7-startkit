@@ -31,7 +31,7 @@ module Rails7StartKit
     # rubocop:disable Metrics/MethodLength
     def check_docker_compose_v2!
       output = `docker compose version`
-      if output.match(/Docker Compose version 2/)
+      if output.match(/Docker Compose version v2/)
         puts '=> Docker Compose v2 - found!'
       else
         rails7_header
