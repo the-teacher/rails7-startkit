@@ -392,7 +392,12 @@ On your host you have:
 <details>
   <summary>Show details</summary>
 
-For demonstration, education and maintainance purposes I use the following approach:
+<br>
+For <b>demonstration</b>, education and maintainance purposes I use a bit unsusual approach for Rails:
+
+I `_UNDERSCORE` some files and folders to move them on the top of a folder to make them more visible and to highlight their importance.
+
+I `UPPERCASE` some important files and dolders to make them more visible and to highlight their importance.
 
 **Data**
 
