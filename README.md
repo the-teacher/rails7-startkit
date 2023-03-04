@@ -39,7 +39,7 @@ Save hours, days or weeks on setting up a typical Rails app.
 - You are going to write a new article about Rails
 ### How it works
 
-![Rails 7. Start Kit](https://user-images.githubusercontent.com/496713/222881066-c8c40c39-9a97-4f82-ab76-5071afbd493b.gif)
+![Rails 7. Start Kit](https://user-images.githubusercontent.com/496713/222904528-185c312f-88cc-42d5-9d52-068690a5db05.gif)
 
 ## What Is Under the Hood?
 
