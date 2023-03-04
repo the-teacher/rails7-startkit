@@ -37,12 +37,9 @@ Save hours, days or weeks on setting up a typical Rails app.
 - You learn Rails and related technologies
 - You teach people or record videos about Rails
 - You are going to write a new article about Rails
-### Show Me How It Works
+### How it works
 
-<details>
-  <summary>Show animated video</summary>
-  <img width="500px" alt="rails7-startkit" src="Rails7StartKit/assets/images/rails7intro.gif">
-</details>
+![Rails 7. Start Kit](https://user-images.githubusercontent.com/496713/222881066-c8c40c39-9a97-4f82-ab76-5071afbd493b.gif)
 
 ## What Is Under the Hood?
 
@@ -490,7 +487,6 @@ If you would like to run the project on a linux environment then:
 <details>
   <summary>Show details</summary>
 
-- One command install and run
 - Nginx
 - Production roll up
 - Action Cable [Link](https://guides.rubyonrails.org/action_cable_overview.html)
