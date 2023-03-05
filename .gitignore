@@ -6,8 +6,6 @@
 .DS_Store
 /.idea
 
-/.idea
-
 /db/PGSQL
 !/db/PGSQL/.keep
 
@@ -19,6 +17,9 @@
 
 /shared
 !/shared/.keep
+
+# Ignore yarn folder
+/.yarn
 
 # Ignore bundler config.
 /.bundle
