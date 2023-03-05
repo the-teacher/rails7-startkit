@@ -80,4 +80,5 @@ RUN bundle
 # =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 
 COPY --chown=lucky:lucky package.json package.json
-RUN yarn
+COPY --chown=lucky:lucky yarn.lock yarn.lock
+RUN source /opt/.nvm/nvm.sh && yarn
