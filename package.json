@@ -1,6 +1,5 @@
 {
   "name": "app",
-  "private": "true",
   "scripts": {
     "start": "yarn build:js & yarn build:css",
     "build:css": "sass ./app/assets/stylesheets/application.bootstrap.scss:./app/assets/builds/application.css --no-source-map --load-path=node_modules",
@@ -12,5 +11,6 @@
     "bootstrap-icons": "1.10.3",
     "esbuild": "0.17.10",
     "sass": "^1.58.3"
-  }
+  },
+  "packageManager": "yarn@3.4.1"
 }

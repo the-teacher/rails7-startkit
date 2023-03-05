@@ -41,9 +41,12 @@ RUN mkdir /opt/.nvm
 RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.2/install.sh | bash
 RUN nvm install 18.12.1
 
-# to do: New NPM
-# to do:  New YARN
+# Update NPM and Yarn versions
+RUN npm install -g npm@9.6.0
+RUN npm install yarn -g
+RUN yarn set version berry
 
+# Make things available for `lucky` user
 RUN chown -R lucky:lucky /opt/.nvm
 
 # =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
@@ -52,7 +55,7 @@ RUN chown -R lucky:lucky /opt/.nvm
 
 USER lucky
 ENV EDITOR="vim"
-WORKDIR /home/lucky/app
+WORKDIR /home/lucky
 SHELL ["/bin/bash", "--login", "-c"]
 
 # =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
@@ -66,7 +69,15 @@ RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.2/install.sh | b
 # =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 # Install Gems
 # =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+WORKDIR /home/lucky/app
 
 COPY Gemfile Gemfile
 COPY --chown=lucky:lucky Gemfile.lock Gemfile.lock
 RUN bundle
+
+# =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+# Install Node modules
+# =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+COPY --chown=lucky:lucky package.json package.json
+RUN yarn

@@ -63,10 +63,6 @@ group :development, :test do
 
   # Code linting
   gem "rubocop-rails", "2.17.4", require: false
-
-  # for Bootstrap
-  gem "cssbundling-rails", "1.1.2"
-  gem "jsbundling-rails", "1.1.1"
 end
 
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
