@@ -110,6 +110,16 @@ Save hours, days or weeks on setting up a typical Rails app.
     <td colspan="3"><b>Front-end</b></td>
   </tr>
   <tr>
+    <td><img width="100px" alt="bootstrap" src="Rails7StartKit/assets/images/bootstrap.png"></td>
+    <td><b><a href="https://github.com/twbs/bootstrap">Bootstrap</a></b></td>
+    <td>Old but Gold Framework for Web</td>
+  </tr>
+  <tr>
+    <td><img width="100px" alt="import-maps" src="Rails7StartKit/assets/images/esbuild.png"></td>
+    <td><b><a href="https://esbuild.github.io/">ES Build</a></b></td>
+    <td>An extremely fast bundler for the web</td>
+  </tr>
+  <tr>
     <td><img width="100px" alt="import-maps" src="Rails7StartKit/assets/images/import-maps.png"></td>
     <td><b><a href="https://github.com/rails/importmap-rails">Import Maps</a></b></td>
     <td>Rails' recommended way to process JavaScript</td>
