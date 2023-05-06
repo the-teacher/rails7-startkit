@@ -8,8 +8,6 @@ const TheSearchHighlight = (() => {
   const START_TAG = '<em class="tsh">'
   const END_TAG = '</em>'
 
-  let wordsToHighlight = []
-
   const prepareSearchKeyword = (searchKeyword) => {
     return searchKeyword.trim().replace(/\s\s+/g, ' ')
   }
@@ -68,6 +66,8 @@ const TheSearchHighlight = (() => {
 
   return {
     init: (highlightSelector) => {
+      console.log(`TheSearchHighlight: ${highlightSelector}`)
+
       const fragments = getFragmentsToHighlight(highlightSelector)
       fragments.forEach((fragment) => {
         highlightFragment(fragment)

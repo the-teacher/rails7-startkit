@@ -1,41 +1,36 @@
-<header>
-  <div style="text-align:center">
-    <h1 class="page-header">
-      <a href="https://github.com/the-teacher/rails7-startkit#rails-7-start-kit">
-        <img width="300px" src="/Rails7.StartKit.jpg" />
-      </a>
-    </h1>
-    <p>
-      <a href="https://github.com/the-teacher/rails7-startkit#rails-7-start-kit">Rails 7. StartKit.</a> Please tell your friends about this project.
-    </p>
-    <br>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Rails 7. StartKit</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <%= link_to "Home", "/", class: "nav-link active", 'aria-current': :page %>
+        </li>
+        <%= render partial: 'demo/services' %>
+        <%= render partial: 'demo/examples' %>
+        <%= render partial: 'demo/devise' %>
+      </ul>
+
+      <form class="d-flex">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </form>
+    </div>
   </div>
+</nav>
 
-  <ul class="header-menu">
-    <li class="header-item">
-      <b>Root:</b>
-      <%= link_to "Demo Index", "/" %>
-    </li>
-
-    <li class="header-item">
-      <b>Mail Server:</b>
-      <%= link_to "localhost:1080", "http://localhost:1080", target: :_blank %>
-    </li>
-
-    <li class="header-item">
-      <b>ElasticSearch:</b>
-      <%= link_to "localhost:9200", "http://localhost:9200", target: :_blank %>
-    </li>
-
-    <li class="header-item">
-      <b>Devise:</b>
-      <% if user_signed_in? %>
-        <%= current_user.email %> |
-        <%= link_to "Sign Out", destroy_user_session_path%>
-      <% else %>
-        <%= link_to "Sign In", new_user_session_path %> |
-        <%= link_to "Sign Up", new_user_registration_path %>
-      <% end %>
-    </li>
-  </ul>
-</header>
+<div style="text-align:center">
+  <br>
+  <h1 class="page-header">
+    <a href="https://github.com/the-teacher/rails7-startkit#rails-7-start-kit">
+      <img width="300px" src="/Rails7.StartKit.jpg" />
+    </a>
+  </h1>
+  <p>
+    <a href="https://github.com/the-teacher/rails7-startkit#rails-7-start-kit">Rails 7. StartKit.</a> Please tell your friends about this project.
+  </p>
+  <br>
+</div>

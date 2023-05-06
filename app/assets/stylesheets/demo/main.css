@@ -33,7 +33,7 @@ a, a:hover {
 
 html {
   color: black;
-  font-size: 10px;
+  /* font-size: 10px; */
   background: white;
   font-family: Roboto, sans-serif;
 }
