@@ -524,4 +524,4 @@ These amazing companies and teams support the project:
 
 # License
 
-MIT
+[MIT License. 2023. Ilya N. Zykin](./LICENSE.md)
