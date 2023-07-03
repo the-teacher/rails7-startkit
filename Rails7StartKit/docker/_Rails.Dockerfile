@@ -5,7 +5,7 @@ FROM --platform=$BUILDPLATFORM iamteacher/rails7.base
 USER root
 
 SHELL ["/bin/bash", "--login", "-c"]
-RUN gem update --system 3.4.5
+RUN gem update --system 3.4.15
 
 # =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 # My Lucky User
@@ -71,8 +71,11 @@ RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.2/install.sh | b
 # =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 WORKDIR /home/lucky/app
 
+RUN gem install bundler -v 2.4.15
+
 COPY Gemfile Gemfile
 COPY --chown=lucky:lucky Gemfile.lock Gemfile.lock
+
 RUN bundle
 
 # =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
