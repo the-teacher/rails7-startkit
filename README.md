@@ -502,6 +502,26 @@ If you would like to run the project on a linux environment then:
 - Action Cable [Link](https://guides.rubyonrails.org/action_cable_overview.html)
 </details>
 
-### License
+## Sponsorship
+
+These amazing companies and teams support the project:
+
+<table width="100%">
+  <thead>
+    <tr>
+      <th>JetBrains.com</th>
+      <th>Hoodies.team</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><img width="200px" src="./Rails7StartKit/assets/logos/JB-logo.png" /></td>
+      <td><img width="200px" src="./Rails7StartKit/assets/logos/Hoodies-logo.svg" /></td>
+    </tr>
+  </tbody>
+</table>
+
+
+# License
 
 MIT
