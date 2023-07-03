@@ -58,7 +58,7 @@ Save hours, days or weeks on setting up a typical Rails app.
   <tr>
     <td><img width="100px" alt="docker" src="Rails7StartKit/assets/images/docker.png"></td>
     <td><b>Docker</b></td>
-    <td>Helps to keep all required services in containers. To have fast and predictable installation process in minutes</td>
+    <td>Helps to keep all required services in containers. To have fast and predictable installation process in minutes. <a href="https://hub.docker.com/r/iamteacher/rails7/tags" target="_blank">Docker Images are here.</a></td>
   </tr>
   <tr>
     <td><img width="100px" alt="ruby" src="Rails7StartKit/assets/images/ruby.png"></td>
