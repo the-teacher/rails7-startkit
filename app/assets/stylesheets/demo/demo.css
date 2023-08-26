@@ -39,13 +39,6 @@ section {
   margin: 20px 0;
 }
 
-.section-description {
-  padding: 10px;
-  border: 1px solid rgb(249, 124, 51);
-  background-color: rgb(255, 251, 195);
-  margin-bottom: 20px;
-}
-
 .header-section {
   background-color: rgb(242, 255, 230);
   border: 1px solid rgb(187, 210, 165);

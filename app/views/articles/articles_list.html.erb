@@ -3,9 +3,9 @@
 <section>
   <h2 class="header-section">Articles. Without caching</h2>
 
-  <div class="section-description">
+  <div class="alert alert-danger" role="alert">
     <p>Just a regular section with regular articles.</p>
-    <p><b>Rendered at:</b> <%= DateTime.now.strftime('%d.%m.%Y %H.%M.%S') %></p>
+    <b>Rendered at:</b> <%= DateTime.now.strftime('%d.%m.%Y %H.%M.%S') %>
   </div>
 
   <% @articles.each do |article| %>

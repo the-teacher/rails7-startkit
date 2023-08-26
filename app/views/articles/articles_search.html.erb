@@ -3,13 +3,13 @@
 <section>
   <h2 class="header-section">ElasticSearch results</h2>
 
-  <div class="section-description">
-    <p>Term/Displayed/Found: "<%= @term %>"/<%= @articles.size %>/<%= @articles.count %></p>
+  <div class="alert alert-danger" role="alert">
+    Term/Displayed/Found: "<%= @term %>"/<%= @articles.size %>/<%= @articles.count %>
   </div>
 
   <% if @articles.size.zero? %>
-    <div class="section-description">
-      <p>Sorry. No Search Results</p>
+    <div class="alert alert-danger" role="alert">
+      Sorry. No Search Results
     </div>
   <% end %>
 
