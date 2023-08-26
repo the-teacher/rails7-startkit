@@ -227,18 +227,6 @@ git clone https://github.com/the-teacher/rails7-startkit.git && \
   bin/setup
 ```
 
-**OR**
-
-<details>
-  <summary>Super short option</summary>
-
-```sh
-eval "$(curl -sSL rails-start.com)"
-```
-
-*Executing scripts from the Internet can be dangerous! Check the source before using!*
-</details>
-
 You will see something like that:
 
 ```
