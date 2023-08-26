@@ -4,18 +4,17 @@
   <h2 class="alert alert-primary" role="header">Active Storage Example. User Avatar</h2>
 
   <% unless user_signed_in? %>
-    <p>
-      You can not upload an avatar until user is logged in:
+    <div class="alert alert-danger" role="alert">
+      You can not <b>upload an avatar</b> until user is logged in:
       <%= link_to "Sign In", new_user_session_path %>
-    </p>
+    </div>
 
-    <p>
+    <div class="alert alert-success" role="alert">
       email: <b><%= Settings.seeds.admin.email %></b>
-    </p>
-
-    <p>
+      <br />
       password: <b><%= Settings.seeds.admin.password %></b>
-    </p>
+    </div>
+
   <% end %>
 
   <% if user_signed_in? %>

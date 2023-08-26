@@ -1,11 +1,11 @@
 <%= render partial: 'demo/common_info', locals: { file: __FILE__ } %>
 
 <section>
-  <h2 class="alert alert-primary" role="header">ElasticSearch results</h2>
-
   <div class="alert alert-danger" role="alert">
     Term/Displayed/Found: "<%= @term %>"/<%= @articles.size %>/<%= @articles.count %>
   </div>
+
+  <h2 class="alert alert-primary" role="header">ElasticSearch Results</h2>
 
   <% if @articles.size.zero? %>
     <div class="alert alert-danger" role="alert">
@@ -13,14 +13,11 @@
     </div>
   <% end %>
 
-  <% @articles.each do |article| %>
-    <article class="card the-search-highlight" data-search-words="<%= [@term].to_json %>">
-      <div class="card-body">
-        <h3 class="card-title"><%= article.title %></h3>
-        <p class="card-text"><%= raw article.content %></p>
-      </div>
-    </article>
-  <% end %>
+  <div class="mb-3">
+    <% @articles.each do |article| %>
+      <%= render partial: 'articles/article', locals: { article: article } %>
+    <% end %>
+  </div>
 
   <%= paginate @articles %>
 </section>

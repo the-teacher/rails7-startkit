@@ -5,8 +5,11 @@
 
   <% cache("articles-1-minute-cache", expires_in: 1.minute) do %>
     <%= render partial: 'articles/cache_instruction' %>
-    <% @articles.each do |article| %>
-      <%= render partial: 'articles/article', locals: { article: article } %>
-    <% end %>
+
+    <div class="mb-3">
+      <% @articles.each do |article| %>
+        <%= render partial: 'articles/article', locals: { article: article } %>
+      <% end %>
+    </div>
   <% end %>
 </section>

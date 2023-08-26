@@ -1,16 +1,18 @@
 <%= render partial: 'demo/common_info', locals: { file: __FILE__ } %>
 
 <section>
-  <h2 class="alert alert-primary" role="header">Articles. Without caching</h2>
-
   <div class="alert alert-danger" role="alert">
     <p>Just a regular section with regular articles.</p>
     <b>Rendered at:</b> <%= DateTime.now.strftime('%d.%m.%Y %H.%M.%S') %>
   </div>
 
-  <% @articles.each do |article| %>
-    <%= render partial: 'articles/article', locals: { article: article } %>
-  <% end %>
+  <h2 class="alert alert-primary" role="header">Articles. Without caching</h2>
+
+  <div class="mb-3">
+    <% @articles.each do |article| %>
+      <%= render partial: 'articles/article', locals: { article: article } %>
+    <% end %>
+  </div>
 
   <%= paginate @articles %>
 </section>
