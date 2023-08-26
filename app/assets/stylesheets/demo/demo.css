@@ -51,32 +51,6 @@ em.tsh {
   font-size: 16px;
 }
 
-.section-pagination .pagination {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 10px;
-}
-
-.section-pagination .pagination span {
-  padding: 10px;
-}
-
-.section-pagination .pagination .page,
-.section-pagination .pagination .prev,
-.section-pagination .pagination .next,
-.section-pagination .pagination .first,
-.section-pagination .pagination .last {
-  background-color: rgb(237, 244, 246);
-}
-
-.section-pagination .pagination a {
-  color: #3168d7;
-}
-.section-pagination .pagination a:hover {
-  color: #031741;
-}
-
 .flash_message {
   background-color: rgb(255, 193, 127);
   border: 1px solid #b43c00;
