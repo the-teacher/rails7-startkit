@@ -46,13 +46,6 @@ section {
   margin-bottom: 20px;
 }
 
-.header-warning {
-  background-color: antiquewhite;
-  border: 1px solid rgb(242, 189, 120);
-  padding: 10px;
-  margin-bottom: 20px;
-}
-
 .header-section {
   background-color: rgb(242, 255, 230);
   border: 1px solid rgb(187, 210, 165);
