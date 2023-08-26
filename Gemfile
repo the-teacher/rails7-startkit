@@ -10,7 +10,7 @@ ruby "3.2.1"
 gem "dotenv-rails", "2.8.1", require: "dotenv/rails-now"
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
-gem "rails", "7.0.6"
+gem "rails", "7.0.7.2"
 
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem "sprockets-rails", "3.4.2"
