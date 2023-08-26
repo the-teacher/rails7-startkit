@@ -13,7 +13,6 @@
  *= require_self
  *= require "demo/main"
  *= require "demo/demo"
- *= require "demo/articles"
  *= require "demo/devise"
  *= require "demo/users"
 

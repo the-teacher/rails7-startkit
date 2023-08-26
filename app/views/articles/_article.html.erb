@@ -1,4 +1,8 @@
-<article class="article">
-  <h3 class="article-header"><%= article.title %></h3>
-  <p class="article-content"><%= raw article.content %></p>
+<% @term ||= [''] %>
+
+<article class="card" class="the-search-highlight" data-search-words="<%= [@term].to_json %>">
+  <div class="card-body">
+    <h3 class="card-title"><%= article.title %></h3>
+    <p class="card-text"><%= raw article.content %></p>
+  </div>
 </article>
