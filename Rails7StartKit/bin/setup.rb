@@ -35,7 +35,7 @@ module Rails7StartKit
         step_info 'Launching PgSQL Container'
         docker_compose('up psql -d')
         wait('to initialize PgSQL database')
-        FileUtils.touch('db/PGSQL/.keep', verbose: true)
+        touch_file('db/PGSQL/.keep')
 
         # Redis
         step_info 'Launching Redis Container'

@@ -60,7 +60,7 @@ module Rails7StartKit
           puts 'Cache is OFF'
         else
           puts "File '#{cache_toggle_file}' does not exist"
-          FileUtils.touch(cache_toggle_file, verbose: true)
+          touch_file(cache_toggle_file)
           puts "File '#{cache_toggle_file}' is created"
           puts 'Cache is ON'
         end

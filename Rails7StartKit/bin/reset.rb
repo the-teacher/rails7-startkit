@@ -26,10 +26,10 @@ module Rails7StartKit
         FileUtils.mkdir_p('db/ELASTIC/', verbose: true)
         FileUtils.mkdir_p('app/assets/builds', verbose: true)
 
-        FileUtils.touch('db/PGSQL/.keep', verbose: true)
-        FileUtils.touch('db/REDIS/.keep', verbose: true)
-        FileUtils.touch('db/ELASTIC/.keep', verbose: true)
-        FileUtils.touch('app/assets/builds/.keep', verbose: true)
+        touch_file('db/PGSQL/.keep')
+        touch_file('db/REDIS/.keep')
+        touch_file('db/ELASTIC/.keep')
+        touch_file('app/assets/builds/.keep')
       end
     end
   end

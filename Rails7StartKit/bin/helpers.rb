@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require 'fileutils'
+
 DELAY = 3
 
 # rubocop:disable Style/GlobalVars
@@ -19,3 +21,9 @@ def step_info(message)
 end
 
 # rubocop:enable Style/GlobalVars
+
+def touch_file(file_path)
+  FileUtils.touch(file_path, verbose: true)
+rescue Errno::EACCES
+  puts "Ooops! You do not have an access to the file: #{file_path}"
+end
