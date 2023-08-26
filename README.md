@@ -12,16 +12,6 @@ git clone https://github.com/the-teacher/rails7-startkit.git && \
   bin/setup
 ```
 
-<details>
-  <summary><b>OR</b> Super short one line option</summary>
-
-```sh
-eval "$(curl -sSL rails-start.com)"
-```
-
-*Executing scripts from the Internet can be dangerous! Check the source before using!*
-</details>
-
 ### What Is That?
 
 Rails App in a Docker container with some popular preinstalled tools.
