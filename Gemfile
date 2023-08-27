@@ -26,7 +26,7 @@ gem "sprockets-rails", "3.4.2"
 gem "puma", "5.6.5"
 
 # Application settings
-gem 'config', "4.1.0", github: 'rubyconfig/config'
+gem 'config', "4.2.1"
 
 # PostgresSQL
 gem 'pg', '1.4.5'
