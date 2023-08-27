@@ -23,7 +23,7 @@ module Rails7StartKit
     def puma_stop
       puts 'Stopping PUMA'
       if inside_rails_conainer?
-        system("#{puma_start_command} & ")
+        system("PUMA_WORKERS=0 #{puma_start_command} & ")
       else
         container_bash_exec('rails', puma_stop_command)
       end

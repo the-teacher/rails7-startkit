@@ -33,7 +33,6 @@ if File.methods.include?(:exists?) && !File.methods.include?(:exist?)
 end
 
 # rubocop:disable Metrics/MethodLength
-# rubocop:disable Metrics/AbcSize
 module Rails7StartKit
   class << self
     def status
@@ -74,5 +73,4 @@ module Rails7StartKit
     end
   end
 end
-# rubocop:enable Metrics/AbcSize
 # rubocop:enable Metrics/MethodLength

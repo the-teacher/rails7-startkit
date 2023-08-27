@@ -1,9 +1,11 @@
 # frozen_string_literal: true
 
-workers 1
+workers_count = ENV.fetch('PUMA_WORKERS', 0).to_i
+env_name = ENV.fetch('RAILS_ENV', 'development')
+
+workers workers_count
 threads 2, 4
 
-env_name = ENV.fetch('RAILS_ENV', 'development')
 environment env_name
 
 # unless env_name == 'development'
@@ -15,10 +17,12 @@ bind "tcp://0.0.0.0:#{ENV.fetch('PORT', 3000)}"
 pidfile    '/home/lucky/app/tmp/pids/puma.pid'
 state_path '/home/lucky/app/tmp/pids/puma.state'
 
-stdout_redirect \
-  '/home/lucky/app/log/puma.log',
-  '/home/lucky/app/log/puma.errors.log',
-  true
+unless workers_count.zero?
+  stdout_redirect \
+    '/home/lucky/app/log/puma.log',
+    '/home/lucky/app/log/puma.errors.log',
+    true
+end
 
 activate_control_app
 

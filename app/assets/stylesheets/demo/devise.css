@@ -23,4 +23,7 @@
   list-style: circle;
 } */
 
-.field_with_errors { background-color: bisque; }
+.field_with_errors {
+  padding: 5px 0;
+  background-color: bisque;
+}
