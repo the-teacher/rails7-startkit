@@ -13,12 +13,20 @@ module Rails7StartKit
     # rubocop:disable Lint/UselessAssignment
     def puma_start
       puts 'Launching PUMA'
-      container_bash_exec('rails', puma_start_command, detached = true)
+      if inside_rails_conainer?
+        system(puma_start_command)
+      else
+        container_bash_exec('rails', puma_start_command, detached = true)
+      end
     end
 
     def puma_stop
       puts 'Stopping PUMA'
-      container_bash_exec('rails', puma_stop_command)
+      if inside_rails_conainer?
+        system("#{puma_start_command} & ")
+      else
+        container_bash_exec('rails', puma_stop_command)
+      end
     end
     # rubocop:enable Lint/UselessAssignment
 

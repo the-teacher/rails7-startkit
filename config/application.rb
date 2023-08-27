@@ -31,6 +31,7 @@ module App
 
     # Removes `field_with_errors` wrapper class for Rails forms
     config.action_view.field_error_proc = proc do |html_tag, instance|
+      # binding.pry
       content_tag :div, html_tag, class: :field_with_errors
     end
   end

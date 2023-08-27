@@ -70,12 +70,7 @@ module Rails7StartKit
       # https://stackoverflow.com/questions/11982057/how-can-i-trigger-a-shell-script-and-run-in-background-async-in-ruby
       #
       puts 'Restarting PUMA server'
-      if inside_rails_conainer?
-        system(@puma_stop_command)
-        system("#{puma_start_command} & ")
-      else
-        puma_restart
-      end
+      puma_restart
     end
   end
 end
