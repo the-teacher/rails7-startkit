@@ -1,4 +1,4 @@
-.devise {
+/* .devise {
   background-color: aliceblue;
   padding: 20px;
   margin-bottom: 20px;
@@ -21,4 +21,6 @@
   background: antiquewhite;
   border: 1px solid rgb(242, 189, 120);
   list-style: circle;
-}
+} */
+
+.field_with_errors { background-color: bisque; }
