@@ -1,5 +1,10 @@
+<%
+  alert_type = {
+    alert: :warning
+  }
+%>
 <% flash.each do |type, msg| %>
-  <div class="flash_message flash_message-<%= type %>">
+  <div class="alert alert-<%= alert_type[type.to_sym] %>">
     <%= msg %>
   </div>
 <% end %>
