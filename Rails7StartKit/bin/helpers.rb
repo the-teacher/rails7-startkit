@@ -82,7 +82,7 @@ def set_permissions_for_elastic
 end
 
 def set_lucky_permissions
-  [
+  command = [
     'chown 7777:7777 Gemfile.lock',
     'chown 7777:7777 package-lock.json',
     'chown 7777:7777 db/schema.rb',
@@ -104,8 +104,8 @@ def set_lucky_permissions
 
     'mkdir -p app/assets/builds',
     'chown -R 7777:7777 app/assets/builds'
-  ].each do |command|
-    run_rails_root_command(command)
-  end
+  ].join(' && ')
+
+  run_rails_root_command(command)
 end
 # rubocop:enable Metrics/MethodLength
