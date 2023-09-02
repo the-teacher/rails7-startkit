@@ -71,6 +71,9 @@ end
 # rubocop:disable Metrics/MethodLength
 def set_permissions_for_elastic
   [
+    'mkdir -p db/ELASTIC',
+    'mkdir -p log/ELASTIC',
+
     'chmod 777 db/ELASTIC',
     'chmod 777 log/ELASTIC'
   ].each do |command|
