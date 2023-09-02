@@ -108,6 +108,9 @@ group :development, :test do
 end
 
 group :development do
+  # Static analysis tool that checks security vulnerabilities
+  gem "brakeman", "6.0.1"
+
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem "web-console", "4.2.0"
 

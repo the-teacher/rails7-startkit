@@ -68,11 +68,14 @@ module Rails7StartKit
         sidekiq_start
 
         if development?
-          step_info 'Rubocop is Checking'
+          step_info 'Quality: Rubocop'
           rubocop
 
-          step_info 'RSpec is Checking'
+          step_info 'Quality: RSpec with SimpleConv'
           rspec_with_cov
+
+          step_info 'Quality: Breakman'
+          breakman
         end
 
         # Node & Yarn

@@ -12,6 +12,8 @@ git clone https://github.com/the-teacher/rails7-startkit.git && \
   bin/setup
 ```
 
+:warning: Tested with MacOS & Linux (Debian)
+
 ### What Is That?
 
 Rails App in a Docker container with some popular preinstalled tools.
@@ -183,6 +185,11 @@ Save hours, days or weeks on setting up a typical Rails app.
     <td><b><a href="https://github.com/simplecov-ruby/simplecov">SimpleCov</a></b></td>
     <td>Code coverage for Ruby (and Rails)</td>
   </tr>
+  <tr>
+    <td><img width="100px" alt="breakman" src="Rails7StartKit/assets/images/breakman.png"></td>
+    <td><b><a href="https://github.com/presidentbeef/brakeman">Breakman</a></b></td>
+    <td>Static analysis tool | Security Vulnerabilities.</td>
+  </tr>
   </tbody>
 </table>
 
@@ -225,21 +232,30 @@ Rails 7. StartKit
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 What was done:
 1. Pull all required Images
+
 2. Launching ElasticSearch Container
 3. Launching Mailcatcher Container
 4. Launching PgSQL Container
 5. Launching Redis Container
 6. Launching Rails Container
+
 7. Installing Gems
-8. Create DB. Migrate DB. Create Seeds
-9. Indexing Article Model
-10. Launching Rails App with Puma
-11. Launching Sidekiq
-12. Rubocop is Checking
-13. RSpec is Checking
-14. Visit Rails App: http://localhost:3000
-15. Visit Mail Service: http://localhost:1080
-16. Visit ElasticSearch: http://localhost:9200
+8. Install Gems
+9. Turn off some ElasticSearch settings
+10. Create DB. Migrate DB. Create Seeds
+11. Indexing Article Model
+12. Launching Rails App with Puma
+13. Launching Sidekiq
+
+14. Quality: Rubocop
+15. Quality: RSpec with SimpleConv
+16. Quality: Breakman
+
+17. Yarn: Install Node Packages
+18. Yarn: Build JS/CSS Assets
+19. Visit Rails App: http://localhost:3000
+20. Visit Mail Service: http://localhost:1080
+21. Visit ElasticSearch: http://localhost:9200
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Welcome to RAILS 7!
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
