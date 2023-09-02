@@ -9,22 +9,22 @@ module Rails7StartKit
       prompt!
 
       FileUtils.chdir APP_ROOT do
-        FileUtils.rm_rf('db/PGSQL/', verbose: true)
-        FileUtils.rm_rf('db/REDIS/', verbose: true)
-        FileUtils.rm_rf('db/ELASTIC/', verbose: true)
+        remove_file('db/PGSQL/')
+        remove_file('db/REDIS/')
+        remove_file('db/ELASTIC/')
 
-        FileUtils.rm_rf('.yarn', verbose: true)
-        FileUtils.rm_rf('node_modules', verbose: true)
-        FileUtils.rm_rf('coverage', verbose: true)
-        FileUtils.rm_rf('public/assets', verbose: true)
-        FileUtils.rm_rf('app/assets/builds', verbose: true)
+        remove_file('.yarn')
+        remove_file('node_modules')
+        remove_file('coverage')
+        remove_file('public/assets')
+        remove_file('app/assets/builds')
 
         # restore some
 
-        FileUtils.mkdir_p('db/PGSQL/', verbose: true)
-        FileUtils.mkdir_p('db/REDIS/', verbose: true)
-        FileUtils.mkdir_p('db/ELASTIC/', verbose: true)
-        FileUtils.mkdir_p('app/assets/builds', verbose: true)
+        make_dir('db/PGSQL/')
+        make_dir('db/REDIS/')
+        make_dir('db/ELASTIC/')
+        make_dir('app/assets/builds')
 
         touch_file('db/PGSQL/.keep')
         touch_file('db/REDIS/.keep')

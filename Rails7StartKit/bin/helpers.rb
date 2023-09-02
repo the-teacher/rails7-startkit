@@ -25,5 +25,17 @@ end
 def touch_file(file_path)
   FileUtils.touch(file_path, verbose: true)
 rescue Errno::EACCES
-  puts "Ooops! You do not have an access to the file: #{file_path}"
+  puts "Touch file: #{file_path}. You do not have an access."
+end
+
+def remove_file(file_path)
+  FileUtils.rm_rf(file_path, verbose: true)
+rescue Errno::EACCES
+  puts "Remove file: #{file_path}. You do not have an access."
+end
+
+def make_dir(dir_path)
+  FileUtils.mkdir_p(dir_path, verbose: true)
+rescue Errno::EACCES
+  puts "Make Directory: #{dir_path}. You do not have an access."
 end

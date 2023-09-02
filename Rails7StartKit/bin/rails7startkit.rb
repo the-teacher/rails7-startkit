@@ -54,7 +54,7 @@ module Rails7StartKit
       FileUtils.chdir APP_ROOT do
         if File.exist?(cache_toggle_file)
           puts "File '#{cache_toggle_file}' exists"
-          FileUtils.rm_rf(cache_toggle_file, verbose: true)
+          remove_file(cache_toggle_file)
           puts "File '#{cache_toggle_file}' is removed"
           puts 'Cache is OFF'
         else
