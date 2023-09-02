@@ -1,6 +1,8 @@
 require: rubocop-rails
+
 AllCops:
   Exclude:
+    - _GEMS_/**/*
     - db/ELASTIC
     - db/PGSQL
     - db/REDIS

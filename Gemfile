@@ -122,7 +122,9 @@ group :development do
 end
 
 group :test do
-  gem "simplecov", require: false
+  # Has in issue with an outdated "docile" => "panolint" gem
+  # Due to inhirited rubocop configs
+  # gem "simplecov", require: false
 
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
   # gem "capybara", "3.38.0"
