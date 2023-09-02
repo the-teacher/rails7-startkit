@@ -84,7 +84,13 @@ def set_lucky_permissions
     'chown -R 7777:7777 log',
 
     'mkdir coverage',
-    'chown -R 7777:7777 coverage'
+    'chown -R 7777:7777 coverage',
+
+    'mkdir tmp',
+    'chown -R 7777:7777 tmp',
+
+    'mkdir -p app/assets/builds',
+    'chown -R 7777:7777 app/assets/builds'
   ].each do |command|
     run_rails_root_command(command)
   end
