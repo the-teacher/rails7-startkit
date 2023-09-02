@@ -69,6 +69,17 @@ end
 # rubocop:enable Style/OptionalBooleanParameter
 
 # rubocop:disable Metrics/MethodLength
+def set_permissions_for_elastic
+  [
+    'mkdir -p db/ELASTIC',
+    'mkdir -p log/ELASTIC',
+    'chmod 777 db/ELASTIC',
+    'chmod 777 log/ELASTIC'
+  ].each do |command|
+    run_rails_root_command(command)
+  end
+end
+
 def set_lucky_permissions
   [
     'chown 7777:7777 Gemfile.lock',
@@ -92,11 +103,6 @@ def set_lucky_permissions
 
     'mkdir -p app/assets/builds',
     'chown -R 7777:7777 app/assets/builds',
-
-    'mkdir -p db/ELASTIC',
-    'mkdir -p log/ELASTIC',
-    'chmod 777 db/ELASTIC',
-    'chmod 777 log/ELASTIC'
   ].each do |command|
     run_rails_root_command(command)
   end

@@ -20,6 +20,7 @@ module Rails7StartKit
 
         # ElasticSearch
         step_info 'Launching ElasticSearch Container'
+        set_permissions_for_elastic
         docker_compose('up elastic -d')
         wait('to launch ElasticSearch Container')
 
