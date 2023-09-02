@@ -83,7 +83,7 @@ def set_lucky_permissions
     'mkdir log',
     'chown -R 7777:7777 log',
 
-    'coverage',
+    'mkdir coverage',
     'chown -R 7777:7777 coverage'
   ].each do |command|
     run_rails_root_command(command)
