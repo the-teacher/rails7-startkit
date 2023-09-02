@@ -91,7 +91,12 @@ def set_lucky_permissions
     'chown -R 7777:7777 tmp',
 
     'mkdir -p app/assets/builds',
-    'chown -R 7777:7777 app/assets/builds'
+    'chown -R 7777:7777 app/assets/builds',
+
+    'mkdir -p db/ELASTIC',
+    'mkdir -p log/ELASTIC',
+    'chmod 777 db/ELASTIC',
+    'chmod 777 log/ELASTIC'
   ].each do |command|
     run_rails_root_command(command)
   end
