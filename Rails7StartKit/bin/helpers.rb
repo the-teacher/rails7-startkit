@@ -72,6 +72,7 @@ def set_lucky_permissions
   commands = [
     'chown 7777:7777 Gemfile.lock',
     'chown 7777:7777 package-lock.json',
+    'mkdir .yarn',
     'chown -R 7777:7777 .yarn'
   ].each do |command|
     run_rails_root_command(command)
