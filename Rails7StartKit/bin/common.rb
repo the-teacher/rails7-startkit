@@ -68,11 +68,13 @@ module Rails7StartKit
 
     # rubocop:disable Style/OptionalBooleanParameter
     # rubocop:disable Layout/LineLength
+    # rubocop:disable Metrics/ParameterLists
     def container_bash_exec(container_name = 'rails', cmd = 'ls', detached = false, as_root = false)
       detached = detached ? '-d' : ''
       as_root = as_root ? '--user root' : ''
       docker_compose("exec #{ENV['TTY_OFF']} #{as_root} -e='RAILS_ENV=#{rails_env_name}' #{detached} #{container_name} /bin/bash -c '#{cmd}'")
     end
+    # rubocop:enable Metrics/ParameterLists
     # rubocop:enable Layout/LineLength
     # rubocop:enable Style/OptionalBooleanParameter
 

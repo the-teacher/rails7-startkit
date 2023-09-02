@@ -61,20 +61,32 @@ end
 
 def run_rails_root_command(command, detached = false)
   if inside_rails_conainer?
-    puts "Not vavilable inside the rails container"
+    puts 'Not vavilable inside the rails container'
   else
-    container_bash_exec('rails', command, detached, as_root = true)
+    container_bash_exec('rails', command, detached, true)
   end
 end
 # rubocop:enable Style/OptionalBooleanParameter
 
+# rubocop:disable Metrics/MethodLength
 def set_lucky_permissions
-  commands = [
+  [
     'chown 7777:7777 Gemfile.lock',
     'chown 7777:7777 package-lock.json',
+
     'mkdir .yarn',
-    'chown -R 7777:7777 .yarn'
+    'chown -R 7777:7777 .yarn',
+
+    'mkdir node_modules',
+    'chown -R 7777:7777 node_modules',
+
+    'mkdir log',
+    'chown -R 7777:7777 log',
+
+    'coverage',
+    'chown -R 7777:7777 coverage'
   ].each do |command|
     run_rails_root_command(command)
   end
 end
+# rubocop:enable Metrics/MethodLength
