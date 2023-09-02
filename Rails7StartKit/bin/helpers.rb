@@ -69,9 +69,11 @@ end
 # rubocop:enable Style/OptionalBooleanParameter
 
 def set_lucky_permissions
-  command1 = 'chown 7777:7777 Gemfile.lock'
-  command2 = 'chown 7777:7777 package-lock.json'
-
-  run_rails_root_command(command1)
-  run_rails_root_command(command2)
+  commands = [
+    'chown 7777:7777 Gemfile.lock',
+    'chown 7777:7777 package-lock.json',
+    'chown -R 7777:7777 .yarn'
+  ].each do |command|
+    run_rails_root_command(command)
+  end
 end
