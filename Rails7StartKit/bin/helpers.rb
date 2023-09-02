@@ -58,12 +58,20 @@ def run_rails_command(command, detached = false)
     container_bash_exec('rails', command, detached)
   end
 end
+
+def run_rails_root_command(command, detached = false)
+  if inside_rails_conainer?
+    puts "Not vavilable inside the rails container"
+  else
+    container_bash_exec('rails', command, detached, as_root = true)
+  end
+end
 # rubocop:enable Style/OptionalBooleanParameter
 
 def set_lucky_permissions
   command1 = 'chown 7777:7777 Gemfile.lock'
   command2 = 'chown 7777:7777 package-lock.json'
 
-  run_rails_command(command1)
-  run_rails_command(command2)
+  run_rails_root_command(command1)
+  run_rails_root_command(command2)
 end
