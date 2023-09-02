@@ -103,7 +103,13 @@ def set_lucky_permissions
     'chown -R 7777:7777 tmp',
 
     'mkdir -p app/assets/builds',
-    'chown -R 7777:7777 app/assets/builds'
+    'chown -R 7777:7777 app/assets/builds',
+
+    'mkdir -p app/assets/builds/esbuild',
+    'chown -R 7777:7777 app/assets/builds/esbuild',
+
+    'mkdir -p app/assets/builds/sass',
+    'chown -R 7777:7777 app/assets/builds/sass'
   ].join(' ; ')
 
   run_rails_root_command(command)
