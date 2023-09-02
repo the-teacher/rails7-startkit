@@ -71,6 +71,7 @@ GEM
     bindex (0.8.1)
     bootsnap (1.15.0)
       msgpack (~> 1.2)
+    brakeman (6.0.1)
     builder (3.2.4)
     chewy (7.2.7)
       activesupport (>= 5.2)
@@ -355,6 +356,7 @@ PLATFORMS
 
 DEPENDENCIES
   bootsnap (= 1.15.0)
+  brakeman (= 6.0.1)
   chewy (= 7.2.7)
   config (= 4.2.1)
   debug (= 1.7.1)
