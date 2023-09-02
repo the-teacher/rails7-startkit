@@ -6,27 +6,23 @@ module Rails7StartKit
       'bundle exec puma -C config/_PUMA.rb'
     end
 
-    def puma_stop_command
-      'pkill -f puma'
+    # rubocop:disable Lint/UselessAssignment
+    def puma_dev_start
+      puts 'Launching PUMA (single mode)'
+      command = 'PUMA_WORKERS=0 bundle exec puma -C config/_PUMA.rb & '
+      run_rails_command(command, detached = true)
     end
 
-    # rubocop:disable Lint/UselessAssignment
     def puma_start
       puts 'Launching PUMA'
-      if inside_rails_conainer?
-        system(puma_start_command)
-      else
-        container_bash_exec('rails', puma_start_command, detached = true)
-      end
+      command = 'bundle exec puma -C config/_PUMA.rb'
+      run_rails_command(command, detached = true)
     end
 
     def puma_stop
       puts 'Stopping PUMA'
-      if inside_rails_conainer?
-        system("PUMA_WORKERS=0 #{puma_start_command} & ")
-      else
-        container_bash_exec('rails', puma_stop_command)
-      end
+      command = 'pkill -f puma'
+      run_rails_command(command)
     end
     # rubocop:enable Lint/UselessAssignment
 

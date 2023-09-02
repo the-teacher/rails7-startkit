@@ -39,3 +39,13 @@ def make_dir(dir_path)
 rescue Errno::EACCES
   puts "Make Directory: #{dir_path}. You do not have an access."
 end
+
+# rubocop:disable Style/OptionalBooleanParameter
+def run_rails_command(command, detached = false)
+  if inside_rails_conainer?
+    system(command)
+  else
+    container_bash_exec('rails', command, detached)
+  end
+end
+# rubocop:enable Style/OptionalBooleanParameter
