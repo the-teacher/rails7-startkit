@@ -87,19 +87,19 @@ def set_lucky_permissions
     'chown 7777:7777 package-lock.json',
     'chown 7777:7777 db/schema.rb',
 
-    'mkdir .yarn',
+    'mkdir -p .yarn',
     'chown -R 7777:7777 .yarn',
 
-    'mkdir node_modules',
+    'mkdir -p node_modules',
     'chown -R 7777:7777 node_modules',
 
-    'mkdir log',
+    'mkdir -p log',
     'chown -R 7777:7777 log',
 
-    'mkdir coverage',
+    'mkdir -p coverage',
     'chown -R 7777:7777 coverage',
 
-    'mkdir tmp',
+    'mkdir -p tmp',
     'chown -R 7777:7777 tmp',
 
     'mkdir -p app/assets/builds',

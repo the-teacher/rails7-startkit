@@ -48,8 +48,9 @@ module Rails7StartKit
         docker_compose('up rails -d')
         wait('to launch Rails Container')
 
-        step_info 'Installing Gems'
         set_lucky_permissions
+
+        step_info 'Installing Gems'
         rails_install_gems
 
         step_info 'Turn off some ElasticSearch settings'
@@ -75,7 +76,6 @@ module Rails7StartKit
         end
 
         # Node & Yarn
-        set_lucky_permissions
         yarn_install
         yarn_build
 
