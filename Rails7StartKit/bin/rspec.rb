@@ -3,13 +3,13 @@
 module Rails7StartKit
   class << self
     def rspec
-      container_bash_exec('rails', 'RAILS_ENV=test rake db:prepare')
-      container_bash_exec('rails', 'rspec -f documentation')
+      command = 'RAILS_ENV=test rake db:prepare; rspec -f documentation'
+      run_rails_command(command)
     end
 
     def rspec_with_cov
-      container_bash_exec('rails', 'RAILS_ENV=test rake db:prepare')
-      container_bash_exec('rails', 'COVERAGE=true rspec -f documentation')
+      command = 'RAILS_ENV=test rake db:prepare; COVERAGE=true rspec -f documentation'
+      run_rails_command(command)
     end
   end
 end
