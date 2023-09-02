@@ -104,7 +104,7 @@ def set_lucky_permissions
 
     'mkdir -p app/assets/builds',
     'chown -R 7777:7777 app/assets/builds'
-  ].join(' && ')
+  ].join(' ; ')
 
   run_rails_root_command(command)
 end
