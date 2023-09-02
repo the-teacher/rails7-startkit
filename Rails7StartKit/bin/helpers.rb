@@ -20,6 +20,16 @@ def step_info(message)
   $steps_messages << info_message
 end
 
+def inside_rails_conainer?
+  if system('docker -v')
+    puts 'Docker is found. Looks like you are on the HOST machine'
+    false
+  else
+    puts 'Docker is not found. Looks like you are in the container'
+    true
+  end
+end
+
 # rubocop:enable Style/GlobalVars
 
 def touch_file(file_path)
@@ -49,3 +59,11 @@ def run_rails_command(command, detached = false)
   end
 end
 # rubocop:enable Style/OptionalBooleanParameter
+
+def set_lucky_permissions
+  command1 = 'chown 7777:7777 Gemfile.lock'
+  command2 = 'chown 7777:7777 package-lock.json'
+
+  run_rails_command(command1)
+  run_rails_command(command2)
+end

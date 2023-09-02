@@ -2,16 +2,24 @@
 
 module Rails7StartKit
   class << self
-    INIT_NVM = 'source /opt/.nvm/nvm.sh'
+    def init_nvm
+      init_nvm_command = 'source /opt/.nvm/nvm.sh'
+      init_nvm_command = '/bin/bash /opt/.nvm/nvm.sh' if inside_rails_conainer?
+      init_nvm_command
+    end
 
     def yarn_install
+      set_lucky_permissions
       step_info 'Yarn: Install Node Packages'
-      container_bash_exec('rails', "#{INIT_NVM} && yarn install")
+
+      command = "#{init_nvm} && yarn install"
+      run_rails_command(command)
     end
 
     def yarn_build
       step_info 'Yarn: Build JS/CSS Assets'
-      container_bash_exec('rails', "#{INIT_NVM} && yarn build")
+      command = "#{init_nvm} && yarn build"
+      run_rails_command(command)
     end
   end
 end

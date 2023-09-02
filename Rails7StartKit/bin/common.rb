@@ -35,16 +35,6 @@ module Rails7StartKit
       puts '~' * 80
     end
 
-    def inside_rails_conainer?
-      if system('docker -v')
-        puts 'Docker is found. Looks like you are on the HOST machine'
-        false
-      else
-        puts 'Docker is not found. Looks like you are in the container'
-        true
-      end
-    end
-
     def system!(*args)
       system(*args) || abort("\n== Command #{args} failed ==")
     end
