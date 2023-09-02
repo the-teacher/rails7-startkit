@@ -73,6 +73,7 @@ def set_lucky_permissions
   [
     'chown 7777:7777 Gemfile.lock',
     'chown 7777:7777 package-lock.json',
+    'chown 7777:7777 db/schema.rb',
 
     'mkdir .yarn',
     'chown -R 7777:7777 .yarn',
