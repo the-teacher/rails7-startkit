@@ -48,6 +48,7 @@ module Rails7StartKit
         wait('to launch Rails Container')
 
         step_info 'Installing Gems'
+        set_lucky_permissions
         rails_install_gems
 
         step_info 'Turn off some ElasticSearch settings'
@@ -72,6 +73,8 @@ module Rails7StartKit
           rspec_with_cov
         end
 
+        # Node & Yarn
+        set_lucky_permissions
         yarn_install
         yarn_build
 

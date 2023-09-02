@@ -4,7 +4,6 @@ module Rails7StartKit
   class << self
     def rails_install_gems
       step_info 'Install Gems'
-      set_lucky_permissions
       container_bash_exec('rails', 'bundle install')
     end
 

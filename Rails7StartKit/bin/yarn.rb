@@ -9,7 +9,6 @@ module Rails7StartKit
     end
 
     def yarn_install
-      set_lucky_permissions
       step_info 'Yarn: Install Node Packages'
 
       command = "#{init_nvm} && yarn install"
