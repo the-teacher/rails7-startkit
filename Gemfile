@@ -62,7 +62,7 @@ group :development, :test do
   gem "faker", "3.1.0"
 
   # Code linting
-  gem "rubocop-rails", "2.17.4", require: false
+  gem "rubocop-rails", "2.20.2", require: false
 end
 
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
