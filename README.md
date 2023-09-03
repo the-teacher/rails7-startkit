@@ -45,7 +45,7 @@ Save hours, days or weeks on setting up a typical Rails app.
   </thead>
   <tbody>
   <tr>
-    <td colspan="3"><b>Main</b></td>
+    <td colspan="3"><h3>Main</h3></td>
   </tr>
   <tr>
     <td><img width="100px" alt="docker" src="Rails7StartKit/assets/images/docker.png"></td>
