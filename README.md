@@ -133,24 +133,9 @@ Save hours, days or weeks on setting up a typical Rails app.
     <td colspan="3"><b>Application Level</b></td>
   </tr>
   <tr>
-    <td><img width="100px" alt="faker" src="Rails7StartKit/assets/images/faker.png"></td>
-    <td><b><a href="https://www.ruby-toolbox.com/categories/random_data_generation">Faker</a></b></td>
-    <td>Fake data for development and testing</td>
-  </tr>
-  <tr>
-    <td><img width="100px" alt="sanitize" src="Rails7StartKit/assets/images/sanitize.png"></td>
-    <td><b><a href="https://www.ruby-toolbox.com/projects/sanitize">Sanitize</a></b></td>
-    <td>Sanitization of a dangerous users' input</td>
-  </tr>
-  <tr>
-    <td><img width="100px" alt="kaminari" src="Rails7StartKit/assets/images/kaminari.png"></td>
-    <td><b><a href="https://www.ruby-toolbox.com/categories/pagination">Kaminari</a></b></td>
-    <td>Pagination solution</td>
-  </tr>
-  <tr>
-    <td><img width="100px" alt="letter_opener" src="Rails7StartKit/assets/images/mailcatcher.png"></td>
-    <td><b><a href="https://www.ruby-toolbox.com/categories/EMail_Fake_Servers">mailcatcher</a></b></td>
-    <td>Email previewer for development</td>
+    <td><img width="100px" alt="puma" src="Rails7StartKit/assets/images/puma.png"></td>
+    <td><b><a href="https://www.ruby-toolbox.com/categories/web_servers">Puma</a></b></td>
+    <td>Application Web Server. To launch Rails app</td>
   </tr>
   <tr>
     <td><img width="100px" alt="devise" src="Rails7StartKit/assets/images/devise.png"></td>
@@ -163,9 +148,24 @@ Save hours, days or weeks on setting up a typical Rails app.
     <td>Default Cloud Storage Solution for Rails</td>
   </tr>
   <tr>
-    <td><img width="100px" alt="puma" src="Rails7StartKit/assets/images/puma.png"></td>
-    <td><b><a href="https://www.ruby-toolbox.com/categories/web_servers">Puma</a></b></td>
-    <td>Application Web Server. To launch Rails app</td>
+    <td><img width="100px" alt="faker" src="Rails7StartKit/assets/images/faker.png"></td>
+    <td><b><a href="https://www.ruby-toolbox.com/categories/random_data_generation">Faker</a></b></td>
+    <td>Fake data for development and testing</td>
+  </tr>
+  <tr>
+    <td><img width="100px" alt="kaminari" src="Rails7StartKit/assets/images/kaminari.png"></td>
+    <td><b><a href="https://www.ruby-toolbox.com/categories/pagination">Kaminari</a></b></td>
+    <td>Pagination solution</td>
+  </tr>
+  <tr>
+    <td><img width="100px" alt="sanitize" src="Rails7StartKit/assets/images/sanitize.png"></td>
+    <td><b><a href="https://www.ruby-toolbox.com/projects/sanitize">Sanitize</a></b></td>
+    <td>Sanitization of a dangerous users' input</td>
+  </tr>
+  <tr>
+    <td><img width="100px" alt="letter_opener" src="Rails7StartKit/assets/images/mailcatcher.png"></td>
+    <td><b><a href="https://www.ruby-toolbox.com/categories/EMail_Fake_Servers">mailcatcher</a></b></td>
+    <td>Email previewer for development</td>
   </tr>
   <tr>
     <td colspan="3"><b>Code Quality</b></td>
