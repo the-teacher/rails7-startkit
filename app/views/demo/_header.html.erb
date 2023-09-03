@@ -9,7 +9,9 @@
         <li class="nav-item">
           <%= link_to "Home", "/", class: "nav-link active", 'aria-current': :page %>
         </li>
-        <%= render partial: 'demo/services' %>
+        <% if Rails.env.development? %>
+          <%= render partial: 'demo/services' %>
+        <% end %>
         <%= render partial: 'demo/examples' %>
         <%= render partial: 'demo/devise' %>
       </ul>
