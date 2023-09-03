@@ -20,6 +20,10 @@ def step_info(message)
   $steps_messages << info_message
 end
 
+def step_info_new_line
+  $steps_messages << ''
+end
+
 def inside_rails_conainer?
   if system('docker -v')
     puts 'Docker is found. Looks like you are on the HOST machine'

@@ -17,6 +17,7 @@ module Rails7StartKit
 
         step_info 'Pull all required Images'
         docker_compose('pull')
+        step_info_new_line
 
         # ElasticSearch
         step_info 'Launching ElasticSearch Container'
@@ -32,7 +33,7 @@ module Rails7StartKit
         end
 
         # PgSQL
-        FileUtils.rm('db/PGSQL/.keep', force: true)
+        remove_file('db/PGSQL/.keep')
         step_info 'Launching PgSQL Container'
         docker_compose('up psql -d')
         wait('to initialize PgSQL database')
@@ -47,7 +48,9 @@ module Rails7StartKit
         step_info 'Launching Rails Container'
         docker_compose('up rails -d')
         wait('to launch Rails Container')
+        step_info_new_line
 
+        step_info 'Correcting Permissions for Linux'
         set_lucky_permissions
 
         step_info 'Installing Gems'
@@ -56,6 +59,7 @@ module Rails7StartKit
         step_info 'Turn off some ElasticSearch settings'
         turn_off_elastic_settings
 
+        step_info 'Prepare Database (Create, Migrate, Create Seeds)'
         rails_db_prepare
 
         step_info 'Indexing Article Model'
@@ -68,6 +72,8 @@ module Rails7StartKit
         sidekiq_start
 
         if development?
+          step_info_new_line
+
           step_info 'Quality: Rubocop'
           rubocop
 
@@ -76,14 +82,18 @@ module Rails7StartKit
 
           step_info 'Quality: Breakman'
           breakman
+
+          step_info_new_line
         end
 
         # Node & Yarn
         yarn_install
         yarn_build
 
+        step_info 'Precompile Assets'
         rails_assets_precompile if production?
 
+        step_info_new_line
         step_info 'Visit Rails App: http://localhost:3000'
 
         if development?
