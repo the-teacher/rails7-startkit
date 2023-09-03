@@ -20,6 +20,7 @@ require_relative './yarn'
 require_relative './setup'
 require_relative './reset'
 require_relative './breakman'
+require_relative './logs'
 
 # path to your application root
 APP_ROOT = File.expand_path('../..', __dir__)

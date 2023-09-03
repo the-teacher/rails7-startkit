@@ -17,12 +17,12 @@ bind "tcp://0.0.0.0:#{ENV.fetch('PORT', 3000)}"
 pidfile    '/home/lucky/app/tmp/pids/puma.pid'
 state_path '/home/lucky/app/tmp/pids/puma.state'
 
-unless workers_count.zero?
-  stdout_redirect \
-    '/home/lucky/app/log/puma.log',
-    '/home/lucky/app/log/puma.errors.log',
-    true
-end
+# unless workers_count.zero?
+stdout_redirect \
+  '/home/lucky/app/log/puma.log',
+  '/home/lucky/app/log/puma.errors.log',
+  true
+# end
 
 activate_control_app
 
