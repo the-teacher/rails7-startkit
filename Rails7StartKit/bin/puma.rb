@@ -2,10 +2,6 @@
 
 module Rails7StartKit
   class << self
-    def puma_start_command
-      'bundle exec puma -C config/_PUMA.rb'
-    end
-
     # rubocop:disable Lint/UselessAssignment
     def puma_dev_start
       puts 'Launching PUMA (single mode)'
@@ -19,10 +15,17 @@ module Rails7StartKit
       run_rails_command(command, detached = true)
     end
 
+    # Do not use: `pkill -f puma`
+    # It matches the running script name and kills it also :)
     def puma_stop
-      puts 'Stopping PUMA'
-      command = 'pkill -f puma'
-      run_rails_command(command)
+      if inside_rails_conainer?
+        puts 'Stopping PUMA'
+        pids = `pgrep -f puma`.split("\n")
+        pids.delete(Process.pid.to_s)
+        pids.each { |pid| system "kill -9 #{pid}" }
+      else
+        run_rails_command('pkill -f puma')
+      end
     end
     # rubocop:enable Lint/UselessAssignment
 
