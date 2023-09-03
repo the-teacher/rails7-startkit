@@ -65,14 +65,9 @@ module Rails7StartKit
         step_info 'Indexing Article Model'
         chewy_index
 
-        step_info 'Launching Rails App with Puma'
-        puma_start
-
-        step_info 'Launching Sidekiq'
-        sidekiq_start
+        step_info_new_line
 
         if development?
-          step_info_new_line
 
           step_info 'Quality: Rubocop'
           rubocop
@@ -86,14 +81,26 @@ module Rails7StartKit
           step_info_new_line
         end
 
-        # Node & Yarn
+        # Assets / Node & Yarn
+        step_info 'Yarn: Install Node Packages'
         yarn_install
+
+        step_info 'Yarn: Build JS/CSS Assets'
         yarn_build
 
         step_info 'Precompile Assets'
         rails_assets_precompile if production?
 
         step_info_new_line
+
+        step_info 'Launching Sidekiq'
+        sidekiq_start
+
+        step_info 'Launching Rails App with Puma'
+        puma_start
+
+        step_info_new_line
+
         step_info 'Visit Rails App: http://localhost:3000'
 
         if development?

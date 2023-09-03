@@ -8,12 +8,12 @@ module Rails7StartKit
     end
 
     def log_puma
-      command = "tail -n 50 -f log/puma.log log/puma.errors.log"
+      command = 'tail -n 50 -f log/puma.log log/puma.errors.log'
       run_rails_command(command)
     end
 
     def log_sidekiq
-      command = "tail -n 50 -f log/sidekiq.errors.log"
+      command = 'tail -n 50 -f log/sidekiq.errors.log'
       run_rails_command(command)
     end
   end

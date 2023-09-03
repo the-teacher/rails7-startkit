@@ -9,14 +9,11 @@ module Rails7StartKit
     end
 
     def yarn_install
-      step_info 'Yarn: Install Node Packages'
-
       command = "#{init_nvm} && yarn install"
       run_rails_command(command)
     end
 
     def yarn_build
-      step_info 'Yarn: Build JS/CSS Assets'
       command = "#{init_nvm} && yarn build"
       run_rails_command(command)
     end

@@ -244,16 +244,17 @@ What was done:
 9. Turn off some ElasticSearch settings
 10. Prepare Database (Create, Migrate, Create Seeds)
 11. Indexing Article Model
-12. Launching Rails App with Puma
-13. Launching Sidekiq
 
-14. Quality: Rubocop
-15. Quality: RSpec with SimpleConv
-16. Quality: Breakman
+12. Quality: Rubocop
+13. Quality: RSpec with SimpleConv
+14. Quality: Breakman
 
-17. Yarn: Install Node Packages
-18. Yarn: Build JS/CSS Assets
-19. Precompile Assets
+15. Yarn: Install Node Packages
+16. Yarn: Build JS/CSS Assets
+17. Precompile Assets
+
+18. Launching Sidekiq
+19. Launching Rails App with Puma
 
 20. Visit Rails App: http://localhost:3000
 21. Visit Mail Service: http://localhost:1080
