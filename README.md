@@ -171,24 +171,24 @@ Save hours, days or weeks on setting up a typical Rails app.
     <td colspan="3"><b>Code Quality</b></td>
   </tr>
   <tr>
-    <td><img width="100px" alt="rspec" src="Rails7StartKit/assets/images/rubocop.png"></td>
-    <td><b><a href="https://www.ruby-toolbox.com/categories/code_metrics">Rubocop</a></b></td>
-    <td>Ruby static code analyzer (a.k.a. linter) and formatter.</td>
-  </tr>
-  <tr>
     <td><img width="100px" alt="rspec" src="Rails7StartKit/assets/images/rspec.png"></td>
     <td><b><a href="https://www.ruby-toolbox.com/categories/testing_frameworks">RSpec</a></b></td>
     <td>Testing Framework for Rails</td>
   </tr>
   <tr>
-    <td><img width="100px" alt="rspec" src="Rails7StartKit/assets/images/simple-cov.png"></td>
-    <td><b><a href="https://github.com/simplecov-ruby/simplecov">SimpleCov</a></b></td>
-    <td>Code coverage for Ruby (and Rails)</td>
+    <td><img width="100px" alt="rspec" src="Rails7StartKit/assets/images/rubocop.png"></td>
+    <td><b><a href="https://www.ruby-toolbox.com/categories/code_metrics">Rubocop</a></b></td>
+    <td>Ruby static code analyzer (a.k.a. linter) and formatter.</td>
   </tr>
   <tr>
     <td><img width="100px" alt="breakman" src="Rails7StartKit/assets/images/breakman.png"></td>
     <td><b><a href="https://github.com/presidentbeef/brakeman">Breakman</a></b></td>
     <td>Static analysis tool | Security Vulnerabilities.</td>
+  </tr>
+  <tr>
+    <td><img width="100px" alt="rspec" src="Rails7StartKit/assets/images/simple-cov.png"></td>
+    <td><b><a href="https://github.com/simplecov-ruby/simplecov">SimpleCov</a></b></td>
+    <td>Code coverage for Ruby (and Rails)</td>
   </tr>
   </tbody>
 </table>
