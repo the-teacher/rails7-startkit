@@ -239,10 +239,10 @@ What was done:
 5. Launching Redis Container
 6. Launching Rails Container
 
-7. Installing Gems
-8. Install Gems
+7. Correcting Permissions for Linux
+8. Installing Gems
 9. Turn off some ElasticSearch settings
-10. Create DB. Migrate DB. Create Seeds
+10. Prepare Database (Create, Migrate, Create Seeds)
 11. Indexing Article Model
 12. Launching Rails App with Puma
 13. Launching Sidekiq
@@ -253,9 +253,11 @@ What was done:
 
 17. Yarn: Install Node Packages
 18. Yarn: Build JS/CSS Assets
-19. Visit Rails App: http://localhost:3000
-20. Visit Mail Service: http://localhost:1080
-21. Visit ElasticSearch: http://localhost:9200
+19. Precompile Assets
+
+20. Visit Rails App: http://localhost:3000
+21. Visit Mail Service: http://localhost:1080
+22. Visit ElasticSearch: http://localhost:9200
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Welcome to RAILS 7!
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
