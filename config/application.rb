@@ -34,7 +34,8 @@ module App
 
     # Removes `field_with_errors` wrapper class for Rails forms
     # config.action_view.field_error_proc = proc
-
+    #
+    # This is the simplest way to provide some decorations for Bootstrap
     ActionView::Base.field_error_proc = proc do |html_tag, instance|
       if instance.is_a?(ActionView::Helpers::Tags::Label)
         html_tag
