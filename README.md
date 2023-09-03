@@ -68,7 +68,7 @@ Save hours, days or weeks on setting up a typical Rails app.
     <td>Most popular relational database</td>
   </tr>
   <tr>
-    <td colspan="3"><b>Cache and Delayed Jobs</b></td>
+    <td colspan="3"><h3>Cache and Delayed Jobs</h3></td>
   </tr>
   <tr>
     <td><img width="100px" alt="redis" src="Rails7StartKit/assets/images/redis.png"></td>
@@ -86,7 +86,7 @@ Save hours, days or weeks on setting up a typical Rails app.
     <td>Linux Cron based periodical tasks</td>
   </tr>
   <tr>
-    <td colspan="3"><b>Full text search</b></td>
+    <td colspan="3"><h3>Full text search</h3></td>
   </tr>
   <tr>
     <td><img width="100px" alt="elastic" src="Rails7StartKit/assets/images/elastic.png"></td>
@@ -99,7 +99,7 @@ Save hours, days or weeks on setting up a typical Rails app.
     <td>Ruby Connector to Elasticsearch</td>
   </tr>
   <tr>
-    <td colspan="3"><b>Front-end</b></td>
+    <td colspan="3"><h3>Front-end</h3></td>
   </tr>
   <tr>
     <td><img width="100px" alt="bootstrap" src="Rails7StartKit/assets/images/bootstrap.png"></td>
@@ -117,7 +117,7 @@ Save hours, days or weeks on setting up a typical Rails app.
     <td>Rails' recommended way to process JavaScript</td>
   </tr>
   <tr>
-    <td colspan="3"><b>Application Configuration</b></td>
+    <td colspan="3"><h3>Application Configuration</h3></td>
   </tr>
   <tr>
     <td><img width="100px" alt="gem dotenv-rails" src="Rails7StartKit/assets/images/dotenv.png"></td>
@@ -130,7 +130,7 @@ Save hours, days or weeks on setting up a typical Rails app.
     <td>Configuration management tool</td>
   </tr>
   <tr>
-    <td colspan="3"><b>Application Level</b></td>
+    <td colspan="3"><h3>Application Level</h3></td>
   </tr>
   <tr>
     <td><img width="100px" alt="puma" src="Rails7StartKit/assets/images/puma.png"></td>
@@ -168,7 +168,7 @@ Save hours, days or weeks on setting up a typical Rails app.
     <td>Email previewer for development</td>
   </tr>
   <tr>
-    <td colspan="3"><b>Code Quality</b></td>
+    <td colspan="3"><h3>Code Quality</h3></td>
   </tr>
   <tr>
     <td><img width="100px" alt="rspec" src="Rails7StartKit/assets/images/rspec.png"></td>
