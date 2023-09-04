@@ -323,6 +323,71 @@ From the root of the project
 
 :warning: Windows users should use `ruby bin/exec`
 
+<details>
+  <summary>All Possible Module Methods</summary>
+<br>
+<ul>
+  <li>breakman</li>
+  <li>cache</li>
+  <li>check_docker!</li>
+  <li>check_docker_compose_v2!</li>
+  <li>check_docker_running!</li>
+  <li>chewy_index</li>
+  <li>chewy_reset</li>
+  <li>container_bash_exec</li>
+  <li>container_exec</li>
+  <li>containers_information</li>
+  <li>cron_start</li>
+  <li>cron_stop</li>
+  <li>docker_compose</li>
+  <li>init_nvm</li>
+  <li>log_puma</li>
+  <li>log_server</li>
+  <li>log_sidekiq</li>
+  <li>macos?</li>
+  <li>ms_warning</li>
+  <li>msos?</li>
+  <li>platform_env</li>
+  <li>print_methods</li>
+  <li>prompt!</li>
+  <li>puma_dev_start</li>
+  <li>puma_restart</li>
+  <li>puma_start</li>
+  <li>puma_stop</li>
+  <li>rails7_header</li>
+  <li>rails7_ready</li>
+  <li>rails7_startkit_greetings!</li>
+  <li>rails_assets_precompile</li>
+  <li>rails_db_migrate</li>
+  <li>rails_db_prepare</li>
+  <li>rails_install_gems</li>
+  <li>reset</li>
+  <li>restart</li>
+  <li>restart_all</li>
+  <li>rspec</li>
+  <li>rspec_with_cov</li>
+  <li>rubocop</li>
+  <li>rubocop_fix</li>
+  <li>setup!</li>
+  <li>sidekiq_start</li>
+  <li>sidekiq_stop</li>
+  <li>start</li>
+  <li>start_all</li>
+  <li>start_all_containers</li>
+  <li>status</li>
+  <li>stop</li>
+  <li>stop_all</li>
+  <li>stop_all_containers</li>
+  <li>system!</li>
+  <li>turn_off_elastic_settings</li>
+  <li>whenever_show</li>
+  <li>whenever_start</li>
+  <li>whenever_stop</li>
+  <li>yarn_build</li>
+  <li>yarn_install</li>
+</ul>
+</details>
+
 <table>
   <thead>
     <tr>

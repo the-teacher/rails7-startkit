@@ -44,6 +44,10 @@ module Rails7StartKit
       container_bash_exec('rails', 'ps a | grep sidekiq')
     end
 
+    def print_methods
+      puts (self.methods - Module.class.methods).sort
+    end
+
     # def get_secret_key
     #   container_bash_exec('rails', 'rake secret > tail')
     #   container_bash_exec('rails', 'printenv SECRET_KEY_BASE')
