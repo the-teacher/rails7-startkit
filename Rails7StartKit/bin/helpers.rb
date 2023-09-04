@@ -81,7 +81,7 @@ def set_permissions_for_elastic
     'chmod 777 db/ELASTIC',
     'chmod 777 log/ELASTIC'
   ].each do |command|
-    system(command)
+    run_rails_root_command(command)
   end
 end
 
