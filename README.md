@@ -7,9 +7,9 @@
 <i>Copy & Paste in your terminal</i>
 
 ```sh
-git clone https://github.com/the-teacher/rails7-startkit.git && \
-  cd rails7-startkit && \
-  bin/setup
+git clone https://github.com/the-teacher/rails7-startkit.git ; \
+  cd rails7-startkit ; \
+  ruby bin/setup
 ```
 
 :warning: Tested with MacOS & Linux (Debian)
@@ -219,9 +219,9 @@ What I'm going to add...
 <i>Copy & Paste in your terminal</i>
 
 ```sh
-git clone https://github.com/the-teacher/rails7-startkit.git && \
-  cd rails7-startkit && \
-  bin/setup
+git clone https://github.com/the-teacher/rails7-startkit.git ; \
+  cd rails7-startkit ; \
+  ruby bin/setup
 ```
 
 You will see something like that:

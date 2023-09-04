@@ -17,7 +17,7 @@ module Rails7StartKit
 
     def start_all
       start_all_containers
-      system('bin/exec start')
+      system('ruby bin/exec start')
       containers_information
     end
 
@@ -33,13 +33,13 @@ module Rails7StartKit
     end
 
     def restart
-      system('bin/exec stop')
-      system('bin/exec start')
+      system('ruby bin/exec stop')
+      system('ruby bin/exec start')
     end
 
     def restart_all
-      system('bin/exec stop_all')
-      system('bin/exec start_all')
+      system('ruby bin/exec stop_all')
+      system('ruby bin/exec start_all')
     end
   end
 end
