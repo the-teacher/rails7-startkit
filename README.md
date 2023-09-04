@@ -296,6 +296,8 @@ From the root of the project
 
 ## `bin/open` command
 
+:warning: Windows users should use `ruby bin/open`
+
 <table>
   <thead>
     <tr>
@@ -318,6 +320,8 @@ From the root of the project
 </table>
 
 ## `bin/exec` command
+
+:warning: Windows users should use `ruby bin/exec`
 
 <table>
   <thead>
