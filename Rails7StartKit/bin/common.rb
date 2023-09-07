@@ -39,6 +39,7 @@ module Rails7StartKit
       system(*args) || abort("\n== Command #{args} failed ==")
     end
 
+    # These OS specific commands need for improvements
     def macos?
       !!`echo $OSTYPE`.match('darwin')
     end
