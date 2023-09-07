@@ -45,7 +45,7 @@ module Rails7StartKit
     end
 
     def print_methods
-      puts (self.methods - Module.class.methods).sort
+      puts (methods - Module.class.methods).sort
     end
 
     # def get_secret_key

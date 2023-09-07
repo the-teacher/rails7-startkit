@@ -19,12 +19,6 @@ module Rails7StartKit
         docker_compose('pull')
         step_info_new_line
 
-        # ElasticSearch
-        step_info 'Launching ElasticSearch Container'
-        set_permissions_for_elastic
-        docker_compose('up elastic -d')
-        wait('to launch ElasticSearch Container')
-
         # Mailcatcher
         if development?
           step_info 'Launching Mailcatcher Container'
@@ -49,6 +43,12 @@ module Rails7StartKit
         docker_compose('up rails -d')
         wait('to launch Rails Container')
         step_info_new_line
+
+        # ElasticSearch
+        step_info 'Launching ElasticSearch Container'
+        set_permissions_for_elastic
+        docker_compose('up elastic -d')
+        wait('to launch ElasticSearch Container')
 
         step_info 'Correcting Permissions for Linux'
         set_lucky_permissions
