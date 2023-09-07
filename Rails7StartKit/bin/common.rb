@@ -73,7 +73,7 @@ module Rails7StartKit
     def container_bash_exec(container_name = 'rails', cmd = 'ls', detached = false, as_root = false)
       detached = detached ? '-d' : ''
       as_root = as_root ? '--user root' : ''
-      docker_compose("exec #{ENV['TTY_OFF']} #{as_root} -e='RAILS_ENV=#{rails_env_name}' #{detached} #{container_name} /bin/bash -c '#{cmd}'")
+      docker_compose("exec #{ENV['TTY_OFF']} #{as_root} -e=\"RAILS_ENV=#{rails_env_name}\" #{detached} #{container_name} /bin/bash -c \"#{cmd}\"")
     end
     # rubocop:enable Metrics/ParameterLists
     # rubocop:enable Layout/LineLength
@@ -82,7 +82,7 @@ module Rails7StartKit
     def containers_information
       puts
       puts '~' * 80
-      system("docker ps --format 'table {{.Names}}\t{{.Image}}\t{{.Ports}}\t{{.ID}}'")
+      system("docker ps --format \"table {{.Names}}\t{{.Image}}\t{{.Ports}}\t{{.ID}}\"")
       puts '~' * 80
       puts
     end
