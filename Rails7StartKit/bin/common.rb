@@ -58,9 +58,9 @@ module Rails7StartKit
       sleep(3)
     end
 
-    def platform_env
-      macos? ? 'PLATFORM=arm64' : 'PLATFORM=amd64'
-    end
+    # def platform_env
+    #   macos? ? 'PLATFORM=arm64' : 'PLATFORM=amd64'
+    # end
 
     def container_exec(container_name = 'rails', cmd = 'ls')
       docker_compose("exec #{ENV['TTY_OFF']} -e='RAILS_ENV=#{rails_env_name}' #{container_name} #{cmd}")
