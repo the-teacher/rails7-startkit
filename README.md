@@ -6,7 +6,7 @@
 
 <i>Copy & Paste in your terminal</i>
 
-**Linux / MacOS**
+❤️ **Linux / MacOS**
 
 ```sh
 git clone https://github.com/the-teacher/rails7-startkit.git && \
@@ -14,7 +14,7 @@ git clone https://github.com/the-teacher/rails7-startkit.git && \
   ruby bin/setup
 ```
 
-**WINDOWS**
+💙 **WINDOWS**
 
 ```sh
 git clone https://github.com/the-teacher/rails7-startkit.git & cd rails7-startkit & ruby bin/setup
