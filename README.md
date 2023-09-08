@@ -6,13 +6,19 @@
 
 <i>Copy & Paste in your terminal</i>
 
+**Linux / MacOS**
+
 ```sh
-git clone https://github.com/the-teacher/rails7-startkit.git ; \
-  cd rails7-startkit ; \
+git clone https://github.com/the-teacher/rails7-startkit.git && \
+  cd rails7-startkit && \
   ruby bin/setup
 ```
 
-:warning: Tested with MacOS & Linux (Debian)
+**WINDOWS**
+
+```sh
+git clone https://github.com/the-teacher/rails7-startkit.git & cd rails7-startkit & ruby bin/setup
+```
 
 ### What Is That?
 
