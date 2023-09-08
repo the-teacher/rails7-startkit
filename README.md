@@ -2,7 +2,7 @@
 
 <img  alt="docker" src="Rails7StartKit/assets/logos/Rails7.StartKit.jpg">
 
-## Install and Run `Ruby&:nbsp;on&:nbsp;Rails` now!
+<h2>Install and Run <code>Ruby&nbsp;on&nbsp;Rails</code> now!</h2>
 
 <i>Copy & Paste in your terminal</i>
 
