@@ -2,7 +2,7 @@
 
 <img  alt="docker" src="Rails7StartKit/assets/logos/Rails7.StartKit.jpg">
 
-<h2>Install and Run <code>Ruby&nbsp;on&nbsp;Rails</code> in Minutes!</h2>
+<h2>Install and Run <code>Ruby&nbsp;on&nbsp;Rails</code> in&nbsp;Minutes!</h2>
 
 <i>Copy & Paste in your terminal</i>
 
@@ -14,7 +14,7 @@ git clone https://github.com/the-teacher/rails7-startkit.git && \
   ruby bin/setup
 ```
 
-💙 **WINDOWS**
+💙 **Windows**
 
 ```sh
 git clone https://github.com/the-teacher/rails7-startkit.git & cd rails7-startkit & ruby bin/setup
@@ -224,15 +224,23 @@ What I'm going to add...
 
 <i>Copy & Paste in your terminal</i>
 
+❤️ **Linux / MacOS**
+
 ```sh
-git clone https://github.com/the-teacher/rails7-startkit.git ; \
-  cd rails7-startkit ; \
+git clone https://github.com/the-teacher/rails7-startkit.git && \
+  cd rails7-startkit && \
   ruby bin/setup
+```
+
+💙 **Windows**
+
+```sh
+git clone https://github.com/the-teacher/rails7-startkit.git & cd rails7-startkit & ruby bin/setup
 ```
 
 You will see something like that:
 
-```
+```js
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Rails 7. StartKit
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
