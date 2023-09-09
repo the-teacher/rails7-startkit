@@ -4,3 +4,4 @@
 
 docker push iamteacher/rails7:arm64
 docker push iamteacher/rails7:amd64
+docker manifest push --purge iamteacher/rails7:latest

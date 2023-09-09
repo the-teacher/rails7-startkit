@@ -8,5 +8,3 @@ docker manifest create \
   iamteacher/rails7:latest \
   --amend iamteacher/rails7:amd64 \
   --amend iamteacher/rails7:arm64
-
-docker manifest push --purge iamteacher/rails7:latest
