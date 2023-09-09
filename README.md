@@ -407,14 +407,14 @@ From the root of the project
   </thead>
   <tbody>
     <tr>
-      <td colspan="2"><h3>Execute</h3></td>
+      <td colspan="2"><h3>:arrow_right: Execute</h3></td>
     </tr>
     <tr>
       <td><b>ruby bin/exec&nbsp;[COMMAND]</b></td>
       <td>Execute a command from <code>Rails7StartKit</code> module</td>
     </tr>
     <tr>
-      <td colspan="2">Start/Stop/Restart</td>
+      <td colspan="2"><h3>:arrow_right: Start/Stop/Restart</h3></td>
     </tr>
     <tr>
       <td><b>ruby bin/exec start</b></td>
@@ -441,7 +441,7 @@ From the root of the project
       <td><code>bin/exec&nbsp;stop_all</code> + <code>bin/exec&nbsp;start_all</code></td>
     </tr>
     <tr>
-      <td colspan="2">Helpers</td>
+      <td colspan="2"><h3>:arrow_right: Helpers<h3></td>
     </tr>
     <tr>
       <td><b>ruby bin/exec status</b></td>
