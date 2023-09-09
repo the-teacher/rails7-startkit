@@ -92,7 +92,7 @@ Save hours, days or weeks on setting up a typical Rails app.
     <td>Linux Cron based periodical tasks</td>
   </tr>
   <tr>
-    <td colspan="3"><h3>Full text search</h3></td>
+    <td colspan="3"><h3>Full Text Search</h3></td>
   </tr>
   <tr>
     <td><img width="100px" alt="elastic" src="Rails7StartKit/assets/images/elastic.png"></td>
@@ -306,8 +306,8 @@ From the root of the project
       <td>Get in <b>Rails</b> Container</td>
     </tr>
     <tr>
-      <td><b>ruby bin/exec&nbsp;[COMMAND]</b></td>
-      <td>Execute a command from <code>Rails7StartKit</code> module</td>
+      <td><b>rubyc&nbsp;bin/exec&nbsp;[CMD]</b></td>
+      <td>Execute a command (<i>[CMD]</i>) from <code>Rails7StartKit</code> module</td>
     </tr>
   </tbody>
 </table>
@@ -328,8 +328,11 @@ From the root of the project
     <tr>
       <td><b>ruby&nbsp;bin/open&nbsp;[NAME]</b></td>
       <td>
-        Get in a Container. <code>[NAME]</code> can be <code>rails</code>,
-        <code>psql</code>, <code>redis</code>, <code>elastic</code>, <code>mailcatcher</code>. Default value is <code>rails</code>.
+        Get in a Container. <code>[NAME]</code>
+        <br /><br />
+        <i>[NAME]</i> Values: <code>rails</code>,<code>psql</code>, <code>redis</code>, <code>elastic</code>, <code>mailcatcher</code>.
+        <br /><br />
+        Default value is: <code>rails</code>.
       </td>
     </tr>
   </tbody>
@@ -410,8 +413,8 @@ From the root of the project
       <td colspan="2"><h3>:arrow_right: Execute</h3></td>
     </tr>
     <tr>
-      <td><b>ruby bin/exec&nbsp;[COMMAND]</b></td>
-      <td>Execute a command from <code>Rails7StartKit</code> module</td>
+      <td><b>ruby bin/exec&nbsp;[CMD]</b></td>
+      <td>Execute a command (<i>[CMD]</i>) from <code>Rails7StartKit</code> module</td>
     </tr>
     <tr>
       <td colspan="2"><h3>:arrow_right: Start/Stop/Restart</h3></td>
@@ -466,9 +469,9 @@ From the root of the project
 
 On your host you have:
 
-- Ruby 2+
-- Docker
-- Git
+- **Any version** of Ruby
+- **Any version** of Git
+- **Any version** of Docker
 
 ### Conventions and Agreements
 
