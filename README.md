@@ -280,8 +280,9 @@ Welcome to RAILS 7!
 
 ## `bin/` commands
 
-:warning: `ruby bin/exec` - Windows users should use `ruby` explicitly
-:warning: `bin/exec` - Linux and MacOS users can skip using `ruby`
+❤️ :warning: `bin/exec` - Linux and MacOS users can skip using `ruby`
+
+💙 :warning: `ruby bin/exec` - Windows users should use `ruby` explicitly
 
 From the root of the project
 
