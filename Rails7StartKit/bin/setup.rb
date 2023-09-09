@@ -7,8 +7,6 @@ module Rails7StartKit
   class << self
     def setup!
       FileUtils.chdir APP_ROOT do
-        # ms_warning
-
         check_docker!
         check_docker_running!
         check_docker_compose_v2!

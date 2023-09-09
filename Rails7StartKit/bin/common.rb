@@ -39,30 +39,6 @@ module Rails7StartKit
       system(*args) || abort("\n== Command #{args} failed ==")
     end
 
-    # These OS specific commands need for improvements
-    def macos?
-      !!`echo $OSTYPE`.match('darwin')
-    end
-
-    def msos?
-      !!`echo $OSTYPE`.match('msys')
-    end
-
-    def ms_warning
-      msos? ? nil : return
-
-      puts '!' * 80
-      puts 'Looks like you use MS Windows'
-      puts 'Rails 7. StartKit - uses fallback to Linux Platform'
-      puts '!' * 80
-
-      sleep(3)
-    end
-
-    # def platform_env
-    #   macos? ? 'PLATFORM=arm64' : 'PLATFORM=amd64'
-    # end
-
     def container_exec(container_name = 'rails', cmd = 'ls')
       docker_compose("exec #{ENV['TTY_OFF']} -e='RAILS_ENV=#{rails_env_name}' #{container_name} #{cmd}")
     end

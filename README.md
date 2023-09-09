@@ -358,10 +358,6 @@ From the root of the project
   <li>log_puma</li>
   <li>log_server</li>
   <li>log_sidekiq</li>
-  <li>macos?</li>
-  <li>ms_warning</li>
-  <li>msos?</li>
-  <li>platform_env</li>
   <li>print_methods</li>
   <li>prompt!</li>
   <li>puma_dev_start</li>
