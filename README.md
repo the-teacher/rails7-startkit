@@ -280,6 +280,8 @@ Welcome to RAILS 7!
 
 ## `bin/` commands
 
+:warning: Windows users should use `ruby bin/exec`, Linux/MacOS users can use only `bin/exec`
+
 From the root of the project
 
 <table>
@@ -294,23 +296,21 @@ From the root of the project
       <td colspan="2">Most important</td>
     </tr>
     <tr>
-      <td><b>bin/setup</b></td>
+      <td><b>ruby bin/setup</b></td>
       <td>Download images, run containers, initialize data, launch all processes.</td>
     </tr>
     <tr>
-      <td><b>bin/open</b></td>
+      <td><b>ruby bin/open</b></td>
       <td>Get in <b>Rails</b> Container</td>
     </tr>
     <tr>
-      <td><b>bin/exec&nbsp;[COMMAND]</b></td>
+      <td><b>ruby bin/exec&nbsp;[COMMAND]</b></td>
       <td>Execute a command from <code>Rails7StartKit</code> module</td>
     </tr>
   </tbody>
 </table>
 
 ## `bin/open` command
-
-:warning: Windows users should use `ruby bin/open`
 
 <table>
   <thead>
@@ -324,7 +324,7 @@ From the root of the project
       <td colspan="2">Get in a container</td>
     </tr>
     <tr>
-      <td><b>bin/open&nbsp;[NAME]</b></td>
+      <td><b>ruby bin/open&nbsp;[NAME]</b></td>
       <td>
         Get in a Container. <code>[NAME]</code> can be <code>rails</code>,
         <code>psql</code>, <code>redis</code>, <code>elastic</code>, <code>mailcatcher</code>. Default value is <code>rails</code>.
@@ -334,8 +334,6 @@ From the root of the project
 </table>
 
 ## `bin/exec` command
-
-:warning: Windows users should use `ruby bin/exec`
 
 <details>
   <summary>All Possible Module Methods</summary>
@@ -410,53 +408,53 @@ From the root of the project
       <td colspan="2">bin/exec</td>
     </tr>
     <tr>
-      <td><b>bin/exec&nbsp;[COMMAND]</b></td>
+      <td><b>ruby bin/exec&nbsp;[COMMAND]</b></td>
       <td>Execute a command from <code>Rails7StartKit</code> module</td>
     </tr>
     <tr>
       <td colspan="2">Start/Stop/Restart</td>
     </tr>
     <tr>
-      <td><b>bin/exec start</b></td>
+      <td><b>ruby bin/exec start</b></td>
       <td>Start processes in <b>rails</b> container</td>
     </tr>
     <tr>
-      <td><b>bin/exec stop</b></td>
+      <td><b>ruby bin/exec stop</b></td>
       <td>Stop processes in <b>rails</b> container</td>
     </tr>
     <tr>
-      <td><b>bin/exec restart</b></td>
+      <td><b>ruby bin/exec restart</b></td>
       <td><code>bin/exec&nbsp;stop</code> + <code>bin/exec&nbsp;start</code></td>
     </tr>
     <tr>
-      <td><b>bin/exec&nbsp;start_all</b></td>
+      <td><b>ruby bin/exec&nbsp;start_all</b></td>
       <td>Start processes and containers</td>
     </tr>
     <tr>
-      <td><b>bin/exec&nbsp;stop_all</b></td>
+      <td><b>ruby bin/exec&nbsp;stop_all</b></td>
       <td>Stop processes and containers</td>
     </tr>
     <tr>
-      <td><b>bin/exec restart_all</b></td>
+      <td><b>ruby bin/exec restart_all</b></td>
       <td><code>bin/exec&nbsp;stop_all</code> + <code>bin/exec&nbsp;start_all</code></td>
     </tr>
     <tr>
       <td colspan="2">Helpers</td>
     </tr>
     <tr>
-      <td><b>bin/exec status</b></td>
+      <td><b>ruby bin/exec status</b></td>
       <td>To see running containers and launched services</td>
     </tr>
     <tr>
-      <td><b>bin/exec cache</b></td>
+      <td><b>ruby bin/exec cache</b></td>
       <td>Toggle caching in development and restart web server</td>
     </tr>
     <tr>
-      <td><b>bin/exec index</b></td>
+      <td><b>ruby bin/exec index</b></td>
       <td>Run Search engines indexation</td>
     </tr>
     <tr>
-      <td><b>bin/exec reset</b></td>
+      <td><b>ruby bin/exec reset</b></td>
       <td>Reset data of services in <b>./db</b> folder</td>
     </tr>
   </tbody>
