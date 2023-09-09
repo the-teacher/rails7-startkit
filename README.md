@@ -324,7 +324,7 @@ From the root of the project
       <td colspan="2">Get in a container</td>
     </tr>
     <tr>
-      <td><b>ruby bin/open&nbsp;[NAME]</b></td>
+      <td><b>ruby&nbsp;bin/open&nbsp;[NAME]</b></td>
       <td>
         Get in a Container. <code>[NAME]</code> can be <code>rails</code>,
         <code>psql</code>, <code>redis</code>, <code>elastic</code>, <code>mailcatcher</code>. Default value is <code>rails</code>.
@@ -405,7 +405,7 @@ From the root of the project
   </thead>
   <tbody>
     <tr>
-      <td colspan="2">bin/exec</td>
+      <td colspan="2"><h3>Execute</h3></td>
     </tr>
     <tr>
       <td><b>ruby bin/exec&nbsp;[COMMAND]</b></td>
