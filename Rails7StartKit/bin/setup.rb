@@ -66,7 +66,6 @@ module Rails7StartKit
         step_info_new_line
 
         if development?
-
           step_info 'Quality: Rubocop'
           rubocop
 
@@ -97,6 +96,13 @@ module Rails7StartKit
         step_info 'Launching Rails App with Puma'
         puma_start
 
+        # Nginx
+        if development?
+          step_info 'Launching Nginx'
+          docker_compose('up nginx -d')
+          wait('to launch Nginx')
+        end
+
         step_info_new_line
 
         step_info 'Visit Rails App: http://localhost:3000'
@@ -109,6 +115,7 @@ module Rails7StartKit
         containers_information
 
         rails7_ready
+        nginx_message if development?
       end
     end
   end

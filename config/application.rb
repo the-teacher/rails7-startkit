@@ -21,8 +21,7 @@ module App
 
     config.active_job.queue_adapter = :sidekiq
 
-    # For development process only
-    config.hosts << "rails7startkit.dev"
+    config.hosts << "rails7-startkit.site" if Rails.env.development?
 
     # Configuration for the application, engines, and railties goes here.
     #

@@ -139,6 +139,11 @@ Save hours, days or weeks on setting up a typical Rails app.
     <td colspan="3"><h3>Application Level</h3></td>
   </tr>
   <tr>
+    <td><img width="100px" alt="puma" src="Rails7StartKit/assets/images/nginx.png"></td>
+    <td><b><a href="https://www.ruby-toolbox.com/categories/web_servers">Nginx</a></b></td>
+    <td>Web Server. Reverse Proxy. Load Balancer. Caching, Streaming etc.</td>
+  </tr>
+  <tr>
     <td><img width="100px" alt="puma" src="Rails7StartKit/assets/images/puma.png"></td>
     <td><b><a href="https://www.ruby-toolbox.com/categories/web_servers">Puma</a></b></td>
     <td>Application Web Server. To launch Rails app</td>
