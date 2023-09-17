@@ -123,6 +123,11 @@ Save hours, days or weeks on setting up a typical Rails app.
     <td>Rails' recommended way to process JavaScript</td>
   </tr>
   <tr>
+    <td><img width="100px" alt="sprockets" src="Rails7StartKit/assets/images/sprockets.png"></td>
+    <td><b><a href="https://github.com/rails/sprockets">Sprockets</a></b></td>
+    <td>Rack-based asset packager</td>
+  </tr>
+  <tr>
     <td colspan="3"><h3>Application Configuration</h3></td>
   </tr>
   <tr>

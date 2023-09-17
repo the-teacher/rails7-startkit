@@ -7,6 +7,8 @@ class DemoController < ApplicationController
     render 'articles/articles_list'
   end
 
+  def tools; end
+
   def articles_list
     render 'articles/articles_list'
   end

@@ -75,3 +75,11 @@ em.tsh {
   border-radius: 4px;
   background-color: rgb(231, 248, 255);
 }
+
+.Rails7startkit-logo {
+  background-image: url('Rails7.StartKit-sprockets.jpg');
+  background-size: contain;
+  background-color: rgb(236, 231, 231);
+  width: 100px;
+  height: 30px;
+}
