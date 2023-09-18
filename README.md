@@ -1,6 +1,6 @@
 # Rails 7. Start Kit
 
-<img width="880" alt="Rails 7. Start Kit" src="https://github.com/the-teacher/rails7-startkit/assets/496713/c179e7d3-d1af-4e60-aec1-8d095b4ea115">
+<img alt="Rails 7. Start kit. v2.1" src="https://github.com/the-teacher/rails7-startkit/assets/496713/e90eaf2a-ed8a-4e37-9fdd-a4edb6174de1">
 
 <h2>Install and Run <code>Ruby&nbsp;on&nbsp;Rails</code> in&nbsp;Minutes!</h2>
 
