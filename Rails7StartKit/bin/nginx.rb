@@ -23,6 +23,7 @@ module Rails7StartKit
       nginx_up
     end
 
+    # rubocop:disable Metrics/MethodLength
     def nginx_message
       puts '~' * 80
       puts 'To make project available on `http://rails7-startkit.site`'
@@ -36,5 +37,6 @@ module Rails7StartKit
       puts 'sudo echo "127.0.0.1    rails7-startkit.site" >> /etc/hosts'
       puts '~' * 80
     end
+    # rubocop:enable Metrics/MethodLength
   end
 end
