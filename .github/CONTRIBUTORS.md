@@ -6,4 +6,4 @@ These people helped with development and testing of the project
 - wiiikiii
 - nicke
 - ggalancs
-- Kronen10
+- @Kronen10
