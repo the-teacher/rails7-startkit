@@ -1,7 +1,6 @@
 #!/usr/bin/env ruby
 # frozen_string_literal: true
 
-require 'fileutils'
 require_relative '../Rails7StartKit/bin/rails7startkit'
 
 Rails7StartKit.setup!
