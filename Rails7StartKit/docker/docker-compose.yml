@@ -50,9 +50,22 @@ services:
   redis:
     image: redis:7.0.5-alpine
     user: ${RUN_AS:-root}
+    ports:
+      - 6379:6379
     volumes:
       - ../../db/REDIS:/data
       - ../../shared:/shared
+
+  # port: 3030
+  #
+  sidekiq_web:
+    image: iamteacher/sidekiq
+    environment:
+      REDIS_URL: redis://redis:6379
+      SIDEKIQ_USER: admin
+      SIDEKIQ_PASSWORD: qwerty
+    ports:
+      - 3030:3030
 
   # port 9200
   # port 9300
