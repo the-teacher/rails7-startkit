@@ -15,6 +15,9 @@
 /db/ELASTIC
 !/db/ELASTIC/.keep
 
+/db/PGADMIN
+!/db/PGADMIN/.keep
+
 /shared
 !/shared/.keep
 
