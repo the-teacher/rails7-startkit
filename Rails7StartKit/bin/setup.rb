@@ -48,6 +48,13 @@ module Rails7StartKit
         docker_compose('up elastic -d')
         wait('to launch ElasticSearch Container')
 
+        # Sidekiq UI
+        if development?
+          step_info 'Launching Sidekiq UI Container'
+          docker_compose('up sidekiq_web -d')
+          wait('to launch Sidekiq UI Container')
+        end
+
         step_info 'Correcting Permissions for Linux'
         set_lucky_permissions
 
