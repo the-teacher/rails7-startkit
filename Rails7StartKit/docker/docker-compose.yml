@@ -38,9 +38,24 @@ services:
     environment:
       POSTGRES_PASSWORD: qwerty
       PGDATA: /var/lib/postgresql/data/pgdata
+    ports:
+      - 5432:5432
     volumes:
       - ../../db/PGSQL:/var/lib/postgresql/data/pgdata
       - ../../shared:/shared
+
+  # port: 5050:80
+  #
+  pgadmin:
+    image: dpage/pgadmin4
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@pgadmin.dev
+      PGADMIN_DEFAULT_PASSWORD: qwerty
+      PGADMIN_CONFIG_SERVER_MODE: 'False'
+    ports:
+      - 5050:80
+    volumes:
+       - ../../db/PGADMIN:/var/lib/pgadmin
 
   # port: 6379
   #
