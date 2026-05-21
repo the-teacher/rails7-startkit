@@ -1,3 +1,9 @@
+PATH
+  remote: /home/rails/ActiveHarness2
+  specs:
+    active_harness (0.2.5)
+      concurrent-ruby (~> 1.3)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -47,8 +53,6 @@ GEM
       erubi (~> 1.11)
       rails-dom-testing (~> 2.2)
       rails-html-sanitizer (~> 1.6)
-    active_harness (0.2.5)
-      concurrent-ruby (~> 1.3)
     activejob (8.1.4)
       activesupport (= 8.1.4)
       globalid (>= 0.3.6)
@@ -109,6 +113,9 @@ GEM
       irb (~> 1.10)
       reline (>= 0.3.8)
     dotenv (3.2.0)
+    dotenv-rails (3.2.0)
+      dotenv (= 3.2.0)
+      railties (>= 6.1)
     drb (2.2.3)
     ed25519 (1.4.0)
     erb (6.0.7)
@@ -364,12 +371,13 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
-  active_harness
+  active_harness!
   bootsnap
   brakeman
   bundler-audit
   capybara
   debug
+  dotenv-rails
   image_processing (~> 1.2)
   importmap-rails
   jbuilder
@@ -397,7 +405,7 @@ CHECKSUMS
   actionpack (8.1.4) sha256=245493cc51be195a7645e6fc184880fa7e5b32ff1a08e053ee31f58c76e30ea4
   actiontext (8.1.4) sha256=33ee99bea7da6af911fc7d98b17013a8e1ec62aa01b20b20e9a5366f40dbf644
   actionview (8.1.4) sha256=eff1efd07c4d969abad288322b423bcb67fdbab5e324c91ca37352b80f226076
-  active_harness (0.2.5) sha256=db3309fa020ad2cb09a9433edc293381af048ff1b87de483c4b4b3a9326bd882
+  active_harness (0.2.5)
   activejob (8.1.4) sha256=4ed5b2ed8d4cc5c8f5f09becfef8346f202a4884eee0c8c73cae5ac378824099
   activemodel (8.1.4) sha256=9a0906c127bd118aa5f06157db12b8f750da83dccee72db2f658547a0ae7a0e8
   activerecord (8.1.4) sha256=3b4957ea7f246c9231bd7faa909312eac03a9101aaf87977b6c52733ff00b04f
@@ -420,6 +428,7 @@ CHECKSUMS
   date (3.6.0) sha256=18ac945c4e24ebd93534f8eab8c2fd8c5604b3e977105b3798d62a1e8d27b580
   debug (1.11.1) sha256=2e0b0ac6119f2207a6f8ac7d4a73ca8eb4e440f64da0a3136c30343146e952b6
   dotenv (3.2.0) sha256=e375b83121ea7ca4ce20f214740076129ab8514cd81378161f11c03853fe619d
+  dotenv-rails (3.2.0) sha256=657e25554ba622ffc95d8c4f1670286510f47f2edda9f68293c3f661b303beab
   drb (2.2.3) sha256=0b00d6fdb50995fe4a45dea13663493c841112e4068656854646f418fda13373
   ed25519 (1.4.0) sha256=16e97f5198689a154247169f3453ef4cfd3f7a47481fde0ae33206cdfdcac506
   erb (6.0.7) sha256=c5ca6dc25b0ef974a44dc8f59fe847577122483b1968a38dec305c60bf91ee92
