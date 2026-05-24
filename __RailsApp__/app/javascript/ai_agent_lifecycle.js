@@ -39,6 +39,7 @@ function appendLifecycleEvent(p) {
     out.textContent = "";
     out.classList.add("streaming");
     met.textContent = "";
+    document.getElementById("ah-tokens").textContent = "";
     btn.disabled = true;
     btn.textContent = "Thinking…";
     if (sdb) sdb.innerHTML = "";
@@ -59,6 +60,17 @@ function appendLifecycleEvent(p) {
     es.onmessage = function (ev) {
       var p = JSON.parse(ev.data);
       if (p.done) {
+        var tokens = document.getElementById("ah-tokens");
+        var u = p.usage;
+        if (u && tokens)
+          tokens.textContent =
+            "Tokens: " +
+            u.input_tokens +
+            " in / " +
+            u.output_tokens +
+            " out / " +
+            u.total_tokens +
+            " total";
         end();
         return;
       }
@@ -74,9 +86,23 @@ function appendLifecycleEvent(p) {
     es.addEventListener("lifecycle", function (ev) {
       var p = JSON.parse(ev.data);
       appendLifecycleEvent(p);
-      if (p.event === "after_call" && p.model)
-        met.textContent =
-          "Model: " + p.model + " · " + (p.time ? p.time + "s" : "");
+      if (p.event === "after_call") {
+        var metParts = [];
+        if (p.model) metParts.push("Model: " + p.model);
+        if (p.time) metParts.push(p.time + "s");
+        met.textContent = metParts.join(" \u00b7 ");
+        var tokens = document.getElementById("ah-tokens");
+        var u = p.usage;
+        if (u && tokens)
+          tokens.textContent =
+            "Tokens: " +
+            u.input_tokens +
+            " in / " +
+            u.output_tokens +
+            " out / " +
+            u.total_tokens +
+            " total";
+      }
     });
 
     es.onerror = function () {
