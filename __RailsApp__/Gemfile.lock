@@ -1,8 +1,14 @@
 PATH
   remote: /home/rails/ActiveHarness2
   specs:
-    active_harness (0.2.34)
+    active_harness (0.2.39)
+      active_harness_pricing
       concurrent-ruby (~> 1.3)
+
+PATH
+  remote: /home/rails/ActiveHarnessPricing
+  specs:
+    active_harness_pricing (0.1.3)
 
 GEM
   remote: https://rubygems.org/
@@ -421,6 +427,7 @@ PLATFORMS
 
 DEPENDENCIES
   active_harness!
+  active_harness_pricing!
   bootsnap
   brakeman
   bundler-audit
@@ -457,12 +464,13 @@ CHECKSUMS
   actionpack (8.1.4) sha256=245493cc51be195a7645e6fc184880fa7e5b32ff1a08e053ee31f58c76e30ea4
   actiontext (8.1.4) sha256=33ee99bea7da6af911fc7d98b17013a8e1ec62aa01b20b20e9a5366f40dbf644
   actionview (8.1.4) sha256=eff1efd07c4d969abad288322b423bcb67fdbab5e324c91ca37352b80f226076
-  active_harness (0.2.34)
+  active_harness (0.2.39)
   activejob (8.1.4) sha256=4ed5b2ed8d4cc5c8f5f09becfef8346f202a4884eee0c8c73cae5ac378824099
   activemodel (8.1.4) sha256=9a0906c127bd118aa5f06157db12b8f750da83dccee72db2f658547a0ae7a0e8
   activerecord (8.1.4) sha256=3b4957ea7f246c9231bd7faa909312eac03a9101aaf87977b6c52733ff00b04f
   activestorage (8.1.4) sha256=f4956f3ec9ee63e5e0b332b57c877cb627f82b56f4cc902279310d2aa285c7a8
   activesupport (8.1.4) sha256=891dd3fe43c4fc8391934b237b1189bb1f661c932a84a840043db9d46a4e80df
+  active_harness_pricing (0.1.3)
   addressable (2.9.0) sha256=7fdf6ac3660f7f4e867a0838be3f6cf722ace541dd97767fa42bc6cfa980c7af
   ast (2.4.3) sha256=954615157c1d6a382bc27d690d973195e79db7f55e9765ac7c481c60bdb4d383
   base64 (0.3.0) sha256=27337aeabad6ffae05c265c450490628ef3ebd4b67be58257393227588f5a97b
