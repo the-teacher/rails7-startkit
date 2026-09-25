@@ -290,6 +290,44 @@ module Ai
       redirect_to ai_requests_memory_path
     end
 
+    YOUTUBE_STREAM_URL = ENV.fetch("YOUTUBE_STREAM_URL", "http://youtube_stream:4567")
+
+    # ---------------------------------------------------------------------------
+    # GET /ai/requests/youtube
+    # Case 10: YouTube audio download — hands the URL to the standalone
+    # youtube_stream container (yt-dlp), which downloads in the background and
+    # reports live progress. No transcription here yet — just the download,
+    # with a progress bar driven by polling /youtube/status/:job_id.
+    # ---------------------------------------------------------------------------
+    def youtube
+    end
+
+    # POST /ai/requests/youtube/start
+    # body: { url: "https://youtu.be/..." }
+    # Returns immediately with a job id — the actual download runs in the
+    # youtube_stream container's background thread.
+    def youtube_start
+      url = params.require(:url)
+      uri = URI("#{YOUTUBE_STREAM_URL}/jobs")
+
+      http_res = Net::HTTP.post(uri, { url: url }.to_json, "Content-Type" => "application/json")
+      render json: JSON.parse(http_res.body), status: http_res.code.to_i
+    rescue StandardError => e
+      render json: { error: e.message }, status: :bad_gateway
+    end
+
+    # GET /ai/requests/youtube/status/:job_id
+    # Proxies the youtube_stream container's job status — the browser never
+    # talks to that container directly, only through Rails.
+    def youtube_status
+      uri = URI("#{YOUTUBE_STREAM_URL}/jobs/#{params.require(:job_id)}")
+
+      http_res = Net::HTTP.get_response(uri)
+      render json: JSON.parse(http_res.body), status: http_res.code.to_i
+    rescue StandardError => e
+      render json: { error: e.message }, status: :bad_gateway
+    end
+
     private
 
     def memory_session_id

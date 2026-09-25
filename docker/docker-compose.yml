@@ -62,6 +62,13 @@ services:
     working_dir: /home/rails/RailsApp
     command: sleep infinity
 
+  youtube_stream:
+    build: ./services/youtube_stream
+    ports:
+      - "4567:4567"
+    volumes:
+      - ../__RailsApp__/storage/youtube_stream:/data
+
 volumes:
   jaeger_data:
   prometheus_data:

@@ -1,0 +1,87 @@
+<div class="ah-container ah-container--centered">
+  <div class="ah-card">
+    <div class="ah-logo">&#x1F3A7;</div>
+    <h1 class="ah-title">Case 10 &mdash; YouTube Audio Download</h1>
+    <p class="ah-subtitle">
+      Paste a YouTube URL &mdash; the standalone <code>youtube_stream</code> container
+      downloads the audio track in the background via <code>yt-dlp</code>, and this
+      page polls for live progress. Transcription comes later; this is just the download.
+    </p>
+
+    <form id="ah-form" class="ah-form">
+      <input
+        id="ah-input"
+        type="text"
+        class="ah-textarea"
+        placeholder="https://www.youtube.com/watch?v=..."
+        autocomplete="off"
+        style="height: auto; padding: 0.9rem 1rem;"
+      >
+      <button type="submit" class="ah-submit" id="ah-btn">Download</button>
+    </form>
+
+    <div id="ah-yt-progress-wrap" class="ah-yt-progress-wrap" style="display: none;">
+      <div class="ah-yt-progress-bar-track">
+        <div id="ah-yt-progress-bar" class="ah-yt-progress-bar"></div>
+      </div>
+      <div class="ah-yt-progress-meta">
+        <span id="ah-yt-percent">0%</span>
+        <span id="ah-yt-size"></span>
+        <span id="ah-yt-speed"></span>
+        <span id="ah-yt-eta"></span>
+      </div>
+      <div class="ah-yt-filename" id="ah-yt-filename"></div>
+    </div>
+
+    <div id="ah-result" class="ah-result">
+      <div id="ah-output" class="ah-output"><span class="ah-placeholder">Status will appear here&hellip;</span></div>
+    </div>
+
+    <%= render "nav",
+         back_label: "&larr; Case 09",
+         back_path:  ai_requests_jev_path,
+         next_label: "Cases &rarr;",
+         next_path:  ai_cases_path %>
+  </div>
+</div>
+
+<% content_for :styles do %>
+  <style>
+    .ah-yt-progress-wrap {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+    .ah-yt-progress-bar-track {
+      width: 100%;
+      height: 10px;
+      border-radius: 6px;
+      background: rgba(200, 210, 230, 0.5);
+      overflow: hidden;
+    }
+    .ah-yt-progress-bar {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, #667eea, #34c759);
+      transition: width 0.3s ease;
+    }
+    .ah-yt-progress-meta {
+      display: flex;
+      gap: 0.8rem;
+      font-size: 0.78rem;
+      color: #6b7a8d;
+      flex-wrap: wrap;
+    }
+    .ah-yt-filename {
+      font-size: 0.78rem;
+      color: #4a5a70;
+      font-family: monospace;
+      word-break: break-all;
+    }
+  </style>
+<% end %>
+
+<% content_for :scripts do %>
+  <%= javascript_include_tag "ai_request_youtube" %>
+<% end %>

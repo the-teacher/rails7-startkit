@@ -42,6 +42,12 @@ Rails.application.routes.draw do
       # Case 9 — Jev (TypeSafe AI) via Vercel AI Gateway: evaluation, not chat
       get  "jev",      to: "requests#jev",      as: :jev
       post "jev/call", to: "requests#jev_call", as: :jev_call
+
+      # Case 10 — YouTube audio download with live progress, via the youtube_stream
+      # container. Async: /start returns a job id immediately, /status is polled.
+      get  "youtube",                to: "requests#youtube",        as: :youtube
+      post "youtube/start",          to: "requests#youtube_start",  as: :youtube_start
+      get  "youtube/status/:job_id", to: "requests#youtube_status", as: :youtube_status
     end
 
     # Prices — per-source pricing pages
