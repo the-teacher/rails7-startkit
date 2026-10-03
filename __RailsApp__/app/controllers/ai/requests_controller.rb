@@ -239,7 +239,7 @@ module Ai
       raise ArgumentError, "Unknown model: #{model.inspect}" if model && !AudioTranscriptionRequest::MODELS.key?(model)
 
       req = AudioTranscriptionRequest.new(input: file.tempfile.path)
-      req.models.replace([{ provider: :openrouter, model: model }]) if model
+      req.models.replace([AudioTranscriptionRequest.parse_model(model)]) if model
       req.call
 
       result = req.result
@@ -294,16 +294,17 @@ module Ai
 
     # ---------------------------------------------------------------------------
     # GET /ai/requests/youtube
-    # Case 10: YouTube audio download — hands the URL to the standalone
-    # youtube_stream container (yt-dlp), which downloads in the background and
-    # reports live progress. No transcription here yet — just the download,
-    # with a progress bar driven by polling /youtube/status/:job_id.
+    # Case 10: audio download — hands the URL to the standalone youtube_stream
+    # container (yt-dlp), which downloads in the background and reports live
+    # progress. YouTube and Google Drive URLs are accepted (SUPPORTED_URL_RE
+    # in that container's server.rb); Rails itself does no URL validation, it
+    # just proxies to that container and surfaces whatever error it returns.
     # ---------------------------------------------------------------------------
     def youtube
     end
 
     # POST /ai/requests/youtube/start
-    # body: { url: "https://youtu.be/..." }
+    # body: { url: "https://youtu.be/..." or "https://drive.google.com/file/d/..." }
     # Returns immediately with a job id — the actual download runs in the
     # youtube_stream container's background thread.
     def youtube_start
@@ -328,7 +329,387 @@ module Ai
       render json: { error: e.message }, status: :bad_gateway
     end
 
+    # OpenRouter's audio endpoint rejects a base64-encoded request body over
+    # 50 MiB (52_428_800 bytes). Base64 inflates raw bytes by 4/3, so stay
+    # well under that on the raw file — 30 MiB raw leaves headroom for the
+    # surrounding JSON.
+    MAX_RAW_BYTES_FOR_TRANSCRIPTION = 30 * 1024 * 1024
+
+    # Length of each split chunk when a compressed file is still over
+    # MAX_RAW_BYTES_FOR_TRANSCRIPTION — 20-30 min per chunk, user-approved
+    # trade-off between "one giant risky call" and "too many tiny calls".
+    CHUNK_MINUTES = 25
+
+    # POST /ai/requests/youtube/transcribe/start
+    # body: { filename: "<video_id>.mp3", model: "openai/whisper-1" (optional),
+    #         timecodes: true|false (optional, defaults to true) }
+    # Async, same reasoning as the download step: compress-if-needed + a real
+    # Whisper call on a large file can take minutes, and one giant blocking
+    # request is fragile (a long silent HTTP response is exactly the kind of
+    # thing an intermediate proxy/browser can kill, surfacing as a client-side
+    # "network error" even though the server eventually finishes fine).
+    # Returns a job id immediately; the work runs on a background Thread and
+    # is polled via /youtube/transcribe/status/:job_id.
+    #
+    # `timecodes` is silently downgraded to false (no error) when the chosen
+    # model isn't in AudioTranscriptionRequest::TIMECODE_MODELS — the dropdown
+    # already marks which models support it, so a mismatch here just means a
+    # plain-text result instead of a 422.
+    def youtube_transcribe_start
+      filename = params.require(:filename)
+      validate_relative_filename!(filename)
+
+      path = Rails.root.join("storage", "youtube_stream", filename)
+      raise ArgumentError, "file not found: #{filename}" unless File.exist?(path)
+
+      model = params[:model].presence
+      raise ArgumentError, "unknown model: #{model.inspect}" if model && !AudioTranscriptionRequest::MODELS.key?(model)
+
+      requested_timecodes = params[:timecodes].nil? ? true : ActiveModel::Type::Boolean.new.cast(params[:timecodes])
+      timecodes = AudioTranscriptionRequest.structured_output?(model, requested_timecodes)
+
+      # Same fix as prepare_sse_response below: ActionDispatch::ServerTiming
+      # crashes on Rails 8 (NoMethodError: undefined method 'group_by' for nil)
+      # when any work happens on a separate Thread and this env key was never
+      # initialized — previously only hit via ActionController::Live, now also
+      # hit by this action's own background Thread.
+      request.env["action_dispatch.server_timing_events"] ||= []
+
+      job_id = SecureRandom.hex(8)
+      cached = read_transcript_cache(filename, timecodes)
+
+      if cached
+        transcribe_job_write(job_id, status: "done", cached: true, **cached)
+      else
+        transcribe_job_write(job_id, status: "running")
+        Thread.new do
+          Rails.application.executor.wrap do
+            run_transcription_job(job_id, filename, model, timecodes)
+          end
+        end
+      end
+
+      render json: { id: job_id, timecodes: timecodes }, status: 202
+    rescue StandardError => e
+      render json: { error: "#{e.class.name.split('::').last}: #{e.message}" }, status: :unprocessable_entity
+    end
+
+    # GET /ai/requests/youtube/transcribe/status/:job_id
+    def youtube_transcribe_status
+      job = transcribe_job_read(params.require(:job_id))
+      raise ArgumentError, "unknown or expired job id" unless job
+
+      render json: job
+    rescue StandardError => e
+      render json: { error: e.message }, status: :not_found
+    end
+
     private
+
+    # Filenames coming from the client (or proxied back from youtube_stream)
+    # now legitimately contain one subdirectory level — each source lives in
+    # its own "<id>/" or "<DD_MM_YYYY>_<id>/" directory (see server.rb's
+    # media_dir_for) — so a bare `include?("/")` rejection would break every
+    # real request. Still blocks traversal and anything nested deeper than
+    # that one level.
+    def validate_relative_filename!(filename)
+      raise ArgumentError, "invalid filename" if filename.include?("..") || filename.start_with?("/") || filename.count("/") > 1
+    end
+
+    # Runs in the background Thread spawned by youtube_transcribe_start above.
+    # Dispatches to the single-shot or chunked path depending on file size
+    # after compression — chunking is only needed once a single request would
+    # still exceed OpenRouter's body-size limit.
+    def run_transcription_job(job_id, filename, model, timecodes)
+      original_filename = filename
+      path       = Rails.root.join("storage", "youtube_stream", filename)
+      compressed = false
+
+      if File.size(path) > MAX_RAW_BYTES_FOR_TRANSCRIPTION
+        filename, path = compress_via_stream(filename)
+        compressed = true
+      end
+
+      if File.size(path) > MAX_RAW_BYTES_FOR_TRANSCRIPTION
+        run_chunked_transcription_job(job_id, original_filename, filename, model, compressed, timecodes)
+      else
+        run_single_transcription_job(job_id, original_filename, filename, path, model, compressed, timecodes)
+      end
+    rescue StandardError => e
+      transcribe_job_write(job_id, status: "error", error: "#{e.class.name.split('::').last}: #{e.message}")
+    end
+
+    def compress_via_stream(filename)
+      uri      = URI("#{YOUTUBE_STREAM_URL}/compress")
+      http_res = Net::HTTP.post(uri, { filename: filename }.to_json, "Content-Type" => "application/json")
+      data     = JSON.parse(http_res.body)
+      raise data["error"] if http_res.code.to_i >= 400
+
+      new_filename = data["filename"]
+      [new_filename, Rails.root.join("storage", "youtube_stream", new_filename)]
+    end
+
+    def run_single_transcription_job(job_id, original_filename, filename, path, model, compressed, timecodes)
+      req = AudioTranscriptionRequest.new(input: path.to_s)
+      req.models.replace(transcription_chain(model, timecodes)) if model || timecodes
+      req.call
+
+      result = req.result
+      segments    = nil
+      diarization = false
+      text = result.output
+
+      if timecodes
+        parsed      = JSON.parse(result.output)
+        segments    = parsed["segments"] || []
+        diarization = segments.any? { |s| s["speaker"] }
+        text        = render_bucketed_transcript(segments)
+      end
+
+      data = {
+        text:        text,
+        segments:    segments,
+        timecodes:   timecodes,
+        diarization: diarization,
+        model:       result.model&.name,
+        time:        result.execution_time,
+        usage:       usage_json(result.usage),
+        cost:        result.usage&.cost&.total,
+        compressed:  compressed,
+        filename:    filename
+      }.compact
+
+      write_transcript_cache(original_filename, data, timecodes)
+      transcribe_job_write(job_id, status: "done", **data)
+    end
+
+    # Builds the model chain for a transcription call, preserving the
+    # existing dropdown semantics: an explicitly chosen model runs alone (no
+    # auto-fallback) so a deliberately-broken model's failure stays visible
+    # instead of being masked, and so a model that unconditionally requires
+    # extra params (e.g. the diarize model) never silently falls back to a
+    # plain model that would drop the very feature it was picked for. No
+    # explicit model falls back to AudioTranscriptionRequest's own default
+    # two-model chain. `timecodes` here is already the resolved value from
+    # AudioTranscriptionRequest.structured_output? — true means "apply
+    # whichever extra params this model needs/supports", covering both the
+    # optional whisper verbose_json case and the mandatory diarize case.
+    def transcription_chain(model, timecodes)
+      keys = model ? [model] : [AudioTranscriptionRequest::DEFAULT_MODEL, "openrouter:openai/whisper-1"]
+
+      keys.map do |key|
+        entry = AudioTranscriptionRequest.parse_model(key)
+        extra = timecodes ? (AudioTranscriptionRequest::REQUIRED_PARAMS[key] || AudioTranscriptionRequest::OPTIONAL_TIMECODE_PARAMS[key] || {}) : {}
+        entry.merge(extra)
+      end
+    end
+
+    # Splits the (already-compressed) file into CHUNK_MINUTES-long pieces via
+    # the youtube_stream container's /split endpoint, transcribes each chunk
+    # in turn with response_format: "verbose_json" so real per-segment
+    # timestamps come back, offsets each chunk's timestamps by the cumulative
+    # duration of the chunks before it (so timestamps read continuously across
+    # the whole recording), and writes one .transcript.txt/.transcript.json
+    # pair per chunk plus a .manifest.json listing all parts. Job status is
+    # updated after every chunk so the UI can show real chunk-by-chunk
+    # progress instead of one opaque "running" spinner for a multi-hour file.
+    #
+    # No speaker diarization: verified against real OpenRouter calls (see
+    # AudioTranscriptionRequest's MODELS comment) that diarization does not
+    # currently work through OpenRouter for either provider its own docs cite
+    # as an example — recorded in the manifest so it's not silently missing.
+    def run_chunked_transcription_job(job_id, original_filename, filename, model, compressed, timecodes)
+      uri        = URI("#{YOUTUBE_STREAM_URL}/split")
+      http_res   = Net::HTTP.post(uri, { filename: filename, chunk_minutes: CHUNK_MINUTES }.to_json, "Content-Type" => "application/json")
+      split_data = JSON.parse(http_res.body)
+      raise split_data["error"] if http_res.code.to_i >= 400
+
+      chunk_files = split_data["chunks"]
+      total       = chunk_files.size
+      chunks      = chunk_files.each_with_index.map do |c, i|
+        { index: i, filename: c["filename"], duration: c["duration"], status: "pending" }
+      end
+
+      transcribe_job_write(job_id, status: "running", chunked: true, total_chunks: total, current_chunk: 0, chunks: chunks)
+
+      base         = File.basename(original_filename, ".*")
+      media_dir    = File.dirname(original_filename)
+      storage_root = Rails.root.join("storage", "youtube_stream")
+      storage      = storage_root.join(media_dir)
+      chain        = transcription_chain(model, timecodes)
+
+      offset      = 0.0
+      parts       = []
+      saw_speaker = false
+
+      chunk_files.each_with_index do |c, i|
+        part_index = i + 1
+        part_base  = format("%s.part%02d", base, part_index)
+        txt_path   = storage.join("#{part_base}.transcript.txt")
+        json_path  = storage.join("#{part_base}.transcript.json")
+        part = { index: part_index, txt: File.basename(txt_path) }
+
+        # Resume support: a chunk whose part file already exists on disk (from
+        # a previous run of this same job that got interrupted — e.g. a Rails
+        # process restart) is not re-transcribed. Chunk splitting itself is
+        # already cached the same way (see /split), so re-running a job on the
+        # same file after an interruption only pays for the chunks that never
+        # finished, not the whole thing over again.
+        if File.exist?(txt_path) && (!timecodes || File.exist?(json_path))
+          chunks[i][:status] = "done (cached)"
+          if timecodes
+            cached_json = JSON.parse(File.read(json_path))
+            cached_segments = cached_json["segments"] || []
+            part[:json]     = File.basename(json_path)
+            part[:segments] = cached_segments.size
+            saw_speaker ||= cached_segments.any? { |s| s["speaker"] }
+          end
+          chunks[i][:txt] = File.basename(txt_path)
+          parts << part
+          transcribe_job_write(job_id, current_chunk: i + 1, chunks: chunks)
+
+          chunk_duration = c["duration"].to_f
+          offset += chunk_duration > 0 ? chunk_duration : (CHUNK_MINUTES * 60)
+          next
+        end
+
+        chunks[i][:status] = "transcribing"
+        transcribe_job_write(job_id, current_chunk: i + 1, chunks: chunks)
+
+        req = AudioTranscriptionRequest.new(input: storage_root.join(c["filename"]).to_s)
+        req.models.replace(chain)
+        req.call
+
+        if timecodes
+          data     = JSON.parse(req.result.output)
+          segments = (data["segments"] || []).map do |seg|
+            entry = { "start" => seg["start"].to_f + offset, "end" => seg["end"].to_f + offset, "text" => seg["text"] }
+            entry["speaker"] = seg["speaker"] if seg["speaker"]
+            entry
+          end
+          File.write(txt_path, render_bucketed_transcript(segments))
+          File.write(json_path, { segments: segments, model: req.result.model&.name }.to_json)
+          part[:json]     = File.basename(json_path)
+          part[:segments] = segments.size
+          saw_speaker ||= segments.any? { |s| s["speaker"] }
+        else
+          File.write(txt_path, req.result.output)
+        end
+
+        chunks[i][:status] = "done"
+        chunks[i][:txt]    = File.basename(txt_path)
+        parts << part
+        transcribe_job_write(job_id, current_chunk: i + 1, chunks: chunks)
+
+        chunk_duration = c["duration"].to_f
+        offset += chunk_duration > 0 ? chunk_duration : (CHUNK_MINUTES * 60)
+      end
+
+      manifest_path = storage.join("#{base}.manifest.json")
+      manifest = {
+        original_filename: original_filename,
+        model:              model || AudioTranscriptionRequest::DEFAULT_MODEL,
+        chunk_minutes:      CHUNK_MINUTES,
+        total_parts:        parts.size,
+        timecodes:          timecodes,
+        diarization:        saw_speaker,
+        diarization_note:   saw_speaker ? nil : (
+          "No speaker labels in this run. OpenRouter's transcription endpoint does not support diarization at " \
+          "all — verified against both provider/model combinations its own docs cite as examples (azure + " \
+          "microsoft/mai-transcribe-2, deepgram + deepgram/nova-3): both return the same \"does not support " \
+          "large audio inputs\" 400 regardless of file size. For real speaker labels, pick " \
+          "\"OpenAI: GPT-4o Transcribe Diarize (direct)\" from the model dropdown."
+        ),
+        parts:              parts
+      }.compact
+      File.write(manifest_path, manifest.to_json)
+
+      result_data = {
+        chunked:      true,
+        total_chunks: total,
+        parts:        parts,
+        manifest:     File.basename(manifest_path),
+        timecodes:    timecodes,
+        diarization:  saw_speaker,
+        compressed:   compressed,
+        filename:     filename
+      }
+
+      write_transcript_cache(original_filename, result_data, timecodes)
+      transcribe_job_write(job_id, status: "done", **result_data)
+    end
+
+    # Groups fine-grained ASR segments into fixed-width (default 15s) buckets
+    # for a readable transcript file — the model's own segments are typically
+    # every 2-5s (natural speech pauses), finer than requested; bucketing
+    # keeps the "timestamp every ~15s" readability the file is meant for
+    # without discarding any of the underlying per-segment data (that stays
+    # in the sibling .transcript.json). When a segment carries a `speaker`
+    # (gpt-4o-transcribe-diarize only — Whisper never sets this), it's
+    # prefixed onto that segment's text so turn-taking stays visible even
+    # after bucketing.
+    def render_bucketed_transcript(segments, bucket_seconds: 15)
+      return "" if segments.empty?
+
+      buckets = {}
+      segments.each do |seg|
+        bucket = (seg["start"].to_f / bucket_seconds).floor * bucket_seconds
+        text   = seg["text"].to_s.strip
+        text   = "[#{seg['speaker']}] #{text}" if seg["speaker"]
+        (buckets[bucket] ||= []) << text
+      end
+
+      buckets.sort.map { |start, texts| "[#{format_timestamp(start)}] #{texts.join(' ').strip}" }.join("\n")
+    end
+
+    def format_timestamp(seconds)
+      total = seconds.to_i
+      h = total / 3600
+      m = (total % 3600) / 60
+      s = total % 60
+      h > 0 ? format("%02d:%02d:%02d", h, m, s) : format("%02d:%02d", m, s)
+    end
+
+    # Cached by the ORIGINAL (client-facing) filename, not the possibly-
+    # compressed internal one — so the cache hits regardless of whether
+    # compression happened, and survives even if the compressed copy is later
+    # cleaned up. Keyed on filename + timecodes (the two produce differently-
+    # shaped results, plain text vs. segments/parts), but not on model:
+    # switching models in the dropdown won't force a fresh call — delete the
+    # relevant .transcript.json file manually if you want to re-run with a
+    # different model.
+    def transcript_cache_path(filename, timecodes)
+      dir    = File.dirname(filename)
+      base   = File.basename(filename, ".*")
+      suffix = timecodes ? ".timecodes" : ""
+      Rails.root.join("storage", "youtube_stream", dir, "#{base}#{suffix}.transcript.json")
+    end
+
+    def read_transcript_cache(filename, timecodes)
+      path = transcript_cache_path(filename, timecodes)
+      return nil unless File.exist?(path)
+
+      JSON.parse(File.read(path), symbolize_names: true)
+    rescue JSON::ParserError
+      nil
+    end
+
+    def write_transcript_cache(filename, data, timecodes)
+      File.write(transcript_cache_path(filename, timecodes), data.to_json)
+    end
+
+    # Rails.cache rather than a plain in-process Hash: survives Rails' dev-mode
+    # class reloading (a bare class-level Hash constant would get wiped on the
+    # next code reload), and is already thread-safe.
+    def transcribe_job_write(job_id, **fields)
+      key  = "yt_transcribe:#{job_id}"
+      data = (Rails.cache.read(key) || {}).merge(fields)
+      Rails.cache.write(key, data, expires_in: 30.minutes)
+    end
+
+    def transcribe_job_read(job_id)
+      Rails.cache.read("yt_transcribe:#{job_id}")
+    end
 
     def memory_session_id
       session[:ai_memory_id] ||= SecureRandom.hex(8)

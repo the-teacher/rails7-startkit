@@ -13,9 +13,55 @@
   const speedEl = document.getElementById("ah-yt-speed");
   const etaEl = document.getElementById("ah-yt-eta");
   const filenameEl = document.getElementById("ah-yt-filename");
+  const transcribeWrap = document.getElementById("ah-yt-transcribe-wrap");
+  const transcribeBtn = document.getElementById("ah-yt-transcribe-btn");
+  const modelSelect = document.getElementById("ah-yt-model");
+  const timecodesCheckbox = document.getElementById("ah-yt-timecodes");
+  const timecodesHint = document.getElementById("ah-yt-timecodes-hint");
+  const transcriptWrap = document.getElementById("ah-yt-transcript-wrap");
+  const transcriptEl = document.getElementById("ah-yt-transcript");
+  const transcriptMetaEl = document.getElementById("ah-yt-transcript-meta");
   if (!form) return;
 
+  function selectedModelOption() {
+    return modelSelect.options[modelSelect.selectedIndex];
+  }
+
+  function modelSupportsTimecodes() {
+    const opt = selectedModelOption();
+    return !!opt && opt.dataset.timecodes === "true";
+  }
+
+  function modelRequiresTimecodes() {
+    const opt = selectedModelOption();
+    return !!opt && opt.dataset.required === "true";
+  }
+
+  function updateTimecodesHint() {
+    if (modelRequiresTimecodes()) {
+      // e.g. gpt-4o-transcribe-diarize — there's no plain-text mode for this
+      // model, so the checkbox can't actually turn anything off. Force it on
+      // and disabled instead of silently ignoring an unchecked box.
+      timecodesCheckbox.checked = true;
+      timecodesCheckbox.disabled = true;
+      timecodesHint.textContent = "This model always returns speaker-labeled segments — the checkbox has no effect.";
+      timecodesHint.style.display = "block";
+      return;
+    }
+
+    timecodesCheckbox.disabled = false;
+    const show = timecodesCheckbox.checked && !modelSupportsTimecodes();
+    timecodesHint.textContent = "Selected model doesn't support timecodes — ignoring, will return plain text.";
+    timecodesHint.style.display = show ? "block" : "none";
+  }
+
+  modelSelect.addEventListener("change", updateTimecodesHint);
+  timecodesCheckbox.addEventListener("change", updateTimecodesHint);
+  updateTimecodesHint();
+
   let pollTimer = null;
+  let transcribePollTimer = null;
+  let currentFilename = null;
 
   function stopPolling() {
     if (pollTimer) {
@@ -34,6 +80,12 @@
     etaEl.textContent = "";
     filenameEl.textContent = "";
     output.innerHTML = '<span class="ah-placeholder">Starting…</span>';
+    currentFilename = null;
+    transcribeWrap.style.display = "none";
+    timecodesHint.style.display = "none";
+    transcriptWrap.style.display = "none";
+    transcriptEl.textContent = "";
+    transcriptMetaEl.textContent = "";
   }
 
   function renderJob(job) {
@@ -55,6 +107,11 @@
       output.textContent = job.cached
         ? "✓ Already downloaded — reusing cached file: " + job.filename + sizeStr
         : "✓ Done — " + job.filename + sizeStr;
+      if (job.filename) {
+        currentFilename = job.filename;
+        transcribeWrap.style.display = "flex";
+        updateTimecodesHint();
+      }
     } else if (job.status === "error") {
       stopPolling();
       output.textContent = "✗ Error: " + (job.error || "unknown error");
@@ -108,6 +165,146 @@
       .finally(() => {
         btn.disabled = false;
         btn.textContent = "Download";
+      });
+  });
+
+  function stopTranscribePolling() {
+    if (transcribePollTimer) {
+      clearInterval(transcribePollTimer);
+      transcribePollTimer = null;
+    }
+  }
+
+  function renderChunkList(chunks) {
+    if (!chunks || !chunks.length) return "";
+    const icon = { pending: "⏳", transcribing: "…", done: "✓", error: "✗" };
+    return chunks
+      .map((c) => {
+        const dur = c.duration ? " (" + Math.round(c.duration / 60) + " min)" : "";
+        return (icon[c.status] || "•") + " part " + (c.index + 1) + dur + " — " + c.status;
+      })
+      .join("\n");
+  }
+
+  function renderTranscribeJob(job) {
+    if (job.chunked) {
+      const total = job.total_chunks || (job.chunks && job.chunks.length) || 0;
+      const current = job.current_chunk || 0;
+      transcriptEl.textContent =
+        "Splitting into " + total + " chunk(s) (~" + Math.round((total ? 100 : 0)) + "%)\n\n" +
+        renderChunkList(job.chunks);
+
+      if (job.status === "running") {
+        transcriptMetaEl.textContent = "Chunk " + current + " / " + total + " — this can take a while for long recordings.";
+        return;
+      }
+      if (job.status === "done") {
+        stopTranscribePolling();
+        const partsList = (job.parts || [])
+          .map((p) => "part " + p.index + ": " + p.txt + (p.segments ? " (" + p.segments + " segments)" : ""))
+          .join("\n");
+        transcriptEl.textContent =
+          "✓ Done — " + total + " part(s), saved under storage/youtube_stream/:\n\n" + partsList +
+          "\n\nmanifest: " + job.manifest;
+        const metaParts = [];
+        if (job.cached) metaParts.push("✓ cached — reused previous run");
+        if (job.compressed) metaParts.push("compressed to " + job.filename + " for upload");
+        metaParts.push(job.timecodes ? "Timecodes: on" : "Timecodes: off");
+        metaParts.push(job.diarization ? "Speaker labels: yes (see manifest)" : "Speaker labels: no (see manifest)");
+        transcriptMetaEl.textContent = metaParts.join(" · ");
+        transcribeBtn.disabled = false;
+        transcribeBtn.textContent = "Recognize audio";
+      } else if (job.status === "error") {
+        stopTranscribePolling();
+        transcriptEl.textContent += "\n\n✗ Error: " + (job.error || "unknown error");
+        transcribeBtn.disabled = false;
+        transcribeBtn.textContent = "Recognize audio";
+      }
+      return;
+    }
+
+    if (job.status === "running") {
+      transcriptEl.textContent = "Recognizing… (this can take a while for long/compressed files)";
+      return;
+    }
+    if (job.status === "done") {
+      stopTranscribePolling();
+      transcriptEl.textContent = job.text || "(empty transcript)";
+      const metaParts = [];
+      if (job.cached) metaParts.push("✓ cached — reused previous transcript");
+      if (job.model) metaParts.push("Model: " + job.model);
+      if (job.time) metaParts.push(job.time + "s");
+      if (job.cost) metaParts.push("$" + (+job.cost).toFixed(6));
+      if (job.compressed) metaParts.push("compressed to " + job.filename + " for upload");
+      metaParts.push(job.timecodes ? "Timecodes: on" : "Timecodes: off");
+      if (job.timecodes) metaParts.push(job.diarization ? "Speaker labels: yes" : "Speaker labels: no");
+      transcriptMetaEl.textContent = metaParts.join(" · ");
+      transcribeBtn.disabled = false;
+      transcribeBtn.textContent = "Recognize audio";
+    } else if (job.status === "error") {
+      stopTranscribePolling();
+      transcriptEl.textContent = "✗ Error: " + (job.error || "unknown error");
+      transcribeBtn.disabled = false;
+      transcribeBtn.textContent = "Recognize audio";
+    }
+  }
+
+  function pollTranscribeStatus(id) {
+    fetch("/ai/requests/youtube/transcribe/status/" + id)
+      .then((r) => r.json())
+      .then((job) => {
+        if (job.error && !job.status) {
+          stopTranscribePolling();
+          transcriptEl.textContent = "✗ Error: " + job.error;
+          transcribeBtn.disabled = false;
+          transcribeBtn.textContent = "Recognize audio";
+          return;
+        }
+        renderTranscribeJob(job);
+      })
+      .catch(() => {
+        stopTranscribePolling();
+        transcriptEl.textContent = "✗ Network error while polling status.";
+        transcribeBtn.disabled = false;
+        transcribeBtn.textContent = "Recognize audio";
+      });
+  }
+
+  transcribeBtn.addEventListener("click", () => {
+    if (!currentFilename) return;
+
+    stopTranscribePolling();
+    transcriptWrap.style.display = "flex";
+    transcriptEl.textContent = "";
+    transcriptMetaEl.textContent = "";
+    transcribeBtn.disabled = true;
+    transcribeBtn.textContent = "Starting…";
+
+    fetch("/ai/requests/youtube/transcribe/start", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        filename: currentFilename,
+        model: modelSelect.value,
+        timecodes: timecodesCheckbox.checked,
+      }),
+    })
+      .then((r) => r.json())
+      .then((data) => {
+        if (data.error) {
+          transcriptEl.textContent = "✗ Error: " + data.error;
+          transcribeBtn.disabled = false;
+          transcribeBtn.textContent = "Recognize audio";
+          return;
+        }
+        transcribeBtn.textContent = "Recognizing…";
+        transcribePollTimer = setInterval(() => pollTranscribeStatus(data.id), 1500);
+        pollTranscribeStatus(data.id);
+      })
+      .catch(() => {
+        transcriptEl.textContent = "✗ Network error.";
+        transcribeBtn.disabled = false;
+        transcribeBtn.textContent = "Recognize audio";
       });
   });
 })();

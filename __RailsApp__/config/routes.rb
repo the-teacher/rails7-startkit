@@ -45,9 +45,15 @@ Rails.application.routes.draw do
 
       # Case 10 — YouTube audio download with live progress, via the youtube_stream
       # container. Async: /start returns a job id immediately, /status is polled.
-      get  "youtube",                to: "requests#youtube",        as: :youtube
-      post "youtube/start",          to: "requests#youtube_start",  as: :youtube_start
-      get  "youtube/status/:job_id", to: "requests#youtube_status", as: :youtube_status
+      get  "youtube",                          to: "requests#youtube",                  as: :youtube
+      post "youtube/start",                    to: "requests#youtube_start",            as: :youtube_start
+      get  "youtube/status/:job_id",           to: "requests#youtube_status",           as: :youtube_status
+
+      # Transcription: also async — compress-if-needed + Whisper can take minutes for
+      # a big file, and one giant blocking request is exactly what already bit the
+      # download step (that's why it polls too). /start returns a job id, /status polls.
+      post "youtube/transcribe/start",         to: "requests#youtube_transcribe_start",  as: :youtube_transcribe_start
+      get  "youtube/transcribe/status/:job_id", to: "requests#youtube_transcribe_status", as: :youtube_transcribe_status
     end
 
     # Prices — per-source pricing pages

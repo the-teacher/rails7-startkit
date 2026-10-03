@@ -1,11 +1,22 @@
 <div class="ah-container ah-container--centered">
-  <div class="ah-card">
+  <div class="ah-card ah-yt-card">
     <div class="ah-logo">&#x1F3A7;</div>
-    <h1 class="ah-title">Case 10 &mdash; YouTube Audio Download</h1>
+    <h1 class="ah-title">Case 10 &mdash; Audio Download + Transcription</h1>
     <p class="ah-subtitle">
-      Paste a YouTube URL &mdash; the standalone <code>youtube_stream</code> container
-      downloads the audio track in the background via <code>yt-dlp</code>, and this
-      page polls for live progress. Transcription comes later; this is just the download.
+      Paste a YouTube or Google Drive URL &mdash; the standalone <code>youtube_stream</code>
+      container downloads the audio track in the background via <code>yt-dlp</code> (it
+      supports hundreds of sites; only these two are currently allowlisted here), this
+      page polls for live progress, and once it's done you can recognize it via the same
+      <code>AudioTranscriptionRequest</code> as Case 08 (OpenRouter &rarr; Whisper).
+      Files small enough after compression go in one call; larger ones are split
+      into ~25-minute chunks (server-side, via ffmpeg) and transcribed chunk by
+      chunk with per-segment timestamps, each chunk saved to its own transcript
+      file so progress stays visible throughout. The model dropdown lists both
+      OpenRouter and direct-OpenAI routes explicitly &mdash; OpenRouter's
+      transcription endpoint doesn't support real speaker diarization at all
+      (verified against real calls), but OpenAI's own
+      <code>gpt-4o-transcribe-diarize</code> (&#x1F5E3; speakers) does, with
+      genuine per-segment speaker labels.
     </p>
 
     <form id="ah-form" class="ah-form">
@@ -13,7 +24,7 @@
         id="ah-input"
         type="text"
         class="ah-textarea"
-        placeholder="https://www.youtube.com/watch?v=..."
+        placeholder="https://www.youtube.com/watch?v=... or https://drive.google.com/file/d/..."
         autocomplete="off"
         style="height: auto; padding: 0.9rem 1rem;"
       >
@@ -35,6 +46,35 @@
 
     <div id="ah-result" class="ah-result">
       <div id="ah-output" class="ah-output"><span class="ah-placeholder">Status will appear here&hellip;</span></div>
+    </div>
+
+    <div id="ah-yt-transcribe-wrap" class="ah-yt-transcribe-wrap" style="display: none;">
+      <select id="ah-yt-model" class="ah-select">
+        <% AudioTranscriptionRequest::MODELS.each do |value, label| %>
+          <% required = AudioTranscriptionRequest::REQUIRED_PARAMS.key?(value) %>
+          <% has_timecodes = required || AudioTranscriptionRequest::OPTIONAL_TIMECODE_PARAMS.key?(value) %>
+          <% marker = required ? " \u{1F5E3} speakers" : (has_timecodes ? " ⏱ timecodes" : "") %>
+          <option
+            value="<%= value %>"
+            data-timecodes="<%= has_timecodes %>"
+            data-required="<%= required %>"
+            <%= "selected" if value == AudioTranscriptionRequest::DEFAULT_MODEL %>
+          ><%= label %><%= marker %></option>
+        <% end %>
+      </select>
+      <label class="ah-yt-checkbox">
+        <input type="checkbox" id="ah-yt-timecodes" checked>
+        Timecodes
+      </label>
+      <button type="button" id="ah-yt-transcribe-btn" class="ah-submit">Recognize audio</button>
+    </div>
+    <div id="ah-yt-timecodes-hint" class="ah-yt-timecodes-hint" style="display: none;">
+      Selected model doesn't support timecodes &mdash; ignoring, will return plain text.
+    </div>
+
+    <div id="ah-yt-transcript-wrap" class="ah-result" style="display: none;">
+      <div id="ah-yt-transcript" class="ah-output"></div>
+      <div id="ah-yt-transcript-meta" class="ah-meta"></div>
     </div>
 
     <%= render "nav",
@@ -78,6 +118,49 @@
       color: #4a5a70;
       font-family: monospace;
       word-break: break-all;
+    }
+    .ah-yt-transcribe-wrap {
+      width: 100%;
+      display: flex;
+      gap: 0.6rem;
+      align-items: center;
+    }
+    .ah-yt-transcribe-wrap .ah-select {
+      flex: 1;
+    }
+    .ah-yt-checkbox {
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+      font-size: 0.82rem;
+      color: #4a5a70;
+      white-space: nowrap;
+      cursor: pointer;
+    }
+    .ah-yt-timecodes-hint {
+      width: 100%;
+      font-size: 0.76rem;
+      color: #b0851f;
+      margin-top: -0.3rem;
+    }
+
+    /* Same fix as the Jev page (Case 09): the shared layout fixes
+       html/body/.ah-container to exactly 100vh with overflow:hidden and
+       .ah-card to a narrow fixed width, which clips this page once the
+       progress bar + result + transcribe + transcript sections are all
+       visible at once. Override for this page only. */
+    html, body {
+      height: auto;
+      min-height: 100%;
+      overflow-y: auto;
+    }
+    .ah-container {
+      height: auto;
+      min-height: 100vh;
+      padding: 2.5rem 0;
+    }
+    .ah-yt-card {
+      width: min(760px, 94vw);
     }
   </style>
 <% end %>
