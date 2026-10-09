@@ -6,8 +6,9 @@
 | ------------------------------------------------ | ----------------------------------------------------- |
 | https://www.ruby-lang.org/en/downloads/releases/ | `__RailsApp__/.ruby-version`                          |
 |                                                  | `docker/IMAGES/_Main.Dockerfile` → `ARG RUBY_VERSION` |
+|                                                  | `__RailsApp__/Dockerfile` → `ARG RUBY_VERSION`        |
 
-Both files must have the same version. After updating — rebuild the image locally (see `how_to_update_images_locally.md`).
+All three files must have the same version (`__RailsApp__/Dockerfile` is easy to forget). After updating — rebuild the image locally (see `how_to_update_images_locally.md`).
 
 ---
 
@@ -42,11 +43,28 @@ docker compose -f ./docker/docker-compose.yml exec rails make bundle
 | ---------------------------------------- | ------------------------------------------------ |
 | https://rubygems.org/gems/rails/versions | `__RailsApp__/Gemfile` → `gem "rails", "~> X.X"` |
 
-After updating `Gemfile`, run:
+`gem "rails", "~> 8.0"` already allows any 8.x, so for a patch/minor update the `Gemfile` does not change — run `bundle update rails` instead. After updating, run:
 
 ```bash
 docker compose -f ./docker/docker-compose.yml exec rails make bundle
 docker compose -f ./docker/docker-compose.yml exec rails make db-migrate
+```
+
+### Other gems and security audit
+
+`bundle update rails` updates only Rails and its dependencies. Check the rest for known vulnerabilities and update everything:
+
+```bash
+docker compose -f ./docker/docker-compose.yml exec rails bundle exec bundler-audit check --update
+docker compose -f ./docker/docker-compose.yml exec rails bundle update
+```
+
+Then verify (the app currently has no tests, so rubocop/brakeman are the real checks):
+
+```bash
+docker compose -f ./docker/docker-compose.yml exec rails bundle exec rubocop
+docker compose -f ./docker/docker-compose.yml exec rails bin/brakeman -q
+docker compose -f ./docker/docker-compose.yml exec rails bin/rails test
 ```
 
 ---
@@ -67,6 +85,8 @@ To verify after rebuild:
 docker compose -f ./docker/docker-compose.yml exec rails node --version
 ```
 
+> Node.js "Current" (even major, e.g. 26) is not LTS until about October. Check https://nodejs.org/en/about/previous-releases and choose Current or the latest LTS deliberately.
+>
 > When updating Node.js, also check if **npm** and **nvm** versions need updating (see sections below).
 
 ---
@@ -77,7 +97,7 @@ docker compose -f ./docker/docker-compose.yml exec rails node --version
 | --------------------------------- | ---------------------------------------------------- |
 | https://www.npmjs.com/package/npm | `docker/IMAGES/_Main.Dockerfile` → `ARG NPM_VERSION` |
 
-npm is upgraded globally via nvm after Node.js installation. Update `ARG NPM_VERSION` and rebuild the image.
+npm is upgraded globally via nvm after Node.js installation. Before a major npm bump, check that it supports your Node version: `curl -s https://registry.npmjs.org/npm/X.Y.Z | jq .engines`. Update `ARG NPM_VERSION` and rebuild the image.
 
 To verify after rebuild:
 
@@ -107,9 +127,9 @@ docker compose -f ./docker/docker-compose.yml exec rails bash -c '. ~/.nvm/nvm.s
 
 | Package  | Version location                                   | Files to edit                                                         |
 | -------- | -------------------------------------------------- | --------------------------------------------------------------------- |
-| Ruby     | https://www.ruby-lang.org/en/downloads/releases/   | `__RailsApp__/.ruby-version`, `_Main.Dockerfile` → `ARG RUBY_VERSION` |
+| Ruby     | https://www.ruby-lang.org/en/downloads/releases/   | `__RailsApp__/.ruby-version`, `__RailsApp__/Dockerfile`, `_Main.Dockerfile` → `ARG RUBY_VERSION` |
 | RubyGems | https://rubygems.org/gems/rubygems-update/versions | `_Main.Dockerfile` → `ARG DEFAULT_GEM_VERSION`                        |
-| Bundler  | https://rubygems.org/gems/bundler/versions         | `__RailsApp__/Gemfile.lock` → `BUNDLED WITH`                          |
+| Bundler  | https://rubygems.org/gems/bundler/versions         | `__RailsApp__/Gemfile.lock` → `BUNDLED WITH` (usually equals RubyGems) |
 | Rails    | https://rubygems.org/gems/rails/versions           | `__RailsApp__/Gemfile`                                                |
 | Node.js  | https://nodejs.org/en/download                     | `_Main.Dockerfile` → `ARG NODE_VERSION`                               |
 | npm      | https://www.npmjs.com/package/npm                  | `_Main.Dockerfile` → `ARG NPM_VERSION`                                |
