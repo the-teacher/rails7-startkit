@@ -53,7 +53,7 @@ else
   gem "active_harness_pricing"
 end
 
-_active_harness_local = "/home/rails/ActiveHarness2"
+_active_harness_local = "/home/rails/ActiveHarness"
 if File.directory?(_active_harness_local)
   gem "active_harness", path: _active_harness_local
 else

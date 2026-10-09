@@ -49,6 +49,12 @@ Rails.application.routes.draw do
       post "youtube/start",                    to: "requests#youtube_start",            as: :youtube_start
       get  "youtube/status/:job_id",           to: "requests#youtube_status",           as: :youtube_status
 
+      # Local file upload — same page, alternate source: skips yt-dlp entirely,
+      # writes the uploaded file straight into storage/youtube_stream/ under
+      # its own dated directory, then reuses the exact same transcribe/start
+      # flow below (filename is in the same shape either way).
+      post "youtube/upload",                   to: "requests#youtube_upload",           as: :youtube_upload
+
       # Transcription: also async — compress-if-needed + Whisper can take minutes for
       # a big file, and one giant blocking request is exactly what already bit the
       # download step (that's why it polls too). /start returns a job id, /status polls.

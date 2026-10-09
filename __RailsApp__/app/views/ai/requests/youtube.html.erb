@@ -3,10 +3,14 @@
     <div class="ah-logo">&#x1F3A7;</div>
     <h1 class="ah-title">Case 10 &mdash; Audio Download + Transcription</h1>
     <p class="ah-subtitle">
-      Paste a YouTube or Google Drive URL &mdash; the standalone <code>youtube_stream</code>
-      container downloads the audio track in the background via <code>yt-dlp</code> (it
-      supports hundreds of sites; only these two are currently allowlisted here), this
-      page polls for live progress, and once it's done you can recognize it via the same
+      Paste a YouTube or Google Drive URL, or upload a file straight from disk &mdash;
+      either way it lands in the same place and the rest of the page works identically.
+      A pasted URL goes through the standalone <code>youtube_stream</code> container,
+      which downloads the audio track in the background via <code>yt-dlp</code> (it
+      supports hundreds of sites; only these two are currently allowlisted here) with
+      live progress polling; an uploaded file just gets copied onto the shared
+      filesystem directly, no container involved. Either way, once it's on disk you can
+      recognize it via the same
       <code>AudioTranscriptionRequest</code> as Case 08 (OpenRouter &rarr; Whisper).
       Files small enough after compression go in one call; larger ones are split
       into ~25-minute chunks (server-side, via ffmpeg) and transcribed chunk by
@@ -29,6 +33,22 @@
         style="height: auto; padding: 0.9rem 1rem;"
       >
       <button type="submit" class="ah-submit" id="ah-btn">Download</button>
+    </form>
+
+    <div class="ah-yt-or-divider">or</div>
+
+    <form id="ah-upload-form" class="ah-form">
+      <label for="ah-upload-input" class="ah-file-label" id="ah-upload-label">
+        <span class="ah-file-icon">&#x1F4C1;</span>
+        <span class="ah-file-name" id="ah-upload-filename">Choose a file from disk&hellip;</span>
+      </label>
+      <input
+        id="ah-upload-input"
+        class="ah-file-input"
+        type="file"
+        accept="audio/*,video/*,.mp3,.wav,.m4a,.flac,.ogg,.webm,.aac,.mp4,.mkv,.mov"
+      >
+      <button type="submit" class="ah-submit" id="ah-upload-btn">Upload</button>
     </form>
 
     <div id="ah-yt-progress-wrap" class="ah-yt-progress-wrap" style="display: none;">
@@ -87,6 +107,15 @@
 
 <% content_for :styles do %>
   <style>
+    .ah-yt-or-divider {
+      width: 100%;
+      text-align: center;
+      font-size: 0.78rem;
+      color: #9aa5b3;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin: -0.2rem 0;
+    }
     .ah-yt-progress-wrap {
       width: 100%;
       display: flex;

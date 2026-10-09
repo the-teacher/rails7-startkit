@@ -21,6 +21,11 @@
   const transcriptWrap = document.getElementById("ah-yt-transcript-wrap");
   const transcriptEl = document.getElementById("ah-yt-transcript");
   const transcriptMetaEl = document.getElementById("ah-yt-transcript-meta");
+  const uploadForm = document.getElementById("ah-upload-form");
+  const uploadInput = document.getElementById("ah-upload-input");
+  const uploadLabel = document.getElementById("ah-upload-label");
+  const uploadFilenameEl = document.getElementById("ah-upload-filename");
+  const uploadBtn = document.getElementById("ah-upload-btn");
   if (!form) return;
 
   function selectedModelOption() {
@@ -88,6 +93,15 @@
     transcriptMetaEl.textContent = "";
   }
 
+  // Shared by both sources — a finished yt-dlp download and a finished local
+  // upload end up in the exact same state: a filename on the shared
+  // filesystem, ready for the "Recognize audio" button.
+  function showReadyForTranscription(filename) {
+    currentFilename = filename;
+    transcribeWrap.style.display = "flex";
+    updateTimecodesHint();
+  }
+
   function renderJob(job) {
     const pct = job.percent || 0;
     progressBar.style.width = pct + "%";
@@ -107,11 +121,7 @@
       output.textContent = job.cached
         ? "✓ Already downloaded — reusing cached file: " + job.filename + sizeStr
         : "✓ Done — " + job.filename + sizeStr;
-      if (job.filename) {
-        currentFilename = job.filename;
-        transcribeWrap.style.display = "flex";
-        updateTimecodesHint();
-      }
+      if (job.filename) showReadyForTranscription(job.filename);
     } else if (job.status === "error") {
       stopPolling();
       output.textContent = "✗ Error: " + (job.error || "unknown error");
@@ -165,6 +175,59 @@
       .finally(() => {
         btn.disabled = false;
         btn.textContent = "Download";
+      });
+  });
+
+  uploadInput.addEventListener("change", () => {
+    const file = uploadInput.files[0];
+    if (file) {
+      uploadFilenameEl.textContent = file.name;
+      uploadLabel.classList.add("has-file");
+    } else {
+      uploadFilenameEl.textContent = "Choose a file from disk…";
+      uploadLabel.classList.remove("has-file");
+    }
+  });
+
+  uploadForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const file = uploadInput.files[0];
+    if (!file) return;
+
+    stopPolling();
+    progressWrap.style.display = "none";
+    transcribeWrap.style.display = "none";
+    timecodesHint.style.display = "none";
+    transcriptWrap.style.display = "none";
+    filenameEl.textContent = "";
+    output.innerHTML = '<span class="ah-placeholder">Uploading…</span>';
+    uploadBtn.disabled = true;
+    uploadBtn.textContent = "Uploading…";
+
+    const formData = new FormData();
+    formData.append("file", file);
+
+    fetch("/ai/requests/youtube/upload", {
+      method: "POST",
+      body: formData,
+    })
+      .then((r) => r.json())
+      .then((data) => {
+        if (data.error) {
+          output.textContent = "✗ Error: " + data.error;
+          return;
+        }
+        const sizeStr = data.size ? " (" + (data.size / 1024 / 1024).toFixed(2) + " MB)" : "";
+        output.textContent = "✓ Uploaded — " + data.filename + sizeStr;
+        filenameEl.textContent = data.filename;
+        showReadyForTranscription(data.filename);
+      })
+      .catch(() => {
+        output.textContent = "✗ Network error.";
+      })
+      .finally(() => {
+        uploadBtn.disabled = false;
+        uploadBtn.textContent = "Upload";
       });
   });
 

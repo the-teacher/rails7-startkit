@@ -329,6 +329,34 @@ module Ai
       render json: { error: e.message }, status: :bad_gateway
     end
 
+    # POST /ai/requests/youtube/upload
+    # multipart form: { file: <audio/video file> }
+    # Alternate source for the same page — skips yt-dlp/youtube_stream
+    # entirely, just copies the upload onto the shared filesystem under its
+    # own dated directory (same "<DD_MM_YYYY>_<id>/<id>.ext" convention as a
+    # yt-dlp download — see server.rb's media_dir_for) and returns
+    # { filename: ... } in the exact shape the download job's status
+    # endpoint returns. Synchronous — a local file copy is fast even for a
+    # large file, unlike an actual network download, so no job id/polling
+    # needed here.
+    def youtube_upload
+      file = params.require(:file)
+      ext  = File.extname(file.original_filename).delete_prefix(".").downcase
+      raise ArgumentError, "could not determine a file extension from #{file.original_filename.inspect}" if ext.empty?
+
+      slug = File.basename(file.original_filename, ".*").parameterize.presence || "upload"
+      id   = "#{slug}_#{SecureRandom.hex(4)}"
+      dir  = Rails.root.join("storage", "youtube_stream", "#{Time.now.strftime('%d_%m_%Y')}_#{id}")
+      FileUtils.mkdir_p(dir)
+
+      dest = dir.join("#{id}.#{ext}")
+      FileUtils.cp(file.tempfile.path, dest)
+
+      render json: { filename: "#{File.basename(dir)}/#{File.basename(dest)}", size: File.size(dest) }
+    rescue StandardError => e
+      render json: { error: "#{e.class.name.split('::').last}: #{e.message}" }, status: :unprocessable_entity
+    end
+
     # OpenRouter's audio endpoint rejects a base64-encoded request body over
     # 50 MiB (52_428_800 bytes). Base64 inflates raw bytes by 4/3, so stay
     # well under that on the raw file — 30 MiB raw leaves headroom for the

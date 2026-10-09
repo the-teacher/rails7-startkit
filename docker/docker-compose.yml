@@ -57,7 +57,7 @@ services:
       - "3000:3000"
     volumes:
       - ../__RailsApp__:/home/rails/RailsApp
-      - ../../ActiveHarness2:/home/rails/ActiveHarness2
+      - ../../ActiveHarness:/home/rails/ActiveHarness
       - ../../ActiveHarnessPricing:/home/rails/ActiveHarnessPricing
     working_dir: /home/rails/RailsApp
     command: sleep infinity
