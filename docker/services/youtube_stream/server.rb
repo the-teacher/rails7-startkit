@@ -87,52 +87,67 @@ DESTINATION_RE = /\[(?:download|ExtractAudio|Merger)\]\s+(?:Destination|Merging 
 # process to exit (which is what Open3.capture3 in run_yt_dlp/handle_extract
 # below does — fine for /extract's synchronous CLI use, wrong for a page
 # that wants to show live progress).
-def start_download_job(id, url)
-  job_set(id, status: "starting", percent: 0.0, downloaded: nil, total: nil,
-              speed: nil, eta: nil, filename: nil, error: nil)
+def start_download_job(id, url, video: false)
+  job_set(id, status: "starting", stage: "audio", percent: 0.0, downloaded: nil, total: nil,
+              speed: nil, eta: nil, filename: nil, video_filename: nil, error: nil)
 
   Thread.new do
     dir      = media_dir_for(id)
     dir_name = File.basename(dir)
-    template = File.join(dir, "#{id}.%(ext)s")
-    args = ["-x", "--audio-format", "mp3", "--audio-quality", "0", "--no-playlist",
-            "--newline", "--max-filesize", MAX_FILESIZE, "-o", template, url]
+    audio    = File.join(dir, "#{id}.mp3")
 
-    stderr_lines = []
     begin
-      Open3.popen3("yt-dlp", *args) do |_stdin, stdout, stderr, wait_thr|
-        job_set(id, status: "downloading")
-
-        err_reader = Thread.new { stderr.each_line { |l| stderr_lines << l } }
-
-        stdout.each_line do |line|
-          if (m = line.match(PROGRESS_RE))
-            job_set(
-              id,
-              percent:    m[1].to_f,
-              total:      m[2],
-              speed:      m[3],
-              eta:        m[4] || m[5]
-            )
-          elsif (m = line.match(DESTINATION_RE))
-            job_set(id, filename: File.join(dir_name, File.basename(m[1].strip)))
-          end
-        end
-
-        err_reader.join
-        status = wait_thr.value
-
-        if status.success?
-          filename = extracted_filename(id, dir)
-          size     = File.size(File.join(OUTPUT_DIR, filename))
-          job_set(id, status: "done", percent: 100.0, filename: filename, size: size)
-        else
-          job_set(id, status: "error", error: stderr_lines.join.strip[0, 500])
-        end
+      # Audio first: it is what transcription needs, and an already-cached mp3
+      # (e.g. re-requested with "video" ticked) is not downloaded again.
+      unless File.exist?(audio)
+        args = ["-x", "--audio-format", "mp3", "--audio-quality", "0", "--no-playlist",
+                "--newline", "--max-filesize", MAX_FILESIZE, "-o", File.join(dir, "#{id}.%(ext)s"), url]
+        error = run_download_stage(id, args, dir_name) { |name| job_set(id, filename: name) }
+        next job_set(id, status: "error", error: error) if error
       end
+      job_set(id, filename: extracted_filename(id, dir), size: File.size(audio))
+
+      if video
+        job_set(id, stage: "video", percent: 0.0, total: nil, speed: nil, eta: nil)
+        # Up to 1080p. H.264 (avc1) + AAC first: plays everywhere, whereas
+        # YouTube's AV1/VP9 "mp4" streams don't in QuickTime and many players.
+        # Always video+audio merged ("+ba"), never a video-only stream.
+        args = ["-f", "bv*[height<=1080][vcodec^=avc1]+ba[ext=m4a]/bv*[height<=1080]+ba/b[height<=1080]",
+                "--merge-output-format", "mp4", "--no-playlist", "--newline",
+                "--max-filesize", VIDEO_MAX_FILESIZE, "-o", File.join(dir, "#{id}.video.%(ext)s"), url]
+        error = run_download_stage(id, args, dir_name) { |name| job_set(id, video_filename: name) }
+        next job_set(id, status: "error", error: error) if error
+
+        video_path = Dir.glob(File.join(dir, "#{id}.video.*")).first
+        job_set(id, video_filename: File.join(dir_name, File.basename(video_path))) if video_path
+      end
+
+      job_set(id, status: "done", percent: 100.0)
     rescue StandardError => e
       job_set(id, status: "error", error: e.message)
     end
+  end
+end
+
+# Runs one yt-dlp invocation, feeding progress into the job. Yields each
+# reported destination file name (relative to OUTPUT_DIR). Returns nil on
+# success or an error string.
+def run_download_stage(id, args, dir_name)
+  stderr_lines = []
+  Open3.popen3("yt-dlp", *args) do |_stdin, stdout, stderr, wait_thr|
+    job_set(id, status: "downloading")
+    err_reader = Thread.new { stderr.each_line { |l| stderr_lines << l } }
+
+    stdout.each_line do |line|
+      if (m = line.match(PROGRESS_RE))
+        job_set(id, percent: m[1].to_f, total: m[2], speed: m[3], eta: m[4] || m[5])
+      elsif (m = line.match(DESTINATION_RE))
+        yield File.join(dir_name, File.basename(m[1].strip))
+      end
+    end
+
+    err_reader.join
+    wait_thr.value.success? ? nil : stderr_lines.join.strip[0, 500]
   end
 end
 
@@ -145,7 +160,8 @@ YOUTUBE_URL_RE      = %r{\Ahttps?://(www\.|m\.)?(youtube\.com/(watch\?v=|shorts/
 GOOGLE_DRIVE_URL_RE = %r{\Ahttps?://drive\.google\.com/(file/d/|open\?id=|uc\?id=)[\w-]+}i
 SUPPORTED_URL_RE    = Regexp.union(YOUTUBE_URL_RE, GOOGLE_DRIVE_URL_RE)
 
-MAX_FILESIZE = ENV.fetch("MAX_FILESIZE", "200M")
+MAX_FILESIZE       = ENV.fetch("MAX_FILESIZE", "200M")
+VIDEO_MAX_FILESIZE = ENV.fetch("VIDEO_MAX_FILESIZE", "3G")
 
 def run_yt_dlp(*args)
   out, err, status = Open3.capture3("yt-dlp", *args)
@@ -155,7 +171,8 @@ def run_yt_dlp(*args)
 end
 
 def extracted_filename(id, dir = media_dir_for(id))
-  path = Dir.glob(File.join(dir, "#{id}.*")).first
+  path = File.join(dir, "#{id}.mp3")
+  path = Dir.glob(File.join(dir, "#{id}.*")).reject { |f| f.include?(".video.") }.first unless File.exist?(path)
   raise "yt-dlp reported success but produced no output file" unless path
 
   File.join(File.basename(dir), File.basename(path))
@@ -308,13 +325,16 @@ server.mount_proc "/jobs" do |req, res|
       id = extract_source_id(url)
       raise ArgumentError, "could not find a source id in that url" unless id
 
+      video       = payload["video"] == true
       dir         = media_dir_for(id)
       cached_path = File.join(dir, "#{id}.mp3")
-      if File.exist?(cached_path)
-        job_set(id, status: "done", percent: 100.0, filename: File.join(File.basename(dir), File.basename(cached_path)),
+      cached_video = Dir.glob(File.join(dir, "#{id}.video.*")).first
+      if File.exist?(cached_path) && (!video || cached_video)
+        job_set(id, status: "done", stage: nil, percent: 100.0, filename: File.join(File.basename(dir), File.basename(cached_path)),
+                    video_filename: cached_video && File.join(File.basename(dir), File.basename(cached_video)),
                     size: File.size(cached_path), cached: true, error: nil)
       else
-        start_download_job(id, url)
+        start_download_job(id, url, video: video)
       end
 
       res.status = 202

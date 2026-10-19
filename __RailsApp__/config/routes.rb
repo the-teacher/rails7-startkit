@@ -60,6 +60,7 @@ Rails.application.routes.draw do
       # download step (that's why it polls too). /start returns a job id, /status polls.
       post "youtube/transcribe/start",         to: "requests#youtube_transcribe_start",  as: :youtube_transcribe_start
       get  "youtube/transcribe/status/:job_id", to: "requests#youtube_transcribe_status", as: :youtube_transcribe_status
+      get  "youtube/transcript",               to: "requests#youtube_transcript",        as: :youtube_transcript
     end
 
     # Prices — per-source pricing pages

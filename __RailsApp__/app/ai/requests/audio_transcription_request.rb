@@ -56,6 +56,15 @@ class AudioTranscriptionRequest < ActiveHarness::Request
   # transcript completeness.
   DEFAULT_MODEL = "openrouter:openai/whisper-large-v3-turbo".freeze
 
+  # Spoken-language choices for the UI ("auto" = let the model detect). Sent as
+  # the ISO-639-1 `language` param; auto-detect can pick a wrong, similar-
+  # sounding language on mixed or accented speech, so pinning it helps.
+  LANGUAGES = {
+    "ru" => "Русский", "en" => "English", "uk" => "Українська", "de" => "Deutsch",
+    "fr" => "Français", "es" => "Español", "it" => "Italiano", "pl" => "Polski",
+    "pt" => "Português", "tr" => "Türkçe", "zh" => "中文", "ja" => "日本語"
+  }.freeze
+
   # Extra request params REQUIRED for a model to work at all on real (>30s)
   # audio — always sent regardless of the "Timecodes" checkbox, since there
   # is no meaningful plain-text mode for these (gpt-4o-transcribe-diarize's

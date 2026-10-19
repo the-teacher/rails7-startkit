@@ -311,7 +311,8 @@ module Ai
       url = params.require(:url)
       uri = URI("#{YOUTUBE_STREAM_URL}/jobs")
 
-      http_res = Net::HTTP.post(uri, { url: url }.to_json, "Content-Type" => "application/json")
+      video    = ActiveModel::Type::Boolean.new.cast(params[:video]) || false
+      http_res = Net::HTTP.post(uri, { url: url, video: video }.to_json, "Content-Type" => "application/json")
       render json: JSON.parse(http_res.body), status: http_res.code.to_i
     rescue StandardError => e
       render json: { error: e.message }, status: :bad_gateway
@@ -344,9 +345,23 @@ module Ai
       ext  = File.extname(file.original_filename).delete_prefix(".").downcase
       raise ArgumentError, "could not determine a file extension from #{file.original_filename.inspect}" if ext.empty?
 
+      # The trailing id is a content hash (not random), so re-uploading the same
+      # bytes — even under another name — lands in the existing directory and
+      # reuses its transcripts instead of repeating compression/Whisper work.
+      hash     = Digest::SHA256.file(file.tempfile.path).hexdigest[0, 8]
+      root     = Rails.root.join("storage", "youtube_stream")
+      existing = Dir.glob(root.join("*_#{hash}", "*_#{hash}.#{ext}").to_s).first
+
+      if existing
+        return render json: {
+          filename: "#{File.basename(File.dirname(existing))}/#{File.basename(existing)}",
+          size: File.size(existing), reused: true
+        }
+      end
+
       slug = File.basename(file.original_filename, ".*").parameterize.presence || "upload"
-      id   = "#{slug}_#{SecureRandom.hex(4)}"
-      dir  = Rails.root.join("storage", "youtube_stream", "#{Time.now.strftime('%d_%m_%Y')}_#{id}")
+      id   = "#{slug}_#{hash}"
+      dir  = root.join("#{Time.now.strftime('%d_%m_%Y')}_#{id}")
       FileUtils.mkdir_p(dir)
 
       dest = dir.join("#{id}.#{ext}")
@@ -393,6 +408,10 @@ module Ai
       model = params[:model].presence
       raise ArgumentError, "unknown model: #{model.inspect}" if model && !AudioTranscriptionRequest::MODELS.key?(model)
 
+      language = params[:language].presence
+      language = nil if language == "auto"
+      raise ArgumentError, "unknown language: #{language.inspect}" if language && !AudioTranscriptionRequest::LANGUAGES.key?(language)
+
       requested_timecodes = params[:timecodes].nil? ? true : ActiveModel::Type::Boolean.new.cast(params[:timecodes])
       timecodes = AudioTranscriptionRequest.structured_output?(model, requested_timecodes)
 
@@ -406,13 +425,21 @@ module Ai
       job_id = SecureRandom.hex(8)
       cached = read_transcript_cache(filename, timecodes)
 
+      # Transcripts made with a different language setting (including the old
+      # auto-detect runs) are stale: drop them so the file is re-recognized.
+      # Split chunks and compressed audio are kept, only text outputs go.
+      if cached && cached[:language].to_s != language.to_s
+        purge_transcripts(Rails.root.join("storage", "youtube_stream", File.dirname(filename)))
+        cached = nil
+      end
+
       if cached
         transcribe_job_write(job_id, status: "done", cached: true, **cached)
       else
         transcribe_job_write(job_id, status: "running")
         Thread.new do
           Rails.application.executor.wrap do
-            run_transcription_job(job_id, filename, model, timecodes)
+            run_transcription_job(job_id, filename, model, timecodes, language)
           end
         end
       end
@@ -428,6 +455,46 @@ module Ai
       raise ArgumentError, "unknown or expired job id" unless job
 
       render json: job
+    rescue StandardError => e
+      render json: { error: e.message }, status: :not_found
+    end
+
+    # GET /ai/requests/youtube/transcript?dir=<media dir>&part=all|<n>&format=txt|json
+    # Downloads finished transcripts from a media directory: one part, all
+    # parts joined, or a single combined JSON (parts + merged segments).
+    # Part timestamps are already global (offset-adjusted when written), so
+    # joining the part files needs no re-basing.
+    def youtube_transcript
+      dir = params.require(:dir)
+      validate_relative_filename!(dir)
+      raise ArgumentError, "invalid dir" if dir.include?("/")
+
+      path = Rails.root.join("storage", "youtube_stream", dir)
+      raise ArgumentError, "not found: #{dir}" unless File.directory?(path)
+
+      parts = transcript_parts(path)
+      raise ArgumentError, "no transcript yet for #{dir}" if parts.empty?
+
+      base = dir.sub(/\A\d{2}_\d{2}_\d{4}_/, "")
+
+      if params[:format] == "json"
+        body = {
+          source: dir, timecodes: parts.any? { |p| p[:segments] }, parts: parts,
+          segments: parts.flat_map { |p| p[:segments] || [] }, text: parts.map { |p| p[:text] }.join("\n")
+        }
+        return send_data JSON.pretty_generate(body), type: "application/json", disposition: "attachment", filename: "#{base}.transcript.json"
+      end
+
+      if params[:part].present? && params[:part] != "all"
+        part = parts.find { |p| p[:index] == params[:part].to_i }
+        raise ArgumentError, "no such part" unless part
+
+        send_data part[:text], type: "text/plain; charset=utf-8", disposition: "attachment",
+                               filename: format("%s.part%02d.txt", base, part[:index])
+      else
+        send_data parts.map { |p| p[:text] }.join("\n"), type: "text/plain; charset=utf-8",
+                  disposition: "attachment", filename: "#{base}.transcript.txt"
+      end
     rescue StandardError => e
       render json: { error: e.message }, status: :not_found
     end
@@ -448,7 +515,7 @@ module Ai
     # Dispatches to the single-shot or chunked path depending on file size
     # after compression — chunking is only needed once a single request would
     # still exceed OpenRouter's body-size limit.
-    def run_transcription_job(job_id, filename, model, timecodes)
+    def run_transcription_job(job_id, filename, model, timecodes, language)
       original_filename = filename
       path       = Rails.root.join("storage", "youtube_stream", filename)
       compressed = false
@@ -459,12 +526,40 @@ module Ai
       end
 
       if File.size(path) > MAX_RAW_BYTES_FOR_TRANSCRIPTION
-        run_chunked_transcription_job(job_id, original_filename, filename, model, compressed, timecodes)
+        run_chunked_transcription_job(job_id, original_filename, filename, model, compressed, timecodes, language)
       else
-        run_single_transcription_job(job_id, original_filename, filename, path, model, compressed, timecodes)
+        run_single_transcription_job(job_id, original_filename, filename, path, model, compressed, timecodes, language)
       end
     rescue StandardError => e
       transcribe_job_write(job_id, status: "error", error: "#{e.class.name.split('::').last}: #{e.message}")
+    end
+
+    # Reads whatever transcript a media directory holds: the chunked manifest's
+    # part files if present, otherwise the single-shot cache json.
+    # => [{ index:, text:, segments: (only with timecodes) }, ...]
+    def transcript_parts(path)
+      manifest = Dir.glob(path.join("*.manifest.json").to_s).first
+      if manifest
+        return JSON.parse(File.read(manifest))["parts"].map do |p|
+          part = { index: p["index"], text: File.read(path.join(p["txt"])) }
+          part[:segments] = JSON.parse(File.read(path.join(p["json"])))["segments"] if p["json"]
+          part
+        end
+      end
+
+      cache = Dir.glob(path.join("*.transcript.json").to_s).reject { |f| f.include?(".part") }.first
+      return [] unless cache
+
+      data = JSON.parse(File.read(cache))
+      return [] unless data["text"]
+
+      [{ index: 1, text: data["text"], segments: data["segments"] }.compact]
+    end
+
+    # Removes every transcript output in a media directory (cache json, part
+    # files, manifest) — never the media, compressed copy or split chunks.
+    def purge_transcripts(dir)
+      Dir.glob(dir.join("*.{transcript.json,transcript.txt,manifest.json}").to_s).each { |f| File.delete(f) }
     end
 
     def compress_via_stream(filename)
@@ -477,9 +572,9 @@ module Ai
       [new_filename, Rails.root.join("storage", "youtube_stream", new_filename)]
     end
 
-    def run_single_transcription_job(job_id, original_filename, filename, path, model, compressed, timecodes)
+    def run_single_transcription_job(job_id, original_filename, filename, path, model, compressed, timecodes, language)
       req = AudioTranscriptionRequest.new(input: path.to_s)
-      req.models.replace(transcription_chain(model, timecodes)) if model || timecodes
+      req.models.replace(transcription_chain(model, timecodes, language)) if model || timecodes || language
       req.call
 
       result = req.result
@@ -498,6 +593,7 @@ module Ai
         text:        text,
         segments:    segments,
         timecodes:   timecodes,
+        language:    language,
         diarization: diarization,
         model:       result.model&.name,
         time:        result.execution_time,
@@ -522,13 +618,13 @@ module Ai
     # AudioTranscriptionRequest.structured_output? — true means "apply
     # whichever extra params this model needs/supports", covering both the
     # optional whisper verbose_json case and the mandatory diarize case.
-    def transcription_chain(model, timecodes)
+    def transcription_chain(model, timecodes, language = nil)
       keys = model ? [model] : [AudioTranscriptionRequest::DEFAULT_MODEL, "openrouter:openai/whisper-1"]
 
       keys.map do |key|
         entry = AudioTranscriptionRequest.parse_model(key)
         extra = timecodes ? (AudioTranscriptionRequest::REQUIRED_PARAMS[key] || AudioTranscriptionRequest::OPTIONAL_TIMECODE_PARAMS[key] || {}) : {}
-        entry.merge(extra)
+        entry.merge(extra).merge({ language: language }.compact)
       end
     end
 
@@ -546,7 +642,7 @@ module Ai
     # AudioTranscriptionRequest's MODELS comment) that diarization does not
     # currently work through OpenRouter for either provider its own docs cite
     # as an example — recorded in the manifest so it's not silently missing.
-    def run_chunked_transcription_job(job_id, original_filename, filename, model, compressed, timecodes)
+    def run_chunked_transcription_job(job_id, original_filename, filename, model, compressed, timecodes, language)
       uri        = URI("#{YOUTUBE_STREAM_URL}/split")
       http_res   = Net::HTTP.post(uri, { filename: filename, chunk_minutes: CHUNK_MINUTES }.to_json, "Content-Type" => "application/json")
       split_data = JSON.parse(http_res.body)
@@ -564,7 +660,7 @@ module Ai
       media_dir    = File.dirname(original_filename)
       storage_root = Rails.root.join("storage", "youtube_stream")
       storage      = storage_root.join(media_dir)
-      chain        = transcription_chain(model, timecodes)
+      chain        = transcription_chain(model, timecodes, language)
 
       offset      = 0.0
       parts       = []
@@ -640,6 +736,7 @@ module Ai
         chunk_minutes:      CHUNK_MINUTES,
         total_parts:        parts.size,
         timecodes:          timecodes,
+        language:           language,
         diarization:        saw_speaker,
         diarization_note:   saw_speaker ? nil : (
           "No speaker labels in this run. OpenRouter's transcription endpoint does not support diarization at " \
@@ -658,6 +755,7 @@ module Ai
         parts:        parts,
         manifest:     File.basename(manifest_path),
         timecodes:    timecodes,
+        language:     language,
         diarization:  saw_speaker,
         compressed:   compressed,
         filename:     filename

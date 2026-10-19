@@ -109,10 +109,12 @@
     sizeEl.textContent = job.total ? "of " + job.total : "";
     speedEl.textContent = job.speed ? job.speed : "";
     etaEl.textContent = job.eta ? "ETA " + job.eta : "";
-    if (job.filename) filenameEl.textContent = job.filename;
+    const names = [job.filename, job.video_filename].filter(Boolean);
+    if (names.length) filenameEl.textContent = names.join("\n");
+    const stageLabel = job.stage === "video" ? "video" : "audio";
 
     if (job.status === "starting" || job.status === "downloading") {
-      output.textContent = job.status === "starting" ? "Starting download…" : "Downloading…";
+      output.textContent = job.status === "starting" ? "Starting download…" : "Downloading " + stageLabel + "…";
     } else if (job.status === "done") {
       stopPolling();
       progressBar.style.width = "100%";
@@ -121,6 +123,7 @@
       output.textContent = job.cached
         ? "✓ Already downloaded — reusing cached file: " + job.filename + sizeStr
         : "✓ Done — " + job.filename + sizeStr;
+      if (job.video_filename) output.textContent += "\nvideo: " + job.video_filename;
       if (job.filename) showReadyForTranscription(job.filename);
     } else if (job.status === "error") {
       stopPolling();
@@ -157,7 +160,7 @@
     fetch("/ai/requests/youtube/start", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ url: url }),
+      body: JSON.stringify({ url: url, video: document.getElementById("ah-yt-video").checked }),
     })
       .then((r) => r.json())
       .then((data) => {
@@ -249,7 +252,27 @@
       .join("\n");
   }
 
+  const downloadsEl = document.getElementById("ah-yt-downloads");
+
+  function renderDownloads(job) {
+    downloadsEl.textContent = "";
+    if (!job || !job.filename || job.filename.indexOf("/") < 0) return;
+    const dir = encodeURIComponent(job.filename.split("/")[0]);
+    const base = "/ai/requests/youtube/transcript?dir=" + dir;
+    const links = [["⬇ All (.txt)", "&part=all"], ["⬇ Full (.json)", "&format=json"]];
+    (job.parts || []).forEach((p) => {
+      if ((job.parts || []).length > 1) links.push(["⬇ Part " + p.index + " (.txt)", "&part=" + p.index]);
+    });
+    links.forEach(([label, qs]) => {
+      const a = document.createElement("a");
+      a.href = base + qs;
+      a.textContent = label;
+      downloadsEl.appendChild(a);
+    });
+  }
+
   function renderTranscribeJob(job) {
+    downloadsEl.textContent = "";
     if (job.chunked) {
       const total = job.total_chunks || (job.chunks && job.chunks.length) || 0;
       const current = job.current_chunk || 0;
@@ -275,6 +298,7 @@
         metaParts.push(job.timecodes ? "Timecodes: on" : "Timecodes: off");
         metaParts.push(job.diarization ? "Speaker labels: yes (see manifest)" : "Speaker labels: no (see manifest)");
         transcriptMetaEl.textContent = metaParts.join(" · ");
+        renderDownloads(job);
         transcribeBtn.disabled = false;
         transcribeBtn.textContent = "Recognize audio";
       } else if (job.status === "error") {
@@ -302,6 +326,7 @@
       metaParts.push(job.timecodes ? "Timecodes: on" : "Timecodes: off");
       if (job.timecodes) metaParts.push(job.diarization ? "Speaker labels: yes" : "Speaker labels: no");
       transcriptMetaEl.textContent = metaParts.join(" · ");
+      renderDownloads(job);
       transcribeBtn.disabled = false;
       transcribeBtn.textContent = "Recognize audio";
     } else if (job.status === "error") {
@@ -350,6 +375,7 @@
         filename: currentFilename,
         model: modelSelect.value,
         timecodes: timecodesCheckbox.checked,
+        language: document.getElementById("ah-yt-language").value,
       }),
     })
       .then((r) => r.json())

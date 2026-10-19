@@ -35,6 +35,11 @@
       <button type="submit" class="ah-submit" id="ah-btn">Download</button>
     </form>
 
+    <label class="ah-yt-checkbox" style="align-self: flex-start;">
+      <input type="checkbox" id="ah-yt-video">
+      Video (also download the video, up to 1080p)
+    </label>
+
     <div class="ah-yt-or-divider">or</div>
 
     <form id="ah-upload-form" class="ah-form">
@@ -82,6 +87,12 @@
           ><%= label %><%= marker %></option>
         <% end %>
       </select>
+      <select id="ah-yt-language" class="ah-select" style="flex: 0 0 auto; width: auto;" title="Spoken language">
+        <option value="auto">Language: auto</option>
+        <% AudioTranscriptionRequest::LANGUAGES.each do |code, label| %>
+          <option value="<%= code %>" <%= "selected" if code == "ru" %>><%= label %></option>
+        <% end %>
+      </select>
       <label class="ah-yt-checkbox">
         <input type="checkbox" id="ah-yt-timecodes" checked>
         Timecodes
@@ -95,6 +106,7 @@
     <div id="ah-yt-transcript-wrap" class="ah-result" style="display: none;">
       <div id="ah-yt-transcript" class="ah-output"></div>
       <div id="ah-yt-transcript-meta" class="ah-meta"></div>
+      <div id="ah-yt-downloads" class="ah-yt-downloads"></div>
     </div>
 
     <%= render "nav",
@@ -147,12 +159,14 @@
       color: #4a5a70;
       font-family: monospace;
       word-break: break-all;
+      white-space: pre-line;
     }
     .ah-yt-transcribe-wrap {
       width: 100%;
       display: flex;
       gap: 0.6rem;
       align-items: center;
+      flex-wrap: wrap;
     }
     .ah-yt-transcribe-wrap .ah-select {
       flex: 1;
@@ -166,6 +180,20 @@
       white-space: nowrap;
       cursor: pointer;
     }
+    .ah-yt-downloads {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+    }
+    .ah-yt-downloads a {
+      font-size: 0.78rem;
+      padding: 0.25rem 0.6rem;
+      border-radius: 6px;
+      background: rgba(102, 126, 234, 0.12);
+      color: #4a5a9a;
+      text-decoration: none;
+    }
+    .ah-yt-downloads a:hover { background: rgba(102, 126, 234, 0.25); }
     .ah-yt-timecodes-hint {
       width: 100%;
       font-size: 0.76rem;
