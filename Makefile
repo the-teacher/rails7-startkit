@@ -13,6 +13,8 @@ include Makefiles/200_Rails.mk
 include Makefiles/300_Rails-Production.mk
 include Makefiles/400_env.mk
 include Makefiles/500_nginx.mk
+include Makefiles/600_jaeger.mk
+include Makefiles/700_youtube_stream.mk
 
 # Main help command
 help:
@@ -29,4 +31,5 @@ help:
 	@echo "  make project-help       - Project management commands"
 	@echo "  make rails-help         - Rails development commands"
 	@echo "  make rails-production-help - Production Rails commands"
+	@echo "  make youtube-stream-help - YouTube stream extractor commands"
 	@echo "=============================================================="
